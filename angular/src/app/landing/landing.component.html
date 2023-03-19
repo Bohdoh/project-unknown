@@ -11,18 +11,21 @@
               <p class="is-size-4">Categories</p>
               <ul class="menu-list" *ngIf="categories">
                 <li>
-                  <a (click)="changeGamesToBeShownByCat('')" class="is-flex is-justify-content-space-between is-align-items-center">
+                  <a (click)="changeGamesToBeShownByCat('')"
+                     class="is-flex is-justify-content-space-between is-align-items-center">
                     <div>All</div>
                     <span class="ml-2 is-size-7">{{ gamesAmount }}</span>
                   </a>
                 </li>
-                <li *ngFor="let category of categories">
-                  <a (click)="changeGamesToBeShownByCat(category.name)"
-                     class="is-flex is-justify-content-space-between is-align-items-center">
-                    <span>{{ category.name }}</span>
-                    <span class="ml-2 is-size-7">{{ getNumberOfPostsWithCat(category.name) }}</span>
-                  </a>
-                </li>
+
+                  <li *ngFor="let category of categories">
+                    <a *ngIf="getNumberOfPostsWithCat(category.name) > 0" (click)="changeGamesToBeShownByCat(category.name)"
+                       class="is-flex is-justify-content-space-between is-align-items-center">
+                      <span>{{ category.name }}</span>
+                      <span class="ml-2 is-size-7">{{ getNumberOfPostsWithCat(category.name) }}</span>
+                    </a>
+                  </li>
+
               </ul>
             </li>
           </ul>

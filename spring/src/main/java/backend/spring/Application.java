@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashSet;
 import java.util.Set;
 
 @SpringBootApplication
@@ -51,10 +52,16 @@ public class Application {
              categoryRepository.save(new Category("Science"));
              categoryRepository.save(new Category("Horror"));
              categoryRepository.save(new Category("Mystery"));
+             categoryRepository.save(new Category("Empty"));
 
 
              Game game2 = gameRepository.findByGameId(1);
-             game2.setCategories(categoryRepository.findAllByOrderByName());
+             Set<Category> catsForGame2 = new HashSet<>();
+             catsForGame2.add(categoryRepository.findByName("Tech"));
+             catsForGame2.add(categoryRepository.findByName("Science"));
+             catsForGame2.add(categoryRepository.findByName("Horror"));
+             catsForGame2.add(categoryRepository.findByName("Mystery"));
+             game2.setCategories(catsForGame2);
             gameRepository.save(game2);
         }
     }

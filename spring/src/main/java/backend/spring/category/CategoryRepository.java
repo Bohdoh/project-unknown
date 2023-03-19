@@ -9,4 +9,7 @@ import java.util.Set;
 public interface CategoryRepository extends JpaRepository<Category,Integer> {
     Set<Category> findAllByOrderByName();
     Set<Category> findAllByOrderByNameAsc();
+
+    Category findByName(String name);
+
 }
