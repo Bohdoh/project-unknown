@@ -1,0 +1,40 @@
+
+  <div *ngIf="game" class="card card-equal-height">
+
+              <div *ngIf="game.image" class="card-image">
+                <figure class="image is-1by1">
+                  <img [src]="'data:image/png;base64,' + game.image">
+                </figure>
+              </div>
+    <div class="card-content">
+
+      <div class="level">
+        <div class="level-left">
+          <div class="level-item is-size-7 is-italic">Author:
+            <!--                  <span>{{ game.enduser.username }}</span>-->
+          </div>
+        </div>
+        <div class="level-right">
+          <div class="level-item is-size-7 is-italic">Released:
+            <span>{{ formatDate(game.createdAt) }}</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="title is-4">{{ game.title }}</p>
+      <p class="subtitle is-6">{{ game.subtitle }}</p>
+    </div>
+    <div class="card-footer-own">
+      <div class="level">
+        <div class="level-left m-1">
+          <form class="m-1" *ngFor="let category of game.categories" (submit)="onSubmit(category.categoryId)">
+            <input type="hidden" [value]="category.categoryId">
+            <button class="button tag is-link" *ngIf="changeGamesToBeShownByCat" (click)="changeGamesToBeShownByCat(category.name)">
+              <span>{{category.name}}</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+

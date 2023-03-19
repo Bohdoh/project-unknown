@@ -1,0 +1,46 @@
+<div class="columns">
+  <!-- left column -->
+
+  <div class="column is-hidden-mobile">
+    <div class="columns">
+      <div class="column is-one-fifth"></div>
+      <div class="column box is-Background3 mt-4">
+        <aside class="menu">
+          <ul class="menu-list">
+            <li>
+              <p class="is-size-4">Categories</p>
+              <ul class="menu-list" *ngIf="categories">
+                <li>
+                  <a (click)="changeGamesToBeShownByCat('')" class="is-flex is-justify-content-space-between is-align-items-center">
+                    <div>All</div>
+                    <span class="ml-2 is-size-7">{{ gamesAmount }}</span>
+                  </a>
+                </li>
+                <li *ngFor="let category of categories">
+                  <a (click)="changeGamesToBeShownByCat(category.name)"
+                     class="is-flex is-justify-content-space-between is-align-items-center">
+                    <span>{{ category.name }}</span>
+                    <span class="ml-2 is-size-7">{{ getNumberOfPostsWithCat(category.name) }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </aside>
+      </div>
+      <div class="column is-one-fifth"></div>
+    </div>
+  </div>
+
+  <!-- middle column -->
+  <div class="column is-three-fifths has-background-danger">
+    <app-games-list [games]="gamesToBeShown" [changeGamesToBeShownByCat]="changeGamesToBeShownByCat"></app-games-list>
+  </div>
+
+  <!-- right column -->
+  <div class="column is-one-fifth has-background-dark">
+    <div>asldjalisfjlasjdlajksdlkasjflkasjdflkasjdlk</div>
+
+  </div>
+</div>
+
