@@ -41,10 +41,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .build();
 
         var savedUser = userRepository.save(user);
-        var jwtToken = jwtService.generateToken(user);
-        saveUserToken (savedUser, jwtToken);
+        //var jwtToken = jwtService.generateToken(user);
+       // saveUserToken (savedUser, jwtToken);
         return AuthenticationResponse.builder()
-                .token(jwtToken)
+               // .token(jwtToken)
                 .build();
     }
 
