@@ -2,8 +2,14 @@ package backend.spring;
 
 import backend.spring.category.Category;
 import backend.spring.category.CategoryRepository;
+import backend.spring.enduser.EnduserRepository;
 import backend.spring.game.Game;
+import backend.spring.enduser.Enduser;
 import backend.spring.game.GameRepository;
+import backend.spring.game.comment.Comment;
+import backend.spring.game.comment.CommentRepository;
+import backend.spring.game.review.ReviewRepository;
+import com.github.javafaker.Faker;
 import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,20 +20,27 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @SpringBootApplication
 public class Application {
     private final GameRepository gameRepository;
     private final CategoryRepository categoryRepository;
+    private final CommentRepository commentRepository;
+    private final EnduserRepository enduserRepository;
+    private final ReviewRepository reviewRepository;
+    private final Faker faker = new Faker();
 
     @Autowired
-    public Application(GameRepository gameRepository, CategoryRepository categoryRepository) {
+    public Application(GameRepository gameRepository, CategoryRepository categoryRepository, CommentRepository commentRepository,EnduserRepository enduserRepository, ReviewRepository reviewRepository) {
         this.gameRepository = gameRepository;
         this.categoryRepository = categoryRepository;
+        this.commentRepository = commentRepository;
+        this.enduserRepository = enduserRepository;
+        this.reviewRepository = reviewRepository;
     }
 
     public static void main(String[] args) {
@@ -38,6 +51,7 @@ public class Application {
     @PostConstruct
     @Transactional
     public void dummyData() {
+
         if (gameRepository.count() == 0) {
 
             gameRepository.save(new Game("Das ist ein Titel!","Das ist Subtitle!", "Das ist Content!",readImage("spring"+File.separator+"src"+File.separator+"main"+File.separator+"resources" + File.separator + "static" +File.separator+ "images" +File.separator+ "image1.jpeg")));
@@ -64,6 +78,15 @@ public class Application {
              game2.setCategories(catsForGame2);
             gameRepository.save(game2);
         }
+        for (int i = 0; i < 6; i++) {
+            Enduser user = new Enduser();
+            user.setUsername(faker.name().username());
+            user.setEmail(faker.internet().emailAddress());
+            enduserRepository.save(user);
+        }
+
+
+
     }
 
     public byte[] readImage(String path){
