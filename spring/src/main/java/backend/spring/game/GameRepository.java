@@ -9,5 +9,8 @@ public interface GameRepository extends JpaRepository<Game,Integer> {
     Game findByGameId(Integer gameId);
 
     List<Game> findAllByOrderByCreatedAtDesc();
+
+    Game findByTitle(String title);
+
 }
 

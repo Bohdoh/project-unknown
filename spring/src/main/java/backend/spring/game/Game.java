@@ -33,10 +33,12 @@ public class Game {
             inverseJoinColumns = @JoinColumn(name = "categoryId"))
     private Set<Category> categories;
 
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "game")
     private List<Comment> comments;
 
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "game")
     private List<Review> reviews;
@@ -71,13 +73,14 @@ public class Game {
         this.createdAt = Instant.now();
     }
 
-    public Game( String title,String subtitle, String content, byte[] image) {
+    public Game( String title,String subtitle, String content, byte[] image,Enduser enduser) {
 
         this.image = image;
         this.createdAt = Instant.now();
         this.subtitle = subtitle;
         this.title = title;
         this.content = content;
+        this.enduser = enduser;
     }
 
 

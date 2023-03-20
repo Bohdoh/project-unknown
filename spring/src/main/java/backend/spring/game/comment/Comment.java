@@ -2,8 +2,11 @@ package backend.spring.game.comment;
 
 import backend.spring.enduser.Enduser;
 import backend.spring.game.Game;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
@@ -11,12 +14,15 @@ import java.time.Instant;
 @Entity
 @Getter
 @Setter
+
+@NoArgsConstructor
 public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer commentId;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name ="gameId",nullable = false)
     private Game game;
@@ -30,8 +36,6 @@ public class Comment {
     @Lob
     @Column(columnDefinition = "TEXT")
     private String content;
-
-    public Comment (){}
 
     public Comment (String content,Enduser enduser,Game game){
         this.content = content;
