@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Base64;
 import java.util.List;
 
 @Entity
@@ -18,6 +19,7 @@ public class Enduser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer enduserId;
 
+    @Column(unique = true)
     private String username;
 
     @Lob
@@ -35,6 +37,8 @@ public class Enduser {
             cascade = CascadeType.PERSIST)
     private List<Game> games;
 
+    private String password;
+
     private String email;
 
     public Enduser(){}
@@ -46,5 +50,8 @@ public class Enduser {
         this.username = username;
         this.reviews = reviews;
         this.comments =comments;
+    }
+    public String getImage(){
+        return Base64.getEncoder().encodeToString(image);
     }
 }

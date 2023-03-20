@@ -2,6 +2,7 @@ package backend.spring.game.review;
 
 import backend.spring.enduser.Enduser;
 import backend.spring.game.Game;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +20,7 @@ public class Review {
     @Column(columnDefinition = "TEXT")
     private String content;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name ="gameId",nullable = false)
     private Game game;

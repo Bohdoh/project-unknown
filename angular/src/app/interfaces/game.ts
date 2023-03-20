@@ -1,4 +1,6 @@
 import {Category} from "./category";
+import {Review} from "./review";
+import {Comment} from "./comment";
 
 export interface Game {
   categories: Category[];
@@ -8,6 +10,9 @@ export interface Game {
   title: string;
   content: string;
   id: number;
+  comments: Comment[];
+  reviews: Review[];
+  author:string;
 
 }
 

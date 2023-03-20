@@ -1,5 +1,6 @@
 package backend.spring.game.chapter;
 
+import backend.spring.StringArrayToStringConverter;
 import backend.spring.game.Game;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -27,14 +28,26 @@ public class Chapter {
     private String identifier; // "A-A-B" or something like that
     @Lob
     @Column(columnDefinition = "TEXT")
-    private String pathA;
+    @Convert(converter = StringArrayToStringConverter.class)
+    private String[] pathA;
     @Lob
     @Column(columnDefinition = "TEXT")
-    private String pathB;
+    @Convert(converter = StringArrayToStringConverter.class)
+    private String[] pathB;
     @Lob
     @Column(columnDefinition = "TEXT")
-    private String pathC;
+    @Convert(converter = StringArrayToStringConverter.class)
+    private String[] pathC;
 
     public Chapter () {}
 
+    public Chapter(Game game, byte[] image, String content, String identifier, String[] pathA, String[] pathB, String[] pathC) {
+        this.game = game;
+        this.image = image;
+        this.content = content;
+        this.identifier = identifier;
+        this.pathA = pathA;
+        this.pathB = pathB;
+        this.pathC = pathC;
+    }
 }
