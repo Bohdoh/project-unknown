@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import { AuthService } from "../auth.service";
 import { RegisterRequest } from "../interfaces/RegisterRequest";
 
@@ -17,52 +17,42 @@ function passwordMatchValidator(formGroup: FormGroup): null | { passwordsNotMatc
 })
 export class RegisterComponent implements OnInit{
 
-  registerForm: FormGroup;
+  registerForm : FormGroup | any;
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {
+  registerRequest: RegisterRequest;
+
+  constructor(private authService: AuthService) {
+
+    this.registerRequest={
+      firstname:'',
+      lastname:'',
+      email:'',
+      password: ''
+    }
 
   }
 
   ngOnInit(): void {
 
-    this.registerForm = this.fb.group({
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-    }, { validators: passwordMatchValidator });
+    this.registerForm = new FormGroup({
+      firstname: new FormControl('', Validators.required),
+      lastname: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', Validators.required)
+    });
 
   }
 
 
-  onSubmit() {
-    if (this.registerForm.valid && !this.registerForm.hasError('passwordsNotMatch')) {
-      const request: RegisterRequest = {
-        firstname: this.registerForm.value.firstname,
-        lastname: this.registerForm.value.lastname,
-        email: this.registerForm.value.email,
-        password: this.registerForm.value.password,
-      };
-      this.authService.register(request).subscribe(
-        (response) => {
-          localStorage.setItem('token', response.token);
-          localStorage.setItem('email', response.email);
-          console.log('Registration successful');
-// Navigate to another page, for example, the main page
-        },
-        (error) => {
-          console.error('Error during registration:', error);
-        }
-      );
-    } else if (this.registerForm.hasError('passwordsNotMatch')) {
-      console.error('Passwords do not match');
-// Display the error message in the user interface if needed
-    } else {
-      console.error('Form is not valid');
-    }
+  register() {
+    this.registerRequest.firstname = this.registerForm.get('firstname').value;
+    this.registerRequest.lastname = this.registerForm.get('lastname').value;
+    this.registerRequest.email = this.registerForm.get('email').value;
+    this.registerRequest.password = this.registerForm.get('password').value;
+
+    this.authService.register(this.registerRequest)
+      .subscribe(data =>{
+        alert(data);
+      });
   }
-
-
-
 }
