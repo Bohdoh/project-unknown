@@ -10,6 +10,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app-routing.module";
 import {DatePipe} from "@angular/common";
+import { GameDetailComponent } from './game-detail/game-detail.component';
 
 
 
@@ -22,7 +23,8 @@ import {DatePipe} from "@angular/common";
     GameComponent,
     LandingComponent,
     GamesListComponent,
-    GameCardComponent
+    GameCardComponent,
+    GameDetailComponent
   ],
   imports: [
     BrowserModule,

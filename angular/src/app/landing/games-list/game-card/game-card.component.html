@@ -1,6 +1,6 @@
 
   <div *ngIf="game" class="card card-equal-height">
-
+    <a [routerLink]="['/game/view/'+ game.id]">
               <div *ngIf="game.image" class="card-image">
                 <figure class="image is-1by1">
                   <img [src]="'data:image/png;base64,' + game.image">
@@ -10,12 +10,12 @@
 
       <div class="level">
         <div class="level-left">
-          <div class="level-item is-size-7 is-italic">Author:
-            <!--                  <span>{{ game.enduser.username }}</span>-->
+          <div class="level-item is-size-7 is-italic">Author:&nbsp;
+             <span>  {{ game.author }}</span>
           </div>
         </div>
         <div class="level-right">
-          <div class="level-item is-size-7 is-italic">Released:
+          <div class="level-item is-size-7 is-italic">Released:&nbsp;
             <span>{{ formatDate(game.createdAt) }}</span>
           </div>
         </div>
@@ -24,6 +24,7 @@
       <p class="title is-4">{{ game.title }}</p>
       <p class="subtitle is-6">{{ game.subtitle }}</p>
     </div>
+    </a>
     <div class="card-footer-own">
       <div class="level">
         <div class="level-left m-1">
