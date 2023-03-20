@@ -1,18 +1,19 @@
 package backend.spring.game;
 
 import backend.spring.category.Category;
+import backend.spring.enduser.Enduser;
+import backend.spring.game.comment.Comment;
+import backend.spring.game.review.Review;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
-import org.springframework.data.repository.cdi.Eager;
+
+
 
 import java.time.Instant;
 import java.util.Base64;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -32,10 +33,21 @@ public class Game {
             inverseJoinColumns = @JoinColumn(name = "categoryId"))
     private Set<Category> categories;
 
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "game")
+    private List<Comment> comments;
+
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "game")
+    private List<Review> reviews;
+
+    @ManyToOne
+    @JoinColumn(name ="enduserId")
+    private Enduser enduser;
+
     @Lob
     @Column(columnDefinition = "LONGBLOB")
     private byte[] image;
-
 
     private Instant createdAt;
 

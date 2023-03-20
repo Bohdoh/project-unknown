@@ -25,6 +25,4 @@ public class GameDTO {
     private String title;
     private String content;
     private Integer id;
-
-
 }
