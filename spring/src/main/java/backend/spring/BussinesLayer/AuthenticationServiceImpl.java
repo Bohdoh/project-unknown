@@ -44,8 +44,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         //var jwtToken = jwtService.generateToken(user);
        // saveUserToken (savedUser, jwtToken);
         return AuthenticationResponse.builder()
+                .email (savedUser.getEmail ())
                // .token(jwtToken)
                 .build();
+
     }
 
     private void saveUserToken(User user, String jwtToken) {
@@ -74,6 +76,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
         return AuthenticationResponse.builder()
+                .email (user.getEmail ())
                 .token(jwtToken)
                 .build();
     }
