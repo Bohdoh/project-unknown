@@ -1,0 +1,10 @@
+  <div class="columns is-multiline mt-4">
+    <div *ngFor="let game of games" class="column is-one-third ">
+      <a [routerLink]="['/games', game.id]">
+        <app-game-card [game]="game" [changeGamesToBeShownByCat]="changeGamesToBeShownByCat"></app-game-card>
+      </a>
+
+    </div>
+  </div>
+
+
