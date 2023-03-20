@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../auth.service";
 import {AuthenticationRequest} from "../interfaces/AuthenticationRequest";
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ToastrService} from "ngx-toastr";
+import {throwError} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,9 @@ export class LoginComponent implements OnInit{
 
   loginRequest:AuthenticationRequest;
 
-  constructor(private authService: AuthService, ) {
+
+  isError: boolean|any;
+  constructor(private authService: AuthService, private toastr: ToastrService, private router: Router, private activatedRoute : ActivatedRoute ) {
 
     this.loginRequest={
       email:'',
@@ -30,6 +34,7 @@ export class LoginComponent implements OnInit{
       password: new FormControl('', Validators.required)
     });
 
+
   }
 
 
@@ -38,9 +43,13 @@ export class LoginComponent implements OnInit{
     this.loginRequest.email = this.loginForm.get('email').value;
     this.loginRequest.password = this.loginForm.get('password').value;
 
-    this.authService.authenticate(this.loginRequest)
-      .subscribe(data =>{
-        alert('Log in successful');
-      });
+    this.authService.authenticate(this.loginRequest).subscribe(data => {
+      this.isError = false;
+      this.router.navigateByUrl('/home');
+      this.toastr.success('Login Successful');
+    }, error => {
+      this.isError = true;
+      throwError(error);
+    });
   }
 }

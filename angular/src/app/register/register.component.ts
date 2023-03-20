@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import { AuthService } from "../auth.service";
 import { RegisterRequest } from "../interfaces/RegisterRequest";
+import {ToastrService} from "ngx-toastr";
+import {Router} from "@angular/router";
 
 function passwordMatchValidator(formGroup: FormGroup): null | { passwordsNotMatch: boolean } {
   const password = formGroup.get('password')?.value;
@@ -21,7 +23,7 @@ export class RegisterComponent implements OnInit{
 
   registerRequest: RegisterRequest;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private toastr: ToastrService, private router: Router) {
 
     this.registerRequest={
       firstname:'',
@@ -51,8 +53,10 @@ export class RegisterComponent implements OnInit{
     this.registerRequest.password = this.registerForm.get('password').value;
 
     this.authService.register(this.registerRequest)
-      .subscribe(data =>{
-        alert(data);
+      .subscribe(() =>{
+        this.router.navigate(['/login'], {queryParams:{registered:true}});
+      },()=>{
+        this.toastr.error('Registration Failed! 🌶️')
       });
   }
 }

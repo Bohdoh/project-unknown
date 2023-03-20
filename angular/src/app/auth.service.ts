@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {map, Observable} from 'rxjs';
+import {map, Observable, throwError} from 'rxjs';
 import { RegisterRequest } from './interfaces/RegisterRequest';
 import { AuthenticationResponse } from './interfaces/AuthenticationResponse';
 import { AuthenticationRequest } from './interfaces/AuthenticationRequest';
@@ -12,6 +12,13 @@ import {LocalStorageService} from "ngx-webstorage";
 })
 export class AuthService {
 
+  @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
+  @Output() email: EventEmitter<string> = new EventEmitter();
+
+  refreshTokenPayload = {
+    refreshToken: this.getJwtToken(),
+    username: this.getEmail()
+  }
   private apiUrl = 'http://localhost:8082/api/v1/auth';
   private authStatus = new BehaviorSubject<boolean>(false);
 
@@ -26,8 +33,29 @@ export class AuthService {
       request).pipe(map(data => {
         this.localStorage.store('email',data.email);
       this.localStorage.store('token',data.token);
+
+
+      this.loggedIn.emit(true);
+      this.email.emit(data.email);
       return true;
     }));
+  }
+
+  logout() {
+    this.http.post(`${this.apiUrl}/logout`, this.refreshTokenPayload,
+      { responseType: 'text' })
+      .subscribe(data => {
+        console.log(data);
+      }, error => {
+        throwError(error);
+      })
+    this.localStorage.clear('token');
+    this.localStorage.clear('email');
+    this.localStorage.clear('refreshToken');
+  }
+
+  getJwtToken() {
+    return this.localStorage.retrieve('token');
   }
 
   setAuthStatus(status: boolean) {
@@ -36,5 +64,15 @@ export class AuthService {
 
   getAuthStatus(): Observable<boolean> {
     return this.authStatus.asObservable();
+  }
+  getEmail() {
+    return this.localStorage.retrieve('email');
+  }
+  getRefreshToken() {
+    return this.localStorage.retrieve('refreshToken');
+  }
+
+  isLoggedIn(): boolean {
+    return this.getJwtToken() != null;
   }
 }
