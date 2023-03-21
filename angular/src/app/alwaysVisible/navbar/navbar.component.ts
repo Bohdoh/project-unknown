@@ -11,6 +11,7 @@ import {LocalStorageService} from "ngx-webstorage";
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
+
 })
 export class NavbarComponent implements OnInit{
   isLoggedIn: boolean | undefined;
@@ -25,7 +26,7 @@ export class NavbarComponent implements OnInit{
   ngOnInit() {
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
     this.authService.username.subscribe((data: string) => this.username = data);
-    this.authService.username.subscribe((data: string) => this.role = data);
+    this.authService.role.subscribe((data: string) => this.role = data);
     this.isLoggedIn = this.authService.isLoggedIn();
     this.username = this.authService.getUsername();
     this.role = this.authService.getRole();

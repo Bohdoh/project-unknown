@@ -56,7 +56,9 @@
       </div>
       <!--            User logged in -->
       <div *ngIf="isLoggedIn" class="navbar-item has-dropdown is-hoverable">
-        <span class="navbar-item has-text-weight-bold" *ngIf="role !== null">{{role}} </span>
+        <span class="navbar-item has-text-weight-bold">{{ role | titlecase }}</span>
+
+
 
         <span class="navbar-item" >{{username}}</span>
 
