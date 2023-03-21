@@ -15,7 +15,7 @@ import java.time.Instant;
 public class ReviewDTO {
     private Integer id;
     private String content;
-    private EnduserDTO enduserDTO;
+    private EnduserDTO enduser;
     private double rating;
     private Instant createdAt;
 }
