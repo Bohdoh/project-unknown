@@ -1,16 +1,30 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-  <div>
-    <label>Username:</label>
-    <input type="username" [formControlName]="'username'" />
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <form [formGroup]="loginForm" (ngSubmit)="login()" class="box">
+          <div class="field">
+            <label class="label">Username:</label>
+            <div class="control">
+              <input class="input" type="text" [formControlName]="'username'" placeholder="Username">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Password:</label>
+            <div class="control">
+              <input class="input" type="password" [formControlName]="'password'" placeholder="Password">
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link" type="submit">Login</button>
+            </div>
+          </div>
+        </form>
+        <div class="has-text-centered">
+          <span>Not a member? Register now!   </span> <a routerLink="/register"><button class="button is-small is-inline-block">Register</button></a>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-    <label>Password:</label>
-    <input type="password" [formControlName]="'password'">
-  </div>
-  <div>
-    <button type="submit" >Login</button>
-  </div>
-</form>
-<div>
-  <span>Not a member? Register now!</span>  <span><a routerLink="/register">Register</a></span>
-</div>
+</section>

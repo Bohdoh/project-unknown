@@ -14,11 +14,10 @@ export class GameDetailComponent implements OnInit{
 
   gameId? : number;
   game?:Game;
-  commentContent?: String;
-  reviewContent?: String;
+  commentContent?: string;
+  reviewContent?: string;
   showComment: boolean = true;
   showReview: boolean = false;
-
 
   constructor(private http:HttpClient,private gameService : GameService,private route:ActivatedRoute) {
   }
@@ -30,7 +29,7 @@ export class GameDetailComponent implements OnInit{
     });
   }
 
-  addComment(comment: string) {
+  addComment(comment?: string) {
 
 
   }

@@ -41,7 +41,8 @@ public class SecurityConfig {
                         "/",
                         "/api/v1/auth/**",
                         "/api/games/**",
-                        "/api/categories/**"
+                        "/api/categories/**",
+                        "/api/chapters/**"
                 )
                 .permitAll ()
                 .anyRequest ()

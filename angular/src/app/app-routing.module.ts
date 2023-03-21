@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: "game/play/:id/:title", component: GameChaptersComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  {path: 'home',component:HomeComponent}
+  {path: 'home',component:LandingComponent},
 
   {path: "game/play/:id/:title", component: GameChaptersComponent}
 
