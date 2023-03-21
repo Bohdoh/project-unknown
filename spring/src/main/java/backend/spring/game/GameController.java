@@ -92,7 +92,7 @@ public class GameController {
     }
 
     public ReviewDTO reviewToReviewDTO(Review review){
-        return new ReviewDTO(review.getReviewId(),review.getContent(),enduserToEnduserDTO(review.getEnduser ()),review.getRating());
+        return new ReviewDTO(review.getReviewId(),review.getContent(),enduserToEnduserDTO(review.getEnduser()),review.getRating(),review.getCreatedAt());
     }
 
     public List<ChapterDTO> chaptersToChapterDTOList(List<Chapter> chapters){

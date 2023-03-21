@@ -5,4 +5,5 @@ export interface Review {
   content:string;
   enduser:Enduser;
   rating: number;
+  createdAt:string ;
 }
