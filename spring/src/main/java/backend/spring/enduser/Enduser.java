@@ -22,6 +22,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table
 public class Enduser implements UserDetails {
 
     @Id
@@ -56,7 +57,7 @@ public class Enduser implements UserDetails {
     )
     private Role role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "enduser")
     private List<Token> tokens;
 
     public Enduser(String username){

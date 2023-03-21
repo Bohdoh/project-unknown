@@ -32,6 +32,11 @@ public class LogoutServiceImpl implements LogoutHandler {
             storedToken.setExpired (true);
             storedToken.setRevoked (true);
             tokenRepository.save (storedToken);
+            try {
+                tokenRepository.delete(storedToken);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
     }

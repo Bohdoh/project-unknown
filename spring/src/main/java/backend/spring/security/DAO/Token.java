@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table
 public class Token {
 
     @Id
@@ -29,6 +30,6 @@ public class Token {
     public boolean expired;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "enduserId")
     public Enduser enduser;
 }
