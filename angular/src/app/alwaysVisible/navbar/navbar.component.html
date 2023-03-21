@@ -19,10 +19,10 @@
         Home
       </a>
 
-      <a class="navbar-item" routerLink="/login">
+      <a class="navbar-item" routerLink="/login" *ngIf="!isLoggedIn">
         Login
       </a>
-      <a class="navbar-item"  routerLink="/register">
+      <a class="navbar-item"  routerLink="/register" *ngIf="!isLoggedIn">
         Register
       </a>
 
