@@ -13,12 +13,12 @@ export class GameService {
   constructor(private http:HttpClient) { }
 
   getGames(): Observable<Game[]> {
-    return this.http.get<Game[]>('http://localhost:8080/api/games');
+    return this.http.get<Game[]>('http://localhost:8082/api/games');
   }
 
 
   getGameById(id:number): Observable<Game> {
-  return this.http.get<Game>('http://localhost:8080/api/games/'+id);
+  return this.http.get<Game>('http://localhost:8082/api/games/'+id);
   }
 
   getChaptersByGameId(gameId:number): Observable<Chapter[]> {

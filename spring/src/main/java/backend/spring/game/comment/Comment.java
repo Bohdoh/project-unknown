@@ -4,7 +4,6 @@ import backend.spring.enduser.Enduser;
 import backend.spring.game.Game;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,7 +36,7 @@ public class Comment {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    public Comment (String content,Enduser enduser,Game game){
+    public Comment (String content, Enduser enduser, Game game){
         this.content = content;
         this.createdAt = Instant.now();
         this.enduser = enduser;
