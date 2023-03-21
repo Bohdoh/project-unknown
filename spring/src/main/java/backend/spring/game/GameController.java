@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+@RequestMapping("/api/stories")
 @RestController
 @CrossOrigin
 public class GameController {
@@ -23,7 +24,7 @@ public class GameController {
         this.gameRepository = gameRepository;
     }
 
-    @GetMapping("api/games")
+    @GetMapping("/games")
     public List<GameDTO> read() {
         List<GameDTO> response = new LinkedList<>();
         for (Game game : gameRepository.findAllByOrderByCreatedAtDesc()) {
@@ -43,7 +44,7 @@ public class GameController {
         return response;
     }
 
-    @GetMapping("api/games/{id}")
+    @GetMapping("/games/{id}")
     public GameDTO readGameDetails(@PathVariable Integer id) {
 
         Game game = gameRepository.findByGameId(id);
