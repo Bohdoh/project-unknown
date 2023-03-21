@@ -15,6 +15,8 @@ export class GameDetailComponent implements OnInit{
   gameId? : number;
   game?:Game;
   commentContent?: String;
+  showComment: boolean = true;
+  showReview: boolean = false;
 
 
   constructor(private http:HttpClient,private gameService : GameService,private route:ActivatedRoute) {
@@ -30,4 +32,19 @@ export class GameDetailComponent implements OnInit{
   addComment() {
 
   }
+
+  switchVisibility() {
+    if (this.showComment){
+      this.showComment = false;
+      this.showReview = true;
+    }else {
+      this.showComment = true;
+      this.showReview = false
+    }
+  }
+
+
+
+
+
 }
