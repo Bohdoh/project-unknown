@@ -11,6 +11,7 @@ import {FormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app-routing.module";
 import {DatePipe} from "@angular/common";
 import { GameDetailComponent } from './game-detail/game-detail.component';
+import { GameChaptersComponent } from './game-detail/game-chapters/game-chapters.component';
 
 
 
@@ -24,7 +25,8 @@ import { GameDetailComponent } from './game-detail/game-detail.component';
     LandingComponent,
     GamesListComponent,
     GameCardComponent,
-    GameDetailComponent
+    GameDetailComponent,
+    GameChaptersComponent,
   ],
   imports: [
     BrowserModule,
