@@ -1,0 +1,41 @@
+<div class="columns">
+  <div class="column is-one-fifth"></div>
+  <div *ngIf="currentChapter" class="column is-three-fifths box has-text-centered">
+    <img [src]="'data:image/png;base64,' + currentChapter.image">
+
+    <div class="content">{{currentChapter.content}}</div>
+
+    <ng-container *ngIf="!selectedPath">
+      <div class="columns is-mobile">
+        <div class="column is-one-third button-container">
+          <button *ngIf="this.currentChapter.pathA" class="button" (click)="selectPath('A')">
+            <i class="fa-solid fa-a"></i>&nbsp;&nbsp;
+            <span>{{currentChapter.pathA[0]}}</span>
+          </button>
+        </div>
+        <div class="column is-one-third button-container">
+          <button *ngIf="this.currentChapter.pathB && this.currentChapter.identifier !== 'gameover'" class="button" (click)="selectPath('B')">
+            <i  class="fa-solid fa-b"></i>&nbsp;&nbsp;
+            <span>{{currentChapter.pathB[0]}}</span>
+          </button>
+          <button *ngIf="this.currentChapter.pathB && this.currentChapter.identifier === 'gameover'" class="button" (click)="selectPath('start')">
+            <i class="fa-solid fa-repeat"></i>&nbsp;&nbsp;
+            <span>{{currentChapter.pathB[0]}}</span>
+          </button>
+        </div>
+        <div class="column is-one-third button-container">
+          <button *ngIf="this.currentChapter.pathC" class="button" (click)="selectPath('C')">
+            <i class="fa-solid fa-c"></i>&nbsp;&nbsp;
+            <span>{{currentChapter.pathC[0]}}</span>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+    <div *ngIf="selectedPath" class="content"><p>{{ getSelectedPathText() }}</p>
+      <button (click)="nextChapter(this.selectedPath[2])" class="button  is-align-items-baseline"><i class="fa-solid fa-angle-right"></i>&nbsp;&nbsp;Next</button>
+<!--      <button *ngIf="selectedPath[2] !== 'gameover'" (click)="nextChapter(this.selectedPath[2])" class="button is-size-4 is-align-items-baseline"><i class="fa-solid fa-angle-right"></i>&nbsp;&nbsp;Next</button>-->
+<!--      <button *ngIf="selectedPath[2] === 'gameover'" (click)="nextChapter(this.selectedPath[2])" class="button is-size-4 is-align-items-baseline"><i class="fa-solid fa-repeat"></i>&nbsp;&nbsp;Restart</button>-->
+    </div>
+  </div>
+  <div class="column is-one-fifth"></div>
+</div>

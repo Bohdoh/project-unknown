@@ -1,12 +1,8 @@
 package backend.spring.game;
 
 import backend.spring.category.Category;
-import backend.spring.game.comment.Comment;
 import backend.spring.game.comment.CommentDTO;
-import backend.spring.game.review.Review;
 import backend.spring.game.review.ReviewDTO;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
