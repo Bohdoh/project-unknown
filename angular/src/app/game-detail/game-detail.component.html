@@ -1,12 +1,12 @@
 <div class="columns">
   <div class="column is-one-fifth"></div>
-  <div class="column is-three-fifths" *ngIf="game">
-    <div class="box">
-      <div class="title has-text-centered">{{ game.title }}</div>
+<div class="column is-three-fifths" *ngIf="game">
+  <div class="box">
+    <div class="title has-text-centered">{{ game.title }}</div>
 
-      <div class="has-text-centered" *ngIf="game.image">
-        <img [src]="'data:image/png;base64,' + game.image">
-      </div>
+    <div class="has-text-centered" *ngIf="game.image">
+      <img [src]="'data:image/png;base64,' + game.image">
+    </div>
 
       <div class="level">
         <div class="level-left">
@@ -30,9 +30,12 @@
             <button class="button tag is-link">{{ category.name }}</button>
           </div>
         </div>
-        <!-- TODO when user is logged in logic -->
-        <!--      <div class="level-right">-->
-        <!--        <div class="level-item">-->
+        <div class="level-item">
+       <a [routerLink]='"/game/play/"+ game.id+"/"+game.title'> <button class="button is-size-4 is-align-items-baseline"><i class="fa-solid fa-play"></i>&nbsp;&nbsp;Play</button></a>
+      </div>
+      <!-- TODO when user is logged in logic -->
+        <div class="level-right">
+        <div class="level-item">
         <!--          <a [routerLink]="['/login']">-->
         <!--            <div *ngIf="!sessionUser" class="level-item tag is-medium is-light mx-1 button">-->
         <!--              <span class="icon is-small mr-3"><i class="fa-solid fa-right-to-bracket"></i></span>Log-->
@@ -50,8 +53,8 @@
         <!--              delete-->
         <!--            </div>-->
         <!--          </a>-->
-        <!--        </div>-->
-        <!--      </div>-->
+        </div>
+        </div>
       </div>
     </div>
     <hr>
