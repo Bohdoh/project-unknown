@@ -73,7 +73,7 @@ public class Game {
         this.createdAt = Instant.now();
     }
 
-    public Game( String title,String subtitle, String content, byte[] image,Enduser enduser) {
+    public Game(String title, String subtitle, String content, byte[] image, Enduser enduser) {
 
         this.image = image;
         this.createdAt = Instant.now();

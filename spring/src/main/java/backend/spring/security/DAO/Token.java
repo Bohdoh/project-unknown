@@ -1,5 +1,6 @@
 package backend.spring.security.DAO;
 
+import backend.spring.enduser.Enduser;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,5 +30,5 @@ public class Token {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    public User user;
+    public Enduser enduser;
 }

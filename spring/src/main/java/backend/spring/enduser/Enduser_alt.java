@@ -1,6 +1,8 @@
-package backend.spring.security.DAO;
+/*package backend.spring.enduser;
 
 
+import backend.spring.security.DAO.Role;
+import backend.spring.security.DAO.Token;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +21,7 @@ import java.util.List;
 @Table(name="Customer")
 @AllArgsConstructor
 @NoArgsConstructor
-public class User implements UserDetails {
+public class Enduser_alt implements UserDetails {
 
     @Id
     @GeneratedValue( strategy = GenerationType.UUID)
@@ -40,9 +42,9 @@ public class User implements UserDetails {
     @Enumerated(
             EnumType.STRING
     )
-    private  Role role;
+    private Role role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "enduser")
     private List<Token> tokens;
 
     @Override
@@ -75,3 +77,4 @@ public class User implements UserDetails {
         return true;
     }
 }
+*/

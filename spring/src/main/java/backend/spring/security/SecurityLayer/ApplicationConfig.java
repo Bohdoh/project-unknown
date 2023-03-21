@@ -1,7 +1,7 @@
 package backend.spring.security.SecurityLayer;
 
 
-import backend.spring.security.Repositories.UserRepository;
+import backend.spring.enduser.EnduserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,12 +18,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-    private final UserRepository userRepository;
+    private final EnduserRepository enduserRepository;
 
     @Bean
     public UserDetailsService userDetailsService(){
 
-        return username -> userRepository.findByEmail (username)
+        return username -> enduserRepository.findByUsername (username)
                 .orElseThrow (()-> new UsernameNotFoundException("User not Found"));
 
     }

@@ -37,7 +37,7 @@ public class GameController {
                             game.getTitle(),
                             game.getContent(),
                             game.getGameId(),
-                            game.getEnduser().getUsername()
+                            game.getEnduser ().getUsername()
                     )
             );
         }
@@ -69,20 +69,20 @@ public class GameController {
                 game.getGameId(),
                 commentsDTO,
                 reviewsDTO,
-                game.getEnduser().getUsername()
+                game.getEnduser ().getUsername()
         );
         return response;
     }
 
     public EnduserDTO enduserToEnduserDTO(Enduser enduser){
-        return new EnduserDTO(enduser.getUsername(),enduser.getImage());
+        return new EnduserDTO(enduser.getUsername(), enduser.getImage());
     }
 
     public CommentDTO commentToCommentDTO(Comment comment){
-        return new CommentDTO(comment.getCommentId(),comment.getCreatedAt(),comment.getContent(),enduserToEnduserDTO(comment.getEnduser()));
+        return new CommentDTO(comment.getCommentId(),comment.getCreatedAt(),comment.getContent(),enduserToEnduserDTO(comment.getEnduser ()));
     }
 
     public ReviewDTO reviewToReviewDTO(Review review){
-        return new ReviewDTO(review.getReviewId(),review.getContent(),enduserToEnduserDTO(review.getEnduser()),review.getRating());
+        return new ReviewDTO(review.getReviewId(),review.getContent(),enduserToEnduserDTO(review.getEnduser ()),review.getRating());
     }
 }

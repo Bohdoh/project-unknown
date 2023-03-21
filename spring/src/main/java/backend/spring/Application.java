@@ -2,9 +2,9 @@ package backend.spring;
 
 import backend.spring.category.Category;
 import backend.spring.category.CategoryRepository;
+import backend.spring.enduser.Enduser;
 import backend.spring.enduser.EnduserRepository;
 import backend.spring.game.Game;
-import backend.spring.enduser.Enduser;
 import backend.spring.game.GameRepository;
 import backend.spring.game.chapter.Chapter;
 import backend.spring.game.chapter.ChapterRepository;
@@ -22,10 +22,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.time.Instant;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @SpringBootApplication
@@ -154,7 +151,7 @@ public class Application {
 
     private void create6DummyUsers() {
         for (int i = 0; i < 6; i++) {
-            Enduser user = new Enduser();
+            Enduser user = new Enduser ();
             user.setUsername(faker.name().username());
             user.setEmail(faker.internet().emailAddress());
             user.setPassword(faker.phoneNumber().phoneNumber());
