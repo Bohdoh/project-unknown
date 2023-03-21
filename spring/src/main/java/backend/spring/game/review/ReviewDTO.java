@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.Instant;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,4 +17,5 @@ public class ReviewDTO {
     private String content;
     private EnduserDTO enduserDTO;
     private double rating;
+    private Instant createdAt;
 }

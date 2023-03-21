@@ -10,6 +10,7 @@ import backend.spring.game.chapter.Chapter;
 import backend.spring.game.chapter.ChapterRepository;
 import backend.spring.game.comment.Comment;
 import backend.spring.game.comment.CommentRepository;
+import backend.spring.game.review.Review;
 import backend.spring.game.review.ReviewRepository;
 import com.github.javafaker.Faker;
 import jakarta.annotation.PostConstruct;
@@ -115,7 +116,9 @@ public class Application {
                 "won", null, new String[]{"Restart", "Do you want to restart?.", "start"}, null
         ));
         commentRepository.save(new Comment("Super spiel, hat mir gut gefallen!", enduserRepository.getById(1), gameRepository.findByGameId(1)));
-        commentRepository.save(new Comment("Waas für ein Abenteuer! ", enduserRepository.getById(1), gameRepository.findByGameId(7)));
+        commentRepository.save(new Comment("Was für ein Abenteuer! ", enduserRepository.getById(1), gameRepository.findByGameId(7)));
+
+        reviewRepository.save(new Review("Ich gebe dem spiel eine 5 von 5!", enduserRepository.getById(1), gameRepository.findByGameId(7) ));
     }
 
     private void create5DummyCatsAndAssignThem() {

@@ -62,10 +62,10 @@
 
     <div class="tabs is-medium">
       <ul>
-        <li><a (click)="switchVisibility()">Comments</a>
+        <li><a  (click)="switchCommentAndReviews('comments')">Comments</a>
 
         </li>
-        <li><a [class.is-active]="showComment" (click)="switchVisibility()">Reviews</a>
+        <li><a  (click)="switchCommentAndReviews('reviews')">Reviews</a>
 
         </li>
       </ul>
@@ -119,9 +119,65 @@
         </div>
       </article>
 
-      <article *ngIf="showReview"></article>
     </div>
+
+
+
+
+     <div *ngIf="showReview">
+
+       <div >
+
+         <article class="media mx-6" id="reviewStart"> <!-- nur wenn eingeloggt! nachgragen-->
+           <figure class="media-left">
+             <p class="image is-64x64">
+               <!--          <img class="is-rounded" *ngIf="sessionUser.image" [src]="'data:image/png;base64,' + sessionUser.image" alt="Profile Picture">-->
+               <!--          <img class="is-rounded" *ngIf="!sessionUser.image" src="images/128x128.png" alt="Profile Picture">-->
+             </p>
+           </figure>
+           <form class="media-content" (submit)="addReview()">
+             <div class="field">
+               <p class="control">
+              <textarea class="textarea is-half" [(ngModel)]="reviewContent" name="content"
+                        placeholder="Add a review..."></textarea>
+               </p>
+             </div>
+             <nav class="level">
+               <div class="level-left">
+                 <div class="level-item">
+                   <button class="button is-info is-primary" type="submit">Submit</button>
+                 </div>
+               </div>
+             </nav>
+           </form>
+         </article>
+
+       </div>
+
+      <article  class="media mx-6" *ngFor="let review of game.reviews">
+        <figure class="media-left">
+          <p class="image is-64x64 is-rounded">
+            <img class="is-rounded" *ngIf="review.enduser.image"
+                 [src]="'data:image/png;base64,' + review.enduser.image" alt="Profile Picture">
+            <img class="is-rounded" *ngIf="!review.enduser.image" src="images/128x128.png" alt="Profile Picture">
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <strong>
+              <p>{{ review.enduser.username }}
+            </strong><small> {{ review.createdAt | date:'HH:mm:ss     dd-MM-yy' }}</small><br>
+            <span>{{ review.content }}</span>
+
+          </div>
+        </div>
+        <div class="media-right">
+          <!--        <button *ngIf="canDeleteComment(comment)" (click)="deleteComment(comment.commentId, post.getNewestTitle(post.postId))" class="delete"></button>-->
+        </div>
+      </article>
+
+    </div>
+
   </div>
-  -->
   <div class="column is-one-fifth"></div>
 </div>

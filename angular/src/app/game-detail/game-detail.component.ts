@@ -15,6 +15,7 @@ export class GameDetailComponent implements OnInit{
   gameId? : number;
   game?:Game;
   commentContent?: String;
+  reviewContent?: String;
   showComment: boolean = true;
   showReview: boolean = false;
 
@@ -33,18 +34,23 @@ export class GameDetailComponent implements OnInit{
 
   }
 
-  switchVisibility() {
-    if (this.showComment){
-      this.showComment = false;
-      this.showReview = true;
-    }else {
-      this.showComment = true;
-      this.showReview = false
-    }
+  addReview() {
+
   }
 
 
+  switchCommentAndReviews(tabValue: string) {
+      switch (tabValue) {
+      case 'comments':
+        this.showComment = true;
+        this.showReview = false;
+        break;
+      case 'reviews':
+        this.showComment = false;
+        this.showReview = true;
+        break;
+      }
 
-
+    }
 
 }
