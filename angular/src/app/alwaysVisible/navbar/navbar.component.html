@@ -15,13 +15,21 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
+      <a class="navbar-item" routerLink="/game/view">
         Home
       </a>
 
-      <a class="navbar-item">
-        Documentation
+      <a class="navbar-item" routerLink="/login" *ngIf="!isLoggedIn">
+        Login
       </a>
+      <a class="navbar-item"  routerLink="/register" *ngIf="!isLoggedIn">
+        Register
+      </a>
+
+      <a class="navbar-item" *ngIf="isLoggedIn">
+        <button (click)="logout()" ngbDropdownItem>Logout</button>
+      </a>
+      <a class="navbar-item" *ngIf="isLoggedIn"> {{username}}</a>
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
@@ -30,14 +38,10 @@
 
         <div class="navbar-dropdown">
           <a class="navbar-item">
-            About
+            Documentation
           </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
+
+
           <hr class="navbar-divider">
           <a class="navbar-item">
             Report an issue

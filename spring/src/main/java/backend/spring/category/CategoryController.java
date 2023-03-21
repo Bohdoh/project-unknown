@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200/")
 public class CategoryController {
 
     private final CategoryRepository categoryRepository;

@@ -15,8 +15,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200/")
 public class GameController {
     private final GameRepository gameRepository;
 
@@ -25,7 +26,8 @@ public class GameController {
         this.gameRepository = gameRepository;
     }
 
-    @GetMapping("api/games")
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @GetMapping("/api/games")
     public List<GameDTO> read() {
         List<GameDTO> response = new LinkedList<>();
         for (Game game : gameRepository.findAllByOrderByCreatedAtDesc()) {
@@ -38,14 +40,15 @@ public class GameController {
                             game.getTitle(),
                             game.getContent(),
                             game.getGameId(),
-                            game.getEnduser().getUsername()
+                            game.getEnduser ().getUsername()
                     )
             );
         }
         return response;
     }
 
-    @GetMapping("api/games/{id}")
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @GetMapping("/api/games/{id}")
     public GameDTO readGameDetails(@PathVariable Integer id) {
 
         Game game = gameRepository.findByGameId(id);
@@ -70,7 +73,7 @@ public class GameController {
                 game.getGameId(),
                 commentsDTO,
                 reviewsDTO,
-                game.getEnduser().getUsername()
+                game.getEnduser ().getUsername()
         );
         return response;
     }
@@ -81,15 +84,15 @@ public class GameController {
     }
 
     public EnduserDTO enduserToEnduserDTO(Enduser enduser){
-        return new EnduserDTO(enduser.getUsername(),enduser.getImage());
+        return new EnduserDTO(enduser.getUsername(), enduser.getImage());
     }
 
     public CommentDTO commentToCommentDTO(Comment comment){
-        return new CommentDTO(comment.getCommentId(),comment.getCreatedAt(),comment.getContent(),enduserToEnduserDTO(comment.getEnduser()));
+        return new CommentDTO(comment.getCommentId(),comment.getCreatedAt(),comment.getContent(),enduserToEnduserDTO(comment.getEnduser ()));
     }
 
     public ReviewDTO reviewToReviewDTO(Review review){
-        return new ReviewDTO(review.getReviewId(),review.getContent(),enduserToEnduserDTO(review.getEnduser()),review.getRating());
+        return new ReviewDTO(review.getReviewId(),review.getContent(),enduserToEnduserDTO(review.getEnduser ()),review.getRating());
     }
 
     public List<ChapterDTO> chaptersToChapterDTOList(List<Chapter> chapters){
