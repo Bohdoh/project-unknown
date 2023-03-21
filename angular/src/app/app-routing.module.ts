@@ -5,11 +5,13 @@ import {HttpClientModule} from "@angular/common/http";
 import {LandingComponent} from "./landing/landing.component";
 import {AppComponent} from "./app.component";
 import {GameDetailComponent} from "./game-detail/game-detail.component";
+import {GameChaptersComponent} from "./game-detail/game-chapters/game-chapters.component";
 
 const routes: Routes = [
 
   {path: "", component: LandingComponent},
-  {path: "game/view/:id", component: GameDetailComponent}
+  {path: "game/view/:id", component: GameDetailComponent},
+  {path: "game/play/:id/:title", component: GameChaptersComponent}
 ];
 
 @NgModule({

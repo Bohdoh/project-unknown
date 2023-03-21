@@ -2,8 +2,10 @@ package backend.spring.game;
 
 import backend.spring.category.Category;
 import backend.spring.enduser.Enduser;
+import backend.spring.game.chapter.Chapter;
 import backend.spring.game.comment.Comment;
 import backend.spring.game.review.Review;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -42,6 +44,11 @@ public class Game {
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "game")
     private List<Review> reviews;
+
+    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "game")
+    private List<Chapter> chapters;
 
     @ManyToOne
     @JoinColumn(name ="enduserId")
