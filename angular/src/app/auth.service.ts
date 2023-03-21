@@ -13,11 +13,11 @@ import {LocalStorageService} from "ngx-webstorage";
 export class AuthService {
 
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
-  @Output() email: EventEmitter<string> = new EventEmitter();
+  @Output() username: EventEmitter<string> = new EventEmitter();
 
   refreshTokenPayload = {
     refreshToken: this.getJwtToken(),
-    username: this.getEmail()
+    username: this.getUsername()
   }
   private apiUrl = 'http://localhost:8082/api/v1/auth';
   private authStatus = new BehaviorSubject<boolean>(false);
@@ -31,12 +31,12 @@ export class AuthService {
   authenticate(request: AuthenticationRequest): Observable<boolean> {
     return this.http.post<AuthenticationResponse>(`${this.apiUrl}/authenticate`,
       request).pipe(map(data => {
-        this.localStorage.store('email',data.email);
+        this.localStorage.store('username',data.username);
       this.localStorage.store('token',data.token);
 
 
       this.loggedIn.emit(true);
-      this.email.emit(data.email);
+      this.username.emit(data.username);
       return true;
     }));
   }
@@ -50,7 +50,7 @@ export class AuthService {
         throwError(error);
       })
     this.localStorage.clear('token');
-    this.localStorage.clear('email');
+    this.localStorage.clear('username');
     this.localStorage.clear('refreshToken');
   }
 
@@ -65,8 +65,8 @@ export class AuthService {
   getAuthStatus(): Observable<boolean> {
     return this.authStatus.asObservable();
   }
-  getEmail() {
-    return this.localStorage.retrieve('email');
+  getUsername() {
+    return this.localStorage.retrieve('username');
   }
   getRefreshToken() {
     return this.localStorage.retrieve('refreshToken');
@@ -75,4 +75,6 @@ export class AuthService {
   isLoggedIn(): boolean {
     return this.getJwtToken() != null;
   }
+
+
 }

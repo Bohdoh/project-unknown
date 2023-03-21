@@ -26,8 +26,7 @@ export class RegisterComponent implements OnInit{
   constructor(private authService: AuthService, private toastr: ToastrService, private router: Router) {
 
     this.registerRequest={
-      firstname:'',
-      lastname:'',
+      username:'',
       email:'',
       password: ''
     }
@@ -37,8 +36,7 @@ export class RegisterComponent implements OnInit{
   ngOnInit(): void {
 
     this.registerForm = new FormGroup({
-      firstname: new FormControl('', Validators.required),
-      lastname: new FormControl('', Validators.required),
+      username: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required)
     });
@@ -47,8 +45,7 @@ export class RegisterComponent implements OnInit{
 
 
   register() {
-    this.registerRequest.firstname = this.registerForm.get('firstname').value;
-    this.registerRequest.lastname = this.registerForm.get('lastname').value;
+    this.registerRequest.username = this.registerForm.get('username').value;
     this.registerRequest.email = this.registerForm.get('email').value;
     this.registerRequest.password = this.registerForm.get('password').value;
 

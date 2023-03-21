@@ -1,5 +1,5 @@
 export interface AuthenticationResponse{
-  email: string;
+  username: string;
 
   token:string
 }

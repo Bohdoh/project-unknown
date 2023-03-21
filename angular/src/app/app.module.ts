@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {AppComponent} from "./app.component";
-import {NavbarComponent} from "./alwaysVisible/navbar/navbar.component";
+
 import {FooterComponent} from "./alwaysVisible/footer/footer.component";
 import {LandingComponent} from "./landing/landing.component";
 import {GamesListComponent} from "./landing/games-list/games-list.component";
@@ -16,11 +16,12 @@ import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './header/header.component';
+
 import { HomeComponent } from './home/home.component';
 import {NgxWebstorageModule} from "ngx-webstorage";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import {NavbarComponent} from "./alwaysVisible/navbar/navbar.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,6 @@ import {ToastrModule} from "ngx-toastr";
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
-    HeaderComponent,
     HomeComponent,
   ],
   imports: [

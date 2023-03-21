@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit{
   constructor(private authService: AuthService, private toastr: ToastrService, private router: Router, private activatedRoute : ActivatedRoute ) {
 
     this.loginRequest={
-      email:'',
+      username:'',
       password: ''
     }
 
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
+      username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });
 
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit{
 
   login() {
 
-    this.loginRequest.email = this.loginForm.get('email').value;
+    this.loginRequest.username = this.loginForm.get('username').value;
     this.loginRequest.password = this.loginForm.get('password').value;
 
     this.authService.authenticate(this.loginRequest).subscribe(data => {

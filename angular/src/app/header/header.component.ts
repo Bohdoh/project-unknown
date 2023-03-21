@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+/*import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
 
@@ -11,19 +11,19 @@ export class HeaderComponent implements  OnInit{
 
   //faUser = faUser;
   isLoggedIn: boolean | undefined;
-  email: string|any;
+  username: string|any;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
-    this.authService.email.subscribe((data: string) => this.email = data);
+    this.authService.username.subscribe((data: string) => this.username = data);
     this.isLoggedIn = this.authService.isLoggedIn();
-    this.email = this.authService.getEmail();
+    this.username = this.authService.getUsername();
   }
 
   goToUserProfile() {
-    this.router.navigateByUrl('/user-profile/' + this.email);
+    this.router.navigateByUrl('/user-profile/' + this.username);
   }
 
   logout() {
@@ -32,4 +32,4 @@ export class HeaderComponent implements  OnInit{
     this.router.navigateByUrl('');
   }
 
-}
+}*/
