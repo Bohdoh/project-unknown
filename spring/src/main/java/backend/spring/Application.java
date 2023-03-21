@@ -116,6 +116,7 @@ public class Application {
         ));
 
         commentRepository.save(new Comment("Super spiel, hat mir gut gefallen!", enduserRepository.getById(1), gameRepository.findByGameId(1)));
+        commentRepository.save(new Comment("Waas für ein Abenteuer! ", enduserRepository.getById(1), gameRepository.findByGameId(7)));
     }
 
     private void create5DummyCatsAndAssignThem() {
