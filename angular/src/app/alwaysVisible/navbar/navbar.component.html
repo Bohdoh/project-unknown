@@ -25,10 +25,11 @@
       <a class="navbar-item"  routerLink="/register">
         Register
       </a>
-      <a class="navbar-item">
+
+      <a class="navbar-item" *ngIf="isLoggedIn">
         <button (click)="logout()" ngbDropdownItem>Logout</button>
       </a>
-      <a class="navbar-item"> {{username}}</a>
+      <a class="navbar-item" *ngIf="isLoggedIn"> {{username}}</a>
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
