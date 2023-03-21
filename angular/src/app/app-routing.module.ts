@@ -9,15 +9,19 @@ import { LoginComponent } from './alwaysVisible/navbar/login/login.component';
 import { LogoutComponent } from './alwaysVisible/navbar/logout/logout.component';
 import { RegisterComponent } from './alwaysVisible/navbar/register/register.component';
 import {HomeComponent} from "./home/home.component";
+import {GameChaptersComponent} from "./game-detail/game-chapters/game-chapters.component";
+
 
 const routes: Routes = [
- // { path: '', component: AppComponent },
   {path: "", component: LandingComponent},
   {path: "game/view/:id", component: GameDetailComponent},
   {path: "game/play/:id/:title", component: GameChaptersComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {path: 'home',component:HomeComponent}
+
+  {path: "game/play/:id/:title", component: GameChaptersComponent}
+
 ];
 
 

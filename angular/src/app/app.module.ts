@@ -16,6 +16,8 @@ import { LogoutComponent } from './alwaysVisible/navbar/logout/logout.component'
 import { RegisterComponent } from './alwaysVisible/navbar/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { GameChaptersComponent } from './game-detail/game-chapters/game-chapters.component';
+
 
 import { HomeComponent } from './home/home.component';
 import {NgxWebstorageModule} from "ngx-webstorage";
@@ -37,6 +39,7 @@ import {NavbarComponent} from "./alwaysVisible/navbar/navbar.component";
     LogoutComponent,
     RegisterComponent,
     HomeComponent,
+    GameChaptersComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Base64;
+
 @Getter
 @Setter
 @Entity
@@ -50,4 +52,9 @@ public class Chapter {
         this.pathB = pathB;
         this.pathC = pathC;
     }
+
+    public String getImage(){
+        return Base64.getEncoder().encodeToString(image);
+    }
+
 }

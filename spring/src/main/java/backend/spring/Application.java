@@ -60,9 +60,9 @@ public class Application {
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("The Artifact Hunt"), readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "indytitle.jpg"),
                 "Indiana Jones is hired by a wealthy collector to find a rare artifact: the Eye of Osiris, a jewel rumored to grant its owner immense power. Indy travels to Egypt, where he must navigate ancient tombs, evade traps, and outsmart rival treasure hunters. But when he finally locates the Eye, he triggers a deadly curse that threatens to consume him. What should Indy do next? ",
-                "start", new String[]{"Leave the Eye and look for a way out.", "Death by a falling Rock", "gameover"},
-                new String[]{"Pick up the Eye:", "He picks up the eye and nothing happens", "B-"},
-                new String[]{"Ignore the eye and go deeper into the tomb:", "Indy steps into a trap that gets him smashed by falling Rocks and he eventually gets killed", "gameover"}));
+                "start", new String[]{"Leave the Eye and look for a way out.", "You try to search for a way out, triggering a trap. You fall down a pit and this was the last anyone ever heard of Indiana Jones.", "gameover"},
+                new String[]{"Pick up the Eye.", "You pick up the Eye and expect some trap to trigger, but nothing bad happens!", "B-"},
+                new String[]{"Ignore the eye and go deeper into the tomb.", "Indy steps into a trap that gets him smashed by falling Rocks and he eventually gets killed", "gameover"}));
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("The Artifact Hunt"),
                 readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "amazon.jpg"),
@@ -75,29 +75,29 @@ public class Application {
         chapterRepository.save(new Chapter(gameRepository.findByTitle("The Artifact Hunt"),
                 readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "berlin.jpg"),
                 "After a while of research Indiana had to travel to Berlin. He got a hint where to find the sources of the lost city. Indy's arch-nemesis, the Nazi archaeologist Dr. Hans Ubermann, has learned of the Eye of Osiris and will stop at nothing to acquire it. In a high-stakes showdown, Indy and Ubermann race through the streets of Berlin, fighting off Nazi soldiers and dodging machine-gun fire. But when they finally face off in a secret underground bunker, Indy is confronted with a deadly weapon that could change the course of the war. ",
-                "C-", new String[]{"Destroy the weapon", "The weapon explodes with the power of 100 atomic bombs and everybody dies.", "gameover"},
+                "B-C-", new String[]{"Destroy the weapon", "The weapon explodes with the power of 100 atomic bombs and everybody dies.", "gameover"},
                 new String[]{"Steal the weapon and run", "Indy tries to steal the weapon but gets shot by the soldiers of Ubermann. The Nazis win the war and the world is doomed.", "gameover"},
-                new String[]{"Surrender to Uberman", "Uberman tries to take Indiana to the prison. On the way there Indy can manage to get rid of his handcuffs, steal the weapon and escapes.", "B-C-D-"}
+                new String[]{"Surrender to Uberman", "Uberman tries to take Indiana to the prison. On the way there Indy can manage to get rid of his handcuffs, steal the weapon and escapes.", "B-C-C-"}
         ));
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("The Artifact Hunt"),
                 readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "lostcity.jpg"),
                 "Indy receives a cryptic message from an old friend about a lost city deep in the Himalayan mountains. He sets out on a perilous journey through icy terrain, facing blizzards, avalanches, and deadly falls. But when he reaches the lost city, he discovers a dark secret that could destroy him. All of a sudden he can hear a noise in the distance behind him. ",
-                "D-", new String[]{"Hide behind some rocks.", "A group of treasure hunters pass by. They spot Indiana and shoot him right away because they thought he was planning an ambush.", "gameover"},
-                new String[]{"Wait for the noise to come closer and see what happens.", "Indy is captured by a group of ruthless treasure hunters who are also searching for the lost city. They torture him for information, but Indy manages to escape and foil their plans, ultimately emerging victorious. He manages to find the source of life in the Lost city and charges up the power of the Eye of Osiris.", "B-C-D-E-"},
+                "B-C-C-", new String[]{"Hide behind some rocks.", "A group of treasure hunters pass by. They spot Indiana and shoot him right away because they thought he was planning an ambush.", "gameover"},
+                new String[]{"Wait for the noise to come closer and see what happens.", "Indy is captured by a group of ruthless treasure hunters who are also searching for the lost city. They torture him for information, but Indy manages to escape and foil their plans, ultimately emerging victorious. He manages to find the source of life in the Lost city and charges up the power of the Eye of Osiris.","B-C-C-B-"},
                 new String[]{"Run away deeper into the city.", "Indy becomes obsessed with the dark secret he has discovered and refuses to leave the lost city. He becomes increasingly isolated and paranoid, eventually losing his sanity and becoming a danger to himself and others while disappearing forever in the Lost City.", "gameover"}
         ));
         chapterRepository.save(new Chapter(gameRepository.findByTitle("The Artifact Hunt"),
                 readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "cave.jpg"),
                 "The Eye is still useless without a little detail. It needs to be brought to the place where it was forged. After a couple of months and more research, Indy is about to bring the artifact to a deep underwater cavern where he expects the forge. He dons scuba gear and plunges into the ocean depths, battling vicious sharks and dodging underwater mines. But when he finally reaches the cavern, he realizes he's not alone—and the creature that lurks there is more terrifying than anything he's faced before. ",
-                "E-", new String[]{"Use the eye against the creature.", "Indy successfully defeats the creature that lurks in the underwater cavern and manages to retrieve the missing detail of the Eye. He makes it out of the cave but notices a group of people waiting for him while his coming back to the surface.", "B-C-D-E-F-"},
+                "B-C-C-B-", new String[]{"Use the eye against the creature.", "Indy successfully defeats the creature that lurks in the underwater cavern and manages to retrieve the missing detail of the Eye. He makes it out of the cave but notices a group of people waiting for him while his coming back to the surface.", "B-C-C-B-A-"},
                 new String[]{"Fight the creature with bare hands.", "Indy is unable to defeat the creature and becomes trapped in the underwater cavern. He gets wounded, runs out of oxygen and drowns, ultimately leading to his death.", "gameover"},
                 new String[]{"Use the secret weapon against the monster", "Indy manages to fend off the creature and retrieve the missing detail of the Eye, but on his way back to the surface, he realizes that the weapon destroyed the way out. He becomes disoriented and lost in the underwater cavern forever.", "gameover"}
         ));
         chapterRepository.save(new Chapter(gameRepository.findByTitle("The Artifact Hunt"),
                 readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "showdown.jpg"),
                 "In the climactic finale, Indy faces off against Ubermann and a shadowy cabal that seeks to use the Eye of Osiris to enslave the world. They engage in a deadly battle aboard a speeding train, dodging gunfire and sword strikes. But when Indy finally reaches the Eye, he's faced with a terrible choice: use its power to defeat his enemies, or destroy it and prevent anyone from ever harnessing its power again. ",
-                "F-", new String[]{"Destroy the eye.", "Good Ending - Indy destroys the Eye of Osiris, preventing anyone from ever using its power again. With the Eye gone, the shadowy cabal's plans are foiled, and they are defeated. Indy emerges victorious, and he is hailed as a hero for saving the world from enslavement.", "B-C-D-E-F-G-"},
+                "B-C-C-B-A-", new String[]{"Destroy the eye.", "Good Ending - Indy destroys the Eye of Osiris, preventing anyone from ever using its power again. With the Eye gone, the shadowy cabal's plans are foiled, and they are defeated. Indy emerges victorious, and he is hailed as a hero for saving the world from enslavement.", "won"},
                 new String[]{"Use the power of the eye.", "Bad Ending - Indy uses the power of the Eye to defeat his enemies, but in doing so, he becomes corrupted by its power. He becomes a tyrant, using the Eye to control and manipulate those around him. Eventually, his power consumes him, and he dies a lonely, miserable death.", "gameover"},
                 new String[]{"Hand over the eye to Ubermann.", "Bad Ending - Ubermann chooses to use the eye for his own plans, but by doing so, he sets off a catastrophic chain of events that leads to the deaths of many innocent people. The world becomes doomed by the power of Ubermann and the shadowy cabals. Everybody dies at the end.", "gameover"}
         ));
@@ -109,10 +109,10 @@ public class Application {
         chapterRepository.save(new Chapter(gameRepository.findByTitle("The Artifact Hunt"),
                 readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "win.jpg"),
                 "You made it!.",
-                "G-", null, new String[]{"Restart", "Do you want to restart?.", "start"}, null
+                "won", null, new String[]{"Restart", "Do you want to restart?.", "start"}, null
         ));
-
         commentRepository.save(new Comment("Super spiel, hat mir gut gefallen!", enduserRepository.getById(1), gameRepository.findByGameId(1)));
+        commentRepository.save(new Comment("Waas für ein Abenteuer! ", enduserRepository.getById(1), gameRepository.findByGameId(7)));
     }
 
     private void create5DummyCatsAndAssignThem() {
@@ -122,7 +122,6 @@ public class Application {
             categoryRepository.save(new Category("Horror"));
             categoryRepository.save(new Category("Mystery"));
             categoryRepository.save(new Category("Empty"));
-
 
             Game game2 = gameRepository.findByGameId(1);
             Set<Category> catsForGame2 = new HashSet<>();
@@ -145,7 +144,6 @@ public class Application {
             gameRepository.save(new Game("Das ist ein Titel!5", "Das ist Subtitle!5", "Das ist Content!5", readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "image5.jpeg"), enduserRepository.findByEnduserId(5)));
             gameRepository.save(new Game("Das ist ein Titel!6", "Das ist Subtitle!6", "Das ist Content!6", readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "image6.jpeg"), enduserRepository.findByEnduserId(1)));
             gameRepository.save(new Game("The Artifact Hunt", "An Amazing Adventure where you can be Indiana Jones!", "Indiana Jones is hired by a wealthy collector to find a rare artifact: the Eye of Osiris, a jewel rumored to grant its owner immense power. Indy travels to Egypt, where he must navigate ancient tombs, evade traps, and outsmart rival treasure hunters. But when he finally locates the Eye, he triggers a deadly curse that threatens to consume him.", readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "indytitle.jpg"), enduserRepository.findByEnduserId(1)));
-
         }
     }
 

@@ -1,7 +1,9 @@
 package backend.spring.game;
 
 import backend.spring.enduser.Enduser;
+import backend.spring.game.chapter.ChapterDTO;
 import backend.spring.game.review.Review;
+import backend.spring.game.chapter.Chapter;
 import backend.spring.enduser.EnduserDTO;
 import backend.spring.game.comment.Comment;
 import backend.spring.game.comment.CommentDTO;
@@ -76,6 +78,11 @@ public class GameController {
         return response;
     }
 
+    @GetMapping("api/chapters/{gameId}")
+    public List<ChapterDTO> readGameChapters(@PathVariable Integer gameId){
+        return chaptersToChapterDTOList(gameRepository.findByGameId(gameId).getChapters());
+    }
+
     public EnduserDTO enduserToEnduserDTO(Enduser enduser){
         return new EnduserDTO(enduser.getUsername(), enduser.getImage());
     }
@@ -86,5 +93,13 @@ public class GameController {
 
     public ReviewDTO reviewToReviewDTO(Review review){
         return new ReviewDTO(review.getReviewId(),review.getContent(),enduserToEnduserDTO(review.getEnduser ()),review.getRating());
+    }
+
+    public List<ChapterDTO> chaptersToChapterDTOList(List<Chapter> chapters){
+        ArrayList<ChapterDTO> temp = new ArrayList<>();
+        for(Chapter chapter : chapters){
+            temp.add(new ChapterDTO(chapter.getImage(),chapter.getContent(),chapter.getIdentifier(),chapter.getPathA(),chapter.getPathB(),chapter.getPathC()));
+        }
+        return temp;
     }
 }
