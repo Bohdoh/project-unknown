@@ -30,10 +30,13 @@ export class GameDetailComponent implements OnInit{
     });
   }
 
-  addComment() {
+  addComment(comment: string) {
+
 
   }
 
+
+//  reviewRepository.save(new Review("Ich gebe dem spiel eine 5 von 5!", enduserRepository.getById(1), gameRepository.findByGameId(7) ));
   addReview() {
 
   }
@@ -53,4 +56,7 @@ export class GameDetailComponent implements OnInit{
 
     }
 
+  deleteComment(commentId: number, newestTitle: any) {
+
+  }
 }

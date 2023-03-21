@@ -62,11 +62,11 @@
 
     <div class="tabs is-medium">
       <ul>
-        <li><a  (click)="switchCommentAndReviews('comments')">Comments</a>
-
+        <li>
+          <a  (click)="switchCommentAndReviews('comments')">Comments</a>
         </li>
-        <li><a  (click)="switchCommentAndReviews('reviews')">Reviews</a>
-
+        <li>
+          <a  (click)="switchCommentAndReviews('reviews')">Reviews</a>
         </li>
       </ul>
     </div>
@@ -80,7 +80,7 @@
             <!--          <img class="is-rounded" *ngIf="!sessionUser.image" src="images/128x128.png" alt="Profile Picture">-->
           </p>
         </figure>
-        <form class="media-content" (submit)="addComment()">
+        <form class="media-content" (submit)="addComment(commentContent)">
           <div class="field">
             <p class="control">
               <textarea class="textarea is-half" [(ngModel)]="commentContent" name="content"
@@ -115,7 +115,7 @@
           </div>
         </div>
         <div class="media-right">
-          <!--        <button *ngIf="canDeleteComment(comment)" (click)="deleteComment(comment.commentId, post.getNewestTitle(post.postId))" class="delete"></button>-->
+          <!--<button *ngIf="canDeleteComment(comment)" (click)="deleteComment(comment.commentId, post.getNewestTitle(post.postId))" class="delete"></button>-->
         </div>
       </article>
 
