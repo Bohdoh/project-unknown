@@ -1,103 +1,127 @@
 <div class="columns">
   <div class="column is-one-fifth"></div>
-<div class="column is-three-fifths" *ngIf="game">
-  <div class="box">
-    <div class="title has-text-centered">{{ game.title }}</div>
+  <div class="column is-three-fifths" *ngIf="game">
+    <div class="box">
+      <div class="title has-text-centered">{{ game.title }}</div>
 
-    <div class="has-text-centered" *ngIf="game.image">
-      <img [src]="'data:image/png;base64,' + game.image">
-    </div>
+      <div class="has-text-centered" *ngIf="game.image">
+        <img [src]="'data:image/png;base64,' + game.image">
+      </div>
 
-    <div class="level">
-      <div class="level-left">
-        <div class="level-item is-size-7 is-italic">Author:&nbsp;
-          <span>{{ game.author}}</span>
-        </div>
-      </div>
-      <div class="level-right">
-        <div class="level-item is-size-7 is-italic">Released:&nbsp;
-          <span>{{ game.createdAt | date:'HH:mm dd.MM.yy' }}</span>
-        </div>
-      </div>
-    </div>
-    <article class="message is-dark">
-      <div class="message-body" style="white-space: pre-line">{{ game.content }}</div>
-    </article>
-    <div class="level">
-      <div class="level-left">
-        <div class="level-item" *ngFor="let category of game.categories">
-<!--          <button class="button tag is-link" (click)="selectCategory(category.categoryId)">{{ category.name }}</button>-->
-          <button class="button tag is-link">{{ category.name }}</button>
-        </div>
-      </div>
-      <!-- TODO when user is logged in logic -->
-<!--      <div class="level-right">-->
-<!--        <div class="level-item">-->
-<!--          <a [routerLink]="['/login']">-->
-<!--            <div *ngIf="!sessionUser" class="level-item tag is-medium is-light mx-1 button">-->
-<!--              <span class="icon is-small mr-3"><i class="fa-solid fa-right-to-bracket"></i></span>Log-->
-<!--              in to Comment-->
-<!--            </div>-->
-<!--          </a>-->
-<!--          <a [routerLink]="['/edit', post.postId]">-->
-<!--            <div *ngIf="sessionUser && sessionUser.isAdmin()"-->
-<!--                 class="level-item tag is-medium mx-1 button">edit-->
-<!--            </div>-->
-<!--          </a>-->
-<!--          <a (click)="deletePost(post.postId)">-->
-<!--            <div *ngIf="sessionUser && sessionUser.isAdmin()"-->
-<!--                 class="level-item tag is-medium is-danger mx-1 button">-->
-<!--              delete-->
-<!--            </div>-->
-<!--          </a>-->
-<!--        </div>-->
-<!--      </div>-->
-    </div>
-  </div>
-  <hr>
-  <div>
-<article class="media mx-6" id="commentStart"> <!-- nur wenn eingeloggt! nachgragen-->
-      <figure class="media-left">
-        <p class="image is-64x64">
-<!--          <img class="is-rounded" *ngIf="sessionUser.image" [src]="'data:image/png;base64,' + sessionUser.image" alt="Profile Picture">-->
-<!--          <img class="is-rounded" *ngIf="!sessionUser.image" src="images/128x128.png" alt="Profile Picture">-->
-        </p>
-      </figure>
-      <form class="media-content" (submit)="addComment()">
-        <div class="field">
-          <p class="control">
-            <textarea class="textarea is-half" [(ngModel)]="commentContent" name="content" placeholder="Add a comment..."></textarea>
-          </p>
-        </div>
-        <nav class="level">
-          <div class="level-left">
-            <div class="level-item">
-              <button class="button is-info is-primary" type="submit">Submit</button>
-            </div>
+      <div class="level">
+        <div class="level-left">
+          <div class="level-item is-size-7 is-italic">Author:&nbsp;
+            <span>{{ game.author}}</span>
           </div>
-        </nav>
-      </form>
-    </article>
-    <article class="media mx-6" *ngFor="let comment of game.comments">
-      <figure class="media-left">
-        <p class="image is-64x64 is-rounded">
-          <img class="is-rounded" *ngIf="comment.enduser.image" [src]="'data:image/png;base64,' + comment.enduser.image" alt="Profile Picture">
-          <img class="is-rounded" *ngIf="!comment.enduser.image" src="images/128x128.png" alt="Profile Picture">
-        </p>
-      </figure>
-      <div class="media-content">
-        <div class="content">
-          <strong>
-            <p>{{ comment.enduser.username }}</strong><small> {{ comment.createdAt | date:'HH:mm:ss     dd-MM-yy' }}</small><br>
-          <span>{{ comment.content }}</span>
-
+        </div>
+        <div class="level-right">
+          <div class="level-item is-size-7 is-italic">Released:&nbsp;
+            <span>{{ game.createdAt | date:'HH:mm dd.MM.yy' }}</span>
+          </div>
         </div>
       </div>
-      <div class="media-right">
-<!--        <button *ngIf="canDeleteComment(comment)" (click)="deleteComment(comment.commentId, post.getNewestTitle(post.postId))" class="delete"></button>-->
+      <article class="message is-dark">
+        <div class="message-body" style="white-space: pre-line">{{ game.content }}</div>
+      </article>
+      <div class="level">
+        <div class="level-left">
+          <div class="level-item" *ngFor="let category of game.categories">
+            <!--          <button class="button tag is-link" (click)="selectCategory(category.categoryId)">{{ category.name }}</button>-->
+            <button class="button tag is-link">{{ category.name }}</button>
+          </div>
+        </div>
+        <div class="level-item">
+          <a [routerLink]='"/game/play/"+ game.id+"/"+game.title'> <button class="button is-size-4 is-align-items-baseline"><i class="fa-solid fa-play"></i>&nbsp;&nbsp;Play</button></a>
+        </div>
+        <!-- TODO when user is logged in logic -->
+        <div class="level-right">
+          <div class="level-item">
+            <!--          <a [routerLink]="['/login']">-->
+            <!--            <div *ngIf="!sessionUser" class="level-item tag is-medium is-light mx-1 button">-->
+            <!--              <span class="icon is-small mr-3"><i class="fa-solid fa-right-to-bracket"></i></span>Log-->
+            <!--              in to Comment-->
+            <!--            </div>-->
+            <!--          </a>-->
+            <!--          <a [routerLink]="['/edit', post.postId]">-->
+            <!--            <div *ngIf="sessionUser && sessionUser.isAdmin()"-->
+            <!--                 class="level-item tag is-medium mx-1 button">edit-->
+            <!--            </div>-->
+            <!--          </a>-->
+            <!--          <a (click)="deletePost(post.postId)">-->
+            <!--            <div *ngIf="sessionUser && sessionUser.isAdmin()"-->
+            <!--                 class="level-item tag is-medium is-danger mx-1 button">-->
+            <!--              delete-->
+            <!--            </div>-->
+            <!--          </a>-->
+          </div>
+        </div>
       </div>
-    </article>
+    </div>
+    <hr>
+
+
+    <div class="tabs is-medium">
+      <ul>
+        <li><a (click)="switchVisibility()">Comments</a>
+
+        </li>
+        <li><a [class.is-active]="showComment" (click)="switchVisibility()">Reviews</a>
+
+        </li>
+      </ul>
+    </div>
+
+
+    <div *ngIf="showComment">
+      <article class="media mx-6" id="commentStart"> <!-- nur wenn eingeloggt! nachgragen-->
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <!--          <img class="is-rounded" *ngIf="sessionUser.image" [src]="'data:image/png;base64,' + sessionUser.image" alt="Profile Picture">-->
+            <!--          <img class="is-rounded" *ngIf="!sessionUser.image" src="images/128x128.png" alt="Profile Picture">-->
+          </p>
+        </figure>
+        <form class="media-content" (submit)="addComment()">
+          <div class="field">
+            <p class="control">
+              <textarea class="textarea is-half" [(ngModel)]="commentContent" name="content"
+                        placeholder="Add a comment..."></textarea>
+            </p>
+          </div>
+          <nav class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <button class="button is-info is-primary" type="submit">Submit</button>
+              </div>
+            </div>
+          </nav>
+        </form>
+      </article>
+
+      <article  class="media mx-6" *ngFor="let comment of game.comments">
+        <figure class="media-left">
+          <p class="image is-64x64 is-rounded">
+            <img class="is-rounded" *ngIf="comment.enduser.image"
+                 [src]="'data:image/png;base64,' + comment.enduser.image" alt="Profile Picture">
+            <img class="is-rounded" *ngIf="!comment.enduser.image" src="images/128x128.png" alt="Profile Picture">
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <strong>
+              <p>{{ comment.enduser.username }}
+            </strong><small> {{ comment.createdAt | date:'HH:mm:ss     dd-MM-yy' }}</small><br>
+            <span>{{ comment.content }}</span>
+
+          </div>
+        </div>
+        <div class="media-right">
+          <!--        <button *ngIf="canDeleteComment(comment)" (click)="deleteComment(comment.commentId, post.getNewestTitle(post.postId))" class="delete"></button>-->
+        </div>
+      </article>
+
+      <article *ngIf="showReview"></article>
+    </div>
   </div>
-</div>
+  -->
   <div class="column is-one-fifth"></div>
 </div>

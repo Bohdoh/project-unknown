@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../auth.service";
-import {AuthenticationRequest} from "../interfaces/AuthenticationRequest";
+import {AuthService} from "../../../services/auth.service";
+import {AuthenticationRequest} from "../../../interfaces/AuthenticationRequest";
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from "ngx-toastr";
 import {throwError} from "rxjs";

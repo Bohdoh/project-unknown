@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-@RequestMapping("/api/stories")
+
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200/")
 public class GameController {
     private final GameRepository gameRepository;
 
@@ -24,7 +24,8 @@ public class GameController {
         this.gameRepository = gameRepository;
     }
 
-    @GetMapping("/games")
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @GetMapping("/api/games")
     public List<GameDTO> read() {
         List<GameDTO> response = new LinkedList<>();
         for (Game game : gameRepository.findAllByOrderByCreatedAtDesc()) {
@@ -44,7 +45,8 @@ public class GameController {
         return response;
     }
 
-    @GetMapping("/games/{id}")
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @GetMapping("/api/games/{id}")
     public GameDTO readGameDetails(@PathVariable Integer id) {
 
         Game game = gameRepository.findByGameId(id);

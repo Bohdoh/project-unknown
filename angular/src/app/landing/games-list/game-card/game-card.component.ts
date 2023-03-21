@@ -10,7 +10,7 @@ import {DatePipe} from "@angular/common";
 })
 
 export class GameCardComponent {
-@Input() game? : Game;
+  @Input() game? : Game;
   @Input() changeGamesToBeShownByCat: ((categoryName: string) => void) | undefined;
 
   constructor(public datePipe : DatePipe) {

@@ -1,9 +1,9 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {map, Observable, throwError} from 'rxjs';
-import { RegisterRequest } from './interfaces/RegisterRequest';
-import { AuthenticationResponse } from './interfaces/AuthenticationResponse';
-import { AuthenticationRequest } from './interfaces/AuthenticationRequest';
+import { RegisterRequest } from '../interfaces/RegisterRequest';
+import { AuthenticationResponse } from '../interfaces/AuthenticationResponse';
+import { AuthenticationRequest } from '../interfaces/AuthenticationRequest';
 import { BehaviorSubject } from 'rxjs';
 import {LocalStorageService} from "ngx-webstorage";
 

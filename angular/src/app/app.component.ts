@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
   constructor(private http:HttpClient,private router: Router){};
 
   ngOnInit(): void {
-    this.http.get<Game[]>("http://localhost:8080/api/games").subscribe(
+    this.http.get<Game[]>("http://localhost:8082/api/games").subscribe(
       games => {
                 this.games = games
       }

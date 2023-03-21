@@ -18,13 +18,13 @@
                   </a>
                 </li>
 
-                  <li *ngFor="let category of categories">
-                    <a *ngIf="getNumberOfPostsWithCat(category.name) > 0" (click)="changeGamesToBeShownByCat(category.name)"
-                       class="is-flex is-justify-content-space-between is-align-items-center">
-                      <span>{{ category.name }}</span>
-                      <span class="ml-2 is-size-7">{{ getNumberOfPostsWithCat(category.name) }}</span>
-                    </a>
-                  </li>
+                <li *ngFor="let category of categories">
+                  <a *ngIf="getNumberOfPostsWithCat(category.name) > 0" (click)="changeGamesToBeShownByCat(category.name)"
+                     class="is-flex is-justify-content-space-between is-align-items-center">
+                    <span>{{ category.name }}</span>
+                    <span class="ml-2 is-size-7">{{ getNumberOfPostsWithCat(category.name) }}</span>
+                  </a>
+                </li>
 
               </ul>
             </li>
@@ -46,4 +46,3 @@
 
   </div>
 </div>
-

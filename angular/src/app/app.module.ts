@@ -11,9 +11,9 @@ import {FormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app-routing.module";
 import {DatePipe} from "@angular/common";
 import { GameDetailComponent } from './game-detail/game-detail.component';
-import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './alwaysVisible/navbar/login/login.component';
+import { LogoutComponent } from './alwaysVisible/navbar/logout/logout.component';
+import { RegisterComponent } from './alwaysVisible/navbar/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
