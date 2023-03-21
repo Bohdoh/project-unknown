@@ -32,7 +32,7 @@
 
         </div>
         <div class="level-item">
-       <a [routerLink]='"/game/play/"+ game.id+"/"+game.title'> <button class="button is-size-4 is-align-items-baseline"><i class="fa-solid fa-play"></i>&nbsp;&nbsp;Play</button></a>
+       <a [routerLink]='"/game/play/"+ game.id+"/"+game.title'> <button class="button is-size-4 is-align-items-baseline" (click)="startGame()" ><i class="fa-solid fa-play"></i>&nbsp;&nbsp;Play</button></a>
       </div>
 
       <!-- TODO when user is logged in logic -->

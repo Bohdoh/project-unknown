@@ -41,7 +41,7 @@
         <i class="fas fa-home" aria-hidden="true"></i>Home
       </a>
     </div>
-
+    <div class="navbar-item" *ngIf="isPlaying">{{timerValue}}</div>
     <div class="navbar-end">
       <!--            User not logged in -->
       <div *ngIf="!isLoggedIn" class="navbar-item">

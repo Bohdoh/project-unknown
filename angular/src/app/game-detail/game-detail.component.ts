@@ -4,6 +4,7 @@ import {Game} from "../interfaces/game";
 import {Category} from "../interfaces/category";
 import {GameService} from "../services/game.service";
 import {ActivatedRoute} from "@angular/router";
+import {TimerService} from "../services/timer.service";
 
 @Component({
   selector: 'app-game-detail',
@@ -19,7 +20,13 @@ export class GameDetailComponent implements OnInit{
   showComment: boolean = true;
   showReview: boolean = false;
 
-  constructor(private http:HttpClient,private gameService : GameService,private route:ActivatedRoute) {
+
+  constructor(
+    private http:HttpClient,
+    private gameService : GameService,
+    private route:ActivatedRoute,
+    private timerService: TimerService
+  ) {
   }
 
   ngOnInit(): void {
@@ -28,6 +35,14 @@ export class GameDetailComponent implements OnInit{
       this.game = game;
     });
   }
+
+  startGame() {
+    this.timerService.startTimer();
+
+  }
+
+
+
 
   addComment(comment?: string) {
 

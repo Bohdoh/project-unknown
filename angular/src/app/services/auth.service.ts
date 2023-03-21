@@ -22,16 +22,16 @@ export class AuthService {
     username: this.getUsername(),
     role: this.getRole()
   }
-  private apiUrl = 'http://localhost:8080/api/v1/auth';
+  private apiUrl = 'http://localhost:8081/api/v1/auth';
   private authStatus = new BehaviorSubject<boolean>(false);
 
 
   constructor(private http: HttpClient, private localStorage: LocalStorageService) {
   }
 
-  register(request: RegisterRequest): Observable<AuthenticationResponse> {
-    return this.http.post<AuthenticationResponse>(`${this.apiUrl}/register`, request);
-  }
+    register(request: RegisterRequest): Observable<AuthenticationResponse> {
+      return this.http.post<AuthenticationResponse>(`${this.apiUrl}/register`, request);
+    }
 
   authenticate(request: AuthenticationRequest): Observable<boolean> {
     return this.http.post<AuthenticationResponse>(`${this.apiUrl}/authenticate`,
@@ -86,7 +86,7 @@ export class AuthService {
   }
 
   getUserByUsername(username: string): Observable<Enduser> {
-    return this.http.get<Enduser>("http://localhost:8080/api/users/" + username);
+    return this.http.get<Enduser>("http://localhost:8081/api/users/" + username);
   }
 
   getRole() {
