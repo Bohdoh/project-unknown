@@ -11,9 +11,16 @@ import {FormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app-routing.module";
 import {DatePipe} from "@angular/common";
 import { GameDetailComponent } from './game-detail/game-detail.component';
-
-
-
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { RegisterComponent } from './register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
+import {NgxWebstorageModule} from "ngx-webstorage";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -24,10 +31,21 @@ import { GameDetailComponent } from './game-detail/game-detail.component';
     LandingComponent,
     GamesListComponent,
     GameCardComponent,
-    GameDetailComponent
+    GameDetailComponent,
+    LoginComponent,
+    LogoutComponent,
+    RegisterComponent,
+    HeaderComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxWebstorageModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     FormsModule,
     AppRoutingModule
   ],
