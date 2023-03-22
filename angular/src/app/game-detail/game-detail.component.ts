@@ -7,7 +7,7 @@ import {ActivatedRoute} from "@angular/router";
 import {AuthService} from "../services/auth.service";
 import {Enduser} from "../interfaces/enduser";
 import {CommentPost} from "../interfaces/comment-post";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-game-detail',
@@ -18,24 +18,20 @@ export class GameDetailComponent implements OnInit{
 
   gameId? : number;
   game?:Game;
-  commentContent?: string;
-  reviewContent?: string;
   showComment: boolean = true;
   showReview: boolean = false;
   isLoggedIn?: boolean;
   username: string|any;
   role?:string;
-  commentForm: FormGroup | any;
-  reviewForm: FormGroup | any;
-
+  commentContent?: string;
+  reviewContent?: string;
   currentUser?:Enduser;
 
 
   constructor(private http:HttpClient,
               private gameService : GameService,
               private route:ActivatedRoute,
-              private authService: AuthService,
-              private formBuilder: FormBuilder) {
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -51,8 +47,6 @@ export class GameDetailComponent implements OnInit{
     this.role = this.authService.getRole();
     this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
       this.currentUser = user});
-    console.log(this.currentUser)
-    console.log(this.username)
   }
 
   addComment(comment?: string,) {
@@ -62,7 +56,7 @@ export class GameDetailComponent implements OnInit{
       username:this.username,
       content:comment
     }
-    this.http.post<CommentPost>("http://localhost:8080/api/comment",payload);
+    this.http.post<CommentPost>("http://localhost:8080/api/comment",payload).subscribe();
     }
 
 
@@ -70,6 +64,8 @@ export class GameDetailComponent implements OnInit{
 
 
 //  reviewRepository.save(new Review("Ich gebe dem spiel eine 5 von 5!", enduserRepository.getById(1), gameRepository.findByGameId(7) ));
+
+
   addReview() {
 
   }

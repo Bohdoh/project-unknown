@@ -27,7 +27,7 @@ public class EnduserController {
         return converterService.enduserToEnduserDTO(
                 enduserRepository.findByUsername(username)
                         .orElseThrow(
-                                () -> new IllegalArgumentException("Invalid username: " + username)));
+                                () -> new IllegalArgumentException("Username not found in Repo: " + username)));
 
     }
 
