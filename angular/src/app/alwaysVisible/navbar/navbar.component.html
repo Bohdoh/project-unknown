@@ -1,9 +1,31 @@
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
 
+    // Get all "navbar-burger" elements
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
+    // Add a click event on each of them
+    $navbarBurgers.forEach(el => {
+      el.addEventListener('click', () => {
+
+        // Get the target from the "data-target" attribute
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+
+  });
+</script>
+
+<nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+    <a class="navbar-item" routerLink="/">
+      <img src="#" width="160" height="28" alt="Logo">
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -15,52 +37,118 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" routerLink="/game/view">
-        Home
+      <a routerLink="/" class="navbar-item">
+        <i class="fas fa-home" aria-hidden="true"></i>Home
       </a>
-
-      <a class="navbar-item" routerLink="/login" *ngIf="!isLoggedIn">
-        Login
-      </a>
-      <a class="navbar-item"  routerLink="/register" *ngIf="!isLoggedIn">
-        Register
-      </a>
-
-      <a class="navbar-item" *ngIf="isLoggedIn">
-        <button (click)="logout()" ngbDropdownItem>Logout</button>
-      </a>
-      <a class="navbar-item" *ngIf="isLoggedIn"> {{username}}</a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            Documentation
-          </a>
-
-
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
     </div>
 
     <div class="navbar-end">
-      <div class="navbar-item">
+      <!--            User not logged in -->
+      <div *ngIf="!isLoggedIn" class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
+          <a routerLink="/register" class="button is-light">
             <strong>Sign up</strong>
           </a>
-          <a class="button is-light">
+          <a routerLink="/login" class="button is-light">
             Log in
+          </a>
+        </div>
+      </div>
+      <!--            User logged in -->
+      <div *ngIf="isLoggedIn" class="navbar-item has-dropdown is-hoverable">
+        <span class="navbar-item has-text-weight-bold">{{ role | titlecase }}</span>
+
+
+
+        <span class="navbar-item" >{{username}}</span>
+
+        <figure class="image is-1by navbar-item navbar-link">
+          <img class="is-rounded" *ngIf="enduser"
+               [src]="'data:image/png;base64,'+enduser.image"
+               alt="Profile Picture">
+          <img class="is-rounded" *ngIf="!enduser" src="https://bulma.io/images/placeholders/128x128.png"
+               alt="Profile Picture">
+        </figure>
+        <div class="navbar-dropdown">
+<!--          <a [routerLink]="/profile/" class="navbar-item">-->
+<!--            Profile-->
+<!--          </a>-->
+          <div class="navbar-item">
+            <label>Change Avatar</label>
+          </div>
+          <div class="navbar-item">
+            <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+              <div class="field">
+                <input type="file" id="imageFile" name="userImage" accept="image/*" [(ngModel)]="fileInput">
+              </div>
+              <button class="button is-small is-light" type="submit">Submit</button>
+            </form>
+
+          </div>
+
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+              <button class="button is-danger is-small" (click)="logout()">Logout</button>
           </a>
         </div>
       </div>
     </div>
   </div>
 </nav>
+
+<!--<nav class="navbar" role="navigation" aria-label="main navigation">-->
+<!--  <div class="navbar-brand">-->
+<!--    <a class="navbar-item" href="https://bulma.io">-->
+<!--      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">-->
+<!--    </a>-->
+
+<!--    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">-->
+<!--      <span aria-hidden="true"></span>-->
+<!--      <span aria-hidden="true"></span>-->
+<!--      <span aria-hidden="true"></span>-->
+<!--    </a>-->
+<!--  </div>-->
+
+<!--  <div id="navbarBasicExample" class="navbar-menu">-->
+<!--    <div class="navbar-start">-->
+<!--      <a class="navbar-item" routerLink="/game/view">-->
+<!--        Home-->
+<!--      </a>-->
+<!--      <a class="navbar-item" *ngIf="isLoggedIn"> {{username}}</a>-->
+
+<!--      <div class="navbar-item has-dropdown is-hoverable">-->
+<!--        <a class="navbar-link">-->
+<!--          More-->
+<!--        </a>-->
+
+<!--        <div class="navbar-dropdown">-->
+<!--          <a class="navbar-item">-->
+<!--            Documentation-->
+<!--          </a>-->
+
+
+<!--          <hr class="navbar-divider">-->
+<!--          <a class="navbar-item">-->
+<!--            Report an issue-->
+<!--          </a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="navbar-end">-->
+<!--      <div class="navbar-item">-->
+<!--        <div class="buttons">-->
+<!--          <a class="button is-primary" routerLink="/register" *ngIf="!isLoggedIn">-->
+<!--            <strong>Sign up</strong>-->
+<!--          </a>-->
+<!--          <a class="button is-light" routerLink="/login" *ngIf="!isLoggedIn">-->
+<!--            Log in-->
+<!--          </a>-->
+<!--          <a class="button is-primary" *ngIf="isLoggedIn" (click)="logout()">-->
+<!--            Logout-->
+<!--          </a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->

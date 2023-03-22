@@ -1,5 +1,6 @@
 package backend.spring.enduser;
 
+import backend.spring.security.DAO.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

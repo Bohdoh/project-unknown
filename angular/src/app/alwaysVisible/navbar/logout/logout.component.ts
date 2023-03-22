@@ -11,7 +11,8 @@ export class LogoutComponent {
 
   constructor(private authService: AuthService, private router: Router) {
     localStorage.removeItem('token');
-    localStorage.removeItem('email');
+    localStorage.removeItem('username');
+    localStorage.removeItem('role');
     this.authService.setAuthStatus(false); // Set auth status to false
     this.router.navigate(['/']); // Navigate to home page
   }
