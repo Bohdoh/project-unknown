@@ -11886,19 +11886,6 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   word-break: break-word;
 }
 
-.fade-in {
-  opacity: 0;
-  animation: fade-in 1s ease-in-out forwards;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
 
 

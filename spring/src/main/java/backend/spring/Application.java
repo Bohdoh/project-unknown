@@ -159,6 +159,11 @@ public class Application {
             user.setImage(readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "image" + (i + 1) + ".jpeg"));
             enduserRepository.save(user);
         }
+        Enduser user = new Enduser ();
+        user.setUsername("test");
+        user.setEmail("test");
+        user.setPassword("test");
+        enduserRepository.save(user);
     }
 
     public byte[] readImage(String path) {
