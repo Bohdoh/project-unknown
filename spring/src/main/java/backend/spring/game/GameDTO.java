@@ -29,7 +29,7 @@ public class GameDTO {
     private List<ReviewDTO> reviews;
     private String author;
 
-    public GameDTO(Set<Category> categories, String image, Instant createdAt, String subtitle, String title, String content, Integer id,String author) {
+    public GameDTO(Set<Category> categories, String image, Instant createdAt, String subtitle, String title, String content, Integer id,String author,List<ReviewDTO> reviews) {
         this.categories = categories;
         this.image = image;
         this.createdAt = createdAt;
@@ -38,5 +38,6 @@ public class GameDTO {
         this.content = content;
         this.id = id;
         this.author = author;
+        this.reviews = reviews;
     }
 }

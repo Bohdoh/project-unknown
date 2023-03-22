@@ -4,7 +4,6 @@ import backend.spring.ConverterService;
 import backend.spring.enduser.EnduserRepository;
 import backend.spring.game.chapter.ChapterDTO;
 import backend.spring.game.review.Review;
-import backend.spring.enduser.EnduserDTO;
 import backend.spring.game.comment.Comment;
 import backend.spring.game.comment.CommentDTO;
 import backend.spring.game.review.ReviewDTO;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 
 
 @RestController
@@ -45,8 +43,8 @@ public class GameController {
                             game.getTitle(),
                             game.getContent(),
                             game.getGameId(),
-                            game.getEnduser ().getUsername()
-                    )
+                            game.getEnduser().getUsername(),
+                            converterService.reviewsToReviewDTOList(game.getReviews()))
             );
         }
         return response;
@@ -60,15 +58,15 @@ public class GameController {
         List<CommentDTO> commentsDTO = new ArrayList<>();
         List<ReviewDTO> reviewsDTO = new ArrayList<>();
 
-        for(Comment comment : game.getComments()) {
+        for (Comment comment : game.getComments()) {
             commentsDTO.add(converterService.commentToCommentDTO(comment));
         }
 
-        for(Review review : game.getReviews()) {
+        for (Review review : game.getReviews()) {
             reviewsDTO.add(converterService.reviewToReviewDTO(review));
         }
 
-        GameDTO response = new GameDTO(
+        return new GameDTO(
                 game.getCategories(),
                 game.getImage(),
                 game.getCreatedAt(),
@@ -78,18 +76,15 @@ public class GameController {
                 game.getGameId(),
                 commentsDTO,
                 reviewsDTO,
-                game.getEnduser ().getUsername()
+                game.getEnduser().getUsername()
         );
-        return response;
     }
 
     @CrossOrigin(origins = "http://localhost:4200/")
     @GetMapping("/api/chapters/{gameId}")
-    public List<ChapterDTO> readGameChapters(@PathVariable Integer gameId){
+    public List<ChapterDTO> readGameChapters(@PathVariable Integer gameId) {
         return converterService.chaptersToChapterDTOList(gameRepository.findByGameId(gameId).getChapters());
     }
-
-
 
 
 }

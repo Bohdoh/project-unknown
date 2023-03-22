@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Game} from "../../../interfaces/game";
 import {DatePipe} from "@angular/common";
 
@@ -9,11 +9,23 @@ import {DatePipe} from "@angular/common";
   styleUrls: ['./game-card.component.css']
 })
 
-export class GameCardComponent {
-  @Input() game? : Game;
+export class GameCardComponent implements OnInit {
+  @Input() game?: Game;
   @Input() changeGamesToBeShownByCat: ((categoryName: string) => void) | undefined;
+  gameRating: number = 0;
+  stars: string[] = [];
 
-  constructor(public datePipe : DatePipe) {
+  constructor(public datePipe: DatePipe) {
+  }
+
+  ngOnInit(): void {
+    if (this.game && this.game.reviews) {
+      for (let i = 0; i < this.game.reviews.length; i++) {
+        this.gameRating += this.game.reviews[i].rating;
+      }
+      this.gameRating = this.gameRating / this.game.reviews.length;
+      this.generateStars();
+    }
   }
 
   onSubmit(categoryId: number) {
@@ -21,8 +33,17 @@ export class GameCardComponent {
 
   }
 
-
   formatDate(isoDateString: string): string {
     return <string>this.datePipe.transform(new Date(isoDateString), 'HH:mm dd.MM.yy');
   }
+
+  generateStars(): void {
+    this.stars = Array.from({length: 5}, (_, i) => {
+      const ratingDiff = this.gameRating - i;
+      if (ratingDiff >= 1) return 'fa-star';
+      if (ratingDiff > 0) return 'fa-star-half-o';
+      return 'fa-star-o';
+    });
+  }
+
 }
