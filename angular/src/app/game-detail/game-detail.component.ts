@@ -8,29 +8,31 @@ import {AuthService} from "../services/auth.service";
 import {Enduser} from "../interfaces/enduser";
 import {CommentPost} from "../interfaces/comment-post";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ReviewPost} from "../interfaces/review-post";
+import {switchMap} from "rxjs";
 
 @Component({
   selector: 'app-game-detail',
   templateUrl: './game-detail.component.html',
   styleUrls: ['./game-detail.component.css']
 })
-export class GameDetailComponent implements OnInit{
+export class GameDetailComponent implements OnInit {
 
-  gameId? : number;
-  game?:Game;
+  gameId?: number;
+  game?: Game;
   showComment: boolean = true;
   showReview: boolean = false;
   isLoggedIn?: boolean;
-  username: string|any;
-  role?:string;
+  username: string | any;
+  role?: string;
   commentContent?: string;
   reviewContent?: string;
-  currentUser?:Enduser;
+  currentUser?: Enduser;
 
 
-  constructor(private http:HttpClient,
-              private gameService : GameService,
-              private route:ActivatedRoute,
+  constructor(private http: HttpClient,
+              private gameService: GameService,
+              private route: ActivatedRoute,
               private authService: AuthService) {
   }
 
@@ -46,33 +48,55 @@ export class GameDetailComponent implements OnInit{
     this.username = this.authService.getUsername();
     this.role = this.authService.getRole();
     this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
-      this.currentUser = user});
+      this.currentUser = user
+    });
   }
 
   addComment(comment?: string,) {
-    if(this.gameId && comment){
-    let payload :CommentPost = {
-      gameId:this.gameId,
-      username:this.username,
-      content:comment
-    }
-    this.http.post<CommentPost>("http://localhost:8080/api/comment",payload).subscribe();
+    if (this.gameId && comment) {
+      let payload: CommentPost = {
+        gameId: this.gameId,
+        username: this.username,
+        content: comment
+      }
+
+      // this.http.post<CommentPost>("http://localhost:8080/api/comment", payload).subscribe();
+
+        this.http.post<CommentPost>("http://localhost:8080/api/comment", payload)
+          .pipe(
+            switchMap(() => this.gameService.getGameById(Number(this.gameId)))
+          )
+          .subscribe((game: Game) => {
+            this.game = game;
+          });
     }
 
 
   }
 
+  addReview(review?: string) {
+    if (this.gameId && review) {
+      let payload: ReviewPost = {
+        gameId: this.gameId,
+        username: this.username,
+        content: review
+      }
+      this.http.post<ReviewPost>("http://localhost:8080/api/review", payload).pipe(
+        switchMap(() => this.gameService.getGameById(Number(this.gameId)))
+      )
+        .subscribe((game: Game) => {
+          this.game = game;
+        });
 
-//  reviewRepository.save(new Review("Ich gebe dem spiel eine 5 von 5!", enduserRepository.getById(1), gameRepository.findByGameId(7) ));
 
 
-  addReview() {
+    }
 
   }
 
 
   switchCommentAndReviews(tabValue: string) {
-      switch (tabValue) {
+    switch (tabValue) {
       case 'comments':
         this.showComment = true;
         this.showReview = false;
@@ -81,9 +105,9 @@ export class GameDetailComponent implements OnInit{
         this.showComment = false;
         this.showReview = true;
         break;
-      }
-
     }
+
+  }
 
   deleteComment(commentId: number, newestTitle: any) {
 

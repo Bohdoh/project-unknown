@@ -39,7 +39,7 @@ import {NavbarComponent} from "./alwaysVisible/navbar/navbar.component";
     LogoutComponent,
     RegisterComponent,
     HomeComponent,
-    GameChaptersComponent,
+    GameChaptersComponent
   ],
   imports: [
     BrowserModule,
