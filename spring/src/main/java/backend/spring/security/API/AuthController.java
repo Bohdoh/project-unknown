@@ -1,12 +1,15 @@
 package backend.spring.security.API;
 
+import backend.spring.exeptions.UserAlreadyExistsException;
 import backend.spring.security.BussinesLayer.AuthenticationService;
 import backend.spring.security.DTO.AuthenticationRequest;
 import backend.spring.security.DTO.AuthenticationResponse;
 import backend.spring.security.DTO.RegisterRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -16,12 +19,17 @@ public class AuthController {
 
     private final AuthenticationService authenticationService;
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody RegisterRequest request
-    ){
-        return ResponseEntity.ok (authenticationService.register(request));
+    public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
+        try {
+            return ResponseEntity.ok(authenticationService.register(request));
+        } catch (UserAlreadyExistsException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
+
+
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
