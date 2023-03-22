@@ -11887,6 +11887,34 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 
+:host {
+  display: inline-flex;
+}
+
+
+
+.star-rating .fa-star.active,
+.yellow {
+  background: linear-gradient(to right, #f6d365, #fda085);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card a:hover {
+
+}
+
+
+
+
+
+
+
 
 
 

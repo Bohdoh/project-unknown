@@ -18,4 +18,5 @@ public class ReviewDTO {
     private EnduserDTO enduser;
     private double rating;
     private Instant createdAt;
+
 }

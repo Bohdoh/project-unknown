@@ -1,14 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Game} from "../interfaces/game";
-import {Category} from "../interfaces/category";
 import {GameService} from "../services/game.service";
 import {ActivatedRoute} from "@angular/router";
 import {TimerService} from "../services/timer.service";
 import {AuthService} from "../services/auth.service";
 import {Enduser} from "../interfaces/enduser";
 import {CommentPost} from "../interfaces/comment-post";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ReviewPost} from "../interfaces/review-post";
 import {switchMap} from "rxjs";
 import {StringToEmojiService} from "../services/string-to-emoji.service";
@@ -30,6 +28,7 @@ export class GameDetailComponent implements OnInit {
   commentContent?: string;
   reviewContent?: string;
   currentUser?: Enduser;
+  userRating: number = 0;
 
 
   constructor(private http: HttpClient,
@@ -63,7 +62,7 @@ export class GameDetailComponent implements OnInit {
         username: this.username,
         content: comment
       }
-      this.http.post<CommentPost>("http://localhost:8081/api/comment", payload)
+      this.http.post<CommentPost>("http://localhost:8080/api/comment", payload)
         .pipe(
           switchMap(() => this.gameService.getGameById(Number(this.gameId)))
         )
@@ -71,18 +70,26 @@ export class GameDetailComponent implements OnInit {
           this.game = game;
         });
     }
+    this.commentContent = undefined;
   }
 
   startGame() {
     this.timerService.startTimer();
   }
 
-  addReview(review?: string) {
-    if (this.gameId && review) {
+  addReview(content?: string, rating?: number) {
+    if (rating === 0) {
+      // Display an error message or prevent the form submission
+      console.log('Please select a rating before submitting your review');
+      return;
+    }
+
+    if (this.gameId && content && rating) {
       let payload: ReviewPost = {
         gameId: this.gameId,
         username: this.username,
-        content: review
+        content: content,
+        rating: rating
       }
       this.http.post<ReviewPost>("http://localhost:8080/api/review", payload).pipe(
         switchMap(() => this.gameService.getGameById(Number(this.gameId)))
@@ -91,6 +98,8 @@ export class GameDetailComponent implements OnInit {
           this.game = game;
         });
     }
+    this.reviewContent = undefined;
+    this.userRating = 0;
   }
 
   switchCommentAndReviews(tabValue: string) {

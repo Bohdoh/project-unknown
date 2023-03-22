@@ -37,11 +37,12 @@ public class Review {
 
     public Review (){}
 
-    public Review (String content,Enduser enduser,Game game){
+    public Review (String content,Enduser enduser,Game game,double rating){
         this.content = content;
         this.createdAt = Instant.now();
         this.enduser = enduser;
         this.game = game;
+        this.rating = rating;
     }
 
 }

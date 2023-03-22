@@ -19,6 +19,8 @@ export class NavbarComponent implements OnInit{
   username: string|any;
   role?:string;
 
+
+
   selectedImage?: File;
 
   enduser?:Enduser;
@@ -62,10 +64,6 @@ export class NavbarComponent implements OnInit{
     this.authService.logout();
     this.isLoggedIn = false;
     this.router.navigateByUrl('');
-  }
-
-  updateRole() {
-    this.role = this.localStorage.retrieve('role');
   }
 
   onFileSelected(event: any) {

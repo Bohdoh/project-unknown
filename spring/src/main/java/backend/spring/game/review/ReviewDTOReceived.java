@@ -11,4 +11,5 @@ public class ReviewDTOReceived {
     private Integer gameId;
     private String username;
     private String content;
+    private double rating;
 }
