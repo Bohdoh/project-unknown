@@ -63,7 +63,7 @@
         <span class="navbar-item" >{{username}}</span>
 
         <figure class="image is-1by navbar-item navbar-link">
-          <img class="is-rounded" *ngIf="enduser"
+          <img class="is-rounded" *ngIf="enduser && enduser.image !== ''"
                [src]="'data:image/png;base64,'+enduser.image"
                alt="Profile Picture">
           <img class="is-rounded" *ngIf="!enduser" src="https://bulma.io/images/placeholders/128x128.png"
@@ -81,7 +81,7 @@
               <div class="field">
                 <input type="file" id="imageFile" name="userImage" accept="image/*" [(ngModel)]="fileInput">
               </div>
-              <button class="button is-small is-light" type="submit">Submit</button>
+              <button class="button is-small is-light" type="submit" (click)="onSubmit()"> Submit</button>
             </form>
 
           </div>

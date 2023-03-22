@@ -31,7 +31,8 @@ export class NavbarComponent implements OnInit{
     this.username = this.authService.getUsername();
     this.role = this.authService.getRole();
     this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
-      this.enduser = user});
+      this.enduser = user;
+      console.log(this.enduser?.username);});
   }
 
   goToUserProfile() {

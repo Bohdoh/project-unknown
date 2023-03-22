@@ -83,7 +83,8 @@ public class GameController {
         return response;
     }
 
-    @GetMapping("api/chapters/{gameId}")
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @GetMapping("/api/chapters/{gameId}")
     public List<ChapterDTO> readGameChapters(@PathVariable Integer gameId){
         return converterService.chaptersToChapterDTOList(gameRepository.findByGameId(gameId).getChapters());
     }

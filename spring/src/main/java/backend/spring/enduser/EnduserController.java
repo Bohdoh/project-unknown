@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200/")
 public class EnduserController {
 
     private final ConverterService converterService;
@@ -21,7 +21,8 @@ public class EnduserController {
         this.enduserRepository = enduserRepository;
     }
 
-    @GetMapping("api/users/{username}")
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @GetMapping("/api/users/{username}")
     public EnduserDTO readUser(@PathVariable String username){
         return converterService.enduserToEnduserDTO(
                 enduserRepository.findByUsername(username)
@@ -30,7 +31,8 @@ public class EnduserController {
 
     }
 
-    @PostMapping("api/users/{username}/image")
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @PostMapping("/api/users/{username}/image")
     public void saveUserImage(@PathVariable String username,@RequestParam("file") MultipartFile imageFile) throws IOException {
         byte[] imageBytes = imageFile.getBytes();
         if(imageBytes.length > 0) {
@@ -43,6 +45,7 @@ public class EnduserController {
             }
         }
     }
+
 
 
 

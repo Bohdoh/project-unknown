@@ -71,7 +71,6 @@ public class Enduser implements UserDetails {
     }
 
     public String getImage(){
-
         return image != null ? Base64.getEncoder().encodeToString(image) : "";
     }
 

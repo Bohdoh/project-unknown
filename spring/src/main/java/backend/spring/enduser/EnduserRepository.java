@@ -10,4 +10,5 @@ public interface EnduserRepository extends JpaRepository<Enduser,Integer> {
     Enduser findByEnduserId(Integer id);
 
     Optional<Enduser> findByUsername(String username);
+
 }
