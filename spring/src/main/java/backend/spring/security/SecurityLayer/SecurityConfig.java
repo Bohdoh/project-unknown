@@ -44,6 +44,7 @@ public class SecurityConfig {
                         "/api/games/**",
                         "/api/categories/**",
                         "/api/chapters/**",
+                        "/api/comment",
                         "/api/users/**"
                 )
                 .permitAll ()

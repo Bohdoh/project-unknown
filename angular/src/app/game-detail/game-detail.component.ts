@@ -5,6 +5,10 @@ import {Category} from "../interfaces/category";
 import {GameService} from "../services/game.service";
 import {ActivatedRoute} from "@angular/router";
 import {TimerService} from "../services/timer.service";
+import {AuthService} from "../services/auth.service";
+import {Enduser} from "../interfaces/enduser";
+import {CommentPost} from "../interfaces/comment-post";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-game-detail',
@@ -15,18 +19,21 @@ export class GameDetailComponent implements OnInit{
 
   gameId? : number;
   game?:Game;
-  commentContent?: string;
-  reviewContent?: string;
   showComment: boolean = true;
   showReview: boolean = false;
+  isLoggedIn?: boolean;
+  username: string|any;
+  role?:string;
+  commentContent?: string;
+  reviewContent?: string;
+  currentUser?:Enduser;
 
 
-  constructor(
-    private http:HttpClient,
-    private gameService : GameService,
-    private route:ActivatedRoute,
-    private timerService: TimerService
-  ) {
+  constructor(private http:HttpClient,
+              private gameService : GameService,
+              private route:ActivatedRoute,
+              private authService: AuthService,
+              private timerService: TimerService) {
   }
 
   ngOnInit(): void {
@@ -34,23 +41,36 @@ export class GameDetailComponent implements OnInit{
     this.gameService.getGameById(this.gameId).subscribe((game: Game) => {
       this.game = game;
     });
+    this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
+    this.authService.username.subscribe((data: string) => this.username = data);
+    this.authService.role.subscribe((data: string) => this.role = data);
+    this.isLoggedIn = this.authService.isLoggedIn();
+    this.username = this.authService.getUsername();
+    this.role = this.authService.getRole();
+    this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
+      this.currentUser = user});
+  }
+
+  addComment(comment?: string,) {
+    if(this.gameId && comment){
+    let payload :CommentPost = {
+      gameId:this.gameId,
+      username:this.username,
+      content:comment
+    }
+    this.http.post<CommentPost>("http://localhost:8081/api/comment",payload).subscribe();
+    }
+
+
   }
 
   startGame() {
     this.timerService.startTimer();
 
   }
-
-
-
-
-  addComment(comment?: string) {
-
-
-  }
-
-
 //  reviewRepository.save(new Review("Ich gebe dem spiel eine 5 von 5!", enduserRepository.getById(1), gameRepository.findByGameId(7) ));
+
+
   addReview() {
 
   }

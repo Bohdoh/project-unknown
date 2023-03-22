@@ -3,6 +3,7 @@ import {GameService} from "../../services/game.service";
 import {Chapter} from "../../interfaces/chapter";
 import {ActivatedRoute} from "@angular/router";
 import {Game} from "../../interfaces/game";
+import {FormBuilder} from "@angular/forms";
 import {TimerService} from "../../services/timer.service";
 
 @Component({

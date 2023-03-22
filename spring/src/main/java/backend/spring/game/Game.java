@@ -36,11 +36,13 @@ public class Game {
     private Set<Category> categories;
 
     @JsonManagedReference
+    @OrderBy("createdAt DESC")
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "game")
     private List<Comment> comments;
 
     @JsonManagedReference
+    @OrderBy("createdAt DESC")
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "game")
     private List<Review> reviews;
