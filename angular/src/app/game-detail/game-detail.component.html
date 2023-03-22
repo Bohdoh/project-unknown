@@ -32,30 +32,33 @@
 
         </div>
         <div class="level-item">
-       <a [routerLink]='"/game/play/"+ game.id+"/"+game.title'> <button class="button is-size-4 is-align-items-baseline" (click)="startGame()" ><i class="fa-solid fa-play"></i>&nbsp;&nbsp;Play</button></a>
-      </div>
-
-      <!-- TODO when user is logged in logic -->
-        <div class="level-right">
-        <div class="level-item">
-        <!--          <a [routerLink]="['/login']">-->
-        <!--            <div *ngIf="!sessionUser" class="level-item tag is-medium is-light mx-1 button">-->
-        <!--              <span class="icon is-small mr-3"><i class="fa-solid fa-right-to-bracket"></i></span>Log-->
-        <!--              in to Comment-->
-        <!--            </div>-->
-        <!--          </a>-->
-        <!--          <a [routerLink]="['/edit', post.postId]">-->
-        <!--            <div *ngIf="sessionUser && sessionUser.isAdmin()"-->
-        <!--                 class="level-item tag is-medium mx-1 button">edit-->
-        <!--            </div>-->
-        <!--          </a>-->
-        <!--          <a (click)="deletePost(post.postId)">-->
-        <!--            <div *ngIf="sessionUser && sessionUser.isAdmin()"-->
-        <!--                 class="level-item tag is-medium is-danger mx-1 button">-->
-        <!--              delete-->
-        <!--            </div>-->
-        <!--          </a>-->
+          <a [routerLink]='"/game/play/"+ game.id+"/"+game.title'>
+            <button class="button is-size-4 is-align-items-baseline"><i class="fa-solid fa-play"></i>&nbsp;&nbsp;Play
+            </button>
+          </a>
         </div>
+
+        <!-- TODO when user is logged in logic -->
+        <div class="level-right">
+          <div class="level-item">
+            <!--          <a [routerLink]="['/login']">-->
+            <!--            <div *ngIf="!sessionUser" class="level-item tag is-medium is-light mx-1 button">-->
+            <!--              <span class="icon is-small mr-3"><i class="fa-solid fa-right-to-bracket"></i></span>Log-->
+            <!--              in to Comment-->
+            <!--            </div>-->
+            <!--          </a>-->
+            <!--          <a [routerLink]="['/edit', post.postId]">-->
+            <!--            <div *ngIf="sessionUser && sessionUser.isAdmin()"-->
+            <!--                 class="level-item tag is-medium mx-1 button">edit-->
+            <!--            </div>-->
+            <!--          </a>-->
+            <!--          <a (click)="deletePost(post.postId)">-->
+            <!--            <div *ngIf="sessionUser && sessionUser.isAdmin()"-->
+            <!--                 class="level-item tag is-medium is-danger mx-1 button">-->
+            <!--              delete-->
+            <!--            </div>-->
+            <!--          </a>-->
+          </div>
         </div>
       </div>
 
@@ -66,46 +69,49 @@
     <div class="tabs is-medium">
       <ul>
         <li>
-          <a  (click)="switchCommentAndReviews('comments')">Comments</a>
+          <a (click)="switchCommentAndReviews('comments')">Comments</a>
         </li>
         <li>
-          <a  (click)="switchCommentAndReviews('reviews')">Reviews</a>
+          <a (click)="switchCommentAndReviews('reviews')">Reviews</a>
         </li>
       </ul>
     </div>
 
     <div *ngIf="showComment">
       <div *ngIf="isLoggedIn">
-      <article class="media mx-6" id="commentStart">
-        <figure class="media-left">
-          <p class="image is-64x64">
-            <img class="is-rounded" *ngIf="currentUser && currentUser.image !== ''" [src]="'data:image/png;base64,' + currentUser.image" alt="Profile Picture">
-            <img class="is-rounded" *ngIf="currentUser && currentUser.image === ''" src="https://bulma.io/images/placeholders/128x128.png" alt="Profile Picture">
-          </p>
-        </figure>
-        <form class="media-content" (ngSubmit)="addComment(commentContent)">
-          <div class="field">
-            <p class="control">
+        <article class="media mx-6" id="commentStart">
+          <figure class="media-left">
+            <p class="image is-64x64">
+              <img class="is-rounded" *ngIf="currentUser && currentUser.image !== ''"
+                   [src]="'data:image/png;base64,' + currentUser.image" alt="Profile Picture">
+              <img class="is-rounded" *ngIf="currentUser && currentUser.image === ''"
+                   src="https://bulma.io/images/placeholders/128x128.png" alt="Profile Picture">
+            </p>
+          </figure>
+          <form class="media-content" (ngSubmit)="addComment(commentContent)">
+            <div class="field">
+              <p class="control">
               <textarea class="textarea is-half" [(ngModel)]="commentContent" name="content"
                         placeholder="Add a comment..."></textarea>
-            </p>
-          </div>
-          <nav class="level">
-            <div class="level-left">
-              <div class="level-item">
-                <button class="button is-info is-primary" type="submit">Submit</button>
-              </div>
+              </p>
             </div>
-          </nav>
-        </form>
-      </article>
+            <nav class="level">
+              <div class="level-left">
+                <div class="level-item">
+                  <button class="button is-info is-primary" type="submit">Submit</button>
+                </div>
+              </div>
+            </nav>
+          </form>
+        </article>
       </div>
-      <article  class="media mx-6" *ngFor="let comment of game.comments">
+      <article class="media mx-6" *ngFor="let comment of game.comments">
         <figure class="media-left">
           <p class="image is-64x64 is-rounded">
             <img class="is-rounded" *ngIf="comment.enduser.image"
                  [src]="'data:image/png;base64,' + comment.enduser.image" alt="Profile Picture">
-            <img class="is-rounded" *ngIf="!comment.enduser.image" src="https://bulma.io/images/placeholders/128x128.png" alt="Profile Picture">
+            <img class="is-rounded" *ngIf="!comment.enduser.image"
+                 src="https://bulma.io/images/placeholders/128x128.png" alt="Profile Picture">
           </p>
         </figure>
         <div class="media-content">
@@ -124,40 +130,43 @@
 
     </div>
 
-     <div *ngIf="showReview">
+    <div *ngIf="showReview">
 
-       <div *ngIf="isLoggedIn">
-         <article class="media mx-6" id="reviewStart">
-           <figure class="media-left">
-             <p class="image is-64x64">
-               <img class="is-rounded" *ngIf="currentUser && currentUser.image !== ''" [src]="'data:image/png;base64,' + currentUser.image" alt="Profile Picture">
-               <img class="is-rounded" *ngIf="currentUser && currentUser.image === ''" src="https://bulma.io/images/placeholders/128x128.png" alt="Profile Picture">
-             </p>
-           </figure>
-           <form class="media-content" (submit)="addReview()">
-             <div class="field">
-               <p class="control">
+      <div *ngIf="isLoggedIn">
+        <article class="media mx-6" id="reviewStart">
+          <figure class="media-left">
+            <p class="image is-64x64">
+              <img class="is-rounded" *ngIf="currentUser && currentUser.image !== ''"
+                   [src]="'data:image/png;base64,' + currentUser.image" alt="Profile Picture">
+              <img class="is-rounded" *ngIf="currentUser && currentUser.image === ''"
+                   src="https://bulma.io/images/placeholders/128x128.png" alt="Profile Picture">
+            </p>
+          </figure>
+          <form class="media-content" (submit)="addReview(reviewContent)">
+            <div class="field">
+              <p class="control">
               <textarea class="textarea is-half" [(ngModel)]="reviewContent" name="content"
                         placeholder="Add a review..."></textarea>
-               </p>
-             </div>
-             <nav class="level">
-               <div class="level-left">
-                 <div class="level-item">
-                   <button class="button is-info is-primary" type="submit">Submit</button>
-                 </div>
-               </div>
-             </nav>
-           </form>
-         </article>
-       </div>
+              </p>
+            </div>
+            <nav class="level">
+              <div class="level-left">
+                <div class="level-item">
+                  <button class="button is-info is-primary" type="submit">Submit</button>
+                </div>
+              </div>
+            </nav>
+          </form>
+        </article>
+      </div>
 
-      <article  class="media mx-6" *ngFor="let review of game.reviews">
+      <article class="media mx-6" *ngFor="let review of game.reviews">
         <figure class="media-left">
           <p class="image is-64x64 is-rounded">
             <img class="is-rounded" *ngIf="review.enduser.image"
                  [src]="'data:image/png;base64,' + review.enduser.image" alt="Profile Picture">
-            <img class="is-rounded" *ngIf="!review.enduser.image" src="images/128x128.png" alt="Profile Picture">
+            <img class="is-rounded" *ngIf="!review.enduser.image" src="https://bulma.io/images/placeholders/128x128.png"
+                 alt="Profile Picture">
           </p>
         </figure>
         <div class="media-content">
@@ -166,7 +175,6 @@
               <p>{{ review.enduser.username }}
             </strong><small> {{ review.createdAt | date:'HH:mm:ss     dd-MM-yy' }}</small><br>
             <span>{{ review.content }}</span>
-
           </div>
         </div>
         <div class="media-right">

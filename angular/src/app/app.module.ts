@@ -40,7 +40,7 @@ import {AuthInterceptor} from "./auth.interceptor";
     LogoutComponent,
     RegisterComponent,
     HomeComponent,
-    GameChaptersComponent,
+    GameChaptersComponent
   ],
   imports: [
     BrowserModule,

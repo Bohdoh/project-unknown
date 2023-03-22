@@ -11,6 +11,7 @@ import backend.spring.game.comment.CommentDTO;
 import backend.spring.game.comment.CommentDTOReceived;
 import backend.spring.game.review.Review;
 import backend.spring.game.review.ReviewDTO;
+import backend.spring.game.review.ReviewDTOReceived;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,4 +55,9 @@ public class ConverterService {
         Enduser user = enduserRepository.findByUsername(comment.getUsername()).orElseThrow();
         return new Comment(comment.getContent(),user,gameRepository.findByGameId(comment.getGameId()));
     }
+    public Review reviewDTOReceivedToReview(ReviewDTOReceived review) {
+        Enduser user = enduserRepository.findByUsername(review.getUsername()).orElseThrow();
+        return new Review(review.getContent(),user,gameRepository.findByGameId(review.getGameId()));
+    }
+
 }
