@@ -11,6 +11,7 @@ import {CommentPost} from "../interfaces/comment-post";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ReviewPost} from "../interfaces/review-post";
 import {switchMap} from "rxjs";
+import {StringToEmojiService} from "../services/string-to-emoji.service";
 
 @Component({
   selector: 'app-game-detail',
@@ -31,11 +32,12 @@ export class GameDetailComponent implements OnInit {
   currentUser?: Enduser;
 
 
-  constructor(private http:HttpClient,
-              private gameService : GameService,
-              private route:ActivatedRoute,
+  constructor(private http: HttpClient,
+              private gameService: GameService,
+              private route: ActivatedRoute,
               private authService: AuthService,
-              private timerService: TimerService) {
+              private timerService: TimerService,
+              private emojiService: StringToEmojiService) {
   }
 
   ngOnInit(): void {
@@ -61,23 +63,19 @@ export class GameDetailComponent implements OnInit {
         username: this.username,
         content: comment
       }
-
-      // this.http.post<CommentPost>("http://localhost:8080/api/comment", payload).subscribe();
-
-        this.http.post<CommentPost>("http://localhost:8081/api/comment", payload)
-          .pipe(
-            switchMap(() => this.gameService.getGameById(Number(this.gameId)))
-          )
-          .subscribe((game: Game) => {
-            this.game = game;
-          });
+      this.http.post<CommentPost>("http://localhost:8081/api/comment", payload)
+        .pipe(
+          switchMap(() => this.gameService.getGameById(Number(this.gameId)))
+        )
+        .subscribe((game: Game) => {
+          this.game = game;
+        });
     }
-
-
   }
 
   startGame() {
-    this.timerService.startTimer();}
+    this.timerService.startTimer();
+  }
 
   addReview(review?: string) {
     if (this.gameId && review) {
@@ -92,15 +90,8 @@ export class GameDetailComponent implements OnInit {
         .subscribe((game: Game) => {
           this.game = game;
         });
-
-  }
-//  reviewRepository.save(new Review("Ich gebe dem spiel eine 5 von 5!", enduserRepository.getById(1), gameRepository.findByGameId(7) ));
-
-
     }
-
-
-
+  }
 
   switchCommentAndReviews(tabValue: string) {
     switch (tabValue) {
@@ -113,10 +104,21 @@ export class GameDetailComponent implements OnInit {
         this.showReview = true;
         break;
     }
-
   }
 
   deleteComment(commentId: number, newestTitle: any) {
 
+  }
+
+  emojiConvertComment(text?: string) {
+    if (text) {
+      this.commentContent = this.emojiService.emojiConvert(text);
+    }
+  }
+
+  emojiConvertReview(text?: string) {
+    if (text) {
+      this.reviewContent = this.emojiService.emojiConvert(text);
+    }
   }
 }

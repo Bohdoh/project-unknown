@@ -91,7 +91,7 @@
           <form class="media-content" (ngSubmit)="addComment(commentContent)">
             <div class="field">
               <p class="control">
-              <textarea class="textarea is-half" [(ngModel)]="commentContent" name="content"
+              <textarea class="textarea is-half" (input)="emojiConvertComment(commentContent)" [(ngModel)]="commentContent" name="content"
                         placeholder="Add a comment..."></textarea>
               </p>
             </div>
@@ -145,7 +145,7 @@
           <form class="media-content" (submit)="addReview(reviewContent)">
             <div class="field">
               <p class="control">
-              <textarea class="textarea is-half" [(ngModel)]="reviewContent" name="content"
+              <textarea class="textarea is-half" (input)="emojiConvertReview(reviewContent)" [(ngModel)]="reviewContent" name="content"
                         placeholder="Add a review..."></textarea>
               </p>
             </div>
@@ -175,6 +175,7 @@
               <p>{{ review.enduser.username }}
             </strong><small> {{ review.createdAt | date:'HH:mm:ss     dd-MM-yy' }}</small><br>
             <span>{{ review.content }}</span>
+
           </div>
         </div>
         <div class="media-right">
