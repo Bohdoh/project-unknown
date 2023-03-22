@@ -63,7 +63,7 @@ export class GameDetailComponent implements OnInit {
         username: this.username,
         content: comment
       }
-      this.http.post<CommentPost>("http://localhost:8081/api/comment", payload)
+      this.http.post<CommentPost>("http://localhost:8080/api/comment", payload)
         .pipe(
           switchMap(() => this.gameService.getGameById(Number(this.gameId)))
         )
@@ -84,7 +84,7 @@ export class GameDetailComponent implements OnInit {
         username: this.username,
         content: review
       }
-      this.http.post<ReviewPost>("http://localhost:8081/api/review", payload).pipe(
+      this.http.post<ReviewPost>("http://localhost:8080/api/review", payload).pipe(
         switchMap(() => this.gameService.getGameById(Number(this.gameId)))
       )
         .subscribe((game: Game) => {
