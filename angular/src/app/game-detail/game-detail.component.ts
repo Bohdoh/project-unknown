@@ -29,7 +29,15 @@ export class GameDetailComponent implements OnInit{
     });
   }
 
-  addComment(comment?: string) {
+  addComment(comment?: string,) {
+    if(this.gameId && comment){
+    let payload :CommentPost = {
+      gameId:this.gameId,
+      username:this.username,
+      content:comment
+    }
+    this.http.post<CommentPost>("http://localhost:8080/api/comment",payload);
+    }
 
 
   }
