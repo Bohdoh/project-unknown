@@ -62,7 +62,7 @@ export class NavbarComponent implements OnInit{
   onSubmit() {
     const formData = new FormData();
     formData.append('userImage', this.fileInput);
-    this.http.post("http://localhost:8080/users/" + this.username + "/image",formData);
+    this.http.post("http://localhost:8081/users/" + this.username + "/image",formData);
   }
 
   updateRole() {

@@ -9,7 +9,7 @@ import java.util.Base64;
 import java.util.Objects;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200/")
 public class EnduserController {
 
     private final ConverterService converterService;
