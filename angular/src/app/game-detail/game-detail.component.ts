@@ -59,8 +59,16 @@ export class GameDetailComponent implements OnInit {
         username: this.username,
         content: comment
       }
-      this.http.post<CommentPost>("http://localhost:8080/api/comment", payload).subscribe();
-      location.reload();
+
+      // this.http.post<CommentPost>("http://localhost:8080/api/comment", payload).subscribe();
+
+        this.http.post<CommentPost>("http://localhost:8080/api/comment", payload)
+          .pipe(
+            switchMap(() => this.gameService.getGameById(Number(this.gameId)))
+          )
+          .subscribe((game: Game) => {
+            this.game = game;
+          });
     }
 
 
