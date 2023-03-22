@@ -4,6 +4,7 @@ import {Game} from "../interfaces/game";
 import {Category} from "../interfaces/category";
 import {GameService} from "../services/game.service";
 import {ActivatedRoute} from "@angular/router";
+import {TimerService} from "../services/timer.service";
 import {AuthService} from "../services/auth.service";
 import {Enduser} from "../interfaces/enduser";
 import {CommentPost} from "../interfaces/comment-post";
@@ -30,10 +31,11 @@ export class GameDetailComponent implements OnInit {
   currentUser?: Enduser;
 
 
-  constructor(private http: HttpClient,
-              private gameService: GameService,
-              private route: ActivatedRoute,
-              private authService: AuthService) {
+  constructor(private http:HttpClient,
+              private gameService : GameService,
+              private route:ActivatedRoute,
+              private authService: AuthService,
+              private timerService: TimerService) {
   }
 
   ngOnInit(): void {
@@ -62,7 +64,7 @@ export class GameDetailComponent implements OnInit {
 
       // this.http.post<CommentPost>("http://localhost:8080/api/comment", payload).subscribe();
 
-        this.http.post<CommentPost>("http://localhost:8080/api/comment", payload)
+        this.http.post<CommentPost>("http://localhost:8081/api/comment", payload)
           .pipe(
             switchMap(() => this.gameService.getGameById(Number(this.gameId)))
           )
@@ -73,6 +75,9 @@ export class GameDetailComponent implements OnInit {
 
 
   }
+
+  startGame() {
+    this.timerService.startTimer();}
 
   addReview(review?: string) {
     if (this.gameId && review) {
@@ -88,11 +93,13 @@ export class GameDetailComponent implements OnInit {
           this.game = game;
         });
 
+  }
+//  reviewRepository.save(new Review("Ich gebe dem spiel eine 5 von 5!", enduserRepository.getById(1), gameRepository.findByGameId(7) ));
 
 
     }
 
-  }
+
 
 
   switchCommentAndReviews(tabValue: string) {

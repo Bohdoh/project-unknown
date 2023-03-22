@@ -9,7 +9,7 @@ import {Category} from "../interfaces/category";
 })
 export class CategoryService {
 
-  private gamesUrl = 'http://localhost:8080/api/categories';
+  private gamesUrl = 'http://localhost:8081/api/categories';
   constructor(private http:HttpClient) { }
 
   getCategories(): Observable<Category[]> {

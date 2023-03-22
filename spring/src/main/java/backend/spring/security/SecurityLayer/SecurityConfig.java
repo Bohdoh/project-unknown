@@ -26,6 +26,7 @@ public class SecurityConfig {
 
 
     private final JwtAuthenticationFilter jwtAuthFilter;
+
     private final AuthenticationProvider authenticationProvider;
 
     private final LogoutHandler logoutHandler;
@@ -42,10 +43,9 @@ public class SecurityConfig {
                         "/api/v1/auth/**",
                         "/api/games/**",
                         "/api/categories/**",
-                        "/api/chapters/**",
-                        "/api/comment",
-                        "/api/review",
-                        "/api/users/**"
+                        "/api/chapters/**"//,
+                       // "/api/comment",
+                       // "/api/users/**"
                 )
                 .permitAll ()
                 .anyRequest ()

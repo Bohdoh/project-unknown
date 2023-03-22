@@ -4,6 +4,7 @@ import {Chapter} from "../../interfaces/chapter";
 import {ActivatedRoute} from "@angular/router";
 import {Game} from "../../interfaces/game";
 import {FormBuilder} from "@angular/forms";
+import {TimerService} from "../../services/timer.service";
 
 @Component({
   selector: 'app-game-chapters',
@@ -22,8 +23,9 @@ export class GameChaptersComponent implements OnInit {
 
   constructor(
     private gameService: GameService,
-    private route: ActivatedRoute
-    ) {
+    private route: ActivatedRoute,
+    private timerService: TimerService
+  ) {
   }
 
   ngOnInit(): void {
@@ -89,5 +91,15 @@ export class GameChaptersComponent implements OnInit {
     this.selectedPath = undefined;
     this.selectedPathLetter = undefined;
     this.setCurrentChapByIdent(nextIdent);
+  }
+
+
+  startGame() {
+    this.timerService.startTimer();
+
+  }
+  resetTimer() {
+    this.timerService.resetTimer();
+
   }
 }

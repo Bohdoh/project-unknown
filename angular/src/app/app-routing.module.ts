@@ -15,7 +15,7 @@ import {GameChaptersComponent} from "./game-detail/game-chapters/game-chapters.c
 const routes: Routes = [
   {path: "", component: LandingComponent},
   {path: "game/view/:id", component: GameDetailComponent},
-  {path: "game/play/:id/:title", component: GameChaptersComponent},
+ // {path: "game/play/:id/:title", component: GameChaptersComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {path: 'home',component:LandingComponent},

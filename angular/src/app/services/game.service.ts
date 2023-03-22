@@ -13,16 +13,16 @@ export class GameService {
   constructor(private http:HttpClient) { }
 
   getGames(): Observable<Game[]> {
-    return this.http.get<Game[]>('http://localhost:8080/api/games');
+    return this.http.get<Game[]>('http://localhost:8081/api/games');
   }
 
 
   getGameById(id:number): Observable<Game> {
-  return this.http.get<Game>('http://localhost:8080/api/games/'+id);
+  return this.http.get<Game>('http://localhost:8081/api/games/'+id);
   }
 
   getChaptersByGameId(gameId:number): Observable<Chapter[]> {
-  return this.http.get<Chapter[]>('http://localhost:8080/api/chapters/'+gameId);
+  return this.http.get<Chapter[]>('http://localhost:8081/api/chapters/'+gameId);
   }
 }
 
