@@ -22,7 +22,7 @@ export class AuthService {
     username: this.getUsername(),
     role: this.getRole()
   }
-  private apiUrl = 'http://localhost:8081/api/v1/auth';
+  private apiUrl = 'http://localhost:8080/api/v1/auth';
   private authStatus = new BehaviorSubject<boolean>(false);
 
 
@@ -86,7 +86,7 @@ export class AuthService {
   }
 
   getUserByUsername(username: string): Observable<Enduser> {
-    return this.http.get<Enduser>("http://localhost:8081/api/users/" + username);
+    return this.http.get<Enduser>("http://localhost:8080/api/users/" + username);
   }
 
   getRole() {

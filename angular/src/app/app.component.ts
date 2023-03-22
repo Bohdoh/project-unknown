@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Game} from "./interfaces/game";
 import {Router} from "@angular/router";
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
   constructor(private http:HttpClient,private router: Router){};
 
   ngOnInit(): void {
-    this.http.get<Game[]>("http://localhost:8081/api/games").subscribe(
+    this.http.get<Game[]>("http://localhost:8080/api/games").subscribe(
       games => {
                 this.games = games
       }

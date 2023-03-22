@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {Enduser} from "../../interfaces/enduser";
-import {Game} from "../../interfaces/game";
 import {HttpClient} from "@angular/common/http";
 import {LocalStorageService} from "ngx-webstorage";
 import {TimerService} from "../../services/timer.service";
+import {tap} from "rxjs";
 
 
 @Component({
@@ -18,6 +18,8 @@ export class NavbarComponent implements OnInit{
   isLoggedIn: boolean | undefined;
   username: string|any;
   role?:string;
+
+  selectedImage?: File;
 
   enduser?:Enduser;
   fileInput: any;
@@ -39,15 +41,17 @@ export class NavbarComponent implements OnInit{
     this.isLoggedIn = this.authService.isLoggedIn();
     this.username = this.authService.getUsername();
     this.role = this.authService.getRole();
-    this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
-      this.enduser = user;
-      console.log(this.enduser?.username);});
-    this.timerService.timer$.subscribe((value: number) => {
-      this.timerValue = value;
-    });
-    this.timerService.isPlaying$.subscribe((value: boolean) => {
-      this.isPlaying = value;
-    });
+    if(this.isLoggedIn) {
+      this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
+        this.enduser = user;
+      });
+      this.timerService.timer$.subscribe((value: number) => {
+        this.timerValue = value;
+      });
+      this.timerService.isPlaying$.subscribe((value: boolean) => {
+        this.isPlaying = value;
+      });
+    }
   }
 
   goToUserProfile() {
@@ -60,13 +64,27 @@ export class NavbarComponent implements OnInit{
     this.router.navigateByUrl('');
   }
 
-  onSubmit() {
-    const formData = new FormData();
-    formData.append('userImage', this.fileInput);
-    this.http.post("http://localhost:8081/users/" + this.username + "/image",formData);
-  }
-
   updateRole() {
     this.role = this.localStorage.retrieve('role');
+  }
+
+  onFileSelected(event: any) {
+    this.selectedImage = event.target.files[0];
+    const formData = new FormData();
+    if(this.selectedImage){
+    formData.append('file', this.selectedImage);}
+    this.http.post(
+      "http://localhost:8080/api/users/" + this.username + "/image",
+      formData
+    ).pipe(
+      tap(() => {
+        this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
+          this.enduser = user;
+        });
+      })
+    ).subscribe((response) => {
+      console.log(response);
+    });
+
   }
 }
