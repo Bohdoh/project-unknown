@@ -9,6 +9,7 @@ import {Enduser} from "../interfaces/enduser";
 import {CommentPost} from "../interfaces/comment-post";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ReviewPost} from "../interfaces/review-post";
+import {switchMap} from "rxjs";
 
 @Component({
   selector: 'app-game-detail',
@@ -72,8 +73,15 @@ export class GameDetailComponent implements OnInit {
         username: this.username,
         content: review
       }
-      this.http.post<ReviewPost>("http://localhost:8080/api/review", payload).subscribe();
-      location.reload();
+      this.http.post<ReviewPost>("http://localhost:8080/api/review", payload).pipe(
+        switchMap(() => this.gameService.getGameById(Number(this.gameId)))
+      )
+        .subscribe((game: Game) => {
+          this.game = game;
+        });
+
+
+
     }
 
   }

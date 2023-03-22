@@ -24,6 +24,8 @@ import {NgxWebstorageModule} from "ngx-webstorage";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {NavbarComponent} from "./alwaysVisible/navbar/navbar.component";
+import { GameDetailCommentsComponent } from './game-detail/game-detail-comments/game-detail-comments.component';
+import { GameDetailReviewsComponent } from './game-detail/game-detail-reviews/game-detail-reviews.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import {NavbarComponent} from "./alwaysVisible/navbar/navbar.component";
     RegisterComponent,
     HomeComponent,
     GameChaptersComponent,
+    GameDetailCommentsComponent,
+    GameDetailReviewsComponent,
   ],
   imports: [
     BrowserModule,
