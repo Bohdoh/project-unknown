@@ -3,6 +3,7 @@ import {GameService} from "../../services/game.service";
 import {Chapter} from "../../interfaces/chapter";
 import {ActivatedRoute} from "@angular/router";
 import {Game} from "../../interfaces/game";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-game-chapters',
@@ -19,7 +20,10 @@ export class GameChaptersComponent implements OnInit {
 
 
 
-  constructor(private gameService: GameService, private route: ActivatedRoute) {
+  constructor(
+    private gameService: GameService,
+    private route: ActivatedRoute
+    ) {
   }
 
   ngOnInit(): void {

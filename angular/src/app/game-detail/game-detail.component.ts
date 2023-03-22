@@ -4,6 +4,10 @@ import {Game} from "../interfaces/game";
 import {Category} from "../interfaces/category";
 import {GameService} from "../services/game.service";
 import {ActivatedRoute} from "@angular/router";
+import {AuthService} from "../services/auth.service";
+import {Enduser} from "../interfaces/enduser";
+import {CommentPost} from "../interfaces/comment-post";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-game-detail',
@@ -18,8 +22,20 @@ export class GameDetailComponent implements OnInit{
   reviewContent?: string;
   showComment: boolean = true;
   showReview: boolean = false;
+  isLoggedIn?: boolean;
+  username: string|any;
+  role?:string;
+  commentForm: FormGroup | any;
+  reviewForm: FormGroup | any;
 
-  constructor(private http:HttpClient,private gameService : GameService,private route:ActivatedRoute) {
+  currentUser?:Enduser;
+
+
+  constructor(private http:HttpClient,
+              private gameService : GameService,
+              private route:ActivatedRoute,
+              private authService: AuthService,
+              private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -27,6 +43,16 @@ export class GameDetailComponent implements OnInit{
     this.gameService.getGameById(this.gameId).subscribe((game: Game) => {
       this.game = game;
     });
+    this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
+    this.authService.username.subscribe((data: string) => this.username = data);
+    this.authService.role.subscribe((data: string) => this.role = data);
+    this.isLoggedIn = this.authService.isLoggedIn();
+    this.username = this.authService.getUsername();
+    this.role = this.authService.getRole();
+    this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
+      this.currentUser = user});
+    console.log(this.currentUser)
+    console.log(this.username)
   }
 
   addComment(comment?: string,) {

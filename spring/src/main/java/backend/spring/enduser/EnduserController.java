@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.Objects;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -22,16 +23,25 @@ public class EnduserController {
 
     @GetMapping("api/users/{username}")
     public EnduserDTO readUser(@PathVariable String username){
-        return converterService.enduserToEnduserDTO(Objects.requireNonNull(enduserRepository.findByUsername(username).orElse(null)));
+        return converterService.enduserToEnduserDTO(
+                enduserRepository.findByUsername(username)
+                        .orElseThrow(
+                                () -> new IllegalArgumentException("Invalid username: " + username)));
+
     }
 
     @PostMapping("api/users/{username}/image")
     public void saveUserImage(@PathVariable String username,@RequestParam("file") MultipartFile imageFile) throws IOException {
         byte[] imageBytes = imageFile.getBytes();
         if(imageBytes.length > 0) {
-            enduserRepository.findByUsername(username).get().setImage(imageBytes);
+            Optional<Enduser> optionalEnduser = enduserRepository.findByUsername(username);
+            if (optionalEnduser.isPresent()) {
+                optionalEnduser.get().setImage(imageBytes);
+            } else {
+                // Handle the case where the user is not found
+                throw new IllegalArgumentException("User not found: " + username);
+            }
         }
-
     }
 
 
