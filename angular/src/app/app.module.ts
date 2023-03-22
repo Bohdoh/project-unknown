@@ -15,7 +15,7 @@ import { LoginComponent } from './alwaysVisible/navbar/login/login.component';
 import { LogoutComponent } from './alwaysVisible/navbar/logout/logout.component';
 import { RegisterComponent } from './alwaysVisible/navbar/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { GameChaptersComponent } from './game-detail/game-chapters/game-chapters.component';
 
 
@@ -24,6 +24,7 @@ import {NgxWebstorageModule} from "ngx-webstorage";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {NavbarComponent} from "./alwaysVisible/navbar/navbar.component";
+import {AuthInterceptor} from "./auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -53,6 +54,11 @@ import {NavbarComponent} from "./alwaysVisible/navbar/navbar.component";
     AppRoutingModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     DatePipe // Add DatePipe to the providers array
   ],
   bootstrap: [AppComponent]

@@ -5,6 +5,7 @@ import {Enduser} from "../../interfaces/enduser";
 import {Game} from "../../interfaces/game";
 import {HttpClient} from "@angular/common/http";
 import {LocalStorageService} from "ngx-webstorage";
+import {TimerService} from "../../services/timer.service";
 
 
 @Component({
@@ -20,8 +21,16 @@ export class NavbarComponent implements OnInit{
 
   enduser?:Enduser;
   fileInput: any;
+  timerValue: number=60;
 
-  constructor(private authService: AuthService, private router: Router,private http:HttpClient,private localStorage: LocalStorageService) { }
+  isPlaying: boolean = false;
+  constructor(
+    private authService: AuthService,
+    private timerService: TimerService,
+    private router: Router,
+    private http:HttpClient,
+    private localStorage: LocalStorageService
+  ) { }
 
   ngOnInit() {
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
@@ -33,6 +42,12 @@ export class NavbarComponent implements OnInit{
     this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
       this.enduser = user;
       console.log(this.enduser?.username);});
+    this.timerService.timer$.subscribe((value: number) => {
+      this.timerValue = value;
+    });
+    this.timerService.isPlaying$.subscribe((value: boolean) => {
+      this.isPlaying = value;
+    });
   }
 
   goToUserProfile() {
@@ -48,7 +63,7 @@ export class NavbarComponent implements OnInit{
   onSubmit() {
     const formData = new FormData();
     formData.append('userImage', this.fileInput);
-    this.http.post("http://localhost:8080/users/" + this.username + "/image",formData);
+    this.http.post("http://localhost:8081/users/" + this.username + "/image",formData);
   }
 
   updateRole() {
