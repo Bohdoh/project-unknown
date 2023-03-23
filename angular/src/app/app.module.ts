@@ -4,7 +4,6 @@ import {AppComponent} from "./app.component";
 import {FooterComponent} from "./alwaysVisible/footer/footer.component";
 import {LandingComponent} from "./landing/landing.component";
 import {GamesListComponent} from "./landing/games-list/games-list.component";
-import {GameComponent} from "./game/game.component";
 import {GameCardComponent} from "./landing/games-list/game-card/game-card.component";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
@@ -35,7 +34,6 @@ import { ReviewsComponent } from './game-detail/reviews/reviews.component';
     AppComponent,
     NavbarComponent,
     FooterComponent,
-    GameComponent,
     LandingComponent,
     GamesListComponent,
     GameCardComponent,
