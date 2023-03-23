@@ -5,6 +5,7 @@ import backend.spring.enduser.EnduserDTO;
 import backend.spring.enduser.EnduserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,12 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 @RequiredArgsConstructor
 @RestController
+@CrossOrigin
 public class ProfilController {
 
 private final EnduserRepository enduserRepository;
 
 
-
+    @CrossOrigin
     @GetMapping("/profil/{username}")
     public ResponseEntity<ProfileDTO> getEnduserByUsername(@PathVariable String username) {
         Optional<Enduser> enduserOptional = enduserRepository.findByUsername(username);
