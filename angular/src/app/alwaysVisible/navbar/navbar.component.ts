@@ -6,6 +6,7 @@ import {HttpClient} from "@angular/common/http";
 import {LocalStorageService} from "ngx-webstorage";
 import {TimerService} from "../../services/timer.service";
 import {tap} from "rxjs";
+import {RefreshService} from "../../services/refresh.service";
 
 
 @Component({
@@ -18,23 +19,23 @@ export class NavbarComponent implements OnInit{
   isLoggedIn: boolean | undefined;
   username: string|any;
   role?:string;
-
-
-
   selectedImage?: File;
-
   enduser?:Enduser;
   fileInput: any;
   timerValue: number=60;
-
   isPlaying: boolean = false;
   constructor(
     private authService: AuthService,
     private timerService: TimerService,
     private router: Router,
     private http:HttpClient,
-    private localStorage: LocalStorageService
-  ) { }
+    private localStorage: LocalStorageService,
+    private refreshService: RefreshService
+  ) {
+    this.refreshService.refresh$.subscribe(() => {
+      this.refreshNavbar();
+    });
+  }
 
   ngOnInit() {
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
@@ -64,6 +65,7 @@ export class NavbarComponent implements OnInit{
     this.authService.logout();
     this.isLoggedIn = false;
     this.router.navigateByUrl('');
+    this.enduser = undefined;
   }
 
   onFileSelected(event: any) {
@@ -83,6 +85,10 @@ export class NavbarComponent implements OnInit{
     ).subscribe((response) => {
       console.log(response);
     });
-
+  }
+  refreshNavbar() {
+    this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
+      this.enduser = user;
+    });
   }
 }
