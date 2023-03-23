@@ -116,6 +116,7 @@ public class Application {
         commentRepository.save(new Comment("Was für ein Abenteuer! ", enduserRepository.getById(1), gameRepository.findByGameId(7)));
 
         reviewRepository.save(new Review("Ich gebe dem spiel eine 5 von 5!", enduserRepository.getById(1), gameRepository.findByGameId(7) ,5));
+        reviewRepository.save(new Review("Hat mir nicht so spaß gemacht, liegt vllt an mir.", enduserRepository.getById(7), gameRepository.findByGameId(7) ,2));
     }
 
     private void create5DummyCatsAndAssignThem() {
@@ -160,9 +161,10 @@ public class Application {
             enduserRepository.save(user);
         }
         Enduser user = new Enduser ();
-        user.setUsername("test");
+        user.setUsername(faker.name().username());
         user.setEmail("test");
         user.setPassword("test");
+        user.setImage(readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "pepe-rain.gif"));
         enduserRepository.save(user);
     }
 
