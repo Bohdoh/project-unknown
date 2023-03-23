@@ -9,6 +9,6 @@ import java.util.List;
 @Service
 public interface AdminService {
 
-    List<Enduser> getAllUsers(String username)throws UserDoesntExistException, UserIsNotAdminException;
+    List<EnduserDTO> getAllUsers(String username)throws UserDoesntExistException, UserIsNotAdminException;
 
 }

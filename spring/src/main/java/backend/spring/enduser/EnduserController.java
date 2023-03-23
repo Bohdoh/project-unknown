@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Map;
 
@@ -60,16 +61,18 @@ public class EnduserController {
     }
 
     @CrossOrigin
-    @GetMapping("/api/users/{username}/{role}/listOfUsers")
-    public ResponseEntity<?> getUsers(@PathVariable String role, @PathVariable String username){
+    @GetMapping("/api/users/{username}/listOfUsers")
+    public ResponseEntity<?> getUsers(@PathVariable String username){
         try {
-            return ResponseEntity.ok(adminService.getAllUsers(username));
+            List<EnduserDTO> enduserDTOs = adminService.getAllUsers(username);
+            return ResponseEntity.ok(enduserDTOs);
         } catch (UserIsNotAdminException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         } catch (UserDoesntExistException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
+
 
 
 
