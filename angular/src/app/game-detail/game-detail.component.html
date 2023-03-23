@@ -133,7 +133,7 @@
 
     <div *ngIf="showReview">
 
-      <div *ngIf="isLoggedIn">
+      <div *ngIf="isLoggedIn && !userHasReview">
         <article class="media mx-6" id="reviewStart">
           <figure class="media-left">
             <p class="image is-64x64">
@@ -170,6 +170,9 @@
           </form>
 
         </article>
+      </div>
+      <div *ngIf="isLoggedIn && userHasReview">
+        Placeholder: You already have a review. Edit your review -here- (implement)
       </div>
       <hr>
       <article class="media mx-6" *ngFor="let review of game.reviews">

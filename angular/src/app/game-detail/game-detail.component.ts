@@ -32,6 +32,7 @@ export class GameDetailComponent implements OnInit {
   reviewContent?: string;
   currentUser?: Enduser;
   userRating: number = 0;
+  userHasReview: boolean = true;
 
 
   constructor(private http: HttpClient,
@@ -40,13 +41,14 @@ export class GameDetailComponent implements OnInit {
               private authService: AuthService,
               private timerService: TimerService,
               private emojiService: StringToEmojiService
-              ) {
+  ) {
   }
 
   ngOnInit(): void {
     this.gameId = Number(this.route.snapshot.paramMap.get('id'));
     this.gameService.getGameById(this.gameId).subscribe((game: Game) => {
       this.game = game;
+      this.userHasReview = this.userHasReviewcheck();
     });
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
     this.authService.username.subscribe((data: string) => this.username = data);
@@ -57,9 +59,12 @@ export class GameDetailComponent implements OnInit {
     this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
       this.currentUser = user
     });
+
+
   }
 
-  addComment(comment?: string,) {
+
+  addComment(comment ?: string,) {
     if (this.gameId && comment) {
       let payload: CommentPost = {
         gameId: this.gameId,
@@ -77,11 +82,23 @@ export class GameDetailComponent implements OnInit {
     this.commentContent = undefined;
   }
 
+  userHasReviewcheck(): boolean {
+    console.log(this.game)
+    if (this.game) {
+      for (let review of this.game.reviews) {
+        if (review.enduser.username === this.username) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   startGame() {
     this.timerService.startTimer();
   }
 
-  addReview(content?: string, rating?: number) {
+  addReview(content ?: string, rating ?: number) {
     if (rating === 0) {
       // Display an error message or prevent the form submission
       console.log('Please select a rating before submitting your review');
@@ -100,13 +117,17 @@ export class GameDetailComponent implements OnInit {
       )
         .subscribe((game: Game) => {
           this.game = game;
+          this.userHasReview = this.userHasReviewcheck();
         });
     }
     this.reviewContent = undefined;
     this.userRating = 0;
   }
 
-  switchCommentAndReviews(tabValue: string) {
+  switchCommentAndReviews(tabValue
+                            :
+                            string
+  ) {
     switch (tabValue) {
       case 'comments':
         this.showComment = true;
@@ -120,20 +141,20 @@ export class GameDetailComponent implements OnInit {
   }
 
   deleteComment(comment: Comment) {
-      this.http.post<number>('http://localhost:8080/api/comments/delete', comment.commentId).pipe(
-        switchMap(() => this.gameService.getGameById(Number(this.gameId)))
-      ).subscribe((game: Game) => {
-        this.game = game;
-      });
+    this.http.post<number>('http://localhost:8080/api/comments/delete', comment.commentId).pipe(
+      switchMap(() => this.gameService.getGameById(Number(this.gameId)))
+    ).subscribe((game: Game) => {
+      this.game = game;
+    });
   }
 
-  emojiConvertComment(text?: string) {
+  emojiConvertComment(text ?: string) {
     if (text) {
       this.commentContent = this.emojiService.emojiConvert(text);
     }
   }
 
-  emojiConvertReview(text?: string) {
+  emojiConvertReview(text ?: string) {
     if (text) {
       this.reviewContent = this.emojiService.emojiConvert(text);
     }
@@ -153,6 +174,7 @@ export class GameDetailComponent implements OnInit {
       switchMap(() => this.gameService.getGameById(Number(this.gameId)))
     ).subscribe((game: Game) => {
       this.game = game;
+      this.userHasReview = this.userHasReviewcheck();
     });
   }
 }
