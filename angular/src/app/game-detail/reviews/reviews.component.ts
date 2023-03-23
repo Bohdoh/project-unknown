@@ -24,6 +24,7 @@ export class ReviewsComponent implements OnInit{
   @Input() currentUser?: Enduser;
   @Output() userHasReviewChange = new EventEmitter<boolean>();
   @Output() gameChange = new EventEmitter<Game>();
+  @Output() starChange = new EventEmitter<string[]>();
 
   reviewIdBeingEdited : number = 0;
   reviewContent?: string;
@@ -56,6 +57,7 @@ export class ReviewsComponent implements OnInit{
           this.reviewIdBeingEdited = 0;
           this.userHasReviewChange.emit(this.userHasReview);
           this.gameChange.emit(this.game);
+          this.starChange.emit(this.gameService.generateStars(this.gameService.getGameRating(this.game)));
         });
     }
     this.reviewContent = undefined;
@@ -89,6 +91,7 @@ export class ReviewsComponent implements OnInit{
       this.userHasReview = this.userHasReviewcheck();
       this.userHasReviewChange.emit(this.userHasReview);
       this.gameChange.emit(this.game);
+      this.starChange.emit(this.gameService.generateStars(this.gameService.getGameRating(this.game)));
     });
   }
 
