@@ -11,4 +11,5 @@ public class CommentDTOReceived {
     private Integer gameId;
     private String username;
     private String content;
+    private Integer commentId;
 }

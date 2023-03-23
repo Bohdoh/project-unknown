@@ -36,12 +36,16 @@ public class Comment {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    public Comment (String content, Enduser enduser, Game game){
+    public Comment (String content, Enduser enduser, Game game,Integer id){
         this.content = content;
         this.createdAt = Instant.now();
         this.enduser = enduser;
         this.game = game;
+        if(id >0) {
+            this.commentId = id;
+        }
     }
+
     public Comment (Integer id){
         this.commentId = id;
     }

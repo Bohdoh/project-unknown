@@ -52,7 +52,7 @@ public class ConverterService {
 
     public Comment commentDTOReceivedToComment(CommentDTOReceived comment) {
         Enduser user = enduserRepository.findByUsername(comment.getUsername()).orElseThrow();
-        return new Comment(comment.getContent(),user,gameRepository.findByGameId(comment.getGameId()));
+        return new Comment(comment.getContent(),user,gameRepository.findByGameId(comment.getGameId()),comment.getCommentId());
     }
     public Review reviewDTOReceivedToReview(ReviewDTOReceived review) {
         Enduser user = enduserRepository.findByUsername(review.getUsername()).orElseThrow();
@@ -69,6 +69,6 @@ public class ConverterService {
 
     public Comment commentDTOReceivedToCommentDelete(CommentDTOReceived comment) {
         Enduser user = enduserRepository.findByUsername(comment.getUsername()).orElseThrow();
-        return new Comment(comment.getContent(),user,gameRepository.findByGameId(comment.getGameId()));
+        return new Comment(comment.getContent(),user,gameRepository.findByGameId(comment.getGameId()),comment.getCommentId());
     }
 }

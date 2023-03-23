@@ -112,8 +112,8 @@ public class Application {
                 "You made it!.",
                 "won", null, new String[]{"Restart", "Do you want to restart?.", "start"}, null
         ));
-        commentRepository.save(new Comment("Super spiel, hat mir gut gefallen!", enduserRepository.getById(1), gameRepository.findByGameId(1)));
-        commentRepository.save(new Comment("Was für ein Abenteuer! ", enduserRepository.getById(1), gameRepository.findByGameId(7)));
+        commentRepository.save(new Comment("Super spiel, hat mir gut gefallen!", enduserRepository.getById(1), gameRepository.findByGameId(1),0));
+        commentRepository.save(new Comment("Was für ein Abenteuer! ", enduserRepository.getById(1), gameRepository.findByGameId(7),0));
 
         reviewRepository.save(new Review("Ich gebe dem spiel eine 5 von 5!", enduserRepository.getById(1), gameRepository.findByGameId(7) ,5));
         reviewRepository.save(new Review("Hat mir nicht so spaß gemacht, liegt vllt an mir.", enduserRepository.getById(7), gameRepository.findByGameId(7) ,2));

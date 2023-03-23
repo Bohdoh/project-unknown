@@ -33,6 +33,9 @@ export class GameDetailComponent implements OnInit {
   currentUser?: Enduser;
   userRating: number = 0;
   userHasReview: boolean = true;
+  editCommentContent: string ="";
+  commentIdBeingEdited :number = 0;
+
 
 
   constructor(private http: HttpClient,
@@ -64,12 +67,14 @@ export class GameDetailComponent implements OnInit {
   }
 
 
-  addComment(comment ?: string,) {
+  addComment(comment ?: string) {
     if (this.gameId && comment) {
       let payload: CommentPost = {
         gameId: this.gameId,
         username: this.username,
-        content: comment
+        content: comment,
+        commentId: this.commentIdBeingEdited
+
       }
       this.http.post<CommentPost>("http://localhost:8080/api/comment", payload)
         .pipe(
@@ -77,10 +82,34 @@ export class GameDetailComponent implements OnInit {
         )
         .subscribe((game: Game) => {
           this.game = game;
+          this.commentIdBeingEdited = 0;
         });
     }
     this.commentContent = undefined;
   }
+
+
+  /*
+  //implement method to change a comment
+  editComment(commentId: number, updatedContent: string) {
+    if (this.gameId && commentId && updatedContent) {
+      let payload: CommentEdit = {
+        gameId: this.gameId,
+        commentId: commentId,
+        updatedContent: updatedContent
+      }
+      this.http.put<CommentEdit>(`http://localhost:8080/api/comment/${commentId}`, payload)
+        .pipe(
+          switchMap(() => this.gameService.getGameById(Number(this.gameId)))
+        )
+        .subscribe((game: Game) => {
+          this.game = game;
+        });
+    }
+  }
+
+   */
+
 
   userHasReviewcheck(): boolean {
     console.log(this.game)
@@ -94,6 +123,13 @@ export class GameDetailComponent implements OnInit {
     return false;
   }
 
+  deleteComment(comment: Comment) {
+    this.http.post<number>('http://localhost:8080/api/comments/delete', comment.commentId).pipe(
+      switchMap(() => this.gameService.getGameById(Number(this.gameId)))
+    ).subscribe((game: Game) => {
+      this.game = game;
+    });
+  }
   startGame() {
     this.timerService.startTimer();
   }
@@ -137,13 +173,6 @@ export class GameDetailComponent implements OnInit {
     }
   }
 
-  deleteComment(comment: Comment) {
-    this.http.post<number>('http://localhost:8080/api/comments/delete', comment.commentId).pipe(
-      switchMap(() => this.gameService.getGameById(Number(this.gameId)))
-    ).subscribe((game: Game) => {
-      this.game = game;
-    });
-  }
 
   emojiConvertComment(text ?: string) {
     if (text) {
@@ -160,6 +189,9 @@ export class GameDetailComponent implements OnInit {
   canDeleteComment(comment: Comment) {
     return comment.enduser.username === this.username || this.role === "ADMIN"
   }
+  canEditComment(comment: Comment) {
+    return comment.enduser.username === this.username || this.role === "ADMIN"
+  }
 
   canDeleteReview(review: Review) {
     return review.enduser.username === this.username || this.role === "ADMIN"
@@ -173,4 +205,17 @@ export class GameDetailComponent implements OnInit {
       this.userHasReview = this.userHasReviewcheck();
     });
   }
+
+
+  editCommentForm() {
+  //  this.showEditForm = true;
+  }
+
+  showEditForm(comment: Comment):void {
+    this.editCommentContent = comment.content;
+    this.commentIdBeingEdited = comment.commentId;
+
+
+  }
+
 }

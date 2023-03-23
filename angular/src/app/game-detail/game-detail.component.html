@@ -116,7 +116,9 @@
                  src="https://bulma.io/images/placeholders/128x128.png" alt="Profile Picture">
           </p>
         </figure>
-        <div class="media-content">
+
+        <!-- normal comment -->
+        <div class="media-content" *ngIf="!(commentIdBeingEdited === comment.commentId)">
           <div class="content">
             <strong>
               <p>{{ comment.enduser.username }}</p>
@@ -125,11 +127,31 @@
 
           </div>
         </div>
+
+        <!-- comment edit window -->
+        <form class="media-content" (ngSubmit)="addComment(editCommentContent)" *ngIf="commentIdBeingEdited === comment.commentId">
+          <div class="field">
+            <p class="control">
+              <textarea class="textarea is-half" (input)="emojiConvertComment(commentContent)"
+                        [(ngModel)]="editCommentContent" name="content"
+                        placeholder="Edit your comment..."></textarea>
+            </p>
+          </div>
+          <nav class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <button class="button is-info is-primary" [disabled]="!editCommentContent" type="submit">Submit</button>
+              </div>
+            </div>
+          </nav>
+        </form>
+
+        <!-- buttons for delete, edit  -->
         <div class="media-right">
-          <button *ngIf="canDeleteComment(comment)" (click)="deleteComment(comment)" class="delete"></button>
+          <a class="mr-2" *ngIf="canEditComment(comment)" (click)="showEditForm(comment)"><i class="fa-solid fa-pen"></i></a>
+          <a  *ngIf="canDeleteComment(comment)" (click)="deleteComment(comment)" ><i class="fa-regular fa-circle-xmark"></i></a>
         </div>
       </article>
-
     </div>
 
     <div *ngIf="showReview">
