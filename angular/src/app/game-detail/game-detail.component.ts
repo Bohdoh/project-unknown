@@ -6,12 +6,7 @@ import {ActivatedRoute} from "@angular/router";
 import {TimerService} from "../services/timer.service";
 import {AuthService} from "../services/auth.service";
 import {Enduser} from "../interfaces/enduser";
-import {CommentPost} from "../interfaces/comment-post";
-import {Comment} from "../interfaces/comment";
-import {ReviewPost} from "../interfaces/review-post";
-import {switchMap} from "rxjs";
-import {StringToEmojiService} from "../services/string-to-emoji.service";
-import {Review} from "../interfaces/review";
+
 
 
 @Component({
@@ -28,23 +23,14 @@ export class GameDetailComponent implements OnInit {
   isLoggedIn?: boolean;
   username: string | any;
   role?: string;
-  commentContent?: string;
-  reviewContent?: string;
   currentUser?: Enduser;
-  userRating: number = 0;
   userHasReview: boolean = true;
-  editCommentContent: string = "";
-  commentIdBeingEdited: number = 0;
-  editReviewContent: string = "";
-  reviewIdBeingEdited: number = 0;
-
 
   constructor(private http: HttpClient,
               private gameService: GameService,
               private route: ActivatedRoute,
               private authService: AuthService,
               private timerService: TimerService,
-              private emojiService: StringToEmojiService
   ) {
   }
 
@@ -52,7 +38,6 @@ export class GameDetailComponent implements OnInit {
     this.gameId = Number(this.route.snapshot.paramMap.get('id'));
     this.gameService.getGameById(this.gameId).subscribe((game: Game) => {
       this.game = game;
-      this.userHasReview = this.userHasReviewcheck();
     });
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
     this.authService.username.subscribe((data: string) => this.username = data);
@@ -66,79 +51,7 @@ export class GameDetailComponent implements OnInit {
 
 
   }
-
-
-  addComment(comment ?: string) {
-    if (this.gameId && comment) {
-      let payload: CommentPost = {
-        gameId: this.gameId,
-        username: this.username,
-        content: comment,
-        commentId: this.commentIdBeingEdited
-
-      }
-      this.http.post<CommentPost>("http://localhost:8080/api/comment", payload)
-        .pipe(
-          switchMap(() => this.gameService.getGameById(Number(this.gameId)))
-        )
-        .subscribe((game: Game) => {
-          this.game = game;
-          this.commentIdBeingEdited = 0;
-        });
-    }
-    this.commentContent = undefined;
-  }
-
-
-  addReview(content ?: string, rating ?: number) {
-    if (rating === 0) {
-      // Display an error message or prevent the form submission
-      console.log('Please select a rating before submitting your review');
-      return;
-    }
-
-    if (this.gameId && content && rating) {
-      let payload: ReviewPost = {
-        gameId: this.gameId,
-        username: this.username,
-        content: content,
-        rating: rating,
-        reviewId: this.reviewIdBeingEdited
-      }
-      this.http.post<ReviewPost>("http://localhost:8080/api/review", payload).pipe(
-        switchMap(() => this.gameService.getGameById(Number(this.gameId)))
-      )
-        .subscribe((game: Game) => {
-          this.game = game;
-          this.userHasReview = this.userHasReviewcheck();
-          this.reviewIdBeingEdited = 0;
-        });
-    }
-    this.reviewContent = undefined;
-    this.userRating = 0;
-  }
-
-  userHasReviewcheck(): boolean {
-    console.log(this.game)
-    if (this.game) {
-      for (let review of this.game.reviews) {
-        if (review.enduser.username === this.username) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  deleteComment(comment: Comment) {
-    this.http.post<number>('http://localhost:8080/api/comments/delete', comment.commentId).pipe(
-      switchMap(() => this.gameService.getGameById(Number(this.gameId)))
-    ).subscribe((game: Game) => {
-      this.game = game;
-    });
-  }
-
-  startGame() {
+   startGame() {
     this.timerService.startTimer();
   }
 
@@ -154,65 +67,4 @@ export class GameDetailComponent implements OnInit {
         break;
     }
   }
-
-
-  emojiConvertComment(text ?: string) {
-    if (text) {
-      const words = text.split(' ');
-      const emojiWords = words.map((word) => {
-        return this.emojiService.emojiConvert(word);
-      });
-      this.commentContent = emojiWords.join(' ');
-      this.editCommentContent = emojiWords.join(' ');
-    }
-  }
-
-  emojiConvertReview(text ?: string) {
-    if (text) {
-      const words = text.split(' ');
-      const emojiWords = words.map((word) => {
-        return this.emojiService.emojiConvert(word);
-      });
-      this.reviewContent = emojiWords.join(' ');
-      this.editReviewContent = emojiWords.join(' ');
-    }
-  }
-
-  canDeleteComment(comment: Comment) {
-    return comment.enduser.username === this.username || this.role === "ADMIN"
-  }
-
-
-  canEditComment(comment: Comment) {
-    return comment.enduser.username === this.username || this.role === "ADMIN"
-  }
-
-  canEditReview(review: Review) {
-    return review.enduser.username === this.username || this.role === "ADMIN"
-  }
-
-  canDeleteReview(review: Review) {
-    return review.enduser.username === this.username || this.role === "ADMIN"
-  }
-
-  deleteReview(review: Review) {
-    this.http.post<number>('http://localhost:8080/api/reviews/delete', review.id).pipe(
-      switchMap(() => this.gameService.getGameById(Number(this.gameId)))
-    ).subscribe((game: Game) => {
-      this.game = game;
-      this.userHasReview = this.userHasReviewcheck();
-    });
-  }
-
-
-  showEditFormForComments(comment: Comment): void {
-    this.editCommentContent = comment.content;
-    this.commentIdBeingEdited = comment.commentId;
-  }
-
-  showEditFormForReview(review: Review): void {
-    this.editReviewContent = review.content;
-    this.reviewIdBeingEdited = review.id;
-  }
-
 }

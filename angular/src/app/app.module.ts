@@ -26,6 +26,8 @@ import {ToastrModule} from "ngx-toastr";
 import {NavbarComponent} from "./alwaysVisible/navbar/navbar.component";
 import {AuthInterceptor} from "./auth.interceptor";
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { CommentsComponent } from './game-detail/comments/comments.component';
+import { ReviewsComponent } from './game-detail/reviews/reviews.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     RegisterComponent,
     HomeComponent,
     GameChaptersComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    CommentsComponent,
+    ReviewsComponent
   ],
   imports: [
     BrowserModule,
