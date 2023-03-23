@@ -24,5 +24,38 @@ export class GameService {
   getChaptersByGameId(gameId:number): Observable<Chapter[]> {
   return this.http.get<Chapter[]>('http://localhost:8080/api/chapters/'+gameId);
   }
+
+  getGameRating(game?:Game):number {
+    let gameRating = 0;
+    if (game) {
+      for (let i = 0; i < game.reviews.length; i++) {
+        gameRating += game.reviews[i].rating;
+      }
+
+      return gameRating / game.reviews.length;
+    }
+    return 0;
+  }
+
+  generateStars(gameRating:number): string[] {
+    const fullStarIcon = 'fa-star';
+    const halfStarIcon = 'fa-star-half-o';
+    const emptyStarIcon = 'fa-star-o';
+
+    const maxStars = 5;
+    const stars = [];
+
+    for (let i = 0; i < maxStars; i++) {
+      const ratingDiff = gameRating - i;
+      if (ratingDiff >= 1) {
+        stars.push(fullStarIcon);
+      } else if (ratingDiff > 0) {
+        stars.push(halfStarIcon);
+      } else {
+        stars.push(emptyStarIcon);
+      }
+    }
+    return stars;
+  }
 }
 

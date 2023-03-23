@@ -2,7 +2,10 @@
   <div class="column is-one-fifth"></div>
   <div class="column is-three-fifths" *ngIf="game">
     <div class="box">
-      <div class="title has-text-centered">{{ game.title }}</div>
+      <div class="title has-text-centered mb-0">{{ game.title }}</div>
+      <div class="title has-text-centered m-1"><span *ngFor="let star of stars; let i = index" [title]="i + 1 + ' star'">
+  <i class="fa {{ star }} yellow" aria-hidden="true"></i>
+</span></div>
 
       <div class="has-text-centered" *ngIf="game.image">
         <img [src]="'data:image/png;base64,' + game.image" alt="gameimage">

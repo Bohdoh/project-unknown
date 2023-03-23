@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Game} from "../../../interfaces/game";
 import {DatePipe} from "@angular/common";
+import {GameService} from "../../../services/game.service";
 
 
 @Component({
@@ -16,17 +17,11 @@ export class GameCardComponent implements OnInit {
   gameRating: number = 0;
   stars: string[] = [];
 
-  constructor(public datePipe: DatePipe) {
+  constructor(public datePipe: DatePipe,private gameService:GameService) {
   }
 
   ngOnInit(): void {
-    if (this.game && this.game.reviews) {
-      for (let i = 0; i < this.game.reviews.length; i++) {
-        this.gameRating += this.game.reviews[i].rating;
-      }
-      this.gameRating = this.gameRating / this.game.reviews.length;
-      this.generateStars();
-    }
+    this.stars = this.stars = this.gameService.generateStars(this.gameService.getGameRating(this.game));
   }
 
   onSubmit(categoryId: number) {

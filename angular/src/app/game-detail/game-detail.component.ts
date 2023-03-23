@@ -25,12 +25,13 @@ export class GameDetailComponent implements OnInit {
   role?: string;
   currentUser?: Enduser;
   userHasReview: boolean = true;
+  stars?:string[];
 
   constructor(private http: HttpClient,
               private gameService: GameService,
               private route: ActivatedRoute,
               private authService: AuthService,
-              private timerService: TimerService,
+              private timerService: TimerService
   ) {
   }
 
@@ -38,6 +39,7 @@ export class GameDetailComponent implements OnInit {
     this.gameId = Number(this.route.snapshot.paramMap.get('id'));
     this.gameService.getGameById(this.gameId).subscribe((game: Game) => {
       this.game = game;
+      this.stars = this.gameService.generateStars(this.gameService.getGameRating(this.game));
     });
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
     this.authService.username.subscribe((data: string) => this.username = data);
@@ -48,9 +50,10 @@ export class GameDetailComponent implements OnInit {
     this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
       this.currentUser = user
     });
-
-
   }
+
+
+
    startGame() {
     this.timerService.startTimer();
   }
