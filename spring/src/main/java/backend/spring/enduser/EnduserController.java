@@ -1,6 +1,9 @@
 package backend.spring.enduser;
 
 import backend.spring.ConverterService;
+import backend.spring.exeptions.UserDoesntExistException;
+import backend.spring.exeptions.UserIsNotAdminException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,10 +15,13 @@ import java.util.Map;
 @CrossOrigin(origins = "http://localhost:4200/")
 public class EnduserController {
 
+    private final AdminService adminService;
+
     private final ConverterService converterService;
     private final EnduserRepository enduserRepository;
 
-    public EnduserController(ConverterService converterService, EnduserRepository enduserRepository) {
+    public EnduserController(AdminService adminService, ConverterService converterService, EnduserRepository enduserRepository) {
+        this.adminService = adminService;
         this.converterService = converterService;
         this.enduserRepository = enduserRepository;
     }
@@ -52,6 +58,21 @@ public class EnduserController {
             return ResponseEntity.ok().body(Map.of("message", "File uploaded successfully"));
         }
     }
+
+    @CrossOrigin
+    @GetMapping("/api/users/{username}/{role}/listOfUsers")
+    public ResponseEntity<?> getUsers(@PathVariable String role, @PathVariable String username){
+        try {
+            return ResponseEntity.ok(adminService.getAllUsers(username));
+        } catch (UserIsNotAdminException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (UserDoesntExistException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
+
+
 }
 
 
