@@ -68,10 +68,10 @@
 
     <div class="tabs is-medium">
       <ul>
-        <li>
+        <li [class.is-active]="showComment">
           <a (click)="switchCommentAndReviews('comments')">Comments</a>
         </li>
-        <li>
+        <li [class.is-active]="showReview">
           <a (click)="switchCommentAndReviews('reviews')">Reviews</a>
         </li>
       </ul>
@@ -106,6 +106,7 @@
           </form>
         </article>
       </div>
+      <hr>
       <article class="media mx-6" *ngFor="let comment of game.comments">
         <figure class="media-left">
           <p class="image is-64x64 is-rounded">

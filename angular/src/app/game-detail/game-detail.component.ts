@@ -124,10 +124,7 @@ export class GameDetailComponent implements OnInit {
     this.userRating = 0;
   }
 
-  switchCommentAndReviews(tabValue
-                            :
-                            string
-  ) {
+  switchCommentAndReviews(tabValue: string) {
     switch (tabValue) {
       case 'comments':
         this.showComment = true;
