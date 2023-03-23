@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ReviewPost} from "../../interfaces/review-post";
 import {switchMap} from "rxjs";
 import {Game} from "../../interfaces/game";
@@ -13,7 +13,7 @@ import {Enduser} from "../../interfaces/enduser";
   templateUrl: './reviews.component.html',
   styleUrls: ['./reviews.component.css']
 })
-export class ReviewsComponent {
+export class ReviewsComponent implements OnInit{
 
   @Input() isLoggedIn?: boolean;
   @Input() gameId?: number;
@@ -22,7 +22,8 @@ export class ReviewsComponent {
   @Input() role?: string;
   @Input() userHasReview?: boolean;
   @Input() currentUser?: Enduser;
-  @Output() userHasReviewChange = new EventEmitter<boolean>(); // <-- add this
+  @Output() userHasReviewChange = new EventEmitter<boolean>();
+  @Output() gameChange = new EventEmitter<Game>();
 
   reviewIdBeingEdited : number = 0;
   reviewContent?: string;
@@ -54,6 +55,7 @@ export class ReviewsComponent {
           this.userHasReview = this.userHasReviewcheck();
           this.reviewIdBeingEdited = 0;
           this.userHasReviewChange.emit(this.userHasReview);
+          this.gameChange.emit(this.game);
         });
     }
     this.reviewContent = undefined;
@@ -86,6 +88,7 @@ export class ReviewsComponent {
       this.game = game;
       this.userHasReview = this.userHasReviewcheck();
       this.userHasReviewChange.emit(this.userHasReview);
+      this.gameChange.emit(this.game);
     });
   }
 
@@ -95,7 +98,6 @@ export class ReviewsComponent {
   }
 
   userHasReviewcheck(): boolean {
-    console.log(this.game)
     if (this.game) {
       for (let review of this.game.reviews) {
         if (review.enduser.username === this.username) {
@@ -103,5 +105,10 @@ export class ReviewsComponent {
         }
       }    }
     return false;
+  }
+
+  ngOnInit(): void {
+    this.userHasReview = this.userHasReviewcheck();
+    this.userHasReviewChange.emit(this.userHasReview);
   }
 }

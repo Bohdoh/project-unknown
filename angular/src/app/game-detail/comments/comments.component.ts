@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommentPost} from "../../interfaces/comment-post";
 import {switchMap} from "rxjs";
 import {Game} from "../../interfaces/game";
@@ -20,6 +20,7 @@ export class CommentsComponent {
   @Input() game?: Game;
   @Input() role?: string;
   @Input() currentUser?: Enduser;
+  @Output() gameChange = new EventEmitter<Game>();
   commentContent?: string;
   editCommentContent: string = "";
   commentIdBeingEdited: number = 0;
@@ -43,6 +44,7 @@ export class CommentsComponent {
         .subscribe((game: Game) => {
           this.game = game;
           this.commentIdBeingEdited = 0;
+          this.gameChange.emit(this.game);
         });
     }
     if(ident === "write") {
@@ -55,6 +57,7 @@ export class CommentsComponent {
       switchMap(() => this.gameService.getGameById(Number(this.gameId)))
     ).subscribe((game: Game) => {
       this.game = game;
+      this.gameChange.emit(this.game);
     });
   }
 

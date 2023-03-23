@@ -56,14 +56,14 @@
 
     <div *ngIf="showComment">
       <app-comments [isLoggedIn]="isLoggedIn" [gameId]="gameId" [username]="username" [game]="game" [role]="role"
-                    [currentUser]="currentUser"></app-comments>
+                    [currentUser]="currentUser" (gameChange)="game =$event"></app-comments>
     </div>
 
 
     <div *ngIf="showReview">
       <app-reviews [isLoggedIn]="isLoggedIn" [gameId]="gameId" [username]="username" [game]="game" [role]="role"
                    [userHasReview]="userHasReview" [currentUser]="currentUser"
-                   (userHasReviewChange)="userHasReview = $event"></app-reviews>
+                   (userHasReviewChange)="userHasReview = $event" (gameChange)="game =$event"></app-reviews>
     </div>
     <div class="column is-one-fifth"></div>
   </div>
