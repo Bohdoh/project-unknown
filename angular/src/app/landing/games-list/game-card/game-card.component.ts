@@ -32,25 +32,4 @@ export class GameCardComponent implements OnInit {
   formatDate(isoDateString: string): string {
     return <string>this.datePipe.transform(new Date(isoDateString), 'HH:mm dd.MM.yy');
   }
-
-  generateStars(): void {
-    const fullStarIcon = 'fa-star';
-    const halfStarIcon = 'fa-star-half-o';
-    const emptyStarIcon = 'fa-star-o';
-
-    const maxStars = 5;
-    const stars = [];
-
-    for (let i = 0; i < maxStars; i++) {
-      const ratingDiff = this.gameRating - i;
-      if (ratingDiff >= 1) {
-        stars.push(fullStarIcon);
-      } else if (ratingDiff > 0) {
-        stars.push(halfStarIcon);
-      } else {
-        stars.push(emptyStarIcon);
-      }
-    }
-    this.stars = stars;
-  }
 }
