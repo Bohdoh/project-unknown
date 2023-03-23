@@ -1,1 +1,19 @@
-<p>profile-page works!</p>
+<h1>{{ profile.username }}</h1>
+
+<p>Email: {{ profile.email }}</p>
+
+<p>Role: {{ profile.role }}</p>
+
+<p>Reviews:</p>
+<ul>
+  <li *ngFor="let review of profile.reviews">
+    {{ review.content }} ({{ review.rating }})
+  </li>
+</ul>
+
+<p>Comments:</p>
+<ul>
+  <li *ngFor="let comment of profile.comments">
+    {{ comment.content }}
+  </li>
+</ul>

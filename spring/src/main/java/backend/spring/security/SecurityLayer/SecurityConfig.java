@@ -50,8 +50,7 @@ public class SecurityConfig {
                        // "/api/users/**"
                 )
                 .permitAll ()
-                .requestMatchers ("/api/users/{username}/listOfUsers/**",
-                        "/api/users/{username}/listOfUsers")
+                .requestMatchers ("/**")
                 .hasAuthority(Role.ADMIN.name())
                 .anyRequest ()
                 .authenticated ()
