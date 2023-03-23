@@ -56,7 +56,7 @@ public class ConverterService {
     }
     public Review reviewDTOReceivedToReview(ReviewDTOReceived review) {
         Enduser user = enduserRepository.findByUsername(review.getUsername()).orElseThrow();
-        return new Review(review.getContent(),user,gameRepository.findByGameId(review.getGameId()),review.getRating());
+        return new Review(review.getContent(),user,gameRepository.findByGameId(review.getGameId()),review.getRating(),review.getReviewId());
     }
 
     public List<ReviewDTO> reviewsToReviewDTOList(List<Review> reviews) {

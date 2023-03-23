@@ -37,12 +37,15 @@ public class Review {
 
     public Review (){}
 
-    public Review (String content,Enduser enduser,Game game,double rating){
+    public Review (String content,Enduser enduser,Game game,double rating, int reviewId){
         this.content = content;
         this.createdAt = Instant.now();
         this.enduser = enduser;
         this.game = game;
         this.rating = rating;
+        if (reviewId > 0){
+            this.reviewId = reviewId;
+        }
     }
 
 }

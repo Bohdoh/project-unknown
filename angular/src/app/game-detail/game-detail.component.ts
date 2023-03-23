@@ -33,9 +33,10 @@ export class GameDetailComponent implements OnInit {
   currentUser?: Enduser;
   userRating: number = 0;
   userHasReview: boolean = true;
-  editCommentContent: string ="";
-  commentIdBeingEdited :number = 0;
-
+  editCommentContent: string = "";
+  commentIdBeingEdited: number = 0;
+  editReviewContent: string = "";
+  reviewIdBeingEdited: number = 0;
 
 
   constructor(private http: HttpClient,
@@ -89,27 +90,33 @@ export class GameDetailComponent implements OnInit {
   }
 
 
-  /*
-  //implement method to change a comment
-  editComment(commentId: number, updatedContent: string) {
-    if (this.gameId && commentId && updatedContent) {
-      let payload: CommentEdit = {
+  addReview(content ?: string, rating ?: number) {
+    if (rating === 0) {
+      // Display an error message or prevent the form submission
+      console.log('Please select a rating before submitting your review');
+      return;
+    }
+
+    if (this.gameId && content && rating) {
+      let payload: ReviewPost = {
         gameId: this.gameId,
-        commentId: commentId,
-        updatedContent: updatedContent
+        username: this.username,
+        content: content,
+        rating: rating,
+        reviewId: this.reviewIdBeingEdited
       }
-      this.http.put<CommentEdit>(`http://localhost:8080/api/comment/${commentId}`, payload)
-        .pipe(
-          switchMap(() => this.gameService.getGameById(Number(this.gameId)))
-        )
+      this.http.post<ReviewPost>("http://localhost:8080/api/review", payload).pipe(
+        switchMap(() => this.gameService.getGameById(Number(this.gameId)))
+      )
         .subscribe((game: Game) => {
           this.game = game;
+          this.userHasReview = this.userHasReviewcheck();
+          this.reviewIdBeingEdited = 0;
         });
     }
+    this.reviewContent = undefined;
+    this.userRating = 0;
   }
-
-   */
-
 
   userHasReviewcheck(): boolean {
     console.log(this.game)
@@ -130,34 +137,9 @@ export class GameDetailComponent implements OnInit {
       this.game = game;
     });
   }
+
   startGame() {
     this.timerService.startTimer();
-  }
-
-  addReview(content ?: string, rating ?: number) {
-    if (rating === 0) {
-      // Display an error message or prevent the form submission
-      console.log('Please select a rating before submitting your review');
-      return;
-    }
-
-    if (this.gameId && content && rating) {
-      let payload: ReviewPost = {
-        gameId: this.gameId,
-        username: this.username,
-        content: content,
-        rating: rating
-      }
-      this.http.post<ReviewPost>("http://localhost:8080/api/review", payload).pipe(
-        switchMap(() => this.gameService.getGameById(Number(this.gameId)))
-      )
-        .subscribe((game: Game) => {
-          this.game = game;
-          this.userHasReview = this.userHasReviewcheck();
-        });
-    }
-    this.reviewContent = undefined;
-    this.userRating = 0;
   }
 
   switchCommentAndReviews(tabValue: string) {
@@ -197,8 +179,14 @@ export class GameDetailComponent implements OnInit {
   canDeleteComment(comment: Comment) {
     return comment.enduser.username === this.username || this.role === "ADMIN"
   }
+
+
   canEditComment(comment: Comment) {
     return comment.enduser.username === this.username || this.role === "ADMIN"
+  }
+
+  canEditReview(review: Review) {
+    return review.enduser.username === this.username || this.role === "ADMIN"
   }
 
   canDeleteReview(review: Review) {
@@ -215,15 +203,14 @@ export class GameDetailComponent implements OnInit {
   }
 
 
-  editCommentForm() {
-  //  this.showEditForm = true;
-  }
-
-  showEditForm(comment: Comment):void {
+  showEditFormForComments(comment: Comment): void {
     this.editCommentContent = comment.content;
     this.commentIdBeingEdited = comment.commentId;
+  }
 
-
+  showEditFormForReview(review: Review): void {
+    this.editReviewContent = review.content;
+    this.reviewIdBeingEdited = review.id;
   }
 
 }
