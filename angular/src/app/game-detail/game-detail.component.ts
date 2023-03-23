@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Game} from "../interfaces/game";
 import {GameService} from "../services/game.service";
@@ -14,7 +14,7 @@ import {Enduser} from "../interfaces/enduser";
   templateUrl: './game-detail.component.html',
   styleUrls: ['./game-detail.component.css']
 })
-export class GameDetailComponent implements OnInit {
+export class GameDetailComponent implements OnInit,DoCheck{
 
   gameId?: number;
   game?: Game;
@@ -50,6 +50,12 @@ export class GameDetailComponent implements OnInit {
     this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
       this.currentUser = user
     });
+  }
+
+  ngDoCheck() {
+    if(this.stars != this.gameService.generateStars(this.gameService.getGameRating(this.game))){
+      this.stars = this.gameService.generateStars(this.gameService.getGameRating(this.game));
+    }
   }
 
 
