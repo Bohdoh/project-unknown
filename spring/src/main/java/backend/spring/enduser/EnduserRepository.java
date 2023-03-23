@@ -11,4 +11,5 @@ public interface EnduserRepository extends JpaRepository<Enduser,Integer> {
 
     Optional<Enduser> findByUsername(String username);
 
+    Optional<Enduser> findByEmail(String email);
 }

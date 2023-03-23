@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "bulma": "^0.9.4"
+    "@angular/animations": "^15.2.3",
+    "bulma": "^0.9.4",
+    "ngx-toastr": "^16.1.0",
+    "toastr": "^2.1.4"
   }
 }
