@@ -169,7 +169,6 @@ export class GameDetailComponent implements OnInit {
   }
 
   deleteReview(review: Review) {
-    console.log(review.id)
     this.http.post<number>('http://localhost:8080/api/reviews/delete', review.id).pipe(
       switchMap(() => this.gameService.getGameById(Number(this.gameId)))
     ).subscribe((game: Game) => {
