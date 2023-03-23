@@ -38,12 +38,23 @@ export class GameCardComponent implements OnInit {
   }
 
   generateStars(): void {
-    this.stars = Array.from({length: 5}, (_, i) => {
-      const ratingDiff = this.gameRating - i;
-      if (ratingDiff >= 1) return 'fa-star';
-      if (ratingDiff > 0) return 'fa-star-half-o';
-      return 'fa-star-o';
-    });
-  }
+    const fullStarIcon = 'fa-star';
+    const halfStarIcon = 'fa-star-half-o';
+    const emptyStarIcon = 'fa-star-o';
 
+    const maxStars = 5;
+    const stars = [];
+
+    for (let i = 0; i < maxStars; i++) {
+      const ratingDiff = this.gameRating - i;
+      if (ratingDiff >= 1) {
+        stars.push(fullStarIcon);
+      } else if (ratingDiff > 0) {
+        stars.push(halfStarIcon);
+      } else {
+        stars.push(emptyStarIcon);
+      }
+    }
+    this.stars = stars;
+  }
 }
