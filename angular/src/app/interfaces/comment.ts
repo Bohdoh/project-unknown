@@ -1,7 +1,7 @@
 import {Enduser} from "./enduser";
 
 export interface Comment {
-id:number;
+commentId:number;
 createdAt:string;
 content:string;
 enduser: Enduser;

@@ -66,4 +66,9 @@ public class ConverterService {
         }
         return temp;
     }
+
+    public Comment commentDTOReceivedToCommentDelete(CommentDTOReceived comment) {
+        Enduser user = enduserRepository.findByUsername(comment.getUsername()).orElseThrow();
+        return new Comment(comment.getContent(),user,gameRepository.findByGameId(comment.getGameId()));
+    }
 }

@@ -7,9 +7,12 @@ import {TimerService} from "../services/timer.service";
 import {AuthService} from "../services/auth.service";
 import {Enduser} from "../interfaces/enduser";
 import {CommentPost} from "../interfaces/comment-post";
+import {Comment} from "../interfaces/comment";
 import {ReviewPost} from "../interfaces/review-post";
 import {switchMap} from "rxjs";
 import {StringToEmojiService} from "../services/string-to-emoji.service";
+import {Review} from "../interfaces/review";
+
 
 @Component({
   selector: 'app-game-detail',
@@ -36,7 +39,8 @@ export class GameDetailComponent implements OnInit {
               private route: ActivatedRoute,
               private authService: AuthService,
               private timerService: TimerService,
-              private emojiService: StringToEmojiService) {
+              private emojiService: StringToEmojiService
+              ) {
   }
 
   ngOnInit(): void {
@@ -115,7 +119,13 @@ export class GameDetailComponent implements OnInit {
     }
   }
 
-  deleteComment(commentId: number, newestTitle: any) {
+  deleteComment(comment: Comment) {
+      this.http.post<number>('http://localhost:8080/api/comments/delete', comment.commentId).pipe(
+        switchMap(() => this.gameService.getGameById(Number(this.gameId)))
+      ).subscribe((game: Game) => {
+        this.game = game;
+      });
+
 
   }
 
@@ -129,5 +139,17 @@ export class GameDetailComponent implements OnInit {
     if (text) {
       this.reviewContent = this.emojiService.emojiConvert(text);
     }
+  }
+
+  canDeleteComment(comment: Comment) {
+    return comment.enduser.username === this.username || this.role === "ADMIN"
+  }
+
+  canDeleteReview(review: Review) {
+    return review.enduser.username === this.username || this.role === "ADMIN"
+  }
+
+  deleteReview(review: Review) {
+
   }
 }

@@ -125,7 +125,7 @@
           </div>
         </div>
         <div class="media-right">
-          <!--<button *ngIf="canDeleteComment(comment)" (click)="deleteComment(comment.commentId, post.getNewestTitle(post.postId))" class="delete"></button>-->
+          <button *ngIf="canDeleteComment(comment)" (click)="deleteComment(comment)" class="delete"></button>
         </div>
       </article>
 
@@ -146,7 +146,7 @@
           <form class="media-content" (submit)="addReview(reviewContent, userRating)">
             <div class="field">
               <p class="control">
-                <textarea class="textarea is-half" [(ngModel)]="reviewContent" name="content"
+                <textarea class="textarea is-half" (input)="emojiConvertReview(reviewContent)" [(ngModel)]="reviewContent" name="content"
                           placeholder="Add a review..."></textarea>
               </p>
             </div>
@@ -205,7 +205,7 @@
         </div>
 
         <div class="media-right">
-          <!--        <button *ngIf="canDeleteComment(comment)" (click)="deleteComment(comment.commentId, post.getNewestTitle(post.postId))" class="delete"></button>-->
+                 <button *ngIf="canDeleteReview(review)" (click)="deleteReview(review)" class="delete"></button>
         </div>
       </article>
 

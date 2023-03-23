@@ -22,4 +22,8 @@ public class CommentController {
     public void saveComment(@RequestBody CommentDTOReceived comment) {
         commentRepository.save(converterService.commentDTOReceivedToComment(comment));
     }
+    @PostMapping("/api/comments/delete")
+    public void deleteComment(@RequestBody Integer id) {
+        commentRepository.delete(commentRepository.getReferenceById(id));
+    }
 }

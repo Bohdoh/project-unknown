@@ -42,6 +42,9 @@ public class Comment {
         this.enduser = enduser;
         this.game = game;
     }
+    public Comment (Integer id){
+        this.commentId = id;
+    }
 
 
 }
