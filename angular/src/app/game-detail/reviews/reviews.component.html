@@ -46,8 +46,11 @@
   Only registered Users can write reviews!
 </div>
 <hr>
+
 <div *ngIf="game">
+
 <article class="media mx-6" *ngFor="let review of game.reviews">
+  <!-- normal review-->
   <figure class="media-left">
     <p class="image is-64x64 is-rounded">
       <img class="is-rounded" *ngIf="review.enduser.image"
@@ -56,7 +59,7 @@
            alt="Profile Picture">
     </p>
   </figure>
-  <div class="media-content">
+  <div class="media-content" *ngIf="!(reviewIdBeingEdited === review.id)">
     <div class="content">
       <div class="level is-mobile m-0">
         <div class="level-left">
@@ -80,7 +83,7 @@
   </div>
 
   <!-- edit review window -->
-  <form class="media-content" (ngSubmit)="addReview(editReviewContent,review.rating)"
+  <form class="media-content" (ngSubmit)="addReview(editReviewContent,userRating)"
         *ngIf="reviewIdBeingEdited === review.id">
     <div class="field">
       <p class="control">
@@ -88,6 +91,16 @@
                         [(ngModel)]="editReviewContent" name="content"
                         placeholder="Edit your review..."></textarea>
       </p>
+    </div>
+    <div class="field">
+      <label class="label">Your Rating:</label>
+      <span class="star-rating">
+                <i class="fa-solid fa-star" [ngClass]="{'active': userRating >= 1}" (click)="userRating = 1"></i>
+                <i class="fa-solid fa-star" [ngClass]="{'active': userRating >= 2}" (click)="userRating = 2"></i>
+                <i class="fa-solid fa-star" [ngClass]="{'active': userRating >= 3}" (click)="userRating = 3"></i>
+                <i class="fa-solid fa-star" [ngClass]="{'active': userRating >= 4}" (click)="userRating = 4"></i>
+                <i class="fa-solid fa-star" [ngClass]="{'active': userRating == 5}" (click)="userRating = 5"></i>
+              </span>
     </div>
     <nav class="level">
       <div class="level-left">
@@ -97,6 +110,7 @@
       </div>
     </nav>
   </form>
+
 
   <!-- buttons for edit and delete -->
 
