@@ -97,7 +97,9 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register(this.registerRequest).subscribe(
       data => {
-        this.toastr.success('Registration successful');
+        this.toastr.success('Registration successful','Succes!', {
+          positionClass: 'toast-top-center'
+        } );
         this.router.navigateByUrl('/login');
       },
       error => {
