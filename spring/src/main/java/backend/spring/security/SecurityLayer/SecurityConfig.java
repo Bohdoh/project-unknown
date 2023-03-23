@@ -1,6 +1,8 @@
 package backend.spring.security.SecurityLayer;
 
 
+import backend.spring.enduser.Enduser;
+import backend.spring.security.DAO.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -48,6 +50,9 @@ public class SecurityConfig {
                        // "/api/users/**"
                 )
                 .permitAll ()
+                .requestMatchers ("/api/users/{username}/listOfUsers/**",
+                        "/api/users/{username}/listOfUsers")
+                .hasAuthority(Role.ADMIN.name())
                 .anyRequest ()
                 .authenticated ()
                 .and ()

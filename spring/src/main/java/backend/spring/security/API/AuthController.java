@@ -1,6 +1,7 @@
 package backend.spring.security.API;
 
 import backend.spring.exeptions.UserAlreadyExistsException;
+import backend.spring.exeptions.UserDoesntExistException;
 import backend.spring.security.BussinesLayer.AuthenticationService;
 import backend.spring.security.DTO.AuthenticationRequest;
 import backend.spring.security.DTO.AuthenticationResponse;
@@ -32,9 +33,16 @@ public class AuthController {
 
 
     @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse> authenticate(
+    public ResponseEntity<?> authenticate(
             @RequestBody AuthenticationRequest request
     ){
+    try{
         return ResponseEntity.ok (authenticationService.authenticate(request));
+    }catch (UserDoesntExistException e){
+        return ResponseEntity.status (HttpStatus.BAD_REQUEST).body (e.getMessage ());
     }
+
+
+    }
+
 }
