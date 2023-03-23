@@ -21,7 +21,13 @@ public class ReviewController {
     }
 
     @PostMapping("/api/review")
-    public void saveComment(@RequestBody ReviewDTOReceived review) {
+    public void saveReview(@RequestBody ReviewDTOReceived review) {
         reviewRepository.save(converterService.reviewDTOReceivedToReview(review));
     }
+    @PostMapping("/api/reviews/delete")
+    public void deleteReview(@RequestBody Integer id) {
+        reviewRepository.delete(reviewRepository.getReferenceById(id));
+    }
+
+
 }
