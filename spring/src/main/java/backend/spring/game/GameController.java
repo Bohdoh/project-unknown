@@ -86,5 +86,12 @@ public class GameController {
         return converterService.chaptersToChapterDTOList(gameRepository.findByGameId(gameId).getChapters());
     }
 
+    @CrossOrigin(origins = "http://localhost:4200/")
+    @DeleteMapping("/api/games/delete/{gameId}")
+    public void deleteGame(@PathVariable String gameId) {
+        gameRepository.delete(gameRepository.findByGameId(Integer.parseInt(gameId)));
+        return;
+    }
+
 
 }

@@ -38,6 +38,10 @@
           </button>
         </form>
       </div>
+      <div class="level-right m-1">
+        <a *ngIf="role==='ADMIN'" (click)="deleteGame(game.id)"><i
+          class="fa-regular fa-circle-xmark"></i></a>
+      </div>
     </div>
   </div>
 </div>

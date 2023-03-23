@@ -25,6 +25,10 @@ export class GameService {
   return this.http.get<Chapter[]>('http://localhost:8080/api/chapters/'+gameId);
   }
 
+  deleteGame(gameId:number):void{
+    this.http.delete<number>("http://localhost:8080/api/games/delete/"+gameId).subscribe();
+  }
+
   getGameRating(game?:Game):number {
     let gameRating = 0;
     if (game) {

@@ -3,6 +3,8 @@ import {Game} from "../interfaces/game";
 import {GameService} from "../services/game.service";
 import {CategoryService} from "../services/category.service";
 import {Category} from "../interfaces/category";
+import {RefreshService} from "../services/refresh.service";
+import {Enduser} from "../interfaces/enduser";
 
 @Component({
   selector: 'app-mainframe',
@@ -19,7 +21,12 @@ export class LandingComponent implements OnInit {
   currentOrder: string = "";
 
 
-  constructor(private gameService: GameService, private categoryService: CategoryService) {
+  constructor(private gameService: GameService,
+              private categoryService: CategoryService,
+              private refreshService:RefreshService) {
+    this.refreshService.refresh$.subscribe(() => {
+      this.refreshGamesList();
+    });
   }
 
   ngOnInit(): void {
@@ -76,6 +83,11 @@ export class LandingComponent implements OnInit {
       return order === "asc" ? avgRating1 - avgRating2 : avgRating2 - avgRating1;
     });
     this.currentOrder = order;
+  }
+
+  refreshGamesList() {
+    //TODO besser implementieren
+    window.location.reload();
   }
 
 
