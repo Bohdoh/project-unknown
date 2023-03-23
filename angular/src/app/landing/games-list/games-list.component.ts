@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Game} from "../../interfaces/game";
 
 
@@ -16,6 +16,7 @@ export class GamesListComponent {
 
    @Input() games? : Game[];
    @Input() changeGamesToBeShownByCat: ((categoryName: string) => void) | undefined;
+   @Input() changeGamesToBeShownByRating: ((order: string) => void) | undefined;
 
 
 
