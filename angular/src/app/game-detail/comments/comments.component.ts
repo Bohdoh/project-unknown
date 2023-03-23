@@ -27,7 +27,7 @@ export class CommentsComponent {
   constructor(private http:HttpClient,private gameService:GameService,private emojiService:StringToEmojiService) {
   }
 
-  addComment(comment ?: string) {
+  addComment(ident:string,comment ?: string) {
     if (this.gameId && comment) {
       let payload: CommentPost = {
         gameId: this.gameId,
@@ -45,7 +45,9 @@ export class CommentsComponent {
           this.commentIdBeingEdited = 0;
         });
     }
-    this.commentContent = undefined;
+    if(ident === "write") {
+      this.commentContent = undefined;
+    }
   }
 
   deleteComment(comment: Comment) {

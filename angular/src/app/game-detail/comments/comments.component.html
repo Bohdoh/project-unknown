@@ -9,7 +9,7 @@
              src="https://bulma.io/images/placeholders/128x128.png" alt="Profile Picture">
       </p>
     </figure>
-    <form class="media-content" (ngSubmit)="addComment(commentContent)">
+    <form class="media-content" (ngSubmit)="addComment('write',commentContent)">
       <div class="field">
         <p class="control">
               <textarea class="textarea is-half" (input)="emojiConvertComment('write',commentContent)"
@@ -55,7 +55,7 @@
   </div>
 
   <!-- comment edit window -->
-  <form class="media-content" (ngSubmit)="addComment(editCommentContent)"
+  <form class="media-content" (ngSubmit)="addComment('edit',editCommentContent)"
         *ngIf="commentIdBeingEdited === comment.commentId">
     <div class="field">
       <p class="control">
