@@ -24,7 +24,7 @@ export class GameDetailComponent implements OnInit {
   username: string | any;
   role?: string;
   currentUser?: Enduser;
-  userHasReview: boolean = true;
+  userHasReview?: boolean;
   stars?:string[];
 
   constructor(private http: HttpClient,

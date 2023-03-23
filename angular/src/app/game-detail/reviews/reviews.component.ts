@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ReviewPost} from "../../interfaces/review-post";
 import {switchMap} from "rxjs";
 import {Game} from "../../interfaces/game";
@@ -20,8 +20,9 @@ export class ReviewsComponent {
   @Input() username: string | any;
   @Input() game?: Game;
   @Input() role?: string;
-  @Input() userHasReview: boolean = true;
+  @Input() userHasReview?: boolean;
   @Input() currentUser?: Enduser;
+  @Output() userHasReviewChange = new EventEmitter<boolean>(); // <-- add this
 
   reviewIdBeingEdited : number = 0;
   reviewContent?: string;
@@ -52,6 +53,7 @@ export class ReviewsComponent {
           this.game = game;
           this.userHasReview = this.userHasReviewcheck();
           this.reviewIdBeingEdited = 0;
+          this.userHasReviewChange.emit(this.userHasReview);
         });
     }
     this.reviewContent = undefined;
@@ -83,6 +85,7 @@ export class ReviewsComponent {
     ).subscribe((game: Game) => {
       this.game = game;
       this.userHasReview = this.userHasReviewcheck();
+      this.userHasReviewChange.emit(this.userHasReview);
     });
   }
 
