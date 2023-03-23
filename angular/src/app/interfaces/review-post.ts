@@ -4,5 +4,7 @@ export interface ReviewPost {
   username: string;
   content: string;
   rating: number;
+  reviewId: number;
+
 
 }
