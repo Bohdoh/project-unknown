@@ -176,13 +176,21 @@ export class GameDetailComponent implements OnInit {
 
   emojiConvertComment(text ?: string) {
     if (text) {
-      this.commentContent = this.emojiService.emojiConvert(text);
+      const words = text.split(' ');
+      const emojiWords = words.map((word) => {
+        return this.emojiService.emojiConvert(word);
+      });
+      this.commentContent = emojiWords.join(' ');
     }
   }
 
   emojiConvertReview(text ?: string) {
     if (text) {
-      this.reviewContent = this.emojiService.emojiConvert(text);
+      const words = text.split(' ');
+      const emojiWords = words.map((word) => {
+        return this.emojiService.emojiConvert(word);
+      });
+      this.reviewContent = emojiWords.join(' ');
     }
   }
 

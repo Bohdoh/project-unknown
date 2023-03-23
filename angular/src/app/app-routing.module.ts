@@ -10,6 +10,7 @@ import { LogoutComponent } from './alwaysVisible/navbar/logout/logout.component'
 import { RegisterComponent } from './alwaysVisible/navbar/register/register.component';
 import {HomeComponent} from "./home/home.component";
 import {GameChaptersComponent} from "./game-detail/game-chapters/game-chapters.component";
+import {ProfilePageComponent} from "./profile-page/profile-page.component";
 
 
 const routes: Routes = [
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {path: 'home',component:LandingComponent},
-
+  {path: 'profil/:username',component:ProfilePageComponent},
   {path: "game/play/:id/:title", component: GameChaptersComponent}
 
 ];

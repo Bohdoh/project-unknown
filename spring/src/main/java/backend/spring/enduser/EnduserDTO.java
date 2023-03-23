@@ -13,4 +13,9 @@ import lombok.Setter;
 public class EnduserDTO {
     private String username;
     private String image;
+
+    public EnduserDTO(Enduser enduser) {
+        this.username = enduser.getUsername ();
+        this.image = enduser.getImage ();
+    }
 }

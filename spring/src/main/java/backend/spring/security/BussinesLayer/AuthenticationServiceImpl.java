@@ -1,6 +1,7 @@
 package backend.spring.security.BussinesLayer;
 
 
+import backend.spring.exeptions.UserAlreadyExistsException;
 import backend.spring.security.DAO.Role;
 import backend.spring.security.DAO.Token;
 import backend.spring.security.DAO.TokenType;
@@ -14,10 +15,12 @@ import backend.spring.security.SecurityLayer.JwtService;
 import lombok.RequiredArgsConstructor;
 
 
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
@@ -33,7 +36,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private  final AuthenticationManager authenticationManager;
 
     @Override
-    public AuthenticationResponse register(RegisterRequest request) {
+    public AuthenticationResponse register(RegisterRequest request) throws UserAlreadyExistsException {
+        if (enduserRepository.findByUsername(request.getUsername()).isPresent()) {
+            throw new UserAlreadyExistsException ("Username already exists");
+        }
+        if (enduserRepository.findByEmail(request.getEmail()).isPresent()) {
+            throw new UserAlreadyExistsException("Email already exists");
+        }
+
         var user = Enduser.builder()
                 .username (request.getUsername ())
                 .email(request.getEmail())
@@ -42,11 +52,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .build();
 
         var savedUser = enduserRepository.save(user);
-        //var jwtToken = jwtService.generateToken(user);
-       // saveUserToken (savedUser, jwtToken);
+        var jwtToken = jwtService.generateToken(user);
+        saveUserToken (savedUser, jwtToken);
         return AuthenticationResponse.builder()
                 .username (savedUser.getUsername ())
-               // .token(jwtToken)
+                .token(jwtToken)
                 .build();
 
     }

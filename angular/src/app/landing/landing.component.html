@@ -5,13 +5,14 @@
     <div class="columns">
       <div class="column is-one-fifth"></div>
       <div class="column box is-Background3 mt-4">
+        <!--Categories -->
         <aside class="menu">
           <ul class="menu-list">
             <li>
               <p class="is-size-4">Categories</p>
               <ul class="menu-list" *ngIf="categories">
                 <li>
-                  <a (click)="changeGamesToBeShownByCat('')"
+                  <a [class.liactive]="currentCategory===''" (click)="changeGamesToBeShownByCat('')"
                      class="is-flex is-justify-content-space-between is-align-items-center">
                     <div>All</div>
                     <span class="ml-2 is-size-7">{{ gamesAmount }}</span>
@@ -19,7 +20,9 @@
                 </li>
 
                 <li *ngFor="let category of categories">
-                  <a *ngIf="getNumberOfPostsWithCat(category.name) > 0" (click)="changeGamesToBeShownByCat(category.name)"
+                  <a [class.liactive]="currentCategory===category.name"
+                     *ngIf="getNumberOfPostsWithCat(category.name) > 0"
+                     (click)="changeGamesToBeShownByCat(category.name)"
                      class="is-flex is-justify-content-space-between is-align-items-center">
                     <span>{{ category.name }}</span>
                     <span class="ml-2 is-size-7">{{ getNumberOfPostsWithCat(category.name) }}</span>
@@ -30,19 +33,45 @@
             </li>
           </ul>
         </aside>
+        <!--Rating -->
+        <aside class="menu">
+          <ul class="menu-list">
+            <li>
+              <p class="is-size-4">Rating</p>
+              <ul class="menu-list">
+                <li><a [class.liactive]="currentOrder===''" (click)="changeGamesToBeShownByRating('')"
+                       class="is-flex is-justify-content-space-between is-align-items-center">
+                  <span>Default</span>
+                </a>
+                </li>
+                <li><a [class.liactive]="currentOrder==='asc'" (click)="changeGamesToBeShownByRating('asc')"
+                       class="is-flex is-justify-content-space-between is-align-items-center">
+                  <span>Ascending</span>
+                </a>
+                </li>
+                <li><a [class.liactive]="currentOrder==='desc'" (click)="changeGamesToBeShownByRating('desc')"
+                       class="is-flex is-justify-content-space-between is-align-items-center">
+                  <span>Descending</span>
+                </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </aside>
       </div>
       <div class="column is-one-fifth"></div>
     </div>
   </div>
 
   <!-- middle column -->
-  <div class="column is-three-fifths has-background-danger">
-    <app-games-list [games]="gamesToBeShown" [changeGamesToBeShownByCat]="changeGamesToBeShownByCat"></app-games-list>
+  <div class="column is-three-fifths">
+    <app-games-list [games]="gamesToBeShown" [changeGamesToBeShownByCat]="changeGamesToBeShownByCat"
+                    [changeGamesToBeShownByRating]="changeGamesToBeShownByRating"></app-games-list>
   </div>
 
   <!-- right column -->
-  <div class="column is-one-fifth has-background-dark">
-    <div>asldjalisfjlasjdlajksdlkasjflkasjdflkasjdlk</div>
+  <div class="column is-one-fifth ">
+
 
   </div>
 </div>

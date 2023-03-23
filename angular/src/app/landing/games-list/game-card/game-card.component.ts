@@ -12,6 +12,7 @@ import {DatePipe} from "@angular/common";
 export class GameCardComponent implements OnInit {
   @Input() game?: Game;
   @Input() changeGamesToBeShownByCat: ((categoryName: string) => void) | undefined;
+  @Input() changeGamesToBeShownByRating: ((order: string) => void) | undefined;
   gameRating: number = 0;
   stars: string[] = [];
 

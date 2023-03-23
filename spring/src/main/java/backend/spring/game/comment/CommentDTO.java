@@ -17,4 +17,11 @@ public class CommentDTO {
     private Instant createdAt;
     private String content;
     private EnduserDTO enduser;
+
+
+    public CommentDTO(Comment comment) {
+        this.commentId = comment.getCommentId ();
+        this.createdAt = comment.getCreatedAt ();
+        this.content = comment.getContent ();
+    }
 }

@@ -25,6 +25,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {NavbarComponent} from "./alwaysVisible/navbar/navbar.component";
 import {AuthInterceptor} from "./auth.interceptor";
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {AuthInterceptor} from "./auth.interceptor";
     LogoutComponent,
     RegisterComponent,
     HomeComponent,
-    GameChaptersComponent
+    GameChaptersComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,

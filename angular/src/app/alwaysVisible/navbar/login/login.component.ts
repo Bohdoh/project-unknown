@@ -5,6 +5,7 @@ import { AuthenticationRequest } from '../../../interfaces/AuthenticationRequest
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { throwError } from 'rxjs';
+import {RefreshService} from "../../../services/refresh.service";
 
 
 @Component({
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder // added form builder dependency
+    private formBuilder: FormBuilder,// added form builder dependency
+    private refreshService: RefreshService
   ) {
 
     this.loginRequest = {
@@ -53,6 +55,7 @@ export class LoginComponent implements OnInit {
       this.isError = false;
       this.router.navigateByUrl('/home');
       this.toastr.success('Login Successful');
+      this.refreshService.triggerRefresh();
     }, error => {
       this.isError = true;
       throwError(error);
