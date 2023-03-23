@@ -244,7 +244,7 @@
               *ngIf="reviewIdBeingEdited === review.id">
           <div class="field">
             <p class="control">
-              <textarea class="textarea is-half" (input)="emojiConvertComment(editReviewContent)"
+              <textarea class="textarea is-half" (input)="emojiConvertReview(editReviewContent)"
                         [(ngModel)]="editReviewContent" name="content"
                         placeholder="Edit your review..."></textarea>
             </p>

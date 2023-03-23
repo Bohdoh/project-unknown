@@ -163,6 +163,7 @@ export class GameDetailComponent implements OnInit {
         return this.emojiService.emojiConvert(word);
       });
       this.commentContent = emojiWords.join(' ');
+      this.editCommentContent = emojiWords.join(' ');
     }
   }
 
@@ -173,6 +174,7 @@ export class GameDetailComponent implements OnInit {
         return this.emojiService.emojiConvert(word);
       });
       this.reviewContent = emojiWords.join(' ');
+      this.editReviewContent = emojiWords.join(' ');
     }
   }
 

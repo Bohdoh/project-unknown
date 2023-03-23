@@ -26,11 +26,7 @@ import {ToastrModule} from "ngx-toastr";
 import {NavbarComponent} from "./alwaysVisible/navbar/navbar.component";
 import {AuthInterceptor} from "./auth.interceptor";
 import { ProfilePageComponent } from './profile-page/profile-page.component';
-import {MatInputModule} from "@angular/material/input";
-import {MatButtonModule} from "@angular/material/button";
-import {MatSelectModule} from "@angular/material/select";
-import {MatCheckboxModule} from "@angular/material/checkbox";
-import {MatChipsModule} from "@angular/material/chips";
+
 
 @NgModule({
   declarations: [
@@ -58,12 +54,8 @@ import {MatChipsModule} from "@angular/material/chips";
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     FormsModule,
-    AppRoutingModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatChipsModule
+    AppRoutingModule
+
   ],
   providers: [
     {
