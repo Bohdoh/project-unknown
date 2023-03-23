@@ -2,6 +2,7 @@ package backend.spring.security.BussinesLayer;
 
 
 import backend.spring.exeptions.UserAlreadyExistsException;
+import backend.spring.exeptions.UserDoesntExistException;
 import backend.spring.security.DAO.Role;
 import backend.spring.security.DAO.Token;
 import backend.spring.security.DAO.TokenType;
@@ -74,24 +75,27 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+    public AuthenticationResponse authenticate(AuthenticationRequest request) throws UserDoesntExistException {
+        var user = enduserRepository.findByUsername(request.getUsername())
+                .orElseThrow(() -> new UserDoesntExistException("User with the given username doesn't exist"));
+
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken (
                         request.getUsername (),
                         request.getPassword()
                 )
         );
-        var user = enduserRepository.findByUsername (request.getUsername ())
-                .orElseThrow();
+
         var jwtToken = jwtService.generateToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
         return AuthenticationResponse.builder()
-                .username (user.getUsername ())
+                .username(user.getUsername())
                 .token(jwtToken)
                 .role(user.getRole().toString())
                 .build();
     }
+
 
     private void revokeAllUserTokens(Enduser enduser) {
 

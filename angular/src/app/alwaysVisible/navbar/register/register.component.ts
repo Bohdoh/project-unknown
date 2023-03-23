@@ -103,7 +103,9 @@ export class RegisterComponent implements OnInit {
         this.router.navigateByUrl('/login');
       },
       error => {
-        this.toastr.error('Registration failed. Please try again');
+        this.toastr.error('Your Username or Email are already in use 😿','Error! 🪳', {
+          positionClass: 'toast-top-center'
+        });
       }
     );
   }
