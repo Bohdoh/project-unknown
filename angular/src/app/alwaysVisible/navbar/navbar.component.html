@@ -81,6 +81,7 @@
               <div class="field">
                 <input type="file" id="imageFile" name="userImage" accept="image/*" (change)="onFileSelected($event)" required>
               </div>
+
 <!--              <button class="button is-small is-light" type="submit" [disabled]="!imageSelected"> Submit</button>-->
             </form>
 
@@ -89,7 +90,11 @@
           <hr class="navbar-divider">
           <a class="navbar-item">
               <button class="button is-danger is-small" (click)="logout()">Logout</button>
+            <span class="navbar-item">
+            <button class="button  is-small" (click)="goToUserProfile()">Profil</button>
+          </span>
           </a>
+
         </div>
       </div>
     </div>
