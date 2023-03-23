@@ -2,34 +2,35 @@
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-half">
-        <form [formGroup]="registerForm" (ngSubmit)="register()" class="box">
+        <form (ngSubmit)="onSubmit()" class="box">
           <div class="field">
             <label class="label">Username:</label>
             <div class="control">
-              <input class="input" type="text" [formControlName]="'username'" placeholder="Username">
+              <input class="input" type="text" [(ngModel)]="registerRequest.username" name="username" placeholder="Username" (ngModelChange)="checkUsername()">
             </div>
           </div>
           <div class="field">
             <label class="label">Email:</label>
             <div class="control">
-              <input class="input" type="email" [formControlName]="'email'" placeholder="Email">
+              <input class="input" type="email" [(ngModel)]="registerRequest.email" name="email" placeholder="Email" (ngModelChange)="checkEmail()">
             </div>
           </div>
           <div class="field">
             <label class="label">Password:</label>
             <div class="control">
-              <input class="input" type="password" [formControlName]="'password'" placeholder="Password">
+              <input class="input" type="password" [(ngModel)]="registerRequest.password" name="password" placeholder="Password" (ngModelChange)="checkPassword()">
             </div>
           </div>
           <div class="field">
             <label class="label">Confirm password:</label>
             <div class="control">
-              <input class="input" type="password" [formControlName]="'password2'" placeholder="Password2">
+              <input class="input" type="password" [(ngModel)]="confirmPassword" name="password2" placeholder="Password2"  (ngModelChange)="checkPassword()">
             </div>
           </div>
-          <div class="field is-grouped">
-            <div class="control">
-              <button class="button is-link" type="submit">Register</button>
+
+          <div class="field is-grouped" >
+            <div class="control" >
+              <button class="button is-link" type="submit" [disabled]="!isValidPassword || isEmailEmpty || !isValidUsername || !isValidEmail || !isConfirmPasswordValid">Register</button>
             </div>
           </div>
         </form>
@@ -39,4 +40,41 @@
       </div>
     </div>
   </div>
+<div class="container" *ngIf="!isValidPassword ||  !isValidUsername || !isValidEmail || !isConfirmPasswordValid">
+  <div class="columns is-centered">
+    <div class="column is-half">
+
+       <div  class="notification is-danger">
+         <div *ngIf="!isValidUsername" >
+           Username should only have Numbers, letters and "-".
+         </div>
+         <div *ngIf="isEmptyUsername" >
+           Please enter a valid Username.
+         </div>
+         <div *ngIf="isEmailEmpty" >
+           Please enter a valid email address.
+         </div>
+         <div *ngIf="!isValidEmail" >
+          Remember your email must contain @ and a domain.
+         </div>
+         <div *ngIf="!isValidPassword">
+           Please enter a valid password.
+         </div>
+         <div *ngIf="isEmptyPassword">
+           You forgot to write down your password.
+         </div>
+         <div *ngIf="!isConfirmPasswordValid ">
+           Passwords do not match 😿
+         </div>
+
+       </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+
+
 </section>
