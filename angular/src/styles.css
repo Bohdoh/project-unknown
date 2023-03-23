@@ -11934,6 +11934,10 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   background-color: whitesmoke;
 }
 
+html {
+  background-color: #EDEDE9;
+}
+
 
 
 
