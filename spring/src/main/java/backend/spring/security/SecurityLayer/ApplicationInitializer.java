@@ -29,4 +29,26 @@ public class ApplicationInitializer {
             }
         };
     }
+
+    @Bean
+    public CommandLineRunner createDefaultUser(EnduserRepository enduserRepository, PasswordEncoder passwordEncoder) {
+        return args -> {
+            String defaultUserUsername = "user";
+            String defaultUserPassword = "user";
+
+            if (!enduserRepository.findByUsername(defaultUserUsername).isPresent()) {
+                Enduser user = Enduser.builder()
+                        .username(defaultUserUsername)
+                        .email("user@example.com")
+                        .password(passwordEncoder.encode(defaultUserPassword))
+                        .role(Role.USER)
+                        .build();
+
+                enduserRepository.save(user);
+            }
+        };
+    }
+
+
+
 }
