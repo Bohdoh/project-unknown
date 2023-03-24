@@ -54,7 +54,8 @@ public class SecurityConfig {
                 .hasAnyAuthority (Role.USER.name (),Role.ADMIN.name ())
                 .requestMatchers (
                         "/api/users/{username}/listOfUsers/**",
-                        "/api/users/{username}/listOfUsers")
+                        "/api/users/{username}/listOfUsers",
+                        "/api/games/delete/**")
                 .hasAuthority (Role.ADMIN.name ())
                 .anyRequest ()
                 .authenticated ()
