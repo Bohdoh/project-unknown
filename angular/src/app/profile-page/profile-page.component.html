@@ -5,6 +5,8 @@
 <p>Role: {{ profile.role }}</p>
 
 <p>Reviews:</p>
+
+
 <ul>
   <li *ngFor="let review of profile.reviews">
     {{ review.content }} ({{ review.rating }})
