@@ -12,6 +12,8 @@ import backend.spring.game.comment.Comment;
 import backend.spring.game.comment.CommentRepository;
 import backend.spring.game.review.Review;
 import backend.spring.game.review.ReviewRepository;
+import backend.spring.images.Image;
+import backend.spring.images.ImageRepository;
 import com.github.javafaker.Faker;
 import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
@@ -34,16 +36,18 @@ public class Application {
     private final EnduserRepository enduserRepository;
     private final ChapterRepository chapterRepository;
     private final ReviewRepository reviewRepository;
+    private final ImageRepository imageRepository;
     private final Faker faker = new Faker();
 
     @Autowired
-    public Application(ChapterRepository chapterRepository, GameRepository gameRepository, CategoryRepository categoryRepository, CommentRepository commentRepository, EnduserRepository enduserRepository, ReviewRepository reviewRepository) {
+    public Application(ImageRepository imageRepository,ChapterRepository chapterRepository, GameRepository gameRepository, CategoryRepository categoryRepository, CommentRepository commentRepository, EnduserRepository enduserRepository, ReviewRepository reviewRepository) {
         this.gameRepository = gameRepository;
         this.categoryRepository = categoryRepository;
         this.commentRepository = commentRepository;
         this.enduserRepository = enduserRepository;
         this.reviewRepository = reviewRepository;
         this.chapterRepository = chapterRepository;
+        this.imageRepository = imageRepository;
     }
 
     public static void main(String[] args) {
@@ -58,6 +62,8 @@ public class Application {
         create6DummyUsers();
         create6DummyGames();
         create5DummyCatsAndAssignThem();
+
+        imageRepository.save(new Image(readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "logo" + File.separator + "codeforge_logo.png"),"logo"));
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("The Artifact Hunt"), readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "indytitle.jpg"),
                 "Indiana Jones is hired by a wealthy collector to find a rare artifact: the Eye of Osiris, a jewel rumored to grant its owner immense power. Indy travels to Egypt, where he must navigate ancient tombs, evade traps, and outsmart rival treasure hunters. But when he finally locates the Eye, he triggers a deadly curse that threatens to consume him. What should Indy do next? ",

@@ -7,6 +7,7 @@ import {LocalStorageService} from "ngx-webstorage";
 import {TimerService} from "../../services/timer.service";
 import {tap} from "rxjs";
 import {RefreshService} from "../../services/refresh.service";
+import {ImageService} from "../../services/image.service";
 
 
 @Component({
@@ -15,22 +16,25 @@ import {RefreshService} from "../../services/refresh.service";
   styleUrls: ['./navbar.component.css']
 
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
   isLoggedIn: boolean | undefined;
-  username: string|any;
-  role?:string;
+  username: string | any;
+  role?: string;
   selectedImage?: File;
-  enduser?:Enduser;
+  enduser?: Enduser;
   fileInput: any;
-  timerValue: number=60;
+  timerValue: number = 60;
   isPlaying: boolean = false;
+  logo: string = "";
+
   constructor(
     private authService: AuthService,
     private timerService: TimerService,
     private router: Router,
-    private http:HttpClient,
+    private http: HttpClient,
     private localStorage: LocalStorageService,
-    private refreshService: RefreshService
+    private refreshService: RefreshService,
+    private imageService: ImageService
   ) {
     this.refreshService.refresh$.subscribe(() => {
       this.refreshNavbar();
@@ -40,21 +44,25 @@ export class NavbarComponent implements OnInit{
   ngOnInit() {
     this.authService.loggedIn.subscribe((data: boolean) => {
       this.isLoggedIn = data;
-        this.authService.username.subscribe((data: string) => {
-          this.username = data;
-          this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
-            this.enduser = user;
-          });
+      this.authService.username.subscribe((data: string) => {
+        this.username = data;
+        this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
+          this.enduser = user;
         });
-        this.authService.role.subscribe((data: string) => {
-          this.role = data;
-        });
-        this.timerService.timer$.subscribe((value: number) => {
-          this.timerValue = value;
-        });
-        this.timerService.isPlaying$.subscribe((value: boolean) => {
-          this.isPlaying = value;
-        });
+      });
+      this.authService.role.subscribe((data: string) => {
+        this.role = data;
+      });
+      this.timerService.timer$.subscribe((value: number) => {
+        this.timerValue = value;
+      });
+      this.timerService.isPlaying$.subscribe((value: boolean) => {
+        this.isPlaying = value;
+      });
+
+    });
+    this.imageService.getImage("logo").subscribe((value ) =>{
+      this.logo = value.image;
     });
   }
 
@@ -79,8 +87,9 @@ export class NavbarComponent implements OnInit{
   onFileSelected(event: any) {
     this.selectedImage = event.target.files[0];
     const formData = new FormData();
-    if(this.selectedImage){
-    formData.append('file', this.selectedImage);}
+    if (this.selectedImage) {
+      formData.append('file', this.selectedImage);
+    }
     this.http.post(
       "http://localhost:8080/api/users/" + this.username + "/image",
       formData
@@ -94,6 +103,7 @@ export class NavbarComponent implements OnInit{
       console.log(response);
     });
   }
+
   refreshNavbar() {
     this.ngOnInit();
 

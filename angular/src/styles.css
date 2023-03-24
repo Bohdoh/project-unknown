@@ -474,7 +474,7 @@ table th {
 
 /* Bulma Elements */
 .box {
-  background-color: white;
+  background-color: #E3DCD2;
   border-radius: 6px;
   box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
   color: #4a4a4a;
@@ -4689,7 +4689,7 @@ fieldset[disabled] .select select:hover {
 }
 
 .card {
-  background-color: white;
+  background-color: #E3DCD2;
   border-radius: 0.25rem;
   box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
   color: #4a4a4a;
@@ -4905,7 +4905,7 @@ button.dropdown-item.is-active {
 
 @media screen and (min-width: 769px), print {
   .level {
-    display: flex;
+    display: block;
   }
   .level > .level-item:not(.is-narrow) {
     flex-grow: 1;
@@ -5409,7 +5409,7 @@ button.dropdown-item.is-active {
 }
 
 .navbar {
-  background-color: white;
+  background-color: #CC8B65;
   min-height: 3.25rem;
   position: relative;
   z-index: 30;
@@ -6043,7 +6043,7 @@ button.dropdown-item.is-active {
 }
 
 .navbar.has-shadow {
-  box-shadow: 0 2px 0 0 whitesmoke;
+  box-shadow: 0 2px 0 0 #100C0D;
 }
 
 .navbar.is-fixed-bottom, .navbar.is-fixed-top {
@@ -6179,7 +6179,7 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
 .navbar-link:focus-within,
 .navbar-link:hover,
 .navbar-link.is-active {
-  background-color: #fafafa;
+  background-color: #CC8B65;
   color: #485fc7;
 }
 
@@ -11848,7 +11848,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .footer {
-  background-color: #fafafa;
+  background-color: #CC8B65;
   padding: 3rem 1.5rem 6rem;
 }
 /*# sourceMappingURL=bulma.css.map */
@@ -11935,7 +11935,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 html {
-  background-color: #EDEDE9;
+  background-color: #013328;
 }
 
 
