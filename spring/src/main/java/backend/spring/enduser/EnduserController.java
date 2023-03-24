@@ -73,7 +73,19 @@ public class EnduserController {
         }
     }
 
+    @CrossOrigin
+    @PutMapping("/api/upgrade/{username}")
+    public void upgrade(@PathVariable String username) throws UserDoesntExistException {
 
+      adminService.upgrade (username);
+    }
+
+    @CrossOrigin
+    @PutMapping("/api/downgrade/{username}")
+    public void downgrade(@PathVariable String username) throws UserDoesntExistException {
+
+        adminService.downgrade (username);
+    }
 
 
 }
