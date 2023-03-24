@@ -38,23 +38,31 @@ export class NavbarComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.authService.loggedIn.subscribe((data: boolean) => {
+      this.isLoggedIn = data;
+        this.authService.username.subscribe((data: string) => {
+          this.username = data;
+          this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
+            this.enduser = user;
+          });
+        });
+        this.authService.role.subscribe((data: string) => {
+          this.role = data;
+        });
+        this.timerService.timer$.subscribe((value: number) => {
+          this.timerValue = value;
+        });
+        this.timerService.isPlaying$.subscribe((value: boolean) => {
+          this.isPlaying = value;
+        });
+    });
+  }
+
+
+  private authenticateGetRoleAndUsername() {
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
     this.authService.username.subscribe((data: string) => this.username = data);
     this.authService.role.subscribe((data: string) => this.role = data);
-    this.isLoggedIn = this.authService.isLoggedIn();
-    this.username = this.authService.getUsername();
-    this.role = this.authService.getRole();
-    if(this.isLoggedIn) {
-      this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
-        this.enduser = user;
-      });
-      this.timerService.timer$.subscribe((value: number) => {
-        this.timerValue = value;
-      });
-      this.timerService.isPlaying$.subscribe((value: boolean) => {
-        this.isPlaying = value;
-      });
-    }
   }
 
   goToUserProfile() {
@@ -87,8 +95,7 @@ export class NavbarComponent implements OnInit{
     });
   }
   refreshNavbar() {
-    this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
-      this.enduser = user;
-    });
+    this.ngOnInit();
+
   }
 }

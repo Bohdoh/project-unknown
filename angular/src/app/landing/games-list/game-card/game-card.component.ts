@@ -39,7 +39,7 @@ export class GameCardComponent implements OnInit {
 
   deleteGame(gameId: number):void {
     this.gameService.deleteGame(gameId);
-    this.refreshService.triggerRefresh();
+    this.refreshService.triggerRefreshEvent();
   }
 
 

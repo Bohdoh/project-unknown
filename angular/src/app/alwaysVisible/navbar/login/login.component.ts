@@ -57,7 +57,6 @@ export class LoginComponent implements OnInit {
       this.toastr.success('Login Successful','Success', {
         positionClass: 'toast-top-center'
       });
-      this.refreshService.triggerRefresh();
     }, error => {
       this.isError = true;
       throwError(error);
