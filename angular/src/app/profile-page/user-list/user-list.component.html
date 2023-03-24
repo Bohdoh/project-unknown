@@ -2,7 +2,7 @@
 <ul>
   <li *ngFor="let user of users">
     {{ user.username }} - {{ user.role }}
-    <button (click)="user.role === 'ADMIN' ? downgrade(user.username) : upgrade(user.username)">
+    <button [disabled]="user.username === username" (click)="user.role === 'ADMIN' ? downgrade(user.username) : upgrade(user.username)">
       {{ user.role === 'ADMIN' ? '⬇️' : '⬆️' }}
     </button>
   </li>
