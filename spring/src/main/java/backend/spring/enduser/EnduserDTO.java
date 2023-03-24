@@ -13,9 +13,10 @@ import lombok.Setter;
 public class EnduserDTO {
     private String username;
     private String image;
-
+    private Role role;
     public EnduserDTO(Enduser enduser) {
         this.username = enduser.getUsername ();
         this.image = enduser.getImage ();
+        this.role=enduser.getRole ();
     }
 }
