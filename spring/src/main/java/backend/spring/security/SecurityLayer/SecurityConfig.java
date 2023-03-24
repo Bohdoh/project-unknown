@@ -45,13 +45,21 @@ public class SecurityConfig {
                         "/api/v1/auth/**",
                         "/api/games/**",
                         "/api/categories/**",
-                        "/api/chapters/**"//,
-                       // "/api/comment",
-                       // "/api/users/**"
+                        "/api/chapters/**"
                 )
                 .permitAll ()
-                .requestMatchers ("/**")
-                .hasAuthority(Role.ADMIN.name())
+                .requestMatchers (
+                        "/api/comment",
+                         "/api/users/**",
+                        "/api/review",
+                        "/api/review/**",
+                        "/profil/**")
+                .hasAnyAuthority (Role.USER.name (),Role.ADMIN.name ())
+                .requestMatchers (
+                        "/api/users/{username}/listOfUsers/**",
+                        "/api/users/{username}/listOfUsers",
+                        "/api/games/delete/**")
+                .hasAuthority (Role.ADMIN.name ())
                 .anyRequest ()
                 .authenticated ()
                 .and ()
