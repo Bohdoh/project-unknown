@@ -27,6 +27,7 @@ import {AuthInterceptor} from "./auth.interceptor";
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CommentsComponent } from './game-detail/comments/comments.component';
 import { ReviewsComponent } from './game-detail/reviews/reviews.component';
+import { UserListComponent } from './profile-page/user-list/user-list.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ReviewsComponent } from './game-detail/reviews/reviews.component';
     GameChaptersComponent,
     ProfilePageComponent,
     CommentsComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

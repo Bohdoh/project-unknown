@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProfilDTO} from "../interfaces/profil-dto";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ProfileService} from "../services/profile.service";
 
 @Component({
@@ -12,10 +12,13 @@ export class ProfilePageComponent implements OnInit{
 
   @Input() username: string|any;
   profile!: ProfilDTO;
+  userRole:string="a";
+  isAdmin?:boolean;
 
   constructor(
     private route: ActivatedRoute,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private router:Router
   ) {
 
   }
@@ -25,11 +28,17 @@ export class ProfilePageComponent implements OnInit{
     this.profileService.getProfileByUsername(this.username).subscribe(
       (data) => {
         this.profile = data;
+        this.userRole=this.profile.role;
+        this.isAdmin=this.userRole==="ADMIN";
       },
       (error) => {
         console.error(error);
       }
     );
+  }
+
+  getUserList() {
+    this.router.navigate(['api', 'users', this.username, 'listOfUsers']);
   }
 
 }

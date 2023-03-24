@@ -31,7 +31,7 @@ public class ConverterService {
     }
 
     public EnduserDTO enduserToEnduserDTO(Enduser enduser){
-        return new EnduserDTO(enduser.getUsername(), enduser.getImage());
+        return new EnduserDTO(enduser.getUsername(), enduser.getImage(), enduser.getRole ());
     }
 
     public CommentDTO commentToCommentDTO(Comment comment){
