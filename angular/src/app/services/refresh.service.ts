@@ -9,7 +9,7 @@ export class RefreshService {
 
   refresh$ = this.refresh.asObservable();
 
-  triggerRefresh() {
+  triggerRefreshEvent() {
     this.refresh.next();
   }
 }
