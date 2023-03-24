@@ -1,8 +1,10 @@
 <h1>{{ profile.username }}</h1>
 
 <p>Email: {{ profile.email }}</p>
-
-<p>Role: {{ profile.role }}</p>
+<div>
+  <span>Role:</span><span  > {{ profile.role }}</span>
+</div>
+<p>{{userRole}}</p>
 
 <p>Reviews:</p>
 
@@ -19,3 +21,7 @@
     {{ comment.content }}
   </li>
 </ul>
+<div *ngIf="isAdmin">
+  <button  (click)="getUserList()">User list</button>
+</div>
+
