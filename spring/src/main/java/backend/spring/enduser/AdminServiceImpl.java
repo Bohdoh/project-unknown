@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -34,5 +35,32 @@ public class AdminServiceImpl implements AdminService {
 
         return enduserDTOs;
     }
+
+    @Override
+    public void upgrade(String username) throws UserDoesntExistException {
+        Optional<Enduser> optionalEnduser = enduserRepository.findByUsername(username);
+        if (optionalEnduser.isPresent()) {
+            Enduser enduser = optionalEnduser.get();
+            enduser.setRole(Role.ADMIN);
+            enduserRepository.save(enduser);
+        } else {
+            throw new UserDoesntExistException("User with username " + username + " doesn't exist");
+        }
+    }
+
+    @Override
+    public void downgrade(String username) throws UserDoesntExistException {
+
+        Optional<Enduser> optionalEnduser = enduserRepository.findByUsername(username);
+        if (optionalEnduser.isPresent()) {
+            Enduser enduser = optionalEnduser.get();
+            enduser.setRole(Role.USER);
+            enduserRepository.save(enduser);
+        } else {
+            throw new UserDoesntExistException("User with username " + username + " doesn't exist");
+        }
+
+    }
+
 
 }
