@@ -1,6 +1,8 @@
 <h1>User List</h1>
 <ul>
   <li *ngFor="let user of users">
-    {{ user.username }}  - {{user.role}}
+    {{ user.username }} - {{ user.role }}
+    <button (click)="upgrade(user.username)">Upgrade</button>
+    <button (click)="downgrade(user.username)">Downgrade</button>
   </li>
 </ul>

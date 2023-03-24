@@ -15,4 +15,18 @@ export class AdminService {
     const url = `${this.baseUrl}/${username}/listOfUsers`;
     return this.http.get<Enduser[]>(url);
   }
+
+  upgrade(username: string): Observable<any> {
+    const url = `http://localhost:8080/api/upgrade/${username}`;
+    return this.http.put(url, null);
+  }
+
+  downgrade(username: string): Observable<any> {
+    const url = `http://localhost:8080/api/downgrade/${username}`;
+    return this.http.put(url, null);
+  }
+
+
+
+
 }

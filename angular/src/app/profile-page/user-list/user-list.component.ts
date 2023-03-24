@@ -13,6 +13,8 @@ export class UserListComponent implements OnInit{
   @Input() username: string|any;
   users: Enduser[] = [];
 
+  name:string|any;
+
 constructor(private adminService: AdminService, private route: ActivatedRoute) {
 }
 
@@ -27,5 +29,24 @@ constructor(private adminService: AdminService, private route: ActivatedRoute) {
       }
     );
   }
+
+
+  upgrade(name: string) {
+    this.adminService.upgrade(name).subscribe(() => {
+      console.log(`Upgraded ${name}`);
+    }, (error) => {
+      console.error(error);
+    });
+  }
+
+  downgrade(name: string) {
+    this.adminService.downgrade(name).subscribe(() => {
+      console.log(`Downgraded ${name}`);
+    }, (error) => {
+      console.error(error);
+    });
+  }
+
+
 
 }
