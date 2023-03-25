@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Game} from "./interfaces/game";
 import {Router} from "@angular/router";
+import {RegisterRequest} from "./interfaces/RegisterRequest";
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,9 @@ export class AppComponent implements OnInit{
   @ViewChild('loginRegisterModal') loginRegisterModal!: ElementRef;
   @ViewChild('mainContent') mainContent!: ElementRef;
     flip: boolean = false;
-  loading: boolean = false;
+
   fadeOut: boolean = false;
+  userRegistration?:RegisterRequest;
 
   games? : Game[];
 
@@ -75,6 +77,4 @@ export class AppComponent implements OnInit{
       this.fadeOut = false;
     }, 450); // Match the duration of the collapseAnimation
   }
-
-
 }

@@ -3,6 +3,7 @@ import {AuthService} from "../../../services/auth.service";
 import {RegisterRequest} from "../../../interfaces/RegisterRequest";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
+import {RefreshService} from "../../../services/refresh.service";
 
 @Component({
   selector: 'app-register',
@@ -27,11 +28,11 @@ export class RegisterComponent implements OnInit {
   isEmptyUsername: boolean = true;
   isEmptyPassword: boolean = true;
   @Output() closeRegister = new EventEmitter<void>();
-  @Output() registerSuccess = new EventEmitter<void>();
+  @Output() registerSuccess = new EventEmitter<RegisterRequest>();
   @Output() showLogin = new EventEmitter<void>();
 
 
-  constructor(private authService: AuthService, private toastr: ToastrService, private router: Router) {
+  constructor(private authService: AuthService, private toastr: ToastrService, private router: Router,private refreshService: RefreshService) {
 
   }
 
@@ -122,6 +123,8 @@ export class RegisterComponent implements OnInit {
           positionClass: 'toast-top-center'
         });
         this.registerSuccess.emit();
+        this.refreshService.setUsername(this.registerRequest.username);
+        this.refreshService.setPassword(this.registerRequest.password);
         this.resetInputFields();
 
         //this.router.navigateByUrl('/login');

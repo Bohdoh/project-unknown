@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { AuthenticationRequest } from '../../../interfaces/AuthenticationRequest';
@@ -25,8 +25,6 @@ export class LoginComponent implements OnInit {
   @Output() showRegister = new EventEmitter<void>();
 
 
-
-
   constructor(
     private authService: AuthService,
     private toastr: ToastrService,
@@ -40,13 +38,19 @@ export class LoginComponent implements OnInit {
       username: '',
       password: ''
     }
-
   }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required]],
-      password: ['', Validators.required]
+      this.loginForm = this.formBuilder.group({
+        username: ['', [Validators.required]],
+        password: ['', Validators.required]
+      });
+    this.refreshService.usernameSource.subscribe(username => {
+      this.loginForm.get('username').setValue(username);
+    });
+
+    this.refreshService.passwordSource.subscribe(password => {
+      this.loginForm.get('password').setValue(password);
     });
   }
 
@@ -63,10 +67,7 @@ export class LoginComponent implements OnInit {
       });
       this.loginSuccess.emit();
       this.resetInput();
-      setTimeout(() => {
-         this.refreshService.triggerNavImageRefresh(),500
-       });
-
+      this.refreshService.triggerNavImageRefresh();
     }, error => {
       this.isError = true;
       throwError(error);
@@ -80,4 +81,5 @@ export class LoginComponent implements OnInit {
     this.loginForm.get('username').setValue('');
     this.loginForm.get('password').setValue('');
   }
+
 }
