@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
         positionClass: 'toast-top-center'
       });
       this.closeLogin.emit();
+      this.refreshService.triggerRefreshEvent();
 
     }, error => {
       this.isError = true;

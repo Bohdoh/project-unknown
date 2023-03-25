@@ -11946,7 +11946,9 @@ h1,h2,h3,h4,h5,h6 {
 
 .navbar {
   background-color: transparent;
+  height: 80px;
 }
+
 
 .button.is-primary:active, .button.is-primary.is-active {
   background-color: #b28893;

@@ -32,6 +32,7 @@ export class ReviewsComponent implements OnInit{
   editReviewContent? :string;
 
   constructor(private http:HttpClient,private gameService:GameService,private emojiService:StringToEmojiService) {
+
   }
   addReview(content ?: string, rating ?: number) {
     if (rating === 0) {
