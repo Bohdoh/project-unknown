@@ -11888,12 +11888,9 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   word-break: break-word;
 }
 
-
 :host {
   display: inline-flex;
 }
-
-
 
 .star-rating .fa-star.active,
 .yellow {
@@ -11931,22 +11928,115 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 
 .liactive {
   border-left: 3px solid #333;
-  background-color: whitesmoke;
+  background-color: #EDEDE9;
 }
 
 html {
   background-color: #EDEDE9;
+
 }
 
+body {
+  font-family: 'Georgia';
+}
 
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Lato';
+}
 
+.navbar {
+  background-color: transparent;
+}
 
+.button.is-primary:active, .button.is-primary.is-active {
+  background-color: #b28893;
+  border-color: transparent;
+  color: #fff;
+}
 
+.button.is-info:hover, .button.is-info.is-hovered {
+  background-color: #b28893;
+  border-color: transparent;
+  color: rgba(0, 0, 0, 0.7);
+}
+.button.is-info{
+  background-color: #46363A;
+  border-color: transparent;
+  color: whitesmoke;
+}
 
+.tag:not(body).is-link{
+  background-color: #46363A;
+  color: #fff;
+}
 
+.menu-list a {
+  color: #0F1D38;
 
+  font-weight: 200;
+}
+.menu-list p {
+  color: #0F1D38;
+  font-weight: 200;
+}
 
+.navbar-item,
+.navbar-link {
+  color: #181818;
 
+}
 
+.button.is-primary {
+  background-color: #46363A;
+  border-color: transparent;
+  color: #fff;
+}
 
+.button.is-primary:hover, .button.is-primary.is-hovered {
+  background-color: #6a5258;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-primary:active, .button.is-primary.is-active {
+  background-color: #6a5258;
+  border-color: transparent;
+  color: #fff;
+}
+
+.button.is-primary.is-outlined {
+  background-color: transparent;
+  border-color: #46363A;
+  color: #46363A;
+}
+
+.button.is-primary:focus:not(:active), .button.is-primary.is-focused:not(:active) {
+  box-shadow: 0 0 0 0.125em rgba(86, 66, 70, 0.22);
+}
+
+.button.is-primary[disabled],
+fieldset[disabled] .button.is-primary {
+  background-color: #7e6067;
+  border-color: #7e6067;
+  box-shadow: none;
+}
+
+.blur-background {
+  filter: blur(5px);
+}
+
+.modal.is-active {
+  display: flex;
+  align-items: center;
+}
+
+.custom-modal-content {
+  width: 60%;
+  max-width: 40vw;
+  min-width: 40vw;
+}
+
+.errormsg {
+  color: #930202;
+}
 

@@ -1,5 +1,29 @@
-    <app-navbar></app-navbar>
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>
+<div #mainContent>
+  <div class="columns">
+    <div class="column "></div>
+    <div class="column is-four-fifths">
+      <app-navbar (showLogin)="onShowLogin()" (showRegister)="onShowRegister()"  ></app-navbar>
+    </div>
+    <div class="column "></div>
+  </div>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>
 
 
+<div class="modal" #loginModal>
+  <div class="modal-background" (click)="closeModalLogin()"></div>
+  <div class="modal-content custom-modal-content">
+    <app-login (closeLogin)="closeModalLogin()"></app-login>
+  </div>
+  <button class="modal-close is-large" aria-label="close" (click)="closeModalLogin()"></button>
+</div>
+
+
+<div class="modal" #registerModal>
+  <div class="modal-background" (click)="closeModalRegister()"></div>
+  <div class="modal-content custom-modal-content">
+    <app-register (closeRegister)="closeModalRegister()" (registerSuccess)="switchToLogin()"></app-register>
+  </div>
+  <button class="modal-close is-large" aria-label="close" (click)="closeModalRegister()"></button>
+</div>

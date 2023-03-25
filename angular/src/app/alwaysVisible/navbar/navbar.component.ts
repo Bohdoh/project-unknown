@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 import {Enduser} from "../../interfaces/enduser";
@@ -24,6 +24,12 @@ export class NavbarComponent implements OnInit{
   fileInput: any;
   timerValue: number=60;
   isPlaying: boolean = false;
+  @Output() showLogin = new EventEmitter<void>();
+  @Output() showRegister = new EventEmitter<void>();
+
+
+
+
   constructor(
     private authService: AuthService,
     private timerService: TimerService,
@@ -69,6 +75,7 @@ export class NavbarComponent implements OnInit{
     this.router.navigateByUrl('profile/' + this.username);
   }
 
+
   logout() {
     this.authService.logout();
     this.isLoggedIn = false;
@@ -96,6 +103,12 @@ export class NavbarComponent implements OnInit{
   }
   refreshNavbar() {
     this.ngOnInit();
+  }
 
+  showLoginModal() {
+    this.showLogin.emit();
+  }
+  showRegisterModal() {
+    this.showRegister.emit();
   }
 }

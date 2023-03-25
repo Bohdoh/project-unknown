@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { AuthService } from "../../../services/auth.service";
 import { RegisterRequest } from "../../../interfaces/RegisterRequest";
 import { ToastrService } from "ngx-toastr";
@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
 
   registerRequest: RegisterRequest = {
     username: '',
@@ -25,6 +26,8 @@ export class RegisterComponent implements OnInit {
   isEmailEmpty:boolean=true;
   isEmptyUsername:boolean=true;
   isEmptyPassword:boolean=true;
+  @Output() closeRegister = new EventEmitter<void>();
+  @Output() registerSuccess = new EventEmitter<void>();
 
 
   constructor(private authService: AuthService, private toastr: ToastrService, private router: Router) {
@@ -51,28 +54,44 @@ export class RegisterComponent implements OnInit {
     return this.registerRequest.password === this.confirmPassword;
   }
 
-  checkPassword(){
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{5,}$/;
-    this.isValidPassword = regex.test(this.registerRequest.password)
-    if (this.matchingPasswords()){
-      if (this.registerRequest.password!==""){
-        if (regex.test(this.registerRequest.password)){
-          this.isEmptyPassword=false;
-          this.isValidPassword=true;
-          this.isConfirmPasswordValid=true;
-        }
-      }else {
-        this.isEmptyPassword=false;
-        this.isValidPassword=false;
-        this.isConfirmPasswordValid=true;
-      }
-    }else {
-      this.isEmptyPassword=true;
-      this.isValidPassword=false;
-      this.isConfirmPasswordValid=false;
-    }
+  // checkPassword(){
+  //   const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{5,}$/;
+  //   this.isValidPassword = regex.test(this.registerRequest.password)
+  //   if (this.matchingPasswords()){
+  //     if (this.registerRequest.password!==""){
+  //       if (regex.test(this.registerRequest.password)){
+  //         this.isEmptyPassword=false;
+  //         this.isValidPassword=true;
+  //         this.isConfirmPasswordValid=true;
+  //       }
+  //     }else {
+  //       this.isEmptyPassword=false;
+  //       this.isValidPassword=false;
+  //       this.isConfirmPasswordValid=true;
+  //     }
+  //   }else {
+  //     this.isEmptyPassword=true;
+  //     this.isValidPassword=false;
+  //     this.isConfirmPasswordValid=false;
+  //   }
+  //
+  //
+  // }
 
+  pwIsLengthValid():boolean {
+    return this.registerRequest.password.length >= 5;
+  }
 
+  pwHasUppercase():boolean {
+    return /[A-Z]/.test(this.registerRequest.password);
+  }
+
+  pwHasNumber():boolean {
+    return /\d/.test(this.registerRequest.password);
+  }
+
+  pwIsValid():boolean{
+    return this.pwHasUppercase() && this.pwHasNumber() && this.pwIsLengthValid();
   }
 
   checkUsername(){
@@ -90,17 +109,19 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.isValidUsername || !this.isValidEmail || !this.isValidPassword || !this.isConfirmPasswordValid) {
-      this.toastr.error('Please fill in all required fields correctly');
+    if (!this.isValidUsername || !this.isValidEmail || !this.pwIsValid()) {
+      this.toastr.error('Please fill in all required fields correctly',"",{positionClass: 'toast-top-center'});
+
       return;
     }
 
     this.authService.register(this.registerRequest).subscribe(
       data => {
-        this.toastr.success('Registration successful','Succes!', {
+        this.toastr.success('Registration successful','Success!', {
           positionClass: 'toast-top-center'
         } );
-        this.router.navigateByUrl('/login');
+        this.registerSuccess.emit();
+        //this.router.navigateByUrl('/login');
       },
       error => {
         this.toastr.error('Your Username or Email are already in use 😿','Error! 🪳', {

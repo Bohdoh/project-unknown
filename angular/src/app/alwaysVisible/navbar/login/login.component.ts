@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { AuthenticationRequest } from '../../../interfaces/AuthenticationRequest';
@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   loginRequest: AuthenticationRequest;
 
   isError: boolean | any;
+  @Output() closeLogin = new EventEmitter<void>();
 
 
 
@@ -57,6 +58,7 @@ export class LoginComponent implements OnInit {
       this.toastr.success('Login Successful','Success', {
         positionClass: 'toast-top-center'
       });
+      this.closeLogin.emit();
 
     }, error => {
       this.isError = true;

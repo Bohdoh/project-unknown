@@ -1,4 +1,4 @@
-import {Component,OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Game} from "./interfaces/game";
 import {Router} from "@angular/router";
@@ -11,6 +11,9 @@ import {Router} from "@angular/router";
 
 export class AppComponent implements OnInit{
   title = 'angular';
+  @ViewChild('loginModal') loginModal!: ElementRef;
+  @ViewChild('registerModal') registerModal!: ElementRef;
+  @ViewChild('mainContent') mainContent!: ElementRef;
 
   games? : Game[];
 
@@ -41,5 +44,30 @@ export class AppComponent implements OnInit{
     this.userEmail = null;
     this.userToken = null;
     this.router.navigate(['/']);
+  }
+
+  onShowLogin() {
+    this.loginModal.nativeElement.classList.add('is-active');
+    this.mainContent.nativeElement.classList.add('blur-background');
+  }
+
+  closeModalLogin() {
+    this.loginModal.nativeElement.classList.remove('is-active');
+    this.mainContent.nativeElement.classList.remove('blur-background');
+  }
+
+  closeModalRegister() {
+    this.registerModal.nativeElement.classList.remove('is-active');
+    this.mainContent.nativeElement.classList.remove('blur-background');
+  }
+
+  onShowRegister() {
+    this.registerModal.nativeElement.classList.add('is-active');
+    this.mainContent.nativeElement.classList.add('blur-background');
+  }
+
+  switchToLogin() {
+    this.registerModal.nativeElement.classList.remove('is-active');
+    this.loginModal.nativeElement.classList.add('is-active');
   }
 }
