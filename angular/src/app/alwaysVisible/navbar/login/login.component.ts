@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit {
         positionClass: 'toast-top-center'
       });
       this.loginSuccess.emit();
+      this.resetInput();
       setTimeout(() => {
          this.refreshService.triggerNavImageRefresh(),500
        });
@@ -73,5 +74,10 @@ export class LoginComponent implements OnInit {
         positionClass: 'toast-top-center'
       });
     });
+  }
+
+  resetInput(){
+    this.loginForm.get('username').setValue('');
+    this.loginForm.get('password').setValue('');
   }
 }
