@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   isError: boolean | any;
   @Output() closeLogin = new EventEmitter<void>();
+  @Output() loginSuccess = new EventEmitter<void>();
   @Output() showRegister = new EventEmitter<void>();
 
 
@@ -56,17 +57,19 @@ export class LoginComponent implements OnInit {
 
     this.authService.authenticate(this.loginRequest).subscribe(data => {
       this.isError = false;
-      this.router.navigateByUrl('/home');
+      //this.router.navigateByUrl('/home');
       this.toastr.success('Login Successful','Success', {
         positionClass: 'toast-top-center'
       });
-      this.closeLogin.emit();
-      this.refreshService.triggerRefreshEvent();
+      this.loginSuccess.emit();
+      setTimeout(() => {
+         this.refreshService.triggerNavImageRefresh(),500
+       });
 
     }, error => {
       this.isError = true;
       throwError(error);
-      this.toastr.error('Username or Password are not right! 🤔 ','Error! 🪳', {
+      this.toastr.error('Username or Password are not right!','Error!', {
         positionClass: 'toast-top-center'
       });
     });

@@ -13,8 +13,6 @@ import {UserListComponent} from "./profile-page/user-list/user-list.component";
 const routes: Routes = [
   {path: "", component: LandingComponent},
   {path: "game/view/:id", component: GameDetailComponent},
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
   {path: 'home',component:LandingComponent},
   { path: 'profile/:username', component: ProfilePageComponent },
   {path: "game/play/:id/:title", component: GameChaptersComponent},

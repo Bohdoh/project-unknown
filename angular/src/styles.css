@@ -170,27 +170,5 @@ fieldset[disabled] .button.is-primary {
   box-shadow: none;
 }
 
-.blur-background {
-  filter: blur(5px);
-}
 
-.modal.is-active {
-  display: flex;
-  align-items: center;
-}
-
-.custom-modal-content {
-  width: 60%;
-  max-width: 40vw;
-  min-width: 40vw;
-}
-.custom-modal-content-mobile {
-  width: 100%;
-  max-width: 90vw;
-  min-width: 90vw;
-}
-
-.modal-content {
-  max-height: 80vw;
-}
 

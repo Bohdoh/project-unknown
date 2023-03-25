@@ -12,9 +12,10 @@ import {Router} from "@angular/router";
 export class AppComponent implements OnInit{
   title = 'angular';
   @ViewChild('loginRegisterModal') loginRegisterModal!: ElementRef;
-
   @ViewChild('mainContent') mainContent!: ElementRef;
-  flip: boolean = false;
+    flip: boolean = false;
+  loading: boolean = false;
+  fadeOut: boolean = false;
 
   games? : Game[];
 
@@ -67,4 +68,13 @@ export class AppComponent implements OnInit{
   flipModal() {
     this.flip = !this.flip;
   }
+  fadeOutOnLogin() {
+    this.fadeOut = true;
+    setTimeout(() => {
+      this.closeModal();
+      this.fadeOut = false;
+    }, 450); // Match the duration of the collapseAnimation
+  }
+
+
 }

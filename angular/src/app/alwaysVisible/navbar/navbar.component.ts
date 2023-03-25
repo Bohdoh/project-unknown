@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
     private localStorage: LocalStorageService,
     private refreshService: RefreshService
   ) {
-    this.refreshService.refresh$.subscribe(() => {
+    this.refreshService.refreshNavImage$.subscribe(() => {
       this.refreshNavbar();
     });
   }
@@ -89,12 +89,14 @@ export class NavbarComponent implements OnInit {
       })
     ).subscribe((response) => {
       console.log(response);
-      this.refreshService.triggerRefreshEvent();
+      this.refreshService.triggerNavImageRefresh();
     });
   }
 
   refreshNavbar() {
-    this.ngOnInit();
+    this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
+      this.enduser = user
+    });
   }
 
   showLoginModal() {
