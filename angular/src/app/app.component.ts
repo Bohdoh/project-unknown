@@ -11,9 +11,10 @@ import {Router} from "@angular/router";
 
 export class AppComponent implements OnInit{
   title = 'angular';
-  @ViewChild('loginModal') loginModal!: ElementRef;
-  @ViewChild('registerModal') registerModal!: ElementRef;
+  @ViewChild('loginRegisterModal') loginRegisterModal!: ElementRef;
+
   @ViewChild('mainContent') mainContent!: ElementRef;
+  flip: boolean = false;
 
   games? : Game[];
 
@@ -47,27 +48,23 @@ export class AppComponent implements OnInit{
   }
 
   onShowLogin() {
-    this.loginModal.nativeElement.classList.add('is-active');
+    this.loginRegisterModal.nativeElement.classList.add('is-active');
     this.mainContent.nativeElement.classList.add('blur-background');
-  }
-
-  closeModalLogin() {
-    this.loginModal.nativeElement.classList.remove('is-active');
-    this.mainContent.nativeElement.classList.remove('blur-background');
-  }
-
-  closeModalRegister() {
-    this.registerModal.nativeElement.classList.remove('is-active');
-    this.mainContent.nativeElement.classList.remove('blur-background');
+    this.flip = false;
   }
 
   onShowRegister() {
-    this.registerModal.nativeElement.classList.add('is-active');
+    this.loginRegisterModal.nativeElement.classList.add('is-active');
     this.mainContent.nativeElement.classList.add('blur-background');
+    this.flip = true;
   }
 
-  switchToLogin() {
-    this.registerModal.nativeElement.classList.remove('is-active');
-    this.loginModal.nativeElement.classList.add('is-active');
+  closeModal() {
+    this.loginRegisterModal.nativeElement.classList.remove('is-active');
+    this.mainContent.nativeElement.classList.remove('blur-background');
+  }
+
+  flipModal() {
+    this.flip = !this.flip;
   }
 }

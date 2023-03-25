@@ -2,7 +2,7 @@
   <div class="columns">
     <div class="column "></div>
     <div class="column is-four-fifths">
-      <app-navbar (showLogin)="onShowLogin()" (showRegister)="onShowRegister()"  ></app-navbar>
+      <app-navbar (showLogin)="onShowLogin()" (showRegister)="onShowRegister()"></app-navbar>
     </div>
     <div class="column "></div>
   </div>
@@ -11,19 +11,22 @@
 </div>
 
 
-<div class="modal" #loginModal>
-  <div class="modal-background" (click)="closeModalLogin()"></div>
+<div class="modal" #loginRegisterModal>
+  <div class="modal-background" (click)="closeModal()"></div>
   <div class="modal-content custom-modal-content">
-    <app-login (closeLogin)="closeModalLogin()"></app-login>
+    <div class="parent-container">
+      <div class="flip-container">
+        <div class="flipper" [class.flip]="flip">
+          <div class="front">
+            <app-login (closeLogin)="closeModal()" (showRegister)="flipModal()"></app-login>
+          </div>
+          <div class="back">
+            <app-register (closeRegister)="closeModal()" (registerSuccess)="flipModal()"
+                          (showLogin)="flipModal()"></app-register>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <button class="modal-close is-large" aria-label="close" (click)="closeModalLogin()"></button>
-</div>
-
-
-<div class="modal" #registerModal>
-  <div class="modal-background" (click)="closeModalRegister()"></div>
-  <div class="modal-content custom-modal-content">
-    <app-register (closeRegister)="closeModalRegister()" (registerSuccess)="switchToLogin()"></app-register>
-  </div>
-  <button class="modal-close is-large" aria-label="close" (click)="closeModalRegister()"></button>
+  <button class="modal-close is-large" aria-label="close" (click)="closeModal()"></button>
 </div>

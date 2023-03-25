@@ -18,12 +18,12 @@
 
           <div class="field is-grouped">
             <div class="control">
-              <button class="button is-primary" type="submit">Login</button>
+              <button class="button is-primary" type="submit" [disabled]="loginForm.invalid">Login</button>
             </div>
           </div>
         </form>
         <div class="has-text-centered">
-          <span style="color:white">Not a member? Register now!   </span> <a routerLink="/register"><button class="button is-small is-inline-block">Register</button></a>
+          <span style="color:white">Not a member?</span> <a (click)="showRegister.emit()">  Register</a>
         </div>
       </div>
     </div>

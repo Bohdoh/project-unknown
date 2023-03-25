@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
 
   isError: boolean | any;
   @Output() closeLogin = new EventEmitter<void>();
+  @Output() showRegister = new EventEmitter<void>();
+
 
 
 

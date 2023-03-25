@@ -28,6 +28,7 @@ export class RegisterComponent implements OnInit {
   isEmptyPassword:boolean=true;
   @Output() closeRegister = new EventEmitter<void>();
   @Output() registerSuccess = new EventEmitter<void>();
+  @Output() showLogin = new EventEmitter<void>();
 
 
   constructor(private authService: AuthService, private toastr: ToastrService, private router: Router) {
