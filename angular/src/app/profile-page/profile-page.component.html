@@ -1,27 +1,38 @@
-<h1>{{ profile.username }}</h1>
+<div class="columns">
+  <div class="column is-one-quarter">
+    <app-menu-bar
+      (goToProfilInfoClicked)="handleGoToProfilInfoClicked()"
+      (goToReviewsClicked)="handleGoToReviewsClicked()"
+      (getUserListClicked)="handleGetUserListClicked()"
+    ></app-menu-bar>
 
-<p>Email: {{ profile.email }}</p>
-<div>
-  <span>Role:</span><span  > {{ profile.role }}</span>
+  </div>
+
+  <div class="column is-centered is-two-thirds">
+    <div class="is-vcentered columns">
+      <div class="column is-vcentered">
+        <app-profil-info *ngIf="isInProfil" [profile]="profile"></app-profil-info>
+        <app-user-comments *ngIf="isInComments" [profile]="profile"></app-user-comments>
+        <app-user-review *ngIf="isInReview" [profile]="profile"></app-user-review>
+        <app-user-list *ngIf="isInUserList" [username]="username"></app-user-list>
+
+      </div>
+      </div>
+
+
+  </div>
+
+<!--
+  <div class="column">
+    <div *ngIf="isAdmin">
+      <button  (click)="getUserList()">User list</button>
+    </div>
+  </div>
+-->
+
+
+
 </div>
-<p>{{userRole}}</p>
-
-<p>Reviews:</p>
 
 
-<ul>
-  <li *ngFor="let review of profile.reviews">
-    {{ review.content }} ({{ review.rating }})
-  </li>
-</ul>
-
-<p>Comments:</p>
-<ul>
-  <li *ngFor="let comment of profile.comments">
-    {{ comment.content }}
-  </li>
-</ul>
-<div *ngIf="isAdmin">
-  <button  (click)="getUserList()">User list</button>
-</div>
 

@@ -28,6 +28,8 @@ constructor(private adminService: AdminService, private route: ActivatedRoute) {
         console.error(error);
       }
     );
+
+    console.log(this.username)
   }
 
 

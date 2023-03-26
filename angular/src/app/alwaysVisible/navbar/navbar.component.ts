@@ -58,8 +58,17 @@ export class NavbarComponent implements OnInit{
   }
 
   goToUserProfile() {
-    this.router.navigateByUrl('profile/' + this.username);
+    const navigationExtras = {
+      state: {
+        enduser: this.enduser
+      },
+      queryParams: {
+        username: this.username
+      }
+    };
+    this.router.navigate(['/profile'], navigationExtras);
   }
+
 
   logout() {
     this.authService.logout();

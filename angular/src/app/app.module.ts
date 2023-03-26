@@ -28,6 +28,10 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { CommentsComponent } from './game-detail/comments/comments.component';
 import { ReviewsComponent } from './game-detail/reviews/reviews.component';
 import { UserListComponent } from './profile-page/user-list/user-list.component';
+import { ProfilInfoComponent } from './profile-page/profil-info/profil-info.component';
+import { UserReviewComponent } from './profile-page/user-review/user-review.component';
+import { UserCommentsComponent } from './profile-page/user-comments/user-comments.component';
+import { MenuBarComponent } from './profile-page/menu-bar/menu-bar.component';
 
 
 @NgModule({
@@ -47,7 +51,11 @@ import { UserListComponent } from './profile-page/user-list/user-list.component'
     ProfilePageComponent,
     CommentsComponent,
     ReviewsComponent,
-    UserListComponent
+    UserListComponent,
+    ProfilInfoComponent,
+    UserReviewComponent,
+    UserCommentsComponent,
+    MenuBarComponent
   ],
   imports: [
     BrowserModule,

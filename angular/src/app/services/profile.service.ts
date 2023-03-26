@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {ProfilDTO} from "../interfaces/profil-dto";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ProfilDTO } from '../interfaces/profil-dto';
 
 @Injectable({
   providedIn: 'root'
