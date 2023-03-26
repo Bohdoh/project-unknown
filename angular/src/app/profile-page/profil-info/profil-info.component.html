@@ -1,0 +1,13 @@
+<div>
+  <h1>{{ profile.username }}</h1>
+  <img [src]="'data:image/png;base64,' + profile.image" />
+  <div>
+    <span>Role:</span>
+    <span>{{ profile.role }}</span>
+  </div>
+
+  <div>
+    <span>Email:</span>
+    <span>{{profile.email}}</span>
+  </div>
+</div>
