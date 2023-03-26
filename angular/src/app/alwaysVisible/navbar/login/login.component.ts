@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup | any;
 
   loginRequest: AuthenticationRequest;
+  passwordVisible: boolean = false;
 
   isError: boolean | any;
   @Output() closeLogin = new EventEmitter<void>();
@@ -82,4 +83,8 @@ export class LoginComponent implements OnInit {
     this.loginForm.get('password').setValue('');
   }
 
+  togglePasswordVisibility(input: HTMLInputElement): void {
+    input.type = input.type === 'password' ? 'text' : 'password';
+    this.passwordVisible = !this.passwordVisible;
+  }
 }

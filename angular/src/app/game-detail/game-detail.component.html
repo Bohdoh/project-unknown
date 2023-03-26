@@ -3,9 +3,13 @@
   <div class="column is-three-fifths" *ngIf="game">
     <div class="box">
       <div class="title has-text-centered mb-0">{{ game.title }}</div>
-      <div class="title has-text-centered m-1"><span *ngFor="let star of stars; let i = index" [title]="i + 1 + ' star'">
-  <i class="fa {{ star }} yellow" aria-hidden="true"></i>
-</span></div>
+      <div class="title has-text-centered m-1" *ngIf="gameRating"><span>
+          <i class="fa-solid fa-star" [ngClass]="{'yellow': gameRating >= 1}"></i>
+          <i class="fa-solid fa-star" [ngClass]="{'yellow': gameRating >= 2}"></i>
+          <i class="fa-solid fa-star" [ngClass]="{'yellow': gameRating >= 3}"></i>
+          <i class="fa-solid fa-star" [ngClass]="{'yellow': gameRating >= 4}"></i>
+          <i class="fa-solid fa-star" [ngClass]="{'yellow': gameRating == 5}"></i>
+        </span></div>
 
       <div class="has-text-centered" *ngIf="game.image">
         <img [src]="'data:image/png;base64,' + game.image" alt="gameimage">
@@ -63,7 +67,7 @@
     <div *ngIf="showReview">
       <app-reviews [isLoggedIn]="isLoggedIn" [gameId]="gameId" [username]="username" [game]="game" [role]="role"
                    [userHasReview]="userHasReview" [currentUser]="currentUser"
-                   (userHasReviewChange)="userHasReview = $event" (gameChange)="game =$event" (starChange)="stars = $event"></app-reviews>
+                   (userHasReviewChange)="userHasReview = $event" (gameChange)="game =$event" (ratingChange)="gameRating = $event"></app-reviews>
     </div>
     <div class="column is-one-fifth"></div>
   </div>

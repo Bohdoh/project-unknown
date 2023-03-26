@@ -20,9 +20,13 @@
         </div>
       </div>
 
-      <span *ngFor="let star of stars; let i = index" [title]="i + 1 + ' star'">
-  <i class="fa {{ star }} yellow" aria-hidden="true"></i>
-</span><span> ({{game.reviews.length}})</span>
+      <span>
+          <i class="fa-solid fa-star" [ngClass]="{'yellow': gameRating >= 1}"></i>
+          <i class="fa-solid fa-star" [ngClass]="{'yellow': gameRating >= 2}"></i>
+          <i class="fa-solid fa-star" [ngClass]="{'yellow': gameRating >= 3}"></i>
+          <i class="fa-solid fa-star" [ngClass]="{'yellow': gameRating >= 4}"></i>
+          <i class="fa-solid fa-star" [ngClass]="{'yellow': gameRating == 5}"></i>
+        </span><span> ({{game.reviews.length}})</span>
 
       <p class="title is-4">{{ game.title }}</p>
       <p class="subtitle is-6">{{ game.subtitle }}</p>

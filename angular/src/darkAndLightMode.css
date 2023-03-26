@@ -1,0 +1,46 @@
+body {
+  --background-color: #EDEDE9;
+  --text-color: #313131;
+  --primary-color: #46363A;
+  --primary-color-hover: #6a5258;
+  --primary-color-active: #6a5258;
+  --primary-button-color: #fff;
+  --secondary-color: #6a5258;
+  --accent-color: #b28893;
+  --info-color: #0F1D38;
+  --tag-color: #fff;
+  --navbar-color: transparent;
+  --button-outline-color: #46363A;
+  --button-focus-color: rgba(86, 66, 70, 0.22);
+  --disabled-button-color: #7e6067;
+  --menu-list-color: #0F1D38;
+  --liactive-border-color: #333;
+  --liactive-bg-color: whitesmoke;
+  --star-rating-color: linear-gradient(to right, #f6d365, #fda085);
+  --card-bg-color: #fff;
+  --card-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+body.dark-mode{
+  --background-color: #1D1E22;
+  --text-color: #A8A8A8;
+  --primary-color: #434950;
+  --primary-color-hover: #5b636c;
+  --primary-color-active: #5b636c;
+  --primary-button-color: #A8A8A8;
+  --secondary-color: #403C43;
+  --accent-color: #8D6975;
+  --info-color: #2A384D;
+  --tag-color: #A8A8A8;
+  --navbar-color: transparent;
+  --button-outline-color: #6A7680;
+  --button-focus-color: rgba(155, 153, 158, 0.22);
+  --disabled-button-color: #57575C;
+  --menu-list-color: #A8A8A8;
+  --liactive-border-color: #BBBBBB;
+  --liactive-bg-color: #2A384D;
+  --star-rating-color: linear-gradient(to right, #a99b4c, #c47f59);
+  --card-bg-color: #2b2d33;
+  --card-box-shadow: 0 4px 8px 0 rgba(162, 162, 162, 0.6), 0 6px 20px 0 rgba(162, 162, 162, 0.23);
+}
+

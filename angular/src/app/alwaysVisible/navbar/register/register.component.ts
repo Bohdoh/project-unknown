@@ -144,4 +144,8 @@ export class RegisterComponent implements OnInit {
       password: ''
     };
   }
+
+  togglePasswordVisibility(input: HTMLInputElement): void {
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
 }

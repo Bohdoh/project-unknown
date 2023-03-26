@@ -46,15 +46,15 @@
       <!--            User not logged in -->
       <div *ngIf="!isLoggedIn" class="navbar-item">
         <div class="buttons">
-<!--          <a routerLink="/register" class="button is-primary">-->
-<!--            <strong>Sign up</strong>-->
-<!--          </a>-->
-<!--          <a routerLink="/login" class="button is-primary">-->
-<!--            Log in-->
-<!--          </a>-->
+          <!--          <a routerLink="/register" class="button is-primary">-->
+          <!--            <strong>Sign up</strong>-->
+          <!--          </a>-->
+          <!--          <a routerLink="/login" class="button is-primary">-->
+          <!--            Log in-->
+          <!--          </a>-->
           <a (click)="showRegisterModal()" class="button is-primary">
-          <strong>Sign up</strong>
-        </a>
+            <strong>Sign up</strong>
+          </a>
           <a (click)="showLoginModal()" class="button is-light">
             Log in
           </a>
@@ -65,37 +65,43 @@
         <span class="navbar-item has-text-weight-bold">{{ role | titlecase }}</span>
 
 
-
-        <span class="navbar-item" >{{username}}</span>
+        <span class="navbar-item">{{username}}</span>
 
         <figure class="image navbar-item navbar-link">
           <img class="is-rounded" *ngIf="enduser && enduser.image !== ''"
                [src]="'data:image/png;base64,'+enduser.image"
                alt="Profile Picture">
-          <img class="is-rounded" *ngIf="!enduser || enduser.image === ''" src="https://bulma.io/images/placeholders/128x128.png"
+          <img class="is-rounded" *ngIf="!enduser || enduser.image === ''"
+               src="https://bulma.io/images/placeholders/128x128.png"
                alt="Profile Picture">
         </figure>
         <div class="navbar-dropdown">
-<!--          <a [routerLink]="/profile/" class="navbar-item">-->
-<!--            Profile-->
-<!--          </a>-->
+          <!--          <a [routerLink]="/profile/" class="navbar-item">-->
+          <!--            Profile-->
+          <!--          </a>-->
           <div class="navbar-item">
             <label>Change Avatar</label>
           </div>
           <div class="navbar-item">
             <form enctype="multipart/form-data">
               <div class="field">
-                <input type="file" id="imageFile" name="userImage" accept="image/*" (change)="onFileSelected($event)" required>
+                <input type="file" id="imageFile" name="userImage" accept="image/*" (change)="onFileSelected($event)"
+                       required>
               </div>
 
-<!--              <button class="button is-small is-light" type="submit" [disabled]="!imageSelected"> Submit</button>-->
+              <!--              <button class="button is-small is-light" type="submit" [disabled]="!imageSelected"> Submit</button>-->
             </form>
 
           </div>
-
+          <span class="navbar-item">
+            <div class="field">
+        <input id="switchExample" type="checkbox" name="switchExample" class="switch is-small" checked="checked">
+        <label for="switchExample"><i class="fa-solid fa-moon"></i></label>
+      </div>
+          </span>
           <hr class="navbar-divider">
           <a class="navbar-item">
-              <button class="button is-danger is-small" (click)="logout()">Logout</button>
+            <button class="button is-danger is-small" (click)="logout()">Logout</button>
             <span class="navbar-item">
             <button class="button  is-small" (click)="goToUserProfile()">Profil</button>
           </span>

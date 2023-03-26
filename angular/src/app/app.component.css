@@ -12,11 +12,11 @@
   max-width: 40vw;
   min-width: 40vw;
 }
-.custom-modal-content-mobile {
-  width: 100%;
-  max-width: 90vw;
-  min-width: 90vw;
-}
+/*.custom-modal-content-mobile {*/
+/*  width: 100%;*/
+/*  max-width: 90vw;*/
+/*  min-width: 90vw;*/
+/*}*/
 
 .modal-content {
   max-height: 80vw;

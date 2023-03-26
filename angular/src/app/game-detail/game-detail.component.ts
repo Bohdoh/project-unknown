@@ -25,7 +25,7 @@ export class GameDetailComponent implements OnInit {
   role?: string;
   currentUser?: Enduser;
   userHasReview?: boolean;
-  stars?: string[];
+  gameRating? :number = 0;
 
   constructor(private http: HttpClient,
               private gameService: GameService,
@@ -73,7 +73,7 @@ export class GameDetailComponent implements OnInit {
     this.gameId = Number(this.route.snapshot.paramMap.get('id'));
     this.gameService.getGameById(this.gameId).subscribe((game: Game) => {
       this.game = game;
-      this.stars = this.gameService.generateStars(this.gameService.getGameRating(this.game));
+      this.gameRating = this.gameService.getGameRating(this.game);
     });
   }
 
