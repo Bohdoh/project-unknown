@@ -1,12 +1,14 @@
 <div #mainContent>
-  <div class="columns">
-    <div class="column "></div>
-    <div class="column is-four-fifths">
-      <app-navbar (showLogin)="onShowLogin()" (showRegister)="onShowRegister()"></app-navbar>
+  <div id="contentWrapper">
+    <div class="columns">
+      <div class="column "></div>
+      <div class="column is-four-fifths">
+        <app-navbar (showLogin)="onShowLogin()" (showRegister)="onShowRegister()"></app-navbar>
+      </div>
+      <div class="column "></div>
     </div>
-    <div class="column "></div>
+    <router-outlet></router-outlet>
   </div>
-  <router-outlet></router-outlet>
   <app-footer></app-footer>
 </div>
 
@@ -14,7 +16,7 @@
 <div class="modal" [ngClass]="{'fade-out': fadeOut}" #loginRegisterModal>
   <div class="modal-background" (click)="closeModal()"></div>
   <div class="modal-content custom-modal-content">
-  <div class="parent-container">
+    <div class="parent-container">
       <div class="flip-container">
         <div class="flipper" [class.flip]="flip">
           <div class="front">

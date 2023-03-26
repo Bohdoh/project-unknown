@@ -90,6 +90,7 @@ export class NavbarComponent implements OnInit {
     ).subscribe((response) => {
       console.log(response);
       this.refreshService.triggerNavImageRefresh();
+      this.refreshService.triggerRefreshEvent();
     });
   }
 
@@ -105,5 +106,9 @@ export class NavbarComponent implements OnInit {
 
   showRegisterModal() {
     this.showRegister.emit();
+  }
+
+  toggleDarkMode(): void {
+    document.body.classList.toggle('dark-mode');
   }
 }

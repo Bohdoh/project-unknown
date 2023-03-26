@@ -117,7 +117,6 @@ public class Application {
 
         reviewRepository.save(new Review("Ich gebe dem spiel eine 5 von 5!", enduserRepository.getById(1), gameRepository.findByGameId(7) ,5, 0));
         reviewRepository.save(new Review("Hat mir nicht so spaß gemacht, liegt vllt an mir.", enduserRepository.getById(7), gameRepository.findByGameId(7) ,2, 0));
-        reviewRepository.save(new Review("Hat mir nicht so spaß gemacht, liegt vllt an mir.", enduserRepository.getById(7), gameRepository.findByGameId(7) ,2, 0));
         reviewRepository.save(new Review("Hat mir nicht so spaß gemacht, liegt vllt an mir.", enduserRepository.getById(7), gameRepository.findByGameId(1) ,1, 0));
         reviewRepository.save(new Review("Hat mir nicht so spaß gemacht, liegt vllt an mir.", enduserRepository.getById(7), gameRepository.findByGameId(2) ,2, 0));
         reviewRepository.save(new Review("Hat mir nicht so spaß gemacht, liegt vllt an mir.", enduserRepository.getById(7), gameRepository.findByGameId(3) ,3, 0));
@@ -176,8 +175,7 @@ public class Application {
 
     public byte[] readImage(String path) {
         // Read the image data as a byte array
-        String imagePath = path;
-        File imageFile = new File(imagePath);
+        File imageFile = new File(path);
         byte[] imageData = new byte[(int) imageFile.length()];
         try (InputStream inputStream = new FileInputStream(imageFile)) {
             inputStream.read(imageData);

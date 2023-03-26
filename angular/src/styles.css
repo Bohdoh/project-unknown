@@ -4,177 +4,20 @@
 @import 'bulma-switch/dist/css/bulma-switch.min.css';
 @import 'darkAndLightMode.css';
 
-
-/*.card-equal-height {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  height: 100%;*/
-/*}*/
-
-/*.card{*/
-/*  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
-/*  border-radius: 0.5rem;*/
-/*}*/
-/*.card img {*/
-/*  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);*/
-/*}*/
-
-/*.container2 {*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*  padding: 5%;*/
-/*  width: 100%;*/
-/*}*/
-
-
-/*.button-container {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  width: 100%;*/
-/*}*/
-
-/*.button {*/
-/*  white-space: normal;*/
-/*  text-align: left;*/
-/*  word-break: break-word;*/
-/*}*/
-
-/*:host {*/
-/*  display: inline-flex;*/
-/*}*/
-
-/*.star-rating .fa-star.active,*/
-/*.yellow {*/
-/*  background: linear-gradient(to right, #f6d365, #fda085);*/
-/*  -webkit-background-clip: text;*/
-/*  -webkit-text-fill-color: transparent;*/
-/*}*/
-
-/*.card a {*/
-/*  color: inherit;*/
-/*  text-decoration: none;*/
-/*}*/
-
-/*.card a:hover {*/
-
-/*}*/
-
-/*.rise {*/
-/*  transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1);*/
-/*}*/
-
-/*.is-duration-300 {*/
-/*  transition-duration: 0.3s;*/
-/*}*/
-
-/*.hover-translate-y:hover {*/
-/*  transform: translateX(0) translateY(-0.45rem) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1) ;*/
-/*}*/
-
-/*.hover-shadow-xl:hover {*/
-/*  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.09) ;*/
-/*}*/
-
-/*.liactive {*/
-/*  border-left: 3px solid #333;*/
-/*  background-color: whitesmoke;*/
-/*}*/
-
-
-
-/*body {*/
-/*  font-family: 'Georgia';*/
-/*  background-color: #EDEDE9;*/
-/*}*/
-
-/*h1,h2,h3,h4,h5,h6 {*/
-/*  font-family: 'Lato';*/
-/*}*/
-
-/*.navbar {*/
-/*  background-color: transparent;*/
-/*  height: 80px;*/
-/*}*/
-
-
-/*.button.is-primary:active, .button.is-primary.is-active {*/
-/*  background-color: #b28893;*/
-/*  border-color: transparent;*/
-/*  color: #fff;*/
-/*}*/
-
-/*.button.is-info:hover, .button.is-info.is-hovered {*/
-/*  background-color: #b28893;*/
-/*  border-color: transparent;*/
-/*  color: rgba(0, 0, 0, 0.7);*/
-/*}*/
-/*.button.is-info{*/
-/*  background-color: #46363A;*/
-/*  border-color: transparent;*/
-/*  color: whitesmoke;*/
-/*}*/
-
-/*.tag:not(body).is-link{*/
-/*  background-color: #46363A;*/
-/*  color: #fff;*/
-/*}*/
-
-/*.menu-list a {*/
-/*  color: #0F1D38;*/
-
-/*  font-weight: 200;*/
-/*}*/
-/*.menu-list p {*/
-/*  color: #0F1D38;*/
-/*  font-weight: 200;*/
-/*}*/
-
-/*.navbar-item,*/
-/*.navbar-link {*/
-/*  color: #181818;*/
-
-/*}*/
-
-/*.button.is-primary {*/
-/*  background-color: #46363A;*/
-/*  border-color: transparent;*/
-/*  color: #fff;*/
-/*}*/
-
-/*.button.is-primary:hover, .button.is-primary.is-hovered {*/
-/*  background-color: #6a5258;*/
-/*  border-color: transparent;*/
-/*  color: #fff;*/
-/*}*/
-
-/*.button.is-primary:active, .button.is-primary.is-active {*/
-/*  background-color: #6a5258;*/
-/*  border-color: transparent;*/
-/*  color: #fff;*/
-/*}*/
-
-/*.button.is-primary.is-outlined {*/
-/*  background-color: transparent;*/
-/*  border-color: #46363A;*/
-/*  color: #46363A;*/
-/*}*/
-
-/*.button.is-primary:focus:not(:active), .button.is-primary.is-focused:not(:active) {*/
-/*  box-shadow: 0 0 0 0.125em rgba(86, 66, 70, 0.22);*/
-/*}*/
-
-/*.button.is-primary[disabled],*/
-/*fieldset[disabled] .button.is-primary {*/
-/*  background-color: #7e6067;*/
-/*  border-color: #7e6067;*/
-/*  box-shadow: none;*/
-/*}*/
-
 body {
   font-family: 'Georgia';
   color: var(--text-color);
   background-color: var(--background-color);
+}
+
+#mainContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#contentWrapper {
+  flex: 1;
 }
 
 .card {
@@ -290,9 +133,7 @@ body {
   word-break: break-word;
 }
 
-:host {
-  display: inline-flex;
-}
+
 
 .card a {
   color: var(--text-color);
@@ -341,7 +182,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .box .input {
-  background-color: var(--liactive-border-color);
+  background-color: var(--input-field-color);
 }
 
 .input-wrapper {
@@ -355,3 +196,71 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-50%);
   cursor: pointer;
 }
+.navbar-dropdown {
+  background-color: var(--card-bg-color);
+  border-top-color: var(--primary-color);
+}
+.navbar-dropdown a.navbar-item {
+  color: var(--text-color);
+}
+.footer {
+  margin-top: auto;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.footer a {
+  color: var(--text-color);
+}
+
+.footer a:hover {
+  color: var(--accent-color);
+}
+strong {
+  color: var(--text-color);
+}
+
+.message * {
+  background-color: var(--message-background-color);
+  color: var(--text-color);
+}
+
+.message.is-dark .message-body {
+  border-color: var(--text-color);
+}
+
+.play-button {
+  background-color: var(--play-button-color);
+  color: var(--text-color);
+}
+
+.play-button:hover {
+  background-color: var(--play-button-hover-color);
+  color: var(--primary-button-color);
+}
+.play-button:active {
+  background-color: var(--play-button-active-color);
+}
+
+.tabs li.is-active a {
+  border-bottom-color: var(--tabs-li-isactive);
+  color: var(--tabs-li-isactive);
+}
+
+.button {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+}
+
+.button:hover {
+color: var(--text-color);
+  background-color: var(--button-background-color)+10;
+}
+
+.button.is-light {
+  color: var(--text-color);
+  background-color: var(--button-background-color);
+
+}
+
+

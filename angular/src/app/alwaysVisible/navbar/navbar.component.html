@@ -43,6 +43,12 @@
     </div>
     <div class="navbar-item" *ngIf="isPlaying">{{timerValue}}</div>
     <div class="navbar-end">
+      <span class="navbar-item">
+            <div class="field">
+        <input id="switchExample" (change)="toggleDarkMode()" type="checkbox" name="switchExample" class="switch is-small">
+        <label for="switchExample"><i class="fa-solid fa-moon"></i></label>
+      </div>
+          </span>
       <!--            User not logged in -->
       <div *ngIf="!isLoggedIn" class="navbar-item">
         <div class="buttons">
@@ -60,6 +66,7 @@
           </a>
         </div>
       </div>
+
       <!--            User logged in -->
       <div *ngIf="isLoggedIn" class="navbar-item has-dropdown is-hoverable">
         <span class="navbar-item has-text-weight-bold">{{ role | titlecase }}</span>
@@ -93,12 +100,7 @@
             </form>
 
           </div>
-          <span class="navbar-item">
-            <div class="field">
-        <input id="switchExample" type="checkbox" name="switchExample" class="switch is-small" checked="checked">
-        <label for="switchExample"><i class="fa-solid fa-moon"></i></label>
-      </div>
-          </span>
+
           <hr class="navbar-divider">
           <a class="navbar-item">
             <button class="button is-danger is-small" (click)="logout()">Logout</button>
