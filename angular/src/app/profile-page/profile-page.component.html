@@ -4,6 +4,7 @@
       (goToProfilInfoClicked)="handleGoToProfilInfoClicked()"
       (goToReviewsClicked)="handleGoToReviewsClicked()"
       (getUserListClicked)="handleGetUserListClicked()"
+      (goToCommentsClicked)="handleGoToCommentsClicked()"
     ></app-menu-bar>
 
   </div>
@@ -11,6 +12,7 @@
   <div class="column is-centered is-two-thirds">
     <div class="is-vcentered columns">
       <div class="column is-vcentered">
+
         <app-profil-info *ngIf="isInProfil" [profile]="profile"></app-profil-info>
         <app-user-comments *ngIf="isInComments" [profile]="profile"></app-user-comments>
         <app-user-review *ngIf="isInReview" [profile]="profile"></app-user-review>

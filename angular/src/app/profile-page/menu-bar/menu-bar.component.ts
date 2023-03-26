@@ -15,6 +15,7 @@ export class MenuBarComponent implements OnInit{
 
   userRole:string="user";
   isAdmin?:boolean;
+  @Output() goToCommentsClicked = new EventEmitter();
 
   constructor(private router: Router) {
   }
@@ -30,6 +31,10 @@ export class MenuBarComponent implements OnInit{
 
   goToReviews() {
     this.goToReviewsClicked.emit();
+  }
+
+  goToComments() {
+    this.goToCommentsClicked.emit();
   }
 
   getUserList() {

@@ -45,12 +45,20 @@ export class ProfilePageComponent implements OnInit {
     this.isInProfil = true;
     this.isInComments = false;
     this.isInReview = false;
+    this.isInUserList=false;
+  }
+  handleGoToCommentsClicked() {
+    this.isInProfil = false;
+    this.isInComments = true;
+    this.isInReview = false;
+    this.isInUserList=false;
   }
 
   handleGoToReviewsClicked() {
     this.isInProfil = false;
     this.isInComments = false;
     this.isInReview = true;
+    this.isInUserList=false;
   }
 
   handleGetUserListClicked() {
