@@ -1,16 +1,17 @@
-<div #mainContent>
-  <div id="contentWrapper">
-    <div class="columns">
-      <div class="column "></div>
-      <div class="column is-four-fifths">
-        <app-navbar (showLogin)="onShowLogin()" (showRegister)="onShowRegister()"></app-navbar>
+
+  <div #mainContent class="wrapper">
+    <div id="contentWrapper">
+      <div class="columns">
+        <div class="column "></div>
+        <div class="column is-four-fifths">
+          <app-navbar (showLogin)="onShowLogin()" (showRegister)="onShowRegister()"></app-navbar>
+        </div>
+        <div class="column "></div>
       </div>
-      <div class="column "></div>
+      <router-outlet></router-outlet>
     </div>
-    <router-outlet></router-outlet>
+    <app-footer></app-footer>
   </div>
-  <app-footer></app-footer>
-</div>
 
 
 <div class="modal" [ngClass]="{'fade-out': fadeOut}" #loginRegisterModal>

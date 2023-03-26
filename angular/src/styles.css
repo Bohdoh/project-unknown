@@ -3,12 +3,27 @@
 @import 'bulma/css/bulma.css';
 @import 'bulma-switch/dist/css/bulma-switch.min.css';
 @import 'darkAndLightMode.css';
+@import 'normalize.css/normalize.css';
 
 body {
   font-family: 'Georgia';
   color: var(--text-color);
   background-color: var(--background-color);
 }
+
+body, html {
+  height: 100%;
+  background-color: var(--background-color);
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: 100%;
+}
+
+
+
 
 #mainContent {
   display: flex;
