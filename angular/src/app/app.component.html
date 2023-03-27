@@ -1,5 +1,35 @@
-    <app-navbar></app-navbar>
-    <router-outlet></router-outlet>
+
+  <div #mainContent class="wrapper">
+    <div id="contentWrapper">
+      <div class="columns">
+        <div class="column "></div>
+        <div class="column is-four-fifths">
+          <app-navbar (showLogin)="onShowLogin()" (showRegister)="onShowRegister()"></app-navbar>
+        </div>
+        <div class="column "></div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
     <app-footer></app-footer>
+  </div>
 
 
+<div class="modal" [ngClass]="{'fade-out': fadeOut}" #loginRegisterModal>
+  <div class="modal-background" (click)="closeModal()"></div>
+  <div class="modal-content custom-modal-content">
+    <div class="parent-container">
+      <div class="flip-container">
+        <div class="flipper" [class.flip]="flip">
+          <div class="front">
+            <app-login (loginSuccess)="fadeOutOnLogin()" (showRegister)="flipModal()"></app-login>
+          </div>
+          <div class="back">
+            <app-register (closeRegister)="closeModal()" (registerSuccess)="flipModal()"
+                          (showLogin)="flipModal()"></app-register>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" (click)="closeModal()"></button>
+</div>

@@ -1,0 +1,62 @@
+body {
+  --background-color: #EDEDE9;
+  --text-color: #313131;
+  --primary-color: #46363A;
+  --primary-color-hover: #6a5258;
+  --primary-color-active: #6a5258;
+  --primary-button-color: #fff;
+  --secondary-color: #6a5258;
+  --accent-color: #b28893;
+  --info-color: #0F1D38;
+  --tag-color: #fff;
+  --navbar-color: transparent;
+  --button-outline-color: #46363A;
+  --button-focus-color: rgba(86, 66, 70, 0.22);
+  --disabled-button-color: #7e6067;
+  --menu-list-color: #0F1D38;
+  --liactive-border-color: #333;
+  --liactive-bg-color: whitesmoke;
+  --star-rating-color: linear-gradient(to right, #f6d365, #fda085);
+  --card-bg-color: #fff;
+  --card-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  --input-field-color: white;
+  --message-background-color: #fafafa;
+  --play-button-color: #46363A ;
+  --play-button-hover-color: #6a5258;
+  --play-button-active-color: #6a5258;
+  --tabs-li-isactive: #485fc7;
+  --button-text-color: #313131;
+  --button-background-color: white;
+}
+
+body.dark-mode{
+  --background-color: #1D1E22;
+  --text-color: #A8A8A8;
+  --primary-color: #443b39;
+  --primary-color-hover: #454b52;
+  --primary-color-active: #525a62;
+  --primary-button-color: #A8A8A8;
+  --secondary-color: #85664e;
+  --accent-color: #8c6241;
+  --info-color: #2A384D;
+  --tag-color: #A8A8A8;
+  --navbar-color: transparent;
+  --button-outline-color: #6A7680;
+  --button-focus-color: rgba(155, 153, 158, 0.22);
+  --disabled-button-color: #57575C;
+  --menu-list-color: #A8A8A8;
+  --liactive-border-color: #BBBBBB;
+  --liactive-bg-color: #2A384D;
+  --star-rating-color: linear-gradient(to right, #a99b4c, #c47f59);
+  --card-bg-color: #2b2d33;
+  --card-box-shadow: 0 4px 8px 0 rgba(255, 137, 98, 0.18), 0 6px 20px 0 rgba(131, 131, 131, 0.23);
+  --input-field-color: #BBBBBBFF;
+  --message-background-color: #383a42;
+  --play-button-color: #484545;
+  --play-button-hover-color: #524f4f;
+  --play-button-active-color: #737373;
+  --tabs-li-isactive: #9f7b45;
+  --button-text-color: #b4b3b3;
+  --button-background-color: #3b3c44;
+}
+

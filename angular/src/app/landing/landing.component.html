@@ -1,10 +1,10 @@
-<div class="columns">
+<div class="columns mt-4">
   <!-- left column -->
 
   <div class="column is-hidden-mobile">
     <div class="columns">
       <div class="column is-one-fifth"></div>
-      <div class="column box is-Background3 mt-4">
+      <div class="column ">
         <!--Categories -->
         <aside class="menu">
           <ul class="menu-list">
@@ -37,21 +37,21 @@
         <aside class="menu">
           <ul class="menu-list">
             <li>
-              <p class="is-size-4">Rating</p>
+              <p class="is-size-4">Sort by</p>
               <ul class="menu-list">
                 <li><a [class.liactive]="currentOrder===''" (click)="changeGamesToBeShownByRating('')"
                        class="is-flex is-justify-content-space-between is-align-items-center">
-                  <span>Default</span>
+                  <span>New</span>
                 </a>
                 </li>
                 <li><a [class.liactive]="currentOrder==='asc'" (click)="changeGamesToBeShownByRating('asc')"
                        class="is-flex is-justify-content-space-between is-align-items-center">
-                  <span>Ascending</span>
+                  <span>Rating </span><i class="fa-solid fa-arrow-up-wide-short fa-xs"></i>
                 </a>
                 </li>
                 <li><a [class.liactive]="currentOrder==='desc'" (click)="changeGamesToBeShownByRating('desc')"
                        class="is-flex is-justify-content-space-between is-align-items-center">
-                  <span>Descending</span>
+                  <span>Rating </span><i class="fa-solid fa-arrow-down-wide-short fa-xs"></i>
                 </a>
                 </li>
               </ul>

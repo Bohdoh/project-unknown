@@ -83,7 +83,6 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    this.refreshService.triggerRefreshEvent();
     return this.getJwtToken() != null;
   }
 

@@ -6,7 +6,7 @@ import {ActivatedRoute} from "@angular/router";
 import {TimerService} from "../services/timer.service";
 import {AuthService} from "../services/auth.service";
 import {Enduser} from "../interfaces/enduser";
-
+import {RefreshService} from "../services/refresh.service";
 
 
 @Component({
@@ -14,7 +14,7 @@ import {Enduser} from "../interfaces/enduser";
   templateUrl: './game-detail.component.html',
   styleUrls: ['./game-detail.component.css']
 })
-export class GameDetailComponent implements OnInit{
+export class GameDetailComponent implements OnInit {
 
   gameId?: number;
   game?: Game;
@@ -25,38 +25,34 @@ export class GameDetailComponent implements OnInit{
   role?: string;
   currentUser?: Enduser;
   userHasReview?: boolean;
-  stars?:string[];
+  gameRating? :number = 0;
 
   constructor(private http: HttpClient,
               private gameService: GameService,
               private route: ActivatedRoute,
               private authService: AuthService,
-              private timerService: TimerService
+              private timerService: TimerService,
+              private refreshService:RefreshService
   ) {
+    this.refreshService.refresh$.subscribe(() => {
+      this.loadGames();
+      this.loadUser();
+    });
   }
 
   ngOnInit(): void {
-    this.gameId = Number(this.route.snapshot.paramMap.get('id'));
-    this.gameService.getGameById(this.gameId).subscribe((game: Game) => {
-      this.game = game;
-      this.stars = this.gameService.generateStars(this.gameService.getGameRating(this.game));
-    });
+    this.loadGames();
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
     this.authService.username.subscribe((data: string) => this.username = data);
     this.authService.role.subscribe((data: string) => this.role = data);
     this.isLoggedIn = this.authService.isLoggedIn();
     this.username = this.authService.getUsername();
     this.role = this.authService.getRole();
-    this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
-      this.currentUser = user
-    });
+    this.loadUser();
   }
 
 
-
-
-
-   startGame() {
+  startGame() {
     this.timerService.startTimer();
   }
 
@@ -71,5 +67,19 @@ export class GameDetailComponent implements OnInit{
         this.showReview = true;
         break;
     }
+  }
+
+  private loadGames() {
+    this.gameId = Number(this.route.snapshot.paramMap.get('id'));
+    this.gameService.getGameById(this.gameId).subscribe((game: Game) => {
+      this.game = game;
+      this.gameRating = this.gameService.getGameRating(this.game);
+    });
+  }
+
+  private loadUser() {
+    this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
+      this.currentUser = user
+    });
   }
 }
