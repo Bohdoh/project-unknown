@@ -55,7 +55,9 @@ public class SecurityConfig {
                         "/api/review/**",
                         "/profil/**",
                         "/api/updateInfo/{username}",
-                        "/api/updateInfo/{username}**")
+                        "/api/updateInfo/{username}**",
+                        "/api/comment/update/{commentId}",
+                        "/api/comment/update/{commentId}**")
                 .hasAnyAuthority (Role.USER.name (),Role.ADMIN.name ())
                 .requestMatchers (
                         "/api/users/{username}/listOfUsers/**",
