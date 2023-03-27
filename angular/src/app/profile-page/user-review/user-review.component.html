@@ -1,8 +1,10 @@
 <p>Reviews:</p>
 
-
 <ul>
-  <li *ngFor="let review of profile.reviews">
+  <li *ngFor="let review of reviews">
     {{ review.content }} ({{ review.rating }})
+    <div class="media-right">
+      <a (click)="deleteReview(review)">Delete</a>
+    </div>
   </li>
 </ul>
