@@ -16,8 +16,6 @@ import {UserCommentsComponent} from "./profile-page/user-comments/user-comments.
 const routes: Routes = [
   {path: "", component: LandingComponent},
   {path: "game/view/:id", component: GameDetailComponent},
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
   {path: 'home',component:LandingComponent},
   { path: 'profile', component: ProfilePageComponent, data: { title: 'Profile' } },
   { path: 'profile/:username', component: ProfilePageComponent },

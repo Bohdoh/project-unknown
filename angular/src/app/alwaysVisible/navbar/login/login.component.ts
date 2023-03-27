@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { AuthenticationRequest } from '../../../interfaces/AuthenticationRequest';
@@ -18,9 +18,12 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup | any;
 
   loginRequest: AuthenticationRequest;
+  passwordVisible: boolean = false;
 
   isError: boolean | any;
-
+  @Output() closeLogin = new EventEmitter<void>();
+  @Output() loginSuccess = new EventEmitter<void>();
+  @Output() showRegister = new EventEmitter<void>();
 
 
   constructor(
@@ -36,13 +39,19 @@ export class LoginComponent implements OnInit {
       username: '',
       password: ''
     }
-
   }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required]],
-      password: ['', Validators.required]
+      this.loginForm = this.formBuilder.group({
+        username: ['', [Validators.required]],
+        password: ['', Validators.required]
+      });
+    this.refreshService.usernameSource.subscribe(username => {
+      this.loginForm.get('username').setValue(username);
+    });
+
+    this.refreshService.passwordSource.subscribe(password => {
+      this.loginForm.get('password').setValue(password);
     });
   }
 
@@ -53,17 +62,29 @@ export class LoginComponent implements OnInit {
 
     this.authService.authenticate(this.loginRequest).subscribe(data => {
       this.isError = false;
-      this.router.navigateByUrl('/home');
+      //this.router.navigateByUrl('/home');
       this.toastr.success('Login Successful','Success', {
         positionClass: 'toast-top-center'
       });
-      //this.refreshService.triggerRefresh();
+      this.loginSuccess.emit();
+      this.resetInput();
+      this.refreshService.triggerNavImageRefresh();
     }, error => {
       this.isError = true;
       throwError(error);
-      this.toastr.error('Username or Password are not right! 🤔 ','Error! 🪳', {
+      this.toastr.error('Username or Password are not right!','Error!', {
         positionClass: 'toast-top-center'
       });
     });
+  }
+
+  resetInput(){
+    this.loginForm.get('username').setValue('');
+    this.loginForm.get('password').setValue('');
+  }
+
+  togglePasswordVisibility(input: HTMLInputElement): void {
+    input.type = input.type === 'password' ? 'text' : 'password';
+    this.passwordVisible = !this.passwordVisible;
   }
 }

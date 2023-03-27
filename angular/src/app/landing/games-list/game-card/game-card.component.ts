@@ -17,15 +17,15 @@ export class GameCardComponent implements OnInit {
   @Input() changeGamesToBeShownByCat: ((categoryName: string) => void) | undefined;
   @Input() changeGamesToBeShownByRating: ((order: string) => void) | undefined;
   role?: string;
-  stars: string[] = [];
+  gameRating: number = 0;
 
   constructor(public datePipe: DatePipe,private gameService:GameService,private authService:AuthService,private refreshService:RefreshService) {
   }
 
   ngOnInit(): void {
-    this.stars = this.stars = this.gameService.generateStars(this.gameService.getGameRating(this.game));
-    this.role = this.authService.getRole();
 
+    this.role = this.authService.getRole();
+    this.gameRating = this.gameService.getGameRating(this.game);
   }
 
   onSubmit(categoryId: number) {
@@ -39,8 +39,16 @@ export class GameCardComponent implements OnInit {
 
   deleteGame(gameId: number):void {
     this.gameService.deleteGame(gameId);
-    this.refreshService.triggerRefresh();
+    this.refreshService.triggerRefreshEvent();
   }
+
+  getRating(game :Game):number{
+    let result:number =0;
+    for(let review of game.reviews){
+      result += review.rating;
+}
+    return result / game.reviews.length;
+}
 
 
 }

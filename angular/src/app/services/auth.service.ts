@@ -7,6 +7,7 @@ import {AuthenticationRequest} from '../interfaces/AuthenticationRequest';
 import {BehaviorSubject} from 'rxjs';
 import {LocalStorageService} from "ngx-webstorage";
 import {Enduser} from "../interfaces/enduser";
+import {RefreshService} from "./refresh.service";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class AuthService {
   private authStatus = new BehaviorSubject<boolean>(false);
 
 
-  constructor(private http: HttpClient, private localStorage: LocalStorageService) {
+  constructor(private http: HttpClient, private localStorage: LocalStorageService,private refreshService:RefreshService) {
   }
 
     register(request: RegisterRequest): Observable<AuthenticationResponse> {

@@ -24,7 +24,7 @@ export class ReviewsComponent implements OnInit{
   @Input() currentUser?: Enduser;
   @Output() userHasReviewChange = new EventEmitter<boolean>();
   @Output() gameChange = new EventEmitter<Game>();
-  @Output() starChange = new EventEmitter<string[]>();
+  @Output() ratingChange = new EventEmitter<number>();
 
   reviewIdBeingEdited : number = 0;
   reviewContent?: string;
@@ -32,6 +32,7 @@ export class ReviewsComponent implements OnInit{
   editReviewContent? :string;
 
   constructor(private http:HttpClient,private gameService:GameService,private emojiService:StringToEmojiService) {
+
   }
   addReview(content ?: string, rating ?: number) {
     if (rating === 0) {
@@ -57,7 +58,7 @@ export class ReviewsComponent implements OnInit{
           this.reviewIdBeingEdited = 0;
           this.userHasReviewChange.emit(this.userHasReview);
           this.gameChange.emit(this.game);
-          this.starChange.emit(this.gameService.generateStars(this.gameService.getGameRating(this.game)));
+          this.ratingChange.emit(this.gameService.getGameRating(this.game));
         });
     }
     this.reviewContent = undefined;
@@ -91,7 +92,7 @@ export class ReviewsComponent implements OnInit{
       this.userHasReview = this.userHasReviewcheck();
       this.userHasReviewChange.emit(this.userHasReview);
       this.gameChange.emit(this.game);
-      this.starChange.emit(this.gameService.generateStars(this.gameService.getGameRating(this.game)));
+      this.ratingChange.emit(this.gameService.getGameRating(this.game));
     });
   }
 
