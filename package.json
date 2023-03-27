@@ -2,7 +2,9 @@
   "dependencies": {
     "@angular/animations": "^15.2.3",
     "bulma": "^0.9.4",
+    "bulma-switch": "^2.0.4",
     "ngx-toastr": "^16.1.0",
+    "normalize.css": "^8.0.1",
     "toastr": "^2.1.4"
   }
 }
