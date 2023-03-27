@@ -2,5 +2,14 @@
 <ul>
   <li *ngFor="let comment of profile.comments">
     {{ comment.content }}
+
+
+    <div class="media-right">
+  <!--    <a class="mr-2"  (click)="showEditFormForComments(comment)"><i
+        class="fa-solid fa-pen"></i></a>  -->
+      <a  (click)="deleteComment(comment)"><i
+        class="fa-regular fa-circle-xmark"></i></a>
+    </div>
+
   </li>
 </ul>
