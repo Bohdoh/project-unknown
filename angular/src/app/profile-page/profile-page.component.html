@@ -14,8 +14,8 @@
       <div class="column is-vcentered">
 
         <app-profil-info *ngIf="isInProfil" [profile]="profile"></app-profil-info>
-        <app-user-comments *ngIf="isInComments" [profile]="profile"></app-user-comments>
-        <app-user-review *ngIf="isInReview" [profile]="profile"></app-user-review>
+        <app-user-comments *ngIf="isInComments" [comments]="profile.comments" ></app-user-comments>
+        <app-user-review *ngIf="isInReview" [reviews]="profile.reviews"></app-user-review>
         <app-user-list *ngIf="isInUserList" [username]="username"></app-user-list>
 
       </div>
