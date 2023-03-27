@@ -45,7 +45,9 @@ public class SecurityConfig {
                         "/api/v1/auth/**",
                         "/api/games/**",
                         "/api/categories/**",
-                        "/api/chapters/**"
+                        "/api/chapters/**",
+                        "/api/images/**"
+
                 )
                 .permitAll ()
                 .requestMatchers (

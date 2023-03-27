@@ -7,6 +7,7 @@ import {LocalStorageService} from "ngx-webstorage";
 import {TimerService} from "../../services/timer.service";
 import {tap} from "rxjs";
 import {RefreshService} from "../../services/refresh.service";
+import {ImageService} from "../../services/image.service";
 
 
 @Component({
@@ -24,6 +25,8 @@ export class NavbarComponent implements OnInit {
   fileInput: any;
   timerValue: number = 60;
   isPlaying: boolean = false;
+  logo: string = "";
+
   @Output() showLogin = new EventEmitter<void>();
   @Output() showRegister = new EventEmitter<void>();
 
@@ -34,7 +37,9 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private localStorage: LocalStorageService,
-    private refreshService: RefreshService
+    private refreshService: RefreshService,
+    private imageService: ImageService
+
   ) {
     this.refreshService.refreshNavImage$.subscribe(() => {
       this.refreshNavbar();
@@ -56,6 +61,9 @@ export class NavbarComponent implements OnInit {
     });
     this.timerService.isPlaying$.subscribe((value: boolean) => {
       this.isPlaying = value;
+    });
+    this.imageService.getImage("logo").subscribe((value ) =>{
+      this.logo = value.image;
     });
 
   }
