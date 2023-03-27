@@ -1,15 +1,23 @@
 <p>Comments:</p>
 <ul>
-  <li *ngFor="let comment of profile.comments">
+  <li *ngFor="let comment of comments">
     {{ comment.content }}
 
-
     <div class="media-right">
-  <!--    <a class="mr-2"  (click)="showEditFormForComments(comment)"><i
-        class="fa-solid fa-pen"></i></a>  -->
-      <a  (click)="deleteComment(comment)"><i
-        class="fa-regular fa-circle-xmark"></i></a>
+      <a (click)="deleteComment(comment)"><i class="fa-regular fa-circle-xmark"></i></a>
+      <a (click)="showEditForm(comment)"><i class="fa-solid fa-pen"></i></a>
     </div>
+
+    <!-- Edit form
+     <div *ngIf="commentBeingEdited === comment">
+      <form (submit)="submitEdit(comment)">
+        <input type="text" [(ngModel)]="editContent" name="content" required>
+        <button type="submit">Save</button>
+        <button type="button" (click)="cancelEdit()">Cancel</button>
+      </form>
+    </div>
+    -->
+
 
   </li>
 </ul>

@@ -1,10 +1,7 @@
 package backend.spring.game.comment;
 
 import backend.spring.ConverterService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
@@ -22,6 +19,12 @@ public class CommentController {
     public void saveComment(@RequestBody CommentDTOReceived comment) {
         commentRepository.save(converterService.commentDTOReceivedToComment(comment));
     }
+
+    @PutMapping("/api/comments/update")
+    public void updateComment(@RequestBody CommentDTOReceived comment) {
+        commentRepository.save(converterService.commentDTOReceivedToComment(comment));
+    }
+
     @PostMapping("/api/comments/delete")
     public void deleteComment(@RequestBody Integer id) {
         commentRepository.delete(commentRepository.getReferenceById(id));
