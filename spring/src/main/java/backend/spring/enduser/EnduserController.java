@@ -16,12 +16,18 @@ import java.util.Map;
 @CrossOrigin(origins = "http://localhost:4200/")
 public class EnduserController {
 
+    private final EnduserService enduserService;
     private final AdminService adminService;
 
     private final ConverterService converterService;
     private final EnduserRepository enduserRepository;
 
-    public EnduserController(AdminService adminService, ConverterService converterService, EnduserRepository enduserRepository) {
+    public EnduserController(EnduserService enduserService,
+                             AdminService adminService,
+                             ConverterService converterService,
+                             EnduserRepository enduserRepository)
+    {
+        this.enduserService = enduserService;
         this.adminService = adminService;
         this.converterService = converterService;
         this.enduserRepository = enduserRepository;
@@ -85,6 +91,16 @@ public class EnduserController {
     public void downgrade(@PathVariable String username) throws UserDoesntExistException {
 
         adminService.downgrade (username);
+    }
+
+    @CrossOrigin
+    @PatchMapping("/api/updateInfo/{username}")
+    public ResponseEntity<?> updateInfo(@PathVariable String username, @RequestBody Map<String, Object> updates){
+        try {
+            return ResponseEntity.ok (enduserService.update (username, updates));
+        }catch (UserDoesntExistException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
 

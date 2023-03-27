@@ -53,7 +53,9 @@ public class SecurityConfig {
                          "/api/users/**",
                         "/api/review",
                         "/api/review/**",
-                        "/profil/**")
+                        "/profil/**",
+                        "/api/updateInfo/{username}",
+                        "/api/updateInfo/{username}**")
                 .hasAnyAuthority (Role.USER.name (),Role.ADMIN.name ())
                 .requestMatchers (
                         "/api/users/{username}/listOfUsers/**",
@@ -88,7 +90,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200/"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS","PATCH"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
