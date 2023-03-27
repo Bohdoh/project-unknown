@@ -1,10 +1,7 @@
-import {Component, Input} from '@angular/core';
-import {ProfilDTO} from "../../interfaces/profil-dto";
-import {Comment} from "../../interfaces/comment";
-import {switchMap} from "rxjs";
-import {Game} from "../../interfaces/game";
-import {HttpClient} from "@angular/common/http";
-import {GameService} from "../../services/game.service";
+import { Component, Input } from '@angular/core';
+import { Comment } from '../../interfaces/comment';
+import {CommentService} from "../../services/comment.service";
+
 
 @Component({
   selector: 'app-user-comments',
@@ -12,17 +9,13 @@ import {GameService} from "../../services/game.service";
   styleUrls: ['./user-comments.component.css']
 })
 export class UserCommentsComponent {
-  @Input() profile: ProfilDTO | any;
+  @Input() comments: Comment[] = [];
 
-  constructor(private http:HttpClient,private gameService:GameService) {
+  constructor(private commentService: CommentService) { }
+
+  deleteComment(comment: Comment): void {
+    this.commentService.deleteComment(comment).subscribe(() => {
+      this.comments = this.comments.filter(c => c.commentId !== comment.commentId);
+    });
   }
-
-
-   deleteComment(comment: Comment) {
-    this.http.post<number>('http://localhost:8080/api/comments/delete', comment.commentId);
-    };
-  }
-
-
-
-
+}
