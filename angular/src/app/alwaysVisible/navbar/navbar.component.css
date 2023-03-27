@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500');
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+li, a, button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10%;
+  color: #3b3c44;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.nav__links {
+  list-style: none;
+}
+
+.nav__links li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.nav__links li a {
+  transition: all 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+  color: #525a62;
+  text-shadow: 2px 2px #3b3c44;
+
+}
+
+button {
+  padding: 9px 25px;
+  background-color: lightgray;
+  /*background-color: rgba(0, 136, 169, 1);*/
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  color: #525a62;
+}
+
+.buttonwhitefont{
+  color: dimgrey;
+}
+
+button:hover {
+  background-color: transparent;
+  text-shadow: 2px 2px #3b3c44;
+
+}
+
+
+.cta {
+  order: 2;
+}
+
+a{
+  color: #525a62;
+}
+
+a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-item.is-active,
+.navbar-link:focus,
+.navbar-link:focus-within,
+.navbar-link:hover,
+.navbar-link.is-active {
+  background-color: transparent;
+}
