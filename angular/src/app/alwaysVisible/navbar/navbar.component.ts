@@ -57,8 +57,9 @@ export class NavbarComponent implements OnInit {
     this.timerService.isPlaying$.subscribe((value: boolean) => {
       this.isPlaying = value;
     });
-
   }
+
+
 
 
   goToUserProfile() {

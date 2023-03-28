@@ -30,6 +30,7 @@ import { ReviewsComponent } from './game-detail/reviews/reviews.component';
 import { UserListComponent } from './profile-page/user-list/user-list.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
