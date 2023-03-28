@@ -12,6 +12,7 @@ import {ReviewService} from "../../services/review.service";
 })
 export class UserReviewComponent {
   @Input() reviews: Review[] = [];
+  @Input() username: string | undefined;
 
   constructor(private reviewService: ReviewService) {}
 
@@ -20,4 +21,6 @@ export class UserReviewComponent {
       this.reviews = this.reviews.filter(r => r.id !== review.id);
     });
   }
+
+  
 }

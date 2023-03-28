@@ -14,7 +14,7 @@ export class MenuBarComponent implements OnInit{
   @Output() getUserListClicked = new EventEmitter();
 
   userRole:string="user";
-  isAdmin?:boolean;
+  @Input() isAdmin?:boolean;
   @Output() goToCommentsClicked = new EventEmitter();
 
   constructor(private router: Router) {
