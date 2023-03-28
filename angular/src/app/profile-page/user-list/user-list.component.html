@@ -1,9 +1,16 @@
-<h1>User List</h1>
-<ul>
-  <li *ngFor="let user of users">
-    {{ user.username }} - {{ user.role }}
-    <button (click)="user.role === 'ADMIN' ? downgrade(user.username) : upgrade(user.username)" [disabled]="user.username === username">
-      {{ user.role === 'ADMIN' ? '⬇️' : '⬆️' }}
-    </button>
-  </li>
-</ul>
+<div class="card">
+
+  <h1 class="card-content has-text-centered">User List</h1>
+  <div class="card-content menu">
+    <ul class="menu-list has-text-centered ">
+      <li *ngFor="let user of users">
+        {{ user.username }} - {{ user.role }}
+        <button (click)="user.role === 'ADMIN' ? downgrade(user.username) : upgrade(user.username)" [disabled]="user.username === username">
+          {{ user.role === 'ADMIN' ? 'Downgrade' : 'Upgrade' }}
+        </button>
+      </li>
+    </ul>
+  </div>
+
+</div>
+

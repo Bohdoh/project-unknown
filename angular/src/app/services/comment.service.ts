@@ -16,8 +16,11 @@ export class CommentService {
     return this.http.post<void>(url, comment.commentId);
   }
 
-  updateComment(comment: Comment): Observable<void> {
-    const url = `${this.API_URL}/comments/update`;
-    return this.http.put<void>(url, comment);
+  updateComment(commentId: number, updates: any): Observable<Comment> {
+    const url = `${this.API_URL}/comments/update/${commentId}`;
+    return this.http.post<Comment>(url, updates);
   }
+
+
+
 }

@@ -27,14 +27,41 @@ public class CommentController {
         commentRepository.save(converterService.commentDTOReceivedToComment(comment));
     }
 
-   @PatchMapping("/api/comment/update/{commentId}")
-   public ResponseEntity<?> updateCommentContent(@PathVariable int commentId, @RequestBody Map<String, Object> updates){
+/*
+*  @PatchMapping("/api/comment/update/{commentId}")
+         public ResponseEntity<?> updateCommentContent(@PathVariable int commentId, @RequestBody Map<String, Object> updates){
+              try {
+               return ResponseEntity.ok (commentService.update (commentId,updates));
+              }catch (CommentDoesntExistsException e){
+                  return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+              }
+         }*/
+/*@PatchMapping("/api/comment/update/{commentId}")
+    public ResponseEntity<?> updateCommentContent(@PathVariable int commentId, @RequestBody Map<String, Object> updates) {
         try {
-         return ResponseEntity.ok (commentService.update (commentId,updates));
-        }catch (CommentDoesntExistsException e){
+            CommentDTO commentDTO = new CommentDTO();
+            commentDTO.setCommentId(commentId);
+            return ResponseEntity.ok(commentService.update(commentDTO, updates));
+        } catch (CommentDoesntExistsException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
-   }
+    }
+
+* */
+
+
+
+       @PostMapping("/api/comments/update/{commentId}")
+        public ResponseEntity<?> updateCommentContent(@PathVariable int commentId, @RequestBody ContentDTO updates) {
+        try {
+           // Comment updatedComment = commentService.update(commentId, updates);
+            return ResponseEntity.ok(commentService.update(commentId, updates));
+        } catch (CommentDoesntExistsException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+    }
+
+
 
     @PostMapping("/api/comments/delete")
     public void deleteComment(@RequestBody Integer id) {

@@ -62,7 +62,7 @@ public class EnduserController {
             }
             return ResponseEntity.ok().body(Map.of("message", "File uploaded successfully"));
         } catch (Exception e) {
-            return ResponseEntity.ok().body(Map.of("message", "File uploaded successfully"));
+            return ResponseEntity.ok().body(Map.of("message", "File uploaded not successfully"));
         }
     }
 
