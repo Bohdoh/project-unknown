@@ -54,18 +54,20 @@
         <!-- not logged in Login, Home, About Buttons -->
 
         <a *ngIf="!isLoggedIn" class="navbar-item" (click)="showRegisterModal()">
-          <strong>Sign up</strong></a>
+          <button><strong>Sign up</strong></button></a>
 
 
-        <a *ngIf="!isLoggedIn" class="navbar-item" routerLink="/">Home</a>
+        <a *ngIf="!isLoggedIn" class="navbar-item" routerLink="/"><button>Home</button></a>
 
-        <a *ngIf="!isLoggedIn" class="navbar-item" routerLink="/">About</a>
+        <a *ngIf="!isLoggedIn" class="navbar-item" routerLink="/"><button>About</button></a>
 
 
         <!-- is logged in Buttons Home, About -->
-        <a class="navbar-item" *ngIf="isLoggedIn" routerLink="/"> Home </a>
+        <a class="navbar-item" *ngIf="isLoggedIn" routerLink="/">
+          <button>Home</button>
+        </a>
 
-        <a class="navbar-item" *ngIf="isLoggedIn" routerLink="/"> About </a>
+        <a class="navbar-item" *ngIf="isLoggedIn" routerLink="/"><button>About</button></a>
 
       </div>
 
@@ -110,7 +112,7 @@
 
           <hr class="navbar-divider">
 
-          <div>
+          <div class="is-transparent">
             <a class="dropdown-item is-flex is-justify-content-center">
               <button class="button is-danger is-small" (click)="logout()">Logout</button>
               <button class="button is-small" (click)="goToUserProfile()">Profil</button>

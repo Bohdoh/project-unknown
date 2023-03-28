@@ -93,6 +93,7 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
   justify-content: flex-end;
   align-items: center;
   width: 20%;
+  margin-right: 5px;
 }
 
 .navbar-link {
@@ -106,4 +107,22 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
 .dropdown-margin-right{
   padding-right: 30px;
 }
+
+.dropdown-link{
+  background-color: transparent;
+}
+
+@media screen and (min-width: 1024px) {
+  .navbar-item.has-dropdown:focus .navbar-link, .navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link {
+    background-color: transparent;
+  }
+}
+
+a.dropdown-item:hover, button.dropdown-item:hover {
+  background-color: transparent;
+  color: #0a0a0a;
+}
+
+
+
 
