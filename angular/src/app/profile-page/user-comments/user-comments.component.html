@@ -1,23 +1,22 @@
-
-
-<div  class="card  ">
+<div class="card">
   <div class="card-content has-text-centered menu">
     <h1>Comments:</h1>
     <ul class="menu-list">
-      <li  *ngFor="let comment of comments">
-        <!-- display the comment content -->
-        <div >
+      <li *ngFor="let comment of comments">
+        <div>
+          <!-- display the comment content -->
 
           {{ comment.content }}
-          <span></span>
-          <span><a (click)="deleteComment(comment)">Delete</a></span>
-          <span></span>
-          <span> <a (click)="showEditForm(comment)">Edit</a></span>
-
+          <div class="row ">
+            <span class="col">
+              <a (click)="deleteComment(comment)">Delete</a>
+            </span>
+            <span class="col">
+              <a (click)="showEditForm(comment)">Edit</a>
+            </span>
+          </div>
         </div>
-
         <br>
-
         <!-- edit form -->
         <div *ngIf="commentBeingEdited === comment">
           <form (submit)="submitEdit(comment)">
@@ -29,7 +28,4 @@
       </li>
     </ul>
   </div>
-
-
-
 </div>
