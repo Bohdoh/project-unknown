@@ -10,5 +10,7 @@ import java.util.Map;
 @Service
 public interface CommentService {
 
-    public Comment update(int commentId, Map<String, Object> updates)throws CommentDoesntExistsException;
+
+        Comment update(int commentId, ContentDTO updates) throws CommentDoesntExistsException;
+
 }
