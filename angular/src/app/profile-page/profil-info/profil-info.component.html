@@ -3,7 +3,7 @@
     <h1 class="card-content has-text-centered">{{ profile.username.toUpperCase() }}</h1>
     <div class="d-flex justify-content-center">
       <div *ngIf="profile.image" >
-        <figure class="image is-small smaller-image">
+        <figure class="image is-small ">
           <img [src]="'data:image/png;base64,' + profile.image" class="img-fluid" />
         </figure>
       </div>

@@ -1,32 +1,35 @@
 
 
 <div  class="card  ">
+  <div class="card-content has-text-centered menu">
+    <h1>Comments:</h1>
+    <ul class="menu-list">
+      <li  *ngFor="let comment of comments">
+        <!-- display the comment content -->
+        <div >
 
-  <ul >
-    <li class="card-content" *ngFor="let comment of comments">
-      <!-- display the comment content -->
-      <div >
+          {{ comment.content }}
+          <span></span>
+          <span><a (click)="deleteComment(comment)">Delete</a></span>
+          <span></span>
+          <span> <a (click)="showEditForm(comment)">Edit</a></span>
 
-        {{ comment.content }}
-        <span></span>
-        <span><a (click)="deleteComment(comment)"><i class="fa-regular fa-circle-xmark"></i></a></span>
-        <span></span>
-        <span> <a (click)="showEditForm(comment)"><i class="fa-solid fa-pen"></i></a></span>
+        </div>
 
-      </div>
+        <br>
 
-<br>
+        <!-- edit form -->
+        <div *ngIf="commentBeingEdited === comment">
+          <form (submit)="submitEdit(comment)">
+            <input type="text" [(ngModel)]="editContent" name="content" required>
+            <button type="submit">Save</button>
+            <button type="button" (click)="cancelEdit()">Cancel</button>
+          </form>
+        </div>
+      </li>
+    </ul>
+  </div>
 
-      <!-- edit form -->
-      <div *ngIf="commentBeingEdited === comment">
-        <form (submit)="submitEdit(comment)">
-          <input type="text" [(ngModel)]="editContent" name="content" required>
-          <button type="submit">Save</button>
-          <button type="button" (click)="cancelEdit()">Cancel</button>
-        </form>
-      </div>
-    </li>
-  </ul>
 
 
 </div>
