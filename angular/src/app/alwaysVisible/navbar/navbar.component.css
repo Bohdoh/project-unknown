@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500');
 
-*{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+
 
 li, a, button {
   font-family: "Montserrat", sans-serif;
@@ -45,7 +41,7 @@ header {
 
 button {
   padding: 9px 25px;
-  background-color: lightgray;
+  background-color: transparent;
   /*background-color: rgba(0, 136, 169, 1);*/
   border: none;
   border-radius: 50px;
@@ -60,7 +56,7 @@ button {
 
 button:hover {
   background-color: transparent;
-  text-shadow: 2px 2px #3b3c44;
+  text-shadow: 0.5px 0.5px #3b3c44;
 
 }
 
@@ -80,3 +76,34 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
 .navbar-link.is-active {
   background-color: transparent;
 }
+
+.navbar-item{
+  margin-left: 10px;
+}
+
+.navbar-start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 20%;
+}
+
+.navbar-link {
+  color: #4a4a4a;
+  display: flex;
+  line-height: 1.5;
+  padding: 0.5rem 3.5rem;
+  position: relative;
+}
+
+.dropdown-margin-right{
+  padding-right: 30px;
+}
+

@@ -23,161 +23,66 @@
 </script>
 
 
-<header>
-
-  <a class="navbar-item" routerLink="/">
-    <img class="logo level-left" [src]="'data:image/png;base64,'+logo" alt="logo">
-  </a>
-  <nav>
+<nav>
+  <div class="navbar">
 
 
-    <div *ngIf="!isLoggedIn">
-      <ul class="nav__links">
-        <li><a (click)="showRegisterModal()">
-          <strong>Sign up</strong>
-        </a></li>
-        <li><a routerLink="/">Home</a></li>
-        <li><a href="/">About</a></li>
-      </ul>
-    </div>
+    <div class="navbar-brand">
 
-    <div *ngIf="isLoggedIn">
-      <ul class="nav__links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/">About</a></li>
-      </ul>
-    </div>
-
-
-  </nav>
+      <!-- logo -->
+      <a class="navbar-item is-left" routerLink="/">
+        <img class="logo level-left" [src]="'data:image/png;base64,'+logo" alt="logo">
+      </a>
 
       <!-- darkmodeswitch-->
-    <div class="navbar-item">
-      <span>
-    <div class="field">
-      <input id="switchExample" (change)="toggleDarkMode()" type="checkbox" name="switchExample"
-             class="switch is-small">
-      <label for="switchExample"><i class="fa-solid fa-moon"></i></label>
+      <div class="navbar-item">
+        <span>
+          <div class="field">
+          <input id="switchExample" (change)="toggleDarkMode()" type="checkbox" name="switchExample"
+                 class="switch is-small">
+          <label for="switchExample"><i class="fa-solid fa-moon"></i></label>
+          </div>
+        </span>
+      </div>
     </div>
-  </span>
-      <!-- darkmodeswitch ende-->
+
+    <div class="navbar-menu">
+
+      <div class="navbar-start">
+
+
+        <!-- not logged in Login, Home, About Buttons -->
+
+        <a *ngIf="!isLoggedIn" class="navbar-item" (click)="showRegisterModal()">
+          <strong>Sign up</strong></a>
+
+
+        <a *ngIf="!isLoggedIn" class="navbar-item" routerLink="/">Home</a>
+
+        <a *ngIf="!isLoggedIn" class="navbar-item" routerLink="/">About</a>
+
+
+        <!-- is logged in Buttons Home, About -->
+        <a class="navbar-item" *ngIf="isLoggedIn" routerLink="/"> Home </a>
+
+        <a class="navbar-item" *ngIf="isLoggedIn" routerLink="/"> About </a>
+
+      </div>
 
     </div>
-    <div class="navbar-item" *ngIf="!isLoggedIn">
-      <a routerLink="/login" class="cta">
+    <div class="navbar-end">
+
+      <!-- is not logged in Login Button -->
+      <a class="navbar-item" *ngIf="!isLoggedIn" routerLink="/login">
         <button (click)="showLoginModal()">Login</button>
       </a>
-    </div>
 
-    <div class="navbar-item" *ngIf="isLoggedIn">
-      <a class="navbar-item">
-      <span class="navbar-item">
-        <button class="cta" (click)="logout()">Logout</button>
-      </span>
-        <span class="navbar-item">
-        <button class="cta" (click)="goToUserProfile()">Profil</button>
-      </span>
-      </a>
-      <!-- profilepicture -->
-      <figure class="image navbar-item">
-        <img class="is-rounded" *ngIf="enduser && enduser.image !== ''"
-             [src]="'data:image/png;base64,'+enduser.image"
-             alt="Profile Picture">
-        <img class="is-rounded" *ngIf="!enduser || enduser.image === ''"
-             src="https://bulma.io/images/placeholders/128x128.png"
-             alt="Profile Picture">
-      </figure>
-      <!-- profilepicture end -->
-
-      <div class="dropdown is-active">
-        <div class="dropdown-trigger">
-          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
-            <span>Content</span>
-            <span class="icon is-small">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-          </button>
-        </div>
-        <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-          <div class="dropdown-content">
-            <div class="dropdown-item">
-              <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
-            </div>
-            <hr class="dropdown-divider">
-            <div class="dropdown-item">
-              <p>You simply need to use a <code>&lt;div&gt;</code> instead.</p>
-            </div>
-            <hr class="dropdown-divider">
-            <a href="#" class="dropdown-item">
-              This is a link
-            </a>
-          </div>
-        </div>
-      </div>
+      <!-- is logged in -->
 
 
-
-      <span class="navbar-item">{{username}}</span>
-
-    </div>
-
-</header>
-
-
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <!-- mobile view -->
-  <div class="navbar-brand">
-    <a class="navbar-item" routerLink="/">
-      <img class="logo level-left" [src]="'data:image/png;base64,'+logo" alt="logo">
-    </a>
-
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-
-
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a routerLink="/" class="navbar-item">
-        <i class="fas fa-home" aria-hidden="true"></i>Home
-      </a>
-    </div>
-    <div class="navbar-item" *ngIf="isPlaying">{{timerValue}}</div>
-    <div class="navbar-end">
-      <!--      <span class="navbar-item">-->
-      <!--            <div class="field">-->
-      <!--        <input id="switchExample" (change)="toggleDarkMode()" type="checkbox" name="switchExample" class="switch is-small">-->
-      <!--        <label for="switchExample"><i class="fa-solid fa-moon"></i></label>-->
-      <!--      </div>-->
-      <!--          </span>-->
-      <!--            User not logged in -->
-      <div *ngIf="!isLoggedIn" class="navbar-item">
-        <div class="buttons">
-          <!--          <a routerLink="/register" class="button is-primary">-->
-          <!--            <strong>Sign up</strong>-->
-          <!--          </a>-->
-          <!--          <a routerLink="/login" class="button is-primary">-->
-          <!--            Log in-->
-          <!--          </a>-->
-          <a (click)="showRegisterModal()" class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a (click)="showLoginModal()" class="button is-light">
-            Log in
-          </a>
-        </div>
-      </div>
-
-      <!--            User logged in -->
       <div *ngIf="isLoggedIn" class="navbar-item has-dropdown is-hoverable">
-        <span class="navbar-item has-text-weight-bold">{{ role | titlecase }}</span>
 
-
-        <span class="navbar-item">{{username}}</span>
-
+        <!-- profilepicture -->
         <figure class="image navbar-item navbar-link">
           <img class="is-rounded" *ngIf="enduser && enduser.image !== ''"
                [src]="'data:image/png;base64,'+enduser.image"
@@ -186,36 +91,45 @@
                src="https://bulma.io/images/placeholders/128x128.png"
                alt="Profile Picture">
         </figure>
-        <div class="navbar-dropdown">
-          <!--          <a [routerLink]="/profile/" class="navbar-item">-->
-          <!--            Profile-->
-          <!--          </a>-->
-          <div class="navbar-item">
+
+        <!-- dropdownmenu -->
+
+
+        <div class="navbar-dropdown dropdown-margin-right">
+          <div class="dropdown-item">
             <label>Change Avatar</label>
           </div>
-          <div class="navbar-item">
+          <div class="dropdown-item">
             <form enctype="multipart/form-data">
-              <div class="field">
-                <input type="file" id="imageFile" name="userImage" accept="image/*" (change)="onFileSelected($event)"
+                <input class="field" type="file" id="imageFile" name="userImage" accept="image/*" (change)="onFileSelected($event)"
                        required>
-              </div>
-
-              <!--              <button class="button is-small is-light" type="submit" [disabled]="!imageSelected"> Submit</button>-->
+              <!-- <button class="button is-small is-light" type="submit" [disabled]="!imageSelected"> Submit</button>-->
             </form>
 
           </div>
 
           <hr class="navbar-divider">
-          <a class="navbar-item">
-            <button class="button is-danger is-small" (click)="logout()">Logout</button>
-            <span class="navbar-item">
-            <button class="button  is-small" (click)="goToUserProfile()">Profil</button>
-          </span>
-          </a>
+
+          <div>
+            <a class="dropdown-item is-flex is-justify-content-center">
+              <button class="button is-danger is-small" (click)="logout()">Logout</button>
+              <button class="button is-small" (click)="goToUserProfile()">Profil</button>
+            </a>
+          </div>
 
         </div>
+
+
+        <!-- profilepicture end -->
+
+
+        <span class="navbar-item">{{username}}</span>
+
       </div>
     </div>
+
+
   </div>
 </nav>
+
 
