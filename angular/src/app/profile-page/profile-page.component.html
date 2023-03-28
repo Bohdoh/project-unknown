@@ -1,40 +1,51 @@
-<div class="columns">
-  <div class="column is-one-quarter">
-    <app-menu-bar
-      (goToProfilInfoClicked)="handleGoToProfilInfoClicked()"
-      (goToReviewsClicked)="handleGoToReviewsClicked()"
-      (getUserListClicked)="handleGetUserListClicked()"
-      (goToCommentsClicked)="handleGoToCommentsClicked()"
-    ></app-menu-bar>
+<div class="columns mt-4">
+  <!-- left column -->
+  <div class="column is-hidden-mobile">
+    <div class="columns">
+      <div class="column is-one-fifth"></div>
+      <div class="column ">
+        <!--Categories -->
+        <aside class="menu">
+          <ul class="menu-list">
+            <li>
 
-  </div>
 
-  <div class="column is-centered is-two-thirds">
-    <div class="is-vcentered columns">
-      <div class="column is-vcentered">
+                <app-menu-bar
+                  (goToProfilInfoClicked)="handleGoToProfilInfoClicked()"
+                  (goToReviewsClicked)="handleGoToReviewsClicked()"
+                  (getUserListClicked)="handleGetUserListClicked()"
+                  (goToCommentsClicked)="handleGoToCommentsClicked()"
+                ></app-menu-bar>
 
-        <app-profil-info *ngIf="isInProfil" [profile]="profile"></app-profil-info>
-        <app-user-comments *ngIf="isInComments" (commentChange)="updateComment()" [comments]="profile.comments" [username]="profile.username" ></app-user-comments>
-        <app-user-review *ngIf="isInReview" [reviews]="profile.reviews"></app-user-review>
-        <app-user-list *ngIf="isInUserList" [username]="username"></app-user-list>
+
+            </li>
+          </ul>
+        </aside>
 
       </div>
-      </div>
-
-
-  </div>
-
-<!--
-  <div class="column">
-    <div *ngIf="isAdmin">
-      <button  (click)="getUserList()">User list</button>
+      <div class="column is-one-fifth"></div>
     </div>
   </div>
--->
+
+  <!-- middle column -->
+  <div class="column is-three-fifths">
+    <div class="is-vcentered columns">
+      <div class="column is-vcentered">
+        <app-profil-info *ngIf="isInProfil" [profile]="profile" [username]="profile.username"></app-profil-info>
+        <app-user-comments *ngIf="isInComments" (commentChange)="updateComment()" [comments]="profile.comments" [username]="profile.username"></app-user-comments>
+        <app-user-review *ngIf="isInReview" [reviews]="profile.reviews"></app-user-review>
+        <app-user-list *ngIf="isInUserList" [username]="profile.username"></app-user-list>
+      </div>
+    </div>
+  </div>
+
+  <!-- right column -->
+  <div class="column is-one-fifth ">
+
+
+  </div>
+
 
 
 
 </div>
-
-
-

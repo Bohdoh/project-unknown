@@ -1,22 +1,32 @@
-<li *ngFor="let comment of comments">
-  <!-- display the comment content -->
-  {{ comment.content }}
 
-  <div class="media-right">
-    <!-- delete button -->
-    <a (click)="deleteComment(comment)"><i class="fa-regular fa-circle-xmark"></i></a>
 
-    <!-- edit button -->
-    <a (click)="showEditForm(comment)"><i class="fa-solid fa-pen"></i></a>
-  </div>
+<div  class="card  ">
 
-  <!-- edit form -->
-  <div *ngIf="commentBeingEdited === comment">
-    <form (submit)="submitEdit(comment)">
-      <input type="text" [(ngModel)]="editContent" name="content" required>
-      <button type="submit">Save</button>
-      <button type="button" (click)="cancelEdit()">Cancel</button>
-    </form>
-  </div>
-</li>
+  <ul >
+    <li class="card-content" *ngFor="let comment of comments">
+      <!-- display the comment content -->
+      <div >
 
+        {{ comment.content }}
+        <span></span>
+        <span><a (click)="deleteComment(comment)"><i class="fa-regular fa-circle-xmark"></i></a></span>
+        <span></span>
+        <span> <a (click)="showEditForm(comment)"><i class="fa-solid fa-pen"></i></a></span>
+
+      </div>
+
+<br>
+
+      <!-- edit form -->
+      <div *ngIf="commentBeingEdited === comment">
+        <form (submit)="submitEdit(comment)">
+          <input type="text" [(ngModel)]="editContent" name="content" required>
+          <button type="submit">Save</button>
+          <button type="button" (click)="cancelEdit()">Cancel</button>
+        </form>
+      </div>
+    </li>
+  </ul>
+
+
+</div>
