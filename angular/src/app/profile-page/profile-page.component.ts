@@ -20,7 +20,7 @@ export class ProfilePageComponent implements OnInit {
   isInReview: boolean = false;
   isInUserList: boolean = false;
 
-  games?: Game[];
+  games: Game[]=[];
 
   constructor(
     private route: ActivatedRoute,

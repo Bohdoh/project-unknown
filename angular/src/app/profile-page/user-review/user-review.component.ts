@@ -14,9 +14,10 @@ import {Game} from "../../interfaces/game";
 export class UserReviewComponent {
   @Input() reviews: Review[] = [];
   @Input() username: string | undefined;
-  isGameSelected:boolean=false;
-  @Input() games:Game[];
-  gameSelected?:Game;
+  @Input() games: Game[] = []; // add this line
+
+  isGameSelected: boolean = false;
+  gameSelected?: Game;
   constructor(private reviewService: ReviewService) {}
 
   deleteReview(review: Review): void {
