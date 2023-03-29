@@ -3,6 +3,7 @@ import { Comment } from '../../interfaces/comment';
 import { CommentService } from '../../services/comment.service';
 import { BehaviorSubject } from 'rxjs';
 import { ProfileService } from '../../services/profile.service';
+import {Game} from "../../interfaces/game";
 
 @Component({
   selector: 'app-user-comments',
@@ -15,7 +16,9 @@ export class UserCommentsComponent {
   commentBeingEdited: Comment | null = null;
   editContent: string = '';
   @Input() username:string|undefined;
-
+  @Input() games:Game[];
+  gameSelected?:Game;
+  isGameSelected:boolean=false;
   constructor(
     private commentService: CommentService,
     private profileService: ProfileService // inject ProfileService
