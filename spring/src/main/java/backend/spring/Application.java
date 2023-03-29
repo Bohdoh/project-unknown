@@ -122,7 +122,7 @@ public class Application {
 
 
 
-        chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"), readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetTitelbild.jpg"),
+        chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"), readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetInvitation.jpg"),
                 "Du bist ein junger Medizinstudent, der eine besondere Liebe für Krimigeschichten hat. Eines Tages erhältst du ein Brief mit einer Einladung: \"Ich, Dr. von Arroganz, der beste und berühmteste Arzt Englands lade dich in meine Villa ein. \"",
                 "start", new String[]{"Du nimmst die Einladung an", "Du steigst in die Kutsche und fährst zur Villa", "A-"},
                 new String[]{"Du ignorierst die Einladung und gehst nach draußen", "You pick up the Eye and expect some trap to trigger, but nothing bad happens!", "gameover"},
@@ -132,7 +132,7 @@ public class Application {
 
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"),
-                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "amazon.jpg"),
+                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetVilla.jpg"),
                 "Bei seiner Villa angekommen begleitet dich sein Butler an den Esstisch. Am Esstisch prahlt Dr. von Arroganz mit all seinen Auszeichnungen, die er als Arzt im Laufe seines Lebens bekommen hat. Plötzlich merkst du, dass Dr. von Arroganz verzweifelt versucht zu atmen, jedoch erstickt. ",
                 "A-", new String[]{"Du überlässt dem Butler die Untersuchung der Leiche", "The entity becomes angry and kills Indy in a storm of fire.", "gameover"},
                 new String[]{"Du untersuchst selber die Leiche", "Beim Untersuchen fällt dir auf, dass das Glas aus dem Dr. von Arroganz getrunken hat ungewöhnlich schimmert.", "A-B-"},
@@ -141,7 +141,7 @@ public class Application {
 
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"),
-                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "amazon.jpg"),
+                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetWineGlas.jpg"),
                 "Beim Untersuchen findest du heraus, dass im Glas von Dr. von Arroganz Reste von Zyankali nachgewiesen werden kann. Somit handelt es sich hierbei um einen vorsätzlichen Mord. Außerdem findest du unter seinem Glas einen Zettel mit der Nachricht: \"Ich weiß, wer der Mörder ist - du findest mich in Envy Town\" ",
                 "A-B-", new String[]{"Du verheimlichst, dass du ein Zettel gefunden hast", "The entity becomes angry and kills Indy in a storm of fire.", "gameover"},
                 new String[]{"Du machst dich auf den Weg nach \"Envy Town\"", "Vor der Villa erwartet dich ein Mann mit einer Kutsche. Du steigst in die Kutsche ein und der Mann fährt los.", "A-B-B-"},
@@ -150,7 +150,7 @@ public class Application {
 
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"),
-                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "amazon.jpg"),
+                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetMeetingWithEnvy.jpg"),
                 "In Envy Town angekommen erwartet dich Dr. Yven, ein ehemaliger Kollege von Dr. von Arroganz. Nach jahrelanger Zusammenarbeit trennte sich Dr. Yven von ihm, weil er den Neid nicht mehr ertragen konnte. Er konnte niemals ein so guter Arzt wie Dr. von Arroganz werden. ",
                 "A-B-B-", new String[]{"du gehst sofort davon aus, dass er der Mörder ist", "The entity becomes angry and kills Indy in a storm of fire.", "gameover"},
                 new String[]{"du fragst, ob er derjenige mit der Nachricht gewesen ist", "Vor der Villa erwartet dich ein Mann und eine Kutsche. Du steigst in die Kutsche ein und der Mann fährt los.", "gameover"},
@@ -160,7 +160,7 @@ public class Application {
 
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"),
-                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "amazon.jpg"),
+                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetDrYven.jpg"),
                 "Ich werde dir sagen, wo du die Antwort auf all deine Fragen finden wirst, jedoch musst du vorher mein Rätsel lösen: \"Ich bin in der Lunge zu finden, doch zu viel von mir kann schwer binden. Ich helfe beim Atmen und schütze vor Keimen, doch eine Überdosis kann das Leben nehmen. Was bin ich?\"",
                 "A-B-B-C-", new String[]{"\"Sauerstoff\"", "Dr. Yven ist erstaunt darüber, dass du sein Rätsel so schnell lösen konntest.", "A-B-B-C-A-"},
                 new String[]{"Du drohst ihm mit Gewalt", "Vor der Villa erwartet dich ein Mann und eine Kutsche. Du steigst in die Kutsche ein und der Mann fährt los.", "gameover"},
@@ -169,7 +169,7 @@ public class Application {
 
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"),
-                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "amazon.jpg"),
+                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetRedHouse.jpg"),
                 "Bravo, du hast das Rätsel richtig gelöst. Begib dich nun zur Lust Street. Am Ende der Straße befindet sich ein rotes Haus. Die Person, die dort auf dich wartet, hat die Antworten auf all deine Fragen.",
                 "A-B-B-C-A-", new String[]{"dir wird alles zu viel und du gehst in eine Bar", "Dr. Yven ist erstaunt darüber, dass du sein Rätsel so schnell lösen konntest.", "gameover"},
                 new String[]{"du misstraust Dr. Yven und ignorierst seine Antwort", "Vor der Villa erwartet dich ein Mann und eine Kutsche. Du steigst in die Kutsche ein und der Mann fährt los.", "gameover"},
@@ -178,7 +178,7 @@ public class Application {
 
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"),
-                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "amazon.jpg"),
+                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetFrauImRotenKleid.jpg"),
                 "Du betrittst das rote Haus und findest nur noch die Leiche einer wunderschönen Frau in einem roten Kleid. Du untersuchst die Leiche der Frau und findest heraus, dass es sich bei der Frau um eine ehemalige Affäre von Dr. von Arroganz handelt.",
                 "A-B-B-C-A-C-", new String[]{"du verlässt panisch das rote Haus", "Dr. Yven ist erstaunt darüber, dass du sein Rätsel so schnell lösen konntest.", "gameover"},
                 new String[]{"du rufst die Polizei und wartest draußen vor der Tür", "Du wartest vor der Tür bis die Polizei eintrifft.", "A-B-B-C-A-C-B-"},
@@ -187,7 +187,7 @@ public class Application {
 
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"),
-                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "amazon.jpg"),
+                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetRedHouse.jpg"),
                 "Auf dem Boden entdeckst du eine durch den Regen aufgeweichte Zeitung. Du erkennst die Schlagzeile nicht genau. Was du lesen kannst, ist: \"J... the ...er, der berühmteste Mör.. Lon...\"",
                 "A-B-B-C-A-C-B-", new String[]{"Du kannst die Zeitung nicht entziffern", "Dr. Yven ist erstaunt darüber, dass du sein Rätsel so schnell lösen konntest.", "gameover"},
                 new String[]{"Du wartest auf die Polizei ", "Vor der Villa erwartet dich ein Mann und eine Kutsche. Du steigst in die Kutsche ein und der Mann fährt los.", "gameover"},
@@ -197,7 +197,7 @@ public class Application {
 
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"),
-                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "amazon.jpg"),
+                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetBar.jpg"),
                 "Voller Zorn, dass es sich bei dem Mörder um Jack the Ripper handelt, begibst du dich in die berühmteste Bar Londons - dem \"Alpha Inn\". In der Bar belauschst du die Leute, um so mögliche Informationen über Jack the Ripper zu bekommen.",
                 "A-B-B-C-A-C-B-C-", new String[]{"Du hörst dir die Geschichte eines stadtbekannten Säufers an", "\"...er trägt einen schwarzen Mantel, einen schwarzen Hut und Handschuhe Aus Leder\" - seine Geschichte scheint dir vielleicht weiterhelfen zu können", "A-B-B-C-A-C-B-C-A-"},
                 new String[]{"Du bestellst dir ein Bier und wartest ab", "Vor der Villa erwartet dich ein Mann und eine Kutsche. Du steigst in die Kutsche ein und der Mann fährt los.", "gameover"},
@@ -207,7 +207,7 @@ public class Application {
 
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"),
-                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "amazon.jpg"),
+                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetGilbertGluttony.jpg"),
                 "Bei dem stadtbekannten Säufer handelt es sich um Gilbert Gluttony, einem reichen Geschäftsmann, der alles in seinem Leben wegen seiner Trinksucht verloren hat. Er erzählt dir von einem mysteriösen Mann, den er jedes Mal am Rande der Stadt sieht.",
                 "A-B-B-C-A-C-B-C-A-", new String[]{"\"Ist der mysteriöse Mann vielleicht...\"", "Du verlässt sofort die Bar und nimmst die Verfolgung auf.", "A-B-B-C-A-C-B-C-A-A-"},
                 new String[]{"du nimmst Gilbert Gluttony nicht ernst und ignorierst ihn", "Vor der Villa erwartet dich ein Mann und eine Kutsche. Du steigst in die Kutsche ein und der Mann fährt los.", "gameover"},
@@ -216,7 +216,7 @@ public class Application {
 
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"),
-                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "amazon.jpg"),
+                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetForest.jpg"),
                 "Du wartest am Rande der Stadt auf den mysteriösen Mann. Als er dich sieht, flüchtet er in ein Waldgebiet, das an der Stadt angrenzt.",
                 "A-B-B-C-A-C-B-C-A-A-", new String[]{"Du läufst dem mysteriösen Mann alleine hinterher", "", "gameover"},
                 new String[]{"Du und die Polizei begebt euch auf die Suche", "Im Wald findet ihr ein verlassenes Gebäude, das übersäht ist von Pflanzen.", "A-B-B-C-A-C-B-C-A-A-B-"},
@@ -225,7 +225,7 @@ public class Application {
 
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"),
-                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "amazon.jpg"),
+                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetHouseInTheForest.jpg"),
                 "Ihr betretet das verlassene Gebäude und findet nach kurzer Suche Jack the Ripper und du stellst ihn zur Rede. Er erzählt dir, dass er für die Morde verantwortlich ist und dass Gier sein Hauptmotiv ist. Er bringt die Menschen aus Habgier um. Schließlich kann die Polizei Jack the Ripper festnehmen.",
                 "A-B-B-C-A-C-B-C-A-A-B-", new String[]{"Du hältst dich für den besten Detektiv Londons", "", "gameover"},
                 new String[]{"Du kannst dich endlich ausruhen.", "Deine Faulheit macht dir zu schaffen. Du willst lieber nach Hause fahren, statt Jack the Ripper noch gemeinsam mit der Polizei zur Polizeistation zu begleiten. Plötzlich hörst du einen lauten Knall.", "A-B-B-C-A-C-B-C-A-A-B-B-"},
@@ -234,7 +234,7 @@ public class Application {
 
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"),
-                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "amazon.jpg"),
+                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetSherlockHolmes.jpg"),
                 "Du hörst aus der Entfernung, dass Jack the Ripper entkommen konnte, da es sich bei einem der Polizisten um einen Komplizen handelt. Enttäuscht und zornig verlässt du das verlassene Gebäude als dir plötzlich ein Mann mit einer Pfeife und einem Detektivhut entgegenkommt.",
                 "A-B-B-C-A-C-B-C-A-A-B-B-", new String[]{"Du sprichst mit dem Mann", "Der Mann stellt sich dir als ein Hobbydetektiv vor. Er möchte dir etwas mitteilen.", "A-B-B-C-A-C-B-C-A-A-B-B-A-"},
                 new String[]{"Du hörst zu, was dir der Mann zu sagen hat", "Deine Faulheit macht dir zu schaffen. Du willst lieber nach Hause fahren, statt Jack the Ripper noch gemeinsam mit der Polizei zu Polizeistation zu begleiten. Plötzlich hörst du einen lauten Knall.", "gameover"},
@@ -244,7 +244,7 @@ public class Application {
 
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"),
-                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "amazon.jpg"),
+                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetTwoDetectives.jpg"),
                 "\"Hallo John Watson. Du möchtest wissen, wieso Jack the Ripper entkommen konnte? - weil du der Faulheit nicht widerstehen konntest. Während deiner Reise bist du allen 7 Todsünden begegnet: dem Hochmut, der Neid, der Wollust, dem Zorn, der Völlerei, der Gier und ganz zum Schluss - der Faulheit. Hättest du die Polizei begleitet, hätte er niemals entkommen können. Jedoch möchte ich dir für deine herausragende detektivische Leistung gratulieren und dich fragen, ob du in Zukunft mein Partner sein möchtest?\"",
                 "A-B-B-C-A-C-B-C-A-A-B-B-A-", new String[]{"Du zeigst Einsicht", "Der Mann stellt sich dir als Sherlock Holmes vor. Er möchte dir etwas mitteilen.", "gameover"},
                 new String[]{"Du zeigst keine Einsicht", "Deine Faulheit macht dir zu schaffen. Du willst lieber nach Hause fahren, statt Jack the Ripper noch gemeinsam mit der Polizei zu Polizeistation zu begleiten. Plötzlich hörst du einen lauten Knall.", "gameover"},
@@ -307,7 +307,7 @@ public class Application {
             gameRepository.save(new Game("Das ist ein Titel!3", "Das ist Subtitle!3", "Das ist Content!3", readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "image3.jpeg"), enduserRepository.findByEnduserId(3)));
             gameRepository.save(new Game("Das ist ein Titel!4", "Das ist Subtitle!4", "Das ist Content!4", readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "image4.jpeg"), enduserRepository.findByEnduserId(4)));
             gameRepository.save(new Game("Das ist ein Titel!5", "Das ist Subtitle!5", "Das ist Content!5", readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "image5.jpeg"), enduserRepository.findByEnduserId(5)));
-            gameRepository.save(new Game("Die Jagd nach dem London-Killer", "Reise zurück in die Zeit und helfe einem aufstrebendem Medizinstudenten bei der Suche nach dem London-Killer", "Du wirst zu einem Abendessen in die Villa des Dr. von Arroganz eingeladen - unwissend, was dich daraufhin erwartet ", readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "image6.jpeg"), enduserRepository.findByEnduserId(1)));
+            gameRepository.save(new Game("Die Jagd nach dem London-Killer", "Reise zurück in die Zeit und helfe einem aufstrebendem Medizinstudenten bei der Suche nach dem London-Killer", "Du wirst zu einem Abendessen in die Villa des Dr. von Arroganz eingeladen - unwissend, was dich daraufhin erwartet ", readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetTitelbild.jpg"), enduserRepository.findByEnduserId(1)));
             gameRepository.save(new Game("The Artifact Hunt", "An Amazing Adventure where you can be Indiana Jones!", "Indiana Jones is hired by a wealthy collector to find a rare artifact: the Eye of Osiris, a jewel rumored to grant its owner immense power. Indy travels to Egypt, where he must navigate ancient tombs, evade traps, and outsmart rival treasure hunters. But when he finally locates the Eye, he triggers a deadly curse that threatens to consume him.", readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "indytitle.jpg"), enduserRepository.findByEnduserId(1)));
         }
     }
