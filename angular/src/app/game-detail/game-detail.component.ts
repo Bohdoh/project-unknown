@@ -7,6 +7,7 @@ import {TimerService} from "../services/timer.service";
 import {AuthService} from "../services/auth.service";
 import {Enduser} from "../interfaces/enduser";
 import {RefreshService} from "../services/refresh.service";
+import {MultiplayerService} from "../services/multiplayer.service";
 
 
 @Component({
@@ -26,13 +27,15 @@ export class GameDetailComponent implements OnInit {
   currentUser?: Enduser;
   userHasReview?: boolean;
   gameRating? :number = 0;
+  hasMultiplayer:boolean = false;
 
   constructor(private http: HttpClient,
               private gameService: GameService,
               private route: ActivatedRoute,
               private authService: AuthService,
               private timerService: TimerService,
-              private refreshService:RefreshService
+              private refreshService:RefreshService,
+              private multiplayerService:MultiplayerService
   ) {
     this.refreshService.refresh$.subscribe(() => {
       this.loadGames();
@@ -49,6 +52,7 @@ export class GameDetailComponent implements OnInit {
     this.username = this.authService.getUsername();
     this.role = this.authService.getRole();
     this.loadUser();
+    this.hasMultiplayer = this.multiplayerService.isMultiplayer();
   }
 
 
@@ -81,5 +85,11 @@ export class GameDetailComponent implements OnInit {
     this.authService.getUserByUsername(this.username).subscribe((user: Enduser) => {
       this.currentUser = user
     });
+  }
+
+  toggleMultiplayer() {
+  this.multiplayerService.toggleMultiplayer();
+  this.hasMultiplayer = this.multiplayerService.isMultiplayer();
+  console.log("Status MP: " + this.hasMultiplayer);
   }
 }

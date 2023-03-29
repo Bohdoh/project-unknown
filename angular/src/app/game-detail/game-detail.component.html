@@ -69,8 +69,16 @@
     <div *ngIf="showReview">
       <app-reviews [isLoggedIn]="isLoggedIn" [gameId]="gameId" [username]="username" [game]="game" [role]="role"
                    [userHasReview]="userHasReview" [currentUser]="currentUser"
-                   (userHasReviewChange)="userHasReview = $event" (gameChange)="game =$event" (ratingChange)="gameRating = $event"></app-reviews>
+                   (userHasReviewChange)="userHasReview = $event" (gameChange)="game =$event"
+                   (ratingChange)="gameRating = $event"></app-reviews>
     </div>
-    <div class="column is-one-fifth"></div>
+
+
   </div>
+  <div class="column is-one-fifth">
+<!--  <div class="field">-->
+<!--    <input id="switchMultiplayer" [checked]="hasMultiplayer" (change)="toggleMultiplayer()" type="checkbox" name="switchExample" class="switch is-small" >-->
+<!--    <label for="switchMultiplayer"><i class="fa-sharp fa-solid fa-people-group"></i>&nbsp;Multiplayer</label>-->
+<!--  </div>-->
+</div>
 </div>

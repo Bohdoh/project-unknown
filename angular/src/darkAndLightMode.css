@@ -27,6 +27,7 @@ body {
   --tabs-li-isactive: #485fc7;
   --button-text-color: #313131;
   --button-background-color: white;
+
 }
 
 body.dark-mode{

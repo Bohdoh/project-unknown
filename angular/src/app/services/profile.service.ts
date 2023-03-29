@@ -15,4 +15,8 @@ export class ProfileService {
     const url = `${this.baseUrl}/profil/${username}`;
     return this.http.get<ProfilDTO>(url);
   }
+
+
+
+
 }
