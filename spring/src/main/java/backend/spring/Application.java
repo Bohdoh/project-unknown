@@ -275,7 +275,10 @@ public class Application {
             categoryRepository.save(new Category("Horror"));
             categoryRepository.save(new Category("Mystery"));
             categoryRepository.save(new Category("Empty"));
+            categoryRepository.save(new Category("English"));
+            categoryRepository.save(new Category("Adventure"));
 
+            //Category examples for game 1
             Game game2 = gameRepository.findByGameId(1);
             Set<Category> catsForGame2 = new HashSet<>();
             catsForGame2.add(categoryRepository.findByName("Tech"));
@@ -284,6 +287,15 @@ public class Application {
             catsForGame2.add(categoryRepository.findByName("Mystery"));
             game2.setCategories(catsForGame2);
             gameRepository.save(game2);
+
+            Game game3 = gameRepository.findByGameId(7);
+            Set<Category> catsForGame3 = new HashSet<>();
+            catsForGame3.add(categoryRepository.findByName("Adventure"));
+            catsForGame3.add(categoryRepository.findByName("English"));
+            game3.setCategories(catsForGame3);
+            gameRepository.save(game3);
+
+
         }
     }
 
