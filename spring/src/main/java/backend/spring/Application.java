@@ -276,6 +276,7 @@ public class Application {
             categoryRepository.save(new Category("Mystery"));
             categoryRepository.save(new Category("Empty"));
             categoryRepository.save(new Category("English"));
+            categoryRepository.save(new Category("Deutsch"));
             categoryRepository.save(new Category("Adventure"));
 
             //Category examples for game 1
@@ -288,12 +289,23 @@ public class Application {
             game2.setCategories(catsForGame2);
             gameRepository.save(game2);
 
-            Game game3 = gameRepository.findByGameId(7);
-            Set<Category> catsForGame3 = new HashSet<>();
-            catsForGame3.add(categoryRepository.findByName("Adventure"));
-            catsForGame3.add(categoryRepository.findByName("English"));
-            game3.setCategories(catsForGame3);
-            gameRepository.save(game3);
+            //Indy Jones Game
+            Game game7 = gameRepository.findByGameId(7);
+            Set<Category> catsForGame7 = new HashSet<>();
+            catsForGame7.add(categoryRepository.findByName("Adventure"));
+            catsForGame7.add(categoryRepository.findByName("English"));
+            game7.setCategories(catsForGame7);
+            gameRepository.save(game7);
+
+            //Holmes Game
+            Game game6 = gameRepository.findByGameId(6);
+            Set<Category> catsForGame6 = new HashSet<>();
+            catsForGame6.add(categoryRepository.findByName("Deutsch"));
+            catsForGame6.add(categoryRepository.findByName("Mystery"));
+            catsForGame6.add(categoryRepository.findByName("Horror"));
+            game6.setCategories(catsForGame6);
+            gameRepository.save(game6);
+
 
 
         }

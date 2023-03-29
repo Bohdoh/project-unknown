@@ -125,7 +125,7 @@ a.dropdown-item:hover, button.dropdown-item:hover {
 
 /* Farbeinstellung vom nightmodeswitch */
 .switch[type=checkbox].is-small:checked+label::before, .switch[type=checkbox].is-small:checked+label:before {
-  background: #3f8087;
+  background: #388b91;
 }
 
 
