@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-content has-text-centered menu">
+  <div *ngIf="isGameSelected" class="card-content has-text-centered menu">
     <h1>Comments:</h1>
     <ul class="menu-list">
       <li *ngFor="let comment of comments">
@@ -25,6 +25,27 @@
             <button type="button" (click)="cancelEdit()">Cancel</button>
           </form>
         </div>
+      </li>
+    </ul>
+    <a (click)="backToGames()"> Back To Games</a>
+  </div>
+  <div *ngIf="!isGameSelected" class="card-content has-text-centered menu">
+    <h1>Games:</h1>
+    <ul class="menu-list">
+      <li *ngFor="let game of games">
+        <div>
+          <!-- display the comment content -->
+
+
+          <div class="row ">
+            <span class="col">
+              <a (click)="selectGame(game)">{{ game.title }} </a>
+            </span>
+
+          </div>
+        </div>
+
+
       </li>
     </ul>
   </div>

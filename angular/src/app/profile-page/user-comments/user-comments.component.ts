@@ -1,30 +1,36 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Comment } from '../../interfaces/comment';
 import { CommentService } from '../../services/comment.service';
 import { BehaviorSubject } from 'rxjs';
 import { ProfileService } from '../../services/profile.service';
+import {Game} from "../../interfaces/game";
 
 @Component({
   selector: 'app-user-comments',
   templateUrl: './user-comments.component.html',
   styleUrls: ['./user-comments.component.css']
 })
-export class UserCommentsComponent {
+export class UserCommentsComponent implements OnInit{
   @Input() comments: Comment[] = [];
   @Output() commentChange = new EventEmitter<boolean>();
   commentBeingEdited: Comment | null = null;
   editContent: string = '';
-  @Input() username:string|undefined;
-
+  @Input() username: string | undefined;
+  @Input() games: Game[] = []; // add this line
+  gameSelected?: Game;
+  isGameSelected: boolean = false;
   constructor(
     private commentService: CommentService,
     private profileService: ProfileService // inject ProfileService
-  ) {}
+  ) {
+
+  }
 
   deleteComment(comment: Comment): void {
     this.commentService.deleteComment(comment).subscribe(() => {
       this.comments = this.comments.filter(c => c.commentId !== comment.commentId);
       this.commentChange.emit();
+      this.isGameSelected = false; // Reset the flag
     });
   }
 
@@ -62,5 +68,19 @@ export class UserCommentsComponent {
   cancelEdit(): void {
     this.commentBeingEdited = null;
     this.editContent = '';
+  }
+
+  selectGame(game: Game) {
+    this.gameSelected=game;
+    this.isGameSelected=true;
+    console.log(this.gameSelected)
+  }
+
+  backToGames(){
+    this.isGameSelected=false;
+    console.log(this.gameSelected)
+  }
+  ngOnInit(): void {
+    console.log(this.games)
   }
 }

@@ -3,6 +3,7 @@ import {ProfilDTO} from "../../interfaces/profil-dto";
 import {Comment} from "../../interfaces/comment";
 import {Review} from "../../interfaces/review";
 import {ReviewService} from "../../services/review.service";
+import {Game} from "../../interfaces/game";
 
 //
 @Component({
@@ -13,7 +14,10 @@ import {ReviewService} from "../../services/review.service";
 export class UserReviewComponent {
   @Input() reviews: Review[] = [];
   @Input() username: string | undefined;
+  @Input() games: Game[] = []; // add this line
 
+  isGameSelected: boolean = false;
+  gameSelected?: Game;
   constructor(private reviewService: ReviewService) {}
 
   deleteReview(review: Review): void {
@@ -22,5 +26,5 @@ export class UserReviewComponent {
     });
   }
 
-  
+
 }
