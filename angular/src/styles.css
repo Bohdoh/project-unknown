@@ -43,7 +43,7 @@ body, html {
 
 .navbar {
   background-color: var(--navbar-color);
-  height: 80px;
+  height: 50px;
 }
 
 .button.is-primary {
@@ -278,4 +278,11 @@ color: var(--text-color);
 
 }
 
+
+.progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+.progress::-webkit-progress-value {
+  border-radius: 10px;
+}
 

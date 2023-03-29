@@ -30,12 +30,14 @@
       <article class="message is-dark">
         <div class="message-body" style="white-space: pre-line">{{ game.content }}</div>
       </article>
-      <div class="level">
+      <div class="level is-flex is-justify-content-center">
         <div class="level-left">
           <div class="level-item" *ngFor="let category of game.categories">
             <button class="button tag is-link">{{ category.name }}</button>
           </div>
         </div>
+        </div>
+        <div>
         <div class="level-item">
           <a [routerLink]='"/game/play/"+ game.id+"/"+game.title'>
             <button class="button play-button is-size-4 is-align-items-baseline"><i class="fa-solid fa-play"></i>&nbsp;&nbsp;Play
@@ -67,8 +69,16 @@
     <div *ngIf="showReview">
       <app-reviews [isLoggedIn]="isLoggedIn" [gameId]="gameId" [username]="username" [game]="game" [role]="role"
                    [userHasReview]="userHasReview" [currentUser]="currentUser"
-                   (userHasReviewChange)="userHasReview = $event" (gameChange)="game =$event" (ratingChange)="gameRating = $event"></app-reviews>
+                   (userHasReviewChange)="userHasReview = $event" (gameChange)="game =$event"
+                   (ratingChange)="gameRating = $event"></app-reviews>
     </div>
-    <div class="column is-one-fifth"></div>
+
+
   </div>
+  <div class="column is-one-fifth">
+<!--  <div class="field">-->
+<!--    <input id="switchMultiplayer" [checked]="hasMultiplayer" (change)="toggleMultiplayer()" type="checkbox" name="switchExample" class="switch is-small" >-->
+<!--    <label for="switchMultiplayer"><i class="fa-sharp fa-solid fa-people-group"></i>&nbsp;Multiplayer</label>-->
+<!--  </div>-->
+</div>
 </div>
