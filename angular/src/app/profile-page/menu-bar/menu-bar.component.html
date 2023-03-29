@@ -6,19 +6,19 @@
   <div>
     <ul>
       <li>
-        <button (click)="goToProfilInfo()">Details</button>
+        <a (click)="goToProfilInfo()">Details</a>
       </li>
 
       <li>
-        <button (click)="goToComments()">Comments</button>
+        <a (click)="goToComments()">Comments</a>
       </li>
 
       <li>
-        <button (click)="goToReviews()">Reviews</button>
+        <a (click)="goToReviews()">Reviews</a>
       </li>
 
-      <li>
-        <button (click)="getUserList()">User List</button>
+      <li *ngIf="isAdmin">
+        <a (click)="getUserList()">User List</a>
       </li>
     </ul>
   </div>

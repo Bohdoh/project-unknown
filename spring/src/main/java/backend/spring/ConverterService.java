@@ -34,6 +34,8 @@ public class ConverterService {
         return new EnduserDTO(enduser.getUsername(), enduser.getImage(), enduser.getRole ());
     }
 
+
+
     public CommentDTO commentToCommentDTO(Comment comment){
         return new CommentDTO(comment.getCommentId(),comment.getCreatedAt(),comment.getContent(),enduserToEnduserDTO(comment.getEnduser ()));
     }
