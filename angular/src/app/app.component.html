@@ -2,11 +2,12 @@
   <div #mainContent class="wrapper">
     <div id="contentWrapper">
       <div class="columns">
-        <div class="column "></div>
-        <div class="column is-four-fifths">
+       <!-- <div class="column "></div> -->
+        <!-- <div class="column is-four-fifths"> -->
+        <div class="column is-full">
           <app-navbar (showLogin)="onShowLogin()" (showRegister)="onShowRegister()"></app-navbar>
         </div>
-        <div class="column "></div>
+        <!-- <div class="column "></div> -->
       </div>
       <router-outlet></router-outlet>
     </div>

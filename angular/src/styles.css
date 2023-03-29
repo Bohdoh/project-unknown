@@ -43,7 +43,7 @@ body, html {
 
 .navbar {
   background-color: var(--navbar-color);
-  height: 80px;
+  height: 50px;
 }
 
 .button.is-primary {

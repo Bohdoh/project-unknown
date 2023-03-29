@@ -122,7 +122,7 @@ public class Application {
 
 
 
-        chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"), readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "indytitle.jpg"),
+        chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"), readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetTitelbild.jpg"),
                 "Du bist ein junger Medizinstudent, der eine besondere Liebe für Krimigeschichten hat. Eines Tages erhältst du ein Brief mit einer Einladung: \"Ich, Dr. von Arroganz, der beste und berühmteste Arzt Englands lade dich in meine Villa ein. \"",
                 "start", new String[]{"Du nimmst die Einladung an", "Du steigst in die Kutsche und fährst zur Villa", "A-"},
                 new String[]{"Du ignorierst die Einladung und gehst nach draußen", "You pick up the Eye and expect some trap to trigger, but nothing bad happens!", "gameover"},
@@ -275,7 +275,10 @@ public class Application {
             categoryRepository.save(new Category("Horror"));
             categoryRepository.save(new Category("Mystery"));
             categoryRepository.save(new Category("Empty"));
+            categoryRepository.save(new Category("English"));
+            categoryRepository.save(new Category("Adventure"));
 
+            //Category examples for game 1
             Game game2 = gameRepository.findByGameId(1);
             Set<Category> catsForGame2 = new HashSet<>();
             catsForGame2.add(categoryRepository.findByName("Tech"));
@@ -284,6 +287,15 @@ public class Application {
             catsForGame2.add(categoryRepository.findByName("Mystery"));
             game2.setCategories(catsForGame2);
             gameRepository.save(game2);
+
+            Game game3 = gameRepository.findByGameId(7);
+            Set<Category> catsForGame3 = new HashSet<>();
+            catsForGame3.add(categoryRepository.findByName("Adventure"));
+            catsForGame3.add(categoryRepository.findByName("English"));
+            game3.setCategories(catsForGame3);
+            gameRepository.save(game3);
+
+
         }
     }
 
