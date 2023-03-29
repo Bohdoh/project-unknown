@@ -34,6 +34,7 @@ import { UserCommentsComponent } from './profile-page/user-comments/user-comment
 import { MenuBarComponent } from './profile-page/menu-bar/menu-bar.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
