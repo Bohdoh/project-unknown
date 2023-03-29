@@ -8,23 +8,25 @@
     <ng-container *ngIf="!selectedPath">
       <div class="columns is-mobile">
         <div class="column is-one-third button-container">
-          <button *ngIf="this.currentChapter.pathA" class="button" (click)="selectPath('A');resetTimer()">
+          <button *ngIf="this.currentChapter.pathA" [class.is-success]="shouldBeHighlighted('A')" class="button" (click)="selectPath('A');resetVotesAndTimer()">
             <i class="fa-solid fa-a"></i>&nbsp;&nbsp;
             <span>{{currentChapter.pathA[0]}}</span>
           </button>
         </div>
         <div class="column is-one-third button-container">
-          <button *ngIf="this.currentChapter.pathB && this.currentChapter.identifier !== 'gameover'" class="button" (click)="selectPath('B');resetTimer()">
-            <i  class="fa-solid fa-b"></i>&nbsp;&nbsp;
+          <button *ngIf="this.currentChapter.pathB && this.currentChapter.identifier !== 'gameover'" [class.is-success]="shouldBeHighlighted('B')" class="button"
+                  (click)="selectPath('B');resetVotesAndTimer()">
+            <i class="fa-solid fa-b"></i>&nbsp;&nbsp;
             <span>{{currentChapter.pathB[0]}}</span>
           </button>
-          <button *ngIf="this.currentChapter.pathB && this.currentChapter.identifier === 'gameover'" class="button" (click)="selectPath('start');startGame()">
+          <button *ngIf="this.currentChapter.pathB && this.currentChapter.identifier === 'gameover'"  class="button"
+                  (click)="selectPath('start');startGame()">
             <i class="fa-solid fa-repeat"></i>&nbsp;&nbsp;
             <span>{{currentChapter.pathB[0]}}</span>
           </button>
         </div>
         <div class="column is-one-third button-container">
-          <button *ngIf="this.currentChapter.pathC" class="button" (click)="selectPath('C');resetTimer()">
+          <button *ngIf="this.currentChapter.pathC" [class.is-success]="shouldBeHighlighted('C')" class="button" (click)="selectPath('C');resetVotesAndTimer()">
             <i class="fa-solid fa-c"></i>&nbsp;&nbsp;
             <span>{{currentChapter.pathC[0]}}</span>
           </button>
@@ -32,10 +34,39 @@
       </div>
     </ng-container>
     <div *ngIf="selectedPath" class="content"><p>{{ getSelectedPathText() }}</p>
-      <button (click)="nextChapter(this.selectedPath[2])" class="button  is-align-items-baseline"><i class="fa-solid fa-angle-right"></i>&nbsp;&nbsp;Next</button>
-<!--      <button *ngIf="selectedPath[2] !== 'gameover'" (click)="nextChapter(this.selectedPath[2])" class="button is-size-4 is-align-items-baseline"><i class="fa-solid fa-angle-right"></i>&nbsp;&nbsp;Next</button>-->
-<!--      <button *ngIf="selectedPath[2] === 'gameover'" (click)="nextChapter(this.selectedPath[2])" class="button is-size-4 is-align-items-baseline"><i class="fa-solid fa-repeat"></i>&nbsp;&nbsp;Restart</button>-->
+      <button (click)="nextChapter(this.selectedPath[2])" class="button  is-align-items-baseline"><i
+        class="fa-solid fa-angle-right"></i>&nbsp;&nbsp;Next
+      </button>
+    </div>
+    <div *ngIf="timerStarted===true"><p>Time left to vote: </p>
+      <progress class="progress" [value]="timeLeft" max="150"></progress>
     </div>
   </div>
-  <div class="column is-one-fifth"></div>
+
+  <div class="column is-one-fifth">
+    <div class="field">
+      <input id="switchMultiplayer" type="checkbox" name="switchExample" class="switch is-small"
+             (change)="toggleMultiplayer()" [checked]="hasMultiplayer">
+      <label for="switchMultiplayer"><i class="fa-sharp fa-solid fa-people-group"></i>&nbsp;Multiplayer</label>
+    </div>
+    <p>Room Name: {{gameRoom}}</p>
+    <div *ngIf="hasMultiplayer" class="voting-results is-narrow mr-3">
+      A: <span>{{votingA}}</span>
+      <progress class="progress" [class.is-success]="shouldBeHighlighted('A')" value="{{votingA}}" max="{{totalVotes}}"></progress>
+      B: <span>{{votingB}}</span>
+      <progress class="progress" [class.is-success]="shouldBeHighlighted('B')" value="{{votingB}}" max="{{totalVotes}}"></progress>
+      C: <span>{{votingC}}</span>
+      <progress class="progress" [class.is-success]="shouldBeHighlighted('C')" value="{{votingC}}" max="{{totalVotes}}"></progress>
+
+    <div class="content">
+      Rules:
+      <ul>
+        <li>Voting opens after 5 sec on new Chapter</li>
+        <li>After the first vote is cast, 15 sec timer</li>
+        <li>Everyone has to click "next" (or main player can)</li>
+      </ul>
+    </div>
+  </div>
+
+  </div>
 </div>

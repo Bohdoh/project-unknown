@@ -279,3 +279,10 @@ color: var(--text-color);
 }
 
 
+.progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+.progress::-webkit-progress-value {
+  border-radius: 10px;
+}
+
