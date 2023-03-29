@@ -1,0 +1,4 @@
+.smaller-image img {
+  max-width: 5em;
+  max-height: 5em; /* Change the value to set the maximum height */
+}

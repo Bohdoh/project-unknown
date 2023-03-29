@@ -19,7 +19,7 @@ constructor(private adminService: AdminService, private route: ActivatedRoute) {
 }
 
   ngOnInit(): void {
-    this.username = this.route.snapshot.paramMap.get('username');
+
     this.adminService.getUsers(this.username).subscribe(
       (data: Enduser[]) => {
         this.users = data;
@@ -28,6 +28,8 @@ constructor(private adminService: AdminService, private route: ActivatedRoute) {
         console.error(error);
       }
     );
+
+    console.log(this.username)
   }
 
 

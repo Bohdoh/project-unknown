@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-content ">
+    <h1 class="card-content has-text-centered">{{ profile.username.toUpperCase() }}</h1>
+    <div class="d-flex justify-content-center">
+      <div *ngIf="profile.image" >
+        <figure class="image is-small ">
+          <img [src]="'data:image/png;base64,' + profile.image" class="img-fluid" />
+        </figure>
+      </div>
+    </div>
+    <br>
+    <span class="card-content has-text-centered columns">
+      <span class="column">Role:</span>
+      <span class="column">{{ profile.role }}</span>
+    </span>
+    <span></span>
+    <span class="card-content has-text-centered columns">
+      <span class="column">Email:</span>
+      <span class="column">{{ profile.email }}</span>
+    </span>
+  </div>
+</div>

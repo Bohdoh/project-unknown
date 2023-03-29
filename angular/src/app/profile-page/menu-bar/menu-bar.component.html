@@ -1,0 +1,25 @@
+<div class="menu">
+  <div>
+    <h1 class="tile">menu</h1>
+  </div>
+
+  <div>
+    <ul>
+      <li>
+        <a (click)="goToProfilInfo()">Details</a>
+      </li>
+
+      <li>
+        <a (click)="goToComments()">Comments</a>
+      </li>
+
+      <li>
+        <a (click)="goToReviews()">Reviews</a>
+      </li>
+
+      <li *ngIf="isAdmin">
+        <a (click)="getUserList()">User List</a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-content menu has-text-centered">
+    <h1> Reviews:</h1>
+    <ul class="menu-list">
+      <li *ngFor="let review of reviews">
+        {{ review.content }}
+        <div class="field">
+        <label class="label">Your Rating:</label>
+        <span class="star-rating">
+                <i class="fa-solid fa-star" [ngClass]="{'active': review.rating >= 1}" ></i>
+                <i class="fa-solid fa-star" [ngClass]="{'active': review.rating >= 2}" ></i>
+                <i class="fa-solid fa-star" [ngClass]="{'active': review.rating >= 3}" ></i>
+                <i class="fa-solid fa-star" [ngClass]="{'active': review.rating >= 4}" ></i>
+                <i class="fa-solid fa-star" [ngClass]="{'active': review.rating == 5}" ></i>
+              </span>
+      </div>
+        <div class="media-right">
+          <a (click)="deleteReview(review)">Delete</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+
+
+
