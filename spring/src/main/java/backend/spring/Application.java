@@ -377,7 +377,7 @@ public class Application {
             enduserRepository.save(user);
         }
         Enduser user = new Enduser ();
-        user.setUsername(faker.name().username());
+        user.setUsername(faker.name().lastName());
         user.setEmail("test");
         user.setPassword("test");
         user.setImage(readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "pepe-rain.gif"));
