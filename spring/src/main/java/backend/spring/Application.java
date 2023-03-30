@@ -370,7 +370,7 @@ public class Application {
     private void create6DummyUsers() {
         for (int i = 0; i < 6; i++) {
             Enduser user = new Enduser ();
-            user.setUsername(faker.name().username());
+            user.setUsername(faker.name().lastName());
             user.setEmail(faker.internet().emailAddress());
             user.setPassword(faker.phoneNumber().phoneNumber());
             user.setImage(readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "image" + (i + 1) + ".jpeg"));
