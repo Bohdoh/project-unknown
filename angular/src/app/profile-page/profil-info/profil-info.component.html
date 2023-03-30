@@ -1,7 +1,12 @@
 <div class="card is-centered modal-card ">
   <div class="card-content">
     <div class="title has-text-centered ">
-      <h1 class="hero-head"><strong>{{profile.username}}</strong></h1>
+      <h1 class="title">
+        <span>
+          <img *ngIf="isAdmin" class="image is-rounded is-64x64" src="assets/admin%20sticker.jpg">
+          <strong>{{profile.username}}</strong>
+        </span>
+      </h1>
     </div>
     <div class=" is-relative">
       <div class=" media ">

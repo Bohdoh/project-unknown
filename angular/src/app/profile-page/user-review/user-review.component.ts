@@ -4,6 +4,7 @@ import {Comment} from "../../interfaces/comment";
 import {Review} from "../../interfaces/review";
 import {ReviewService} from "../../services/review.service";
 import {Game} from "../../interfaces/game";
+import {GameService} from "../../services/game.service";
 
 //
 @Component({
@@ -18,7 +19,13 @@ export class UserReviewComponent {
 
   isGameSelected: boolean = false;
   gameSelected?: Game;
-  constructor(private reviewService: ReviewService) {}
+  editContent: string = '';
+  filteredReviews: Review[]=[];
+  userRating :number = 0;
+  reviewContent?:string;
+  reviewBeingEdited: Review | null = null;
+  constructor(private reviewService: ReviewService,
+              private gameService:GameService) {}
 
   deleteReview(review: Review): void {
     this.reviewService.deleteReview(review.id).subscribe(() => {
@@ -26,5 +33,30 @@ export class UserReviewComponent {
     });
   }
 
+  selectGame(game: Game) {
+    this.gameSelected = game;
+    this.isGameSelected = true;
+    this.filteredReviews = [];
+
+    this.gameService.getGameById(game.id).subscribe((game: Game) => {
+      this.gameSelected = game;
+
+      if (this.gameSelected.comments) {
+        for (let review of this.gameSelected.reviews) {
+          if (review.enduser.username === this.username) {
+            this.filteredReviews.push(review);
+          }
+        }
+      }
+
+      console.log(this.gameSelected);
+      console.log(this.gameSelected.reviews);
+    });
+  }
+
+  backToGames(){
+    this.isGameSelected=false;
+    console.log(this.gameSelected)
+  }
 
 }

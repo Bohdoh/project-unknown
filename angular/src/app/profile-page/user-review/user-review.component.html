@@ -1,8 +1,8 @@
 <div class="card">
-  <div class="card-content menu has-text-centered">
+  <div class="card-content menu has-text-centered" *ngIf="isGameSelected">
     <h1> Reviews:</h1>
     <ul class="menu-list">
-      <li *ngFor="let review of reviews">
+      <li *ngFor="let review of filteredReviews">
         {{ review.content }}
         <div class="field">
         <label class="label">Your Rating:</label>
@@ -17,6 +17,28 @@
         <div class="media-right">
           <a (click)="deleteReview(review)">Delete</a>
         </div>
+      </li>
+    </ul>
+    <button class="button is-center is-rounded" (click)="backToGames()"> Back To Games</button>
+  </div>
+
+  <div *ngIf="!isGameSelected" class="card-content has-text-centered menu">
+    <h1>Games:</h1>
+    <ul class="menu-list">
+      <li *ngFor="let game of games">
+        <div>
+          <!-- display the comment content -->
+
+
+          <div class="row ">
+            <span class="col">
+              <a (click)="selectGame(game)">{{ game.title }} </a>
+            </span>
+
+          </div>
+        </div>
+
+
       </li>
     </ul>
   </div>

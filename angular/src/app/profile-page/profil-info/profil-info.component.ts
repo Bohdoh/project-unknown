@@ -28,8 +28,12 @@ export class ProfilInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+if (this.profile.role==="ADMIN"){
+  this.isAdmin=true;
+}else {
+  this.isAdmin=false;
+}
 
-
-console.log(this.username)
+console.log(this.profile.role)
   }
 }
