@@ -2,6 +2,7 @@ import {Injectable, NgZone} from '@angular/core';
 import {Chapter} from "../interfaces/chapter";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject} from "rxjs";
+import {RefreshService} from "./refresh.service";
 
 interface Questions {
   event: string,
@@ -15,7 +16,8 @@ export class MultiplayerService {
 
   private hasMultiplayer: boolean = false;
 
-  constructor(private zone: NgZone, private http: HttpClient) {
+  constructor(private zone: NgZone, private http: HttpClient,
+              private refreshService : RefreshService) {
   }
 
 
@@ -33,7 +35,8 @@ export class MultiplayerService {
     let pathChoices: string[] = [];
     let message = {
       event: "question_event",
-      questions: pathChoices
+      questions: pathChoices,
+      darkmode:this.refreshService.getDarkmode()
     };
 
     if (currentChapter?.pathA) {

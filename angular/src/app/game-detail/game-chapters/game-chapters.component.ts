@@ -249,7 +249,6 @@ export class GameChaptersComponent implements OnInit {
     }else{
       this.sendNextQuestion();
     }
-
   }
   private sendNextQuestion(): void {
     if (this.currentChapter) {
@@ -288,5 +287,4 @@ export class GameChaptersComponent implements OnInit {
     this.timeLeft = 0;
     this.nextVotes = 0;
   }
-
 }

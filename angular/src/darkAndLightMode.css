@@ -18,7 +18,7 @@ body {
   --liactive-bg-color: whitesmoke;
   --star-rating-color: linear-gradient(to right, #f6d365, #fda085);
   --card-bg-color: #fff;
-  --card-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  --card-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   --input-field-color: white;
   --message-background-color: #fafafa;
   --play-button-color: #46363A ;
@@ -50,7 +50,7 @@ body.dark-mode{
   --liactive-bg-color: #2A384D;
   --star-rating-color: linear-gradient(to right, #a99b4c, #c47f59);
   --card-bg-color: #2b2d33;
-  --card-box-shadow: 0 4px 8px 0 rgba(255, 137, 98, 0.18), 0 6px 20px 0 rgba(131, 131, 131, 0.23);
+  --card-box-shadow: 0 1px 2px 0 rgba(255, 137, 98, 0.18), 0 6px 20px 0 rgba(131, 131, 131, 0.23);
   --input-field-color: #BBBBBBFF;
   --message-background-color: #383a42;
   --play-button-color: #484545;

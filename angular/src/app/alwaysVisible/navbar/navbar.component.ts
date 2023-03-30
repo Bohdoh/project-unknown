@@ -127,5 +127,7 @@ export class NavbarComponent implements OnInit {
 
   toggleDarkMode(): void {
     document.body.classList.toggle('dark-mode');
+
+    this.refreshService.setDarkmode(!this.refreshService.getDarkmode());
   }
 }

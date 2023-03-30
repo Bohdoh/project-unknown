@@ -6,6 +6,7 @@ import {RegisterRequest} from "../interfaces/RegisterRequest";
   providedIn: 'root'
 })
 export class RefreshService {
+  private darkmode = false;
   private refresh = new Subject<void>();
   private refreshNavImage = new Subject<void>();
   private refreshLoginInput = new Subject<void>();
@@ -35,5 +36,13 @@ export class RefreshService {
 
   setPassword(password: string) {
     this.passwordSource.next(password);
+  }
+
+  setDarkmode(value:boolean) {
+    this.darkmode = value;
+  }
+
+  getDarkmode():boolean{
+    return this.darkmode;
   }
 }
