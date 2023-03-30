@@ -123,7 +123,7 @@ export class GameChaptersComponent implements OnInit {
     this.timeLeft = 0;
     console.log("Timer stopped and timeleft = 0!");
     this.setCurrentChapByIdent(nextIdent);
-    if(nextIdent !== 'gameover') {
+    if(nextIdent !== 'gameover' && nextIdent !== 'won') {
       this.votingA = 0;
       this.votingB = 0;
       this.votingC = 0;
@@ -249,7 +249,6 @@ export class GameChaptersComponent implements OnInit {
     }else{
       this.sendNextQuestion();
     }
-
   }
   private sendNextQuestion(): void {
     if (this.currentChapter) {
@@ -288,5 +287,4 @@ export class GameChaptersComponent implements OnInit {
     this.timeLeft = 0;
     this.nextVotes = 0;
   }
-
 }

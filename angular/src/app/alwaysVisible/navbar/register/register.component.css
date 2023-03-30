@@ -54,5 +54,5 @@ input {
   content: "&#10006;";
 }
 .errormsg {
-  color: #930202;
+  color: var(--error-msg-color);
 }

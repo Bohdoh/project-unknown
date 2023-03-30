@@ -25,8 +25,8 @@
             <label class="label">Password:</label>
             <div class="control input-wrapper">
               <input #passwordInput class="input" type="password" [(ngModel)]="registerRequest.password" name="password" placeholder="Password">
-              <span class="icon is-small input-icon" (click)="togglePasswordVisibility(passwordInput)">
-      <i class="fas" [ngClass]="{'fa-eye': passwordInput.type === 'password', 'fa-eye-slash': passwordInput.type === 'text'}"></i>
+              <span class="icon is-small input-icon" style="padding-bottom: 10px" (click)="togglePasswordVisibility(passwordInput)">
+      <i class="fas" [ngClass]="{'fa-eye-slash': passwordInput.type === 'password', 'fa-eye': passwordInput.type === 'text'}"></i>
     </span>
             </div>
             <div *ngIf="registerRequest.password">
@@ -41,13 +41,6 @@
             </div>
             </div>
           </div>
-<!--          <div class="field">-->
-<!--            <label class="label">Confirm password:</label>-->
-<!--            <div class="control">-->
-<!--              <input class="input" type="password" [(ngModel)]="confirmPassword" name="password2" placeholder="Password2"  (ngModelChange)="checkPassword()">-->
-<!--            </div>-->
-<!--          </div>-->
-
           <div class="field is-grouped" >
             <div class="control" >
               <button class="button is-primary" type="submit" [disabled]="!isValidUsername || !isValidEmail || !pwIsValid()">Register</button>
@@ -60,41 +53,4 @@
       </div>
     </div>
   </div>
-<!--<div *ngIf="!isValidPassword ||  !isValidUsername || !isValidEmail || !isConfirmPasswordValid">-->
-<!--  <div class="columns is-centered">-->
-<!--    <div class="column is-half">-->
-
-<!--       <div  class="notification is-danger">-->
-<!--         <div *ngIf="!isValidUsername" >-->
-<!--           Username should only have Numbers, letters and "-".-->
-<!--         </div>-->
-<!--         <div *ngIf="isEmptyUsername" >-->
-<!--           Please enter a valid Username.-->
-<!--         </div>-->
-<!--         <div *ngIf="isEmailEmpty" >-->
-<!--           Please enter a valid email address.-->
-<!--         </div>-->
-<!--         <div *ngIf="!isValidEmail" >-->
-<!--          Remember your email must contain @ and a domain.-->
-<!--         </div>-->
-<!--         <div *ngIf="!isValidPassword">-->
-<!--           Please enter a valid password.-->
-<!--         </div>-->
-<!--         <div *ngIf="isEmptyPassword">-->
-<!--           You forgot to write down your password.-->
-<!--         </div>-->
-<!--         <div *ngIf="!isConfirmPasswordValid ">-->
-<!--           Passwords do not match 😿-->
-<!--         </div>-->
-
-<!--       </div>-->
-
-
-<!--    </div>-->
-<!--  </div>-->
-
-<!--</div>-->
-
-
-
 </section>

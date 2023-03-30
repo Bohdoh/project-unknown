@@ -14,12 +14,12 @@
           </button>
         </div>
         <div class="column is-one-third button-container">
-          <button *ngIf="this.currentChapter.pathB && this.currentChapter.identifier !== 'gameover'" [class.is-success]="shouldBeHighlighted('B')" class="button"
+          <button *ngIf="this.currentChapter.pathB && this.currentChapter.identifier !== 'gameover' && this.currentChapter.identifier !== 'won'" [class.is-success]="shouldBeHighlighted('B')" class="button"
                   (click)="selectPath('B');resetVotesAndTimer()">
             <i class="fa-solid fa-b"></i>&nbsp;&nbsp;
             <span>{{currentChapter.pathB[0]}}</span>
           </button>
-          <button *ngIf="this.currentChapter.pathB && this.currentChapter.identifier === 'gameover'"  class="button"
+          <button *ngIf="this.currentChapter.pathB && this.currentChapter.identifier === 'gameover' || this.currentChapter.identifier === 'won'"  class="button"
                   (click)="selectPath('start');startGame()">
             <i class="fa-solid fa-repeat"></i>&nbsp;&nbsp;
             <span>{{currentChapter.pathB[0]}}</span>

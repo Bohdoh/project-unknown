@@ -32,6 +32,7 @@ import { ProfilInfoComponent } from './profile-page/profil-info/profil-info.comp
 import { UserReviewComponent } from './profile-page/user-review/user-review.component';
 import { UserCommentsComponent } from './profile-page/user-comments/user-comments.component';
 import { MenuBarComponent } from './profile-page/menu-bar/menu-bar.component';
+import { AboutComponent } from './about/about.component';
 
 
 
@@ -56,7 +57,8 @@ import { MenuBarComponent } from './profile-page/menu-bar/menu-bar.component';
     ProfilInfoComponent,
     UserReviewComponent,
     UserCommentsComponent,
-    MenuBarComponent
+    MenuBarComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
