@@ -65,6 +65,7 @@ public class Application {
 
         imageRepository.save(new Image(readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "logo" + File.separator + "codeforge_logo.png"),"logo"));
 
+        //The Artifact Hunt
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("The Artifact Hunt"), readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "indytitle.jpg"),
                 "Indiana Jones is hired by a wealthy collector to find a rare artifact: the Eye of Osiris, a jewel rumored to grant its owner immense power. Indy travels to Egypt, where he must navigate ancient tombs, evade traps, and outsmart rival treasure hunters. But when he finally locates the Eye, he triggers a deadly curse that threatens to consume him. What should Indy do next? ",
@@ -74,7 +75,7 @@ public class Application {
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("The Artifact Hunt"),
                 readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "amazon.jpg"),
-                "With the Eye of Osiris in hand, Indy heads to the Amazon rainforest to uncover the secrets of an ancient civilization. He battles deadly snakes, fights off fierce tribes, and braves treacherous rivers. But when he discovers the truth behind the civilization's downfall, he is forced to confront a powerful entity that has lain dormant for centuries. ",
+                "With the Eye of Osiris in hand, Indy heads to the Amazon rainforest. He battles deadly snakes, fights off fierce tribes, and braves treacherous rivers. All of a sudden he is forced to confront a powerful entity that has lain dormant for centuries. ",
                 "B-", new String[]{"Shoot at the entity with the gun.", "The entity becomes angry and kills Indy in a storm of fire.", "gameover"},
                 new String[]{"Talk to the entity", "The entity remains silent and its eyes start to glow. Indy freezes to solid rock and is lost forever.", "gameover"},
                 new String[]{"Hand the eye of Osiris to the entity", "The entity becomes calm and starts to talk. It tells Indiana that the Eye is useless without the power of the lost citys spring. It gives him a hint where to find the source of power and Indy can continue his journey. ", "B-C-"}
@@ -82,7 +83,7 @@ public class Application {
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("The Artifact Hunt"),
                 readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "berlin.jpg"),
-                "After a while of research Indiana had to travel to Berlin. He got a hint where to find the sources of the lost city. Indy's arch-nemesis, the Nazi archaeologist Dr. Hans Ubermann, has learned of the Eye of Osiris and will stop at nothing to acquire it. In a high-stakes showdown, Indy and Ubermann race through the streets of Berlin, fighting off Nazi soldiers and dodging machine-gun fire. But when they finally face off in a secret underground bunker, Indy is confronted with a deadly weapon that could change the course of the war. ",
+                "After a while of research Indiana had to travel to Berlin. Indy's arch-nemesis, the Nazi archaeologist Dr. Hans Ubermann, has learned of the Eye of Osiris and will stop at nothing to acquire it. In a high-stakes showdown, Indy and Ubermann race through the streets of Berlin. But when they finally face off, Indy is confronted with a deadly weapon that could change the course of the war. ",
                 "B-C-", new String[]{"Destroy the weapon", "The weapon explodes with the power of 100 atomic bombs and everybody dies.", "gameover"},
                 new String[]{"Steal the weapon and run", "Indy tries to steal the weapon but gets shot by the soldiers of Ubermann. The Nazis win the war and the world is doomed.", "gameover"},
                 new String[]{"Surrender to Uberman", "Uberman tries to take Indiana to the prison. On the way there Indy can manage to get rid of his handcuffs, steal the weapon and escapes.", "B-C-C-"}
@@ -90,14 +91,14 @@ public class Application {
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("The Artifact Hunt"),
                 readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "lostcity.jpg"),
-                "Indy receives a cryptic message from an old friend about a lost city deep in the Himalayan mountains. He sets out on a perilous journey through icy terrain, facing blizzards, avalanches, and deadly falls. But when he reaches the lost city, he discovers a dark secret that could destroy him. All of a sudden he can hear a noise in the distance behind him. ",
+                "Indy receives a cryptic message from an old friend about a lost city deep in the Himalayan mountains. He sets out on a journey through icy terrain, facing blizzards, avalanches, and deadly falls. Out of nowhere he can hear a noise in the distance behind him. ",
                 "B-C-C-", new String[]{"Hide behind some rocks.", "A group of treasure hunters pass by. They spot Indiana and shoot him right away because they thought he was planning an ambush.", "gameover"},
                 new String[]{"Wait for the noise to come closer and see what happens.", "Indy is captured by a group of ruthless treasure hunters who are also searching for the lost city. They torture him for information, but Indy manages to escape and foil their plans, ultimately emerging victorious. He manages to find the source of life in the Lost city and charges up the power of the Eye of Osiris.","B-C-C-B-"},
                 new String[]{"Run away deeper into the city.", "Indy becomes obsessed with the dark secret he has discovered and refuses to leave the lost city. He becomes increasingly isolated and paranoid, eventually losing his sanity and becoming a danger to himself and others while disappearing forever in the Lost City.", "gameover"}
         ));
         chapterRepository.save(new Chapter(gameRepository.findByTitle("The Artifact Hunt"),
                 readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "cave.jpg"),
-                "The Eye is still useless without a little detail. It needs to be brought to the place where it was forged. After a couple of months and more research, Indy is about to bring the artifact to a deep underwater cavern where he expects the forge. He dons scuba gear and plunges into the ocean depths, battling vicious sharks and dodging underwater mines. But when he finally reaches the cavern, he realizes he's not alone—and the creature that lurks there is more terrifying than anything he's faced before. ",
+                "The Eye needs to be brought to the place where it was forged. After a couple of months, Indy is about to bring the artifact to a deep underwater cavern where he expects the forge. He plunges into the ocean depths, battling vicious sharks and dodging underwater mines. But when he finally reaches the cavern, he realizes he's not alone and the creature that lurks there is more terrifying than anything he's faced before. ",
                 "B-C-C-B-", new String[]{"Use the eye against the creature.", "Indy successfully defeats the creature that lurks in the underwater cavern and manages to retrieve the missing detail of the Eye. He makes it out of the cave but notices a group of people waiting for him while his coming back to the surface.", "B-C-C-B-A-"},
                 new String[]{"Fight the creature with bare hands.", "Indy is unable to defeat the creature and becomes trapped in the underwater cavern. He gets wounded, runs out of oxygen and drowns, ultimately leading to his death.", "gameover"},
                 new String[]{"Use the secret weapon against the monster", "Indy manages to fend off the creature and retrieve the missing detail of the Eye, but on his way back to the surface, he realizes that the weapon destroyed the way out. He becomes disoriented and lost in the underwater cavern forever.", "gameover"}
@@ -110,8 +111,8 @@ public class Application {
                 new String[]{"Hand over the eye to Ubermann.", "Bad Ending - Ubermann chooses to use the eye for his own plans, but by doing so, he sets off a catastrophic chain of events that leads to the deaths of many innocent people. The world becomes doomed by the power of Ubermann and the shadowy cabals. Everybody dies at the end.", "gameover"}
         ));
         chapterRepository.save(new Chapter(gameRepository.findByTitle("The Artifact Hunt"),
-                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "gameover.jpg"),
-                "You died.",
+                readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "theartifacthunt" + File.separator + "gameover2.png"),
+                "",
                 "gameover", null, new String[]{"Restart", "You died.", "start"}, null
         ));
         chapterRepository.save(new Chapter(gameRepository.findByTitle("The Artifact Hunt"),
@@ -121,6 +122,7 @@ public class Application {
         ));
 
 
+        //Die Jagd nach dem London-Killer
 
         chapterRepository.save(new Chapter(gameRepository.findByTitle("Die Jagd nach dem London-Killer"), readImage("spring" + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images" + File.separator + "chapterimages" + File.separator + "jagdnachdemlondonkiller" + File.separator + "BakerStreetInvitation.jpg"),
                 "Du bist ein junger Medizinstudent, der eine besondere Liebe für Krimigeschichten hat. Eines Tages erhältst du ein Brief mit einer Einladung: \"Ich, Dr. von Arroganz, der beste und berühmteste Arzt Englands lade dich in meine Villa ein. \"",
@@ -275,38 +277,39 @@ public class Application {
             categoryRepository.save(new Category("Deutsch"));
             categoryRepository.save(new Category("Empty"));
             categoryRepository.save(new Category("English"));
+            categoryRepository.save(new Category("Fantasy"));
             categoryRepository.save(new Category("Horror"));
             categoryRepository.save(new Category("Lovestory"));
             categoryRepository.save(new Category("Mystery"));
+            categoryRepository.save(new Category("Puzzle"));
             categoryRepository.save(new Category("Science"));
             categoryRepository.save(new Category("Tech"));
             categoryRepository.save(new Category("Thriller"));
+            categoryRepository.save(new Category("Treasurehunt"));
 
             //Category examples for game 1
             Game game1 = gameRepository.findByGameId(1);
             Set<Category> catsForGame1 = new HashSet<>();
-            catsForGame1.add(categoryRepository.findByName("Tech"));
-            catsForGame1.add(categoryRepository.findByName("Science"));
-            catsForGame1.add(categoryRepository.findByName("Horror"));
+            catsForGame1.add(categoryRepository.findByName("Adventure"));
+            catsForGame1.add(categoryRepository.findByName("English"));
+            catsForGame1.add(categoryRepository.findByName("Mystery"));
             game1.setCategories(catsForGame1);
             gameRepository.save(game1);
 
             //Category examples for game 2
             Game game2 = gameRepository.findByGameId(2);
             Set<Category> catsForGame2 = new HashSet<>();
-            catsForGame2.add(categoryRepository.findByName("Tech"));
-            catsForGame2.add(categoryRepository.findByName("Science"));
-            catsForGame2.add(categoryRepository.findByName("Horror"));
             catsForGame2.add(categoryRepository.findByName("Mystery"));
+            catsForGame2.add(categoryRepository.findByName("English"));
+            catsForGame2.add(categoryRepository.findByName("Puzzle"));
             game2.setCategories(catsForGame2);
             gameRepository.save(game2);
 
             //Category examples for game 3
             Game game3 = gameRepository.findByGameId(3);
             Set<Category> catsForGame3 = new HashSet<>();
-            catsForGame3.add(categoryRepository.findByName("Tech"));
-            catsForGame3.add(categoryRepository.findByName("Science"));
-            catsForGame3.add(categoryRepository.findByName("Horror"));
+            catsForGame3.add(categoryRepository.findByName("Fantasy"));
+            catsForGame3.add(categoryRepository.findByName("English"));
             catsForGame3.add(categoryRepository.findByName("Mystery"));
             game3.setCategories(catsForGame3);
             gameRepository.save(game3);
@@ -314,18 +317,18 @@ public class Application {
             //Category examples for game 4
             Game game4 = gameRepository.findByGameId(4);
             Set<Category> catsForGame4 = new HashSet<>();
-            catsForGame4.add(categoryRepository.findByName("Tech"));
+            catsForGame4.add(categoryRepository.findByName("Deutsch"));
             catsForGame4.add(categoryRepository.findByName("Science"));
-            catsForGame4.add(categoryRepository.findByName("Horror"));
-            catsForGame4.add(categoryRepository.findByName("Mystery"));
+            catsForGame4.add(categoryRepository.findByName("Puzzle"));
+            catsForGame4.add(categoryRepository.findByName("Cyberpunk"));
             game4.setCategories(catsForGame4);
             gameRepository.save(game4);
 
             //Category examples for game 5
             Game game5 = gameRepository.findByGameId(5);
             Set<Category> catsForGame5 = new HashSet<>();
-            catsForGame5.add(categoryRepository.findByName("Tech"));
-            catsForGame5.add(categoryRepository.findByName("Science"));
+            catsForGame5.add(categoryRepository.findByName("Deutsch"));
+            catsForGame5.add(categoryRepository.findByName("Treasurehunt"));
             catsForGame5.add(categoryRepository.findByName("Horror"));
             catsForGame5.add(categoryRepository.findByName("Mystery"));
             game5.setCategories(catsForGame5);
@@ -344,6 +347,7 @@ public class Application {
             Game game7 = gameRepository.findByGameId(7);
             Set<Category> catsForGame7 = new HashSet<>();
             catsForGame7.add(categoryRepository.findByName("Adventure"));
+            catsForGame7.add(categoryRepository.findByName("Treasurehunt"));
             catsForGame7.add(categoryRepository.findByName("English"));
             game7.setCategories(catsForGame7);
             gameRepository.save(game7);
