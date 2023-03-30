@@ -4,6 +4,9 @@ import { CommentService } from '../../services/comment.service';
 import { BehaviorSubject } from 'rxjs';
 import { ProfileService } from '../../services/profile.service';
 import {Game} from "../../interfaces/game";
+import {Category} from "../../interfaces/category";
+import {Review} from "../../interfaces/review";
+import {GameService} from "../../services/game.service";
 
 @Component({
   selector: 'app-user-comments',
@@ -19,12 +22,19 @@ export class UserCommentsComponent implements OnInit{
   @Input() games: Game[] = []; // add this line
   gameSelected?: Game;
   isGameSelected: boolean = false;
+  filteredComments: Comment[] = [];
+
   constructor(
     private commentService: CommentService,
+    private gameService:GameService,
     private profileService: ProfileService // inject ProfileService
   ) {
 
   }
+
+
+
+
 
   deleteComment(comment: Comment): void {
     this.commentService.deleteComment(comment).subscribe(() => {
@@ -71,10 +81,28 @@ export class UserCommentsComponent implements OnInit{
   }
 
   selectGame(game: Game) {
-    this.gameSelected=game;
-    this.isGameSelected=true;
-    console.log(this.gameSelected)
+    this.gameSelected = game;
+    this.isGameSelected = true;
+    this.filteredComments = [];
+
+    this.gameService.getGameById(game.id).subscribe((game: Game) => {
+      this.gameSelected = game;
+
+      if (this.gameSelected.comments) {
+        for (let comment of this.gameSelected.comments) {
+          if (comment.enduser.username === this.username) {
+            this.filteredComments.push(comment);
+          }
+        }
+      }
+
+      console.log(this.gameSelected);
+      console.log(this.gameSelected.comments);
+    });
   }
+
+
+
 
   backToGames(){
     this.isGameSelected=false;

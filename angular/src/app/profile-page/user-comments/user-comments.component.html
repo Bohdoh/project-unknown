@@ -2,8 +2,8 @@
   <div *ngIf="isGameSelected" class="card-content has-text-centered menu">
     <h1>Comments:</h1>
     <ul class="menu-list">
-      <li *ngFor="let comment of comments">
-        <div>
+      <li *ngFor="let comment of filteredComments">
+        <div >
           <!-- display the comment content -->
 
           {{ comment.content }}
