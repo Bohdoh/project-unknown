@@ -9,17 +9,14 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit{
-
   @Input() username: string|any;
   users: Enduser[] = [];
-
   name:string|any;
+  showFullTable: boolean = false; // add this flag
 
-constructor(private adminService: AdminService, private route: ActivatedRoute) {
-}
+  constructor(private adminService: AdminService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-
     this.adminService.getUsers(this.username).subscribe(
       (data: Enduser[]) => {
         this.users = data;
@@ -28,10 +25,7 @@ constructor(private adminService: AdminService, private route: ActivatedRoute) {
         console.error(error);
       }
     );
-
-    console.log(this.username)
   }
-
 
   upgrade(name: string) {
     this.adminService.upgrade(name).subscribe(() => {
@@ -49,6 +43,7 @@ constructor(private adminService: AdminService, private route: ActivatedRoute) {
     });
   }
 
-
-
+  toggleTableDisplay() {
+    this.showFullTable = !this.showFullTable;
+  }
 }
