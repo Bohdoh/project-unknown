@@ -1,25 +1,57 @@
-<div class="card">
-  <div class="card-content ">
-    <h1 class="card-content has-text-centered">{{ profile.username.toUpperCase() }}</h1>
-    <div class="d-flex justify-content-center">
-      <div *ngIf="profile.image" >
-        <figure class="media">
-          <p class="image is-64x64 is-rounded is-centered">
-            <img class="is-rounded" [src]="'data:image/png;base64,' + profile.image"  />
+<div class="card is-centered modal-card ">
+  <div class="card-content">
+    <div class="title has-text-centered ">
+      <h1 class="title">
+        <span>
+          <img *ngIf="isAdmin" class="image is-rounded is-64x64" src="assets/admin%20sticker.jpg">
+          <strong>{{profile.username}}</strong>
+        </span>
+      </h1>
+    </div>
+    <div class=" is-relative">
+      <div class=" media ">
+        <figure class=" is-relativehas-text-centered media  ">
+          <p class="image is-rounded is-relative">
+            <img class="is-rounded is-128x128" *ngIf="profile.image" [src]="'data:image/png;base64,' + profile.image" alt="Profile Picture">
+            <img class="is-rounded is-128x128" *ngIf="!profile.image" src="https://bulma.io/images/placeholders/128x128.png" alt="Profile Picture">
           </p>
         </figure>
+      </div>
 
+      <div class="is-flex align-items-center aktivities ">
+        <span class="has-text-centered"></span>
+        <span class="has-text-centered menu-list">
+          <h1>{{profile.comments.length}}</h1>
+          <button class="button is-text is-hoverable is-fullwidth is-borderless has-text-weight-bold"><strong>Comments</strong></button>
+        </span>
+        <span class="has-text-centered ">
+          <h1>||</h1>
+        </span>
+        <span class="has-text-centered menu-list">
+          <h1>{{profile.reviews.length}}</h1>
+          <button class="button is-text is-hoverable is-borderless has-text-weight-bold is-fullwidth">
+            <div>
+              <strong>Reviews</strong>
+            </div>
+          </button>
+        </span>
+        <span class="has-text-centered"></span>
       </div>
     </div>
-    <br>
-    <span class="card-content has-text-centered columns">
-      <span class="column">Role:</span>
-      <span class="column">{{ profile.role }}</span>
-    </span>
-    <span></span>
-    <span class="card-content has-text-centered columns">
-      <span class="column">Email:</span>
-      <span class="column">{{ profile.email }}</span>
-    </span>
+
+    <div class="columns">
+      <div class="column has-text-centered is-hoverable">
+        <p>Username:  </p>
+        <p>{{profile.username}}</p>
+      </div>
+      <div class="column has-text-centered is-hoverable">
+        <p>Email:  </p>
+        <p>{{profile.email}}</p>
+      </div>
+    </div>
   </div>
+  <footer class="has-text-centered">
+    <button class="button is-rounded is-info">Edit</button>
+  </footer>
+  <hr>
 </div>

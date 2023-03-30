@@ -4,14 +4,14 @@
     <div class="column is-two-thirds">
       <table class="table is-hoverable ">
         <thead>
-        <th></th>
-        <th>Username</th>
-        <th>Role</th>
+        <th ></th>
+        <th > <a (click)="sortUsersByName()">Username</a></th>
+        <th ><a (click)="sortUsers()">Role</a></th>
         <th>Upgrade/downgrade</th>
-        <th>Bann 🔨</th>
+        <th>Bann</th>
         </thead>
         <tbody *ngFor="let user of users; let i=index">
-        <tr *ngIf="showFullTable || i<5"> <!-- Add ngIf to show only first 5 users or full table based on showFullTable flag -->
+        <tr *ngIf="showFullTable || i<5" class="is-vcentered"> <!-- Add is-vcentered class to center the text vertically -->
           <td>
             <figure class="media-left">
               <p class="image is-64x64 is-rounded">
@@ -22,9 +22,9 @@
               </p>
             </figure>
           </td>
-          <td>{{user.username}}</td>
-          <td>{{user.role}}</td>
-          <td>
+          <td class="is-vcentered">{{user.username}}</td>
+          <td class="is-vcentered">{{user.role}}</td>
+          <td class="is-vcentered">
             <button class="button is-rounded"
                     [ngClass]="{'is-info': user.role === 'USER', 'is-danger': user.role === 'ADMIN'}"
                     (click)="user.role === 'ADMIN' ? downgrade(user.username) : upgrade(user.username)"
@@ -32,9 +32,10 @@
               {{ user.role === 'ADMIN' ? 'Downgrade' : 'Upgrade' }}
             </button>
           </td>
-          <td>
-            <button class="button is-rounded">🔨</button>
+          <td class="is-vcentered">
+            <button class="button is-rounded"  [disabled]="user.username === username">🔨</button>
           </td>
+
         </tr>
         </tbody>
       </table>
