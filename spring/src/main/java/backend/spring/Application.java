@@ -270,17 +270,29 @@ public class Application {
 
     private void create5DummyCatsAndAssignThem() {
         if (categoryRepository.count() == 0) {
-            categoryRepository.save(new Category("Tech"));
-            categoryRepository.save(new Category("Science"));
-            categoryRepository.save(new Category("Horror"));
-            categoryRepository.save(new Category("Mystery"));
+            categoryRepository.save(new Category("Adventure"));
+            categoryRepository.save(new Category("Cyberpunk"));
+            categoryRepository.save(new Category("Deutsch"));
             categoryRepository.save(new Category("Empty"));
             categoryRepository.save(new Category("English"));
-            categoryRepository.save(new Category("Deutsch"));
-            categoryRepository.save(new Category("Adventure"));
+            categoryRepository.save(new Category("Horror"));
+            categoryRepository.save(new Category("Lovestory"));
+            categoryRepository.save(new Category("Mystery"));
+            categoryRepository.save(new Category("Science"));
+            categoryRepository.save(new Category("Tech"));
+            categoryRepository.save(new Category("Thriller"));
 
             //Category examples for game 1
-            Game game2 = gameRepository.findByGameId(1);
+            Game game1 = gameRepository.findByGameId(1);
+            Set<Category> catsForGame1 = new HashSet<>();
+            catsForGame1.add(categoryRepository.findByName("Tech"));
+            catsForGame1.add(categoryRepository.findByName("Science"));
+            catsForGame1.add(categoryRepository.findByName("Horror"));
+            game1.setCategories(catsForGame1);
+            gameRepository.save(game1);
+
+            //Category examples for game 2
+            Game game2 = gameRepository.findByGameId(2);
             Set<Category> catsForGame2 = new HashSet<>();
             catsForGame2.add(categoryRepository.findByName("Tech"));
             catsForGame2.add(categoryRepository.findByName("Science"));
@@ -289,13 +301,35 @@ public class Application {
             game2.setCategories(catsForGame2);
             gameRepository.save(game2);
 
-            //Indy Jones Game
-            Game game7 = gameRepository.findByGameId(7);
-            Set<Category> catsForGame7 = new HashSet<>();
-            catsForGame7.add(categoryRepository.findByName("Adventure"));
-            catsForGame7.add(categoryRepository.findByName("English"));
-            game7.setCategories(catsForGame7);
-            gameRepository.save(game7);
+            //Category examples for game 3
+            Game game3 = gameRepository.findByGameId(3);
+            Set<Category> catsForGame3 = new HashSet<>();
+            catsForGame3.add(categoryRepository.findByName("Tech"));
+            catsForGame3.add(categoryRepository.findByName("Science"));
+            catsForGame3.add(categoryRepository.findByName("Horror"));
+            catsForGame3.add(categoryRepository.findByName("Mystery"));
+            game3.setCategories(catsForGame3);
+            gameRepository.save(game3);
+
+            //Category examples for game 4
+            Game game4 = gameRepository.findByGameId(4);
+            Set<Category> catsForGame4 = new HashSet<>();
+            catsForGame4.add(categoryRepository.findByName("Tech"));
+            catsForGame4.add(categoryRepository.findByName("Science"));
+            catsForGame4.add(categoryRepository.findByName("Horror"));
+            catsForGame4.add(categoryRepository.findByName("Mystery"));
+            game4.setCategories(catsForGame4);
+            gameRepository.save(game4);
+
+            //Category examples for game 5
+            Game game5 = gameRepository.findByGameId(5);
+            Set<Category> catsForGame5 = new HashSet<>();
+            catsForGame5.add(categoryRepository.findByName("Tech"));
+            catsForGame5.add(categoryRepository.findByName("Science"));
+            catsForGame5.add(categoryRepository.findByName("Horror"));
+            catsForGame5.add(categoryRepository.findByName("Mystery"));
+            game5.setCategories(catsForGame5);
+            gameRepository.save(game5);
 
             //Holmes Game
             Game game6 = gameRepository.findByGameId(6);
@@ -305,6 +339,15 @@ public class Application {
             catsForGame6.add(categoryRepository.findByName("Horror"));
             game6.setCategories(catsForGame6);
             gameRepository.save(game6);
+
+            //Indy Jones Game
+            Game game7 = gameRepository.findByGameId(7);
+            Set<Category> catsForGame7 = new HashSet<>();
+            catsForGame7.add(categoryRepository.findByName("Adventure"));
+            catsForGame7.add(categoryRepository.findByName("English"));
+            game7.setCategories(catsForGame7);
+            gameRepository.save(game7);
+
 
 
 
