@@ -14,7 +14,7 @@
             <div class="control input-wrapper">
               <input #passwordInput class="input" type="password" [formControlName]="'password'" placeholder="Password">
               <span class="icon is-small input-icon" (click)="togglePasswordVisibility(passwordInput)">
-      <i class="fas" [ngClass]="{'fa-eye': passwordInput.type === 'password', 'fa-eye-slash': passwordInput.type === 'text'}"></i>
+      <i class="fas" [ngClass]="{'fa-eye-slash': passwordInput.type === 'password', 'fa-eye': passwordInput.type === 'text'}"></i>
     </span>
             </div>
           </div>
