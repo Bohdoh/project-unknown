@@ -11,6 +11,7 @@ import {UserListComponent} from "./profile-page/user-list/user-list.component";
 import {ProfilInfoComponent} from "./profile-page/profil-info/profil-info.component";
 import {UserReviewComponent} from "./profile-page/user-review/user-review.component";
 import {UserCommentsComponent} from "./profile-page/user-comments/user-comments.component";
+import {AboutComponent} from "./about/about.component";
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'profile/:username/comments', component: UserCommentsComponent },
   { path: 'profile/:username/reviews', component: UserReviewComponent },
   {path: "game/play/:id/:title", component: GameChaptersComponent},
-  { path: 'api/users/:username/listOfUsers', component: UserListComponent }
+  { path: 'api/users/:username/listOfUsers', component: UserListComponent },
+  { path: 'about', component: AboutComponent }
 ];
 
 // data: { title: 'Profile' }

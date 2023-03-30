@@ -1,0 +1,25 @@
+.dropdown {
+  width: 100%;
+}
+
+.dropdown-content {
+  width: 100%;
+  background-color: var(--background-color);
+  box-shadow: var(--card-box-shadow);
+  border-radius: 0.5rem;
+}
+
+.dropdown-content a {
+  font-family: 'Georgia';
+  color: var(--menu-list-color);
+  font-weight: 200;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--liactive-bg-color);
+  color: var(--text-color);
+}
+.dropdown-content a.liactive {
+  border-left: 3px solid var(--liactive-border-color);
+  background-color: var(--liactive-bg-color);
+}
