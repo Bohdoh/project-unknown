@@ -25,7 +25,10 @@ export class CommentsComponent {
   editCommentContent: string = "";
   commentIdBeingEdited: number = 0;
 
-  constructor(private http:HttpClient,private gameService:GameService,private emojiService:StringToEmojiService) {
+  constructor
+  (private http:HttpClient,
+   private gameService:GameService,
+   private emojiService:StringToEmojiService) {
   }
 
   addComment(ident:string,comment ?: string) {

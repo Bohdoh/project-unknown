@@ -1,16 +1,49 @@
-<div class="card">
+<div class="card columns is-centered">
+  <div class="has-text-centered">
+    <h1 class="card-content has-text-centered">User List</h1>
+    <div class="column is-two-thirds">
+      <table class="table is-hoverable ">
+        <thead>
+        <th></th>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Upgrade/downgrade</th>
+        <th>Bann 🔨</th>
+        </thead>
+        <tbody *ngFor="let user of users; let i=index">
+        <tr *ngIf="showFullTable || i<5"> <!-- Add ngIf to show only first 5 users or full table based on showFullTable flag -->
+          <td>
+            <figure class="media-left">
+              <p class="image is-64x64 is-rounded">
+                <img class="is-rounded" *ngIf="user.image"
+                     [src]="'data:image/png;base64,' + user.image" alt="Profile Picture">
+                <img class="is-rounded" *ngIf="!user.image"
+                     src="https://bulma.io/images/placeholders/128x128.png" alt="Profile Picture">
+              </p>
+            </figure>
+          </td>
+          <td>{{user.username}}</td>
+          <td>{{user.role}}</td>
+          <td>
+            <button class="button is-rounded"
+                    [ngClass]="{'is-info': user.role === 'USER', 'is-danger': user.role === 'ADMIN'}"
+                    (click)="user.role === 'ADMIN' ? downgrade(user.username) : upgrade(user.username)"
+                    [disabled]="user.username === username">
+              {{ user.role === 'ADMIN' ? 'Downgrade' : 'Upgrade' }}
+            </button>
+          </td>
+          <td>
+            <button class="button is-rounded">🔨</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
 
-  <h1 class="card-content has-text-centered">User List</h1>
-  <div class="card-content menu">
-    <ul class="menu-list has-text-centered ">
-      <li *ngFor="let user of users">
-        {{ user.username }} - {{ user.role }}
-        <button (click)="user.role === 'ADMIN' ? downgrade(user.username) : upgrade(user.username)" [disabled]="user.username === username">
-          {{ user.role === 'ADMIN' ? 'Downgrade' : 'Upgrade' }}
-        </button>
-      </li>
-    </ul>
+    </div>
+    <div class="buttons is-centered"> <!-- Add a button to toggle the full table display -->
+      <button class="button is-info is-rounded" (click)="toggleTableDisplay()" *ngIf="!showFullTable">Show more</button>
+      <button class="button is-danger is-rounded" (click)="toggleTableDisplay()" *ngIf="showFullTable">Show less</button>
+    </div>
+    <br>
   </div>
-
 </div>
-
