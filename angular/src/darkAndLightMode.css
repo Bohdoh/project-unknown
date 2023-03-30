@@ -27,6 +27,7 @@ body {
   --tabs-li-isactive: #485fc7;
   --button-text-color: #313131;
   --button-background-color: white;
+  --error-msg-color: #930202;
 
 }
 
@@ -59,5 +60,6 @@ body.dark-mode{
   --tabs-li-isactive: #9f7b45;
   --button-text-color: #b4b3b3;
   --button-background-color: #3b3c44;
+  --error-msg-color: #fc0202;
 }
 
