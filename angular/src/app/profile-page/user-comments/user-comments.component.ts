@@ -7,6 +7,7 @@ import {Game} from "../../interfaces/game";
 import {Category} from "../../interfaces/category";
 import {Review} from "../../interfaces/review";
 import {GameService} from "../../services/game.service";
+import {StringToEmojiService} from "../../services/string-to-emoji.service";
 
 @Component({
   selector: 'app-user-comments',
@@ -23,10 +24,12 @@ export class UserCommentsComponent implements OnInit{
   gameSelected?: Game;
   isGameSelected: boolean = false;
   filteredComments: Comment[] = [];
+  commentContent?: string;
 
   constructor(
     private commentService: CommentService,
     private gameService:GameService,
+    private emojiService:StringToEmojiService,
     private profileService: ProfileService // inject ProfileService
   ) {
 

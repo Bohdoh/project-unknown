@@ -1,34 +1,61 @@
 <div class="card">
   <div *ngIf="isGameSelected" class="card-content has-text-centered menu">
-    <h1>Comments:</h1>
-    <ul class="menu-list">
-      <li *ngFor="let comment of filteredComments">
-        <div >
-          <!-- display the comment content -->
+    <h1 class=" title-is-4 is-center">Comments:</h1>
+    <article class="media mx-6" *ngFor="let comment of filteredComments">
+      <!-- user info -->
+      <figure class="media-left">
+        <p class="image is-64x64 is-rounded">
+          <img class="is-rounded" *ngIf="comment.enduser.image"
+               [src]="'data:image/png;base64,' + comment.enduser.image" alt="Profile Picture">
+          <img class="is-rounded" *ngIf="!comment.enduser.image"
+               src="https://bulma.io/images/placeholders/128x128.png" alt="Profile Picture">
+        </p>
+      </figure>
 
-          {{ comment.content }}
-          <div class="row ">
-            <span class="col">
-              <a (click)="deleteComment(comment)">Delete</a>
-            </span>
-            <span class="col">
-              <a (click)="showEditForm(comment)">Edit</a>
-            </span>
+      <!-- normal comment -->
+      <div class="media-content" *ngIf="!(commentBeingEdited === comment)">
+        <div class="content">
+          <strong>
+            <p>{{ comment.enduser.username }}</p>
+          </strong><small> {{ comment.createdAt | date:'HH:mm:ss     dd-MM-yy' }}</small><br>
+          <span>{{ comment.content }}</span>
+        </div>
+      </div>
+
+      <!-- comment edit window -->
+      <div class="media-content" *ngIf="commentBeingEdited === comment">
+        <form (ngSubmit)="submitEdit(comment)">
+          <div class="field">
+            <p class="control">
+        <textarea class="textarea is-half" [(ngModel)]="editContent" name="content"
+                  placeholder="Edit your comment..."></textarea>
+            </p>
           </div>
-        </div>
-        <br>
-        <!-- edit form -->
-        <div *ngIf="commentBeingEdited === comment">
-          <form (submit)="submitEdit(comment)">
-            <input type="text" [(ngModel)]="editContent" name="content" required>
-            <button type="submit">Save</button>
-            <button type="button" (click)="cancelEdit()">Cancel</button>
-          </form>
-        </div>
-      </li>
-    </ul>
-    <a (click)="backToGames()"> Back To Games</a>
+          <nav class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <button class="button is-info is-primary" [disabled]="!editContent" type="submit">Submit</button>
+              </div>
+            </div>
+          </nav>
+          <a class="mr-2" (click)="cancelEdit()">Cancel</a>
+        </form>
+      </div>
+
+
+
+      <!-- buttons for delete, edit  -->
+      <div class="media-right">
+        <a class="mr-2"  (click)="showEditForm(comment)"><i
+          class="fa-solid fa-pen"></i></a>
+        <a  (click)="deleteComment(comment)"><i
+          class="fa-regular fa-circle-xmark"></i></a>
+      </div>
+    </article>
+    <button class="button is-center is-rounded" (click)="backToGames()"> Back To Games</button>
   </div>
+
+
   <div *ngIf="!isGameSelected" class="card-content has-text-centered menu">
     <h1>Games:</h1>
     <ul class="menu-list">

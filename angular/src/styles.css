@@ -286,3 +286,6 @@ color: var(--text-color);
   border-radius: 10px;
 }
 
+.card-content{
+  color: var(--text-color) ;
+}
