@@ -13,8 +13,9 @@ export class UserListComponent implements OnInit{
   users: Enduser[] = [];
   name:string|any;
   showFullTable: boolean = false; // add this flag
-
+  isSortedAscending = true;
   constructor(private adminService: AdminService, private route: ActivatedRoute) {}
+isAlphabeticSorted:boolean=false;
 
   ngOnInit(): void {
     this.adminService.getUsers(this.username).subscribe(
@@ -26,6 +27,53 @@ export class UserListComponent implements OnInit{
       }
     );
   }
+
+  sortUsersByName() {
+    this.isAlphabeticSorted=!this.isAlphabeticSorted;
+    return this.users.sort((a,b)=>{
+      if (a.username && b.username) {
+        if (a.username.localeCompare(b.username) === -1) {
+          return this.isAlphabeticSorted ? 1 : -1;
+        }
+        if (a.username.localeCompare(b.username) === 1) {
+          return this.isAlphabeticSorted ? -1 : 1;
+        }
+        return 0;
+      } else if (!a.username && b.username) {
+        return this.isAlphabeticSorted ? -1 : 1;
+      } else if (a.username && !b.username) {
+        return this.isAlphabeticSorted ? 1 : -1;
+      } else {
+        return 0;
+      }
+    })
+
+  }
+
+  sortUsers() {
+    this.isSortedAscending = !this.isSortedAscending;
+    return this.users.sort((a, b) => {
+      if (a.role && b.role) {
+        if (a.role.localeCompare(b.role) === -1) {
+          return this.isSortedAscending ? 1 : -1;
+        }
+        if (a.role.localeCompare(b.role) === 1) {
+          return this.isSortedAscending ? -1 : 1;
+        }
+        return 0;
+      } else if (!a.role && b.role) {
+        return this.isSortedAscending ? -1 : 1;
+      } else if (a.role && !b.role) {
+        return this.isSortedAscending ? 1 : -1;
+      } else {
+        return 0;
+      }
+    });
+  }
+
+
+
+
 
   upgrade(name: string) {
     this.adminService.upgrade(name).subscribe(() => {
@@ -46,4 +94,6 @@ export class UserListComponent implements OnInit{
   toggleTableDisplay() {
     this.showFullTable = !this.showFullTable;
   }
+
+
 }

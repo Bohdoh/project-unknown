@@ -1,4 +1,61 @@
-.smaller-image img {
-  max-width: 5em;
-  max-height: 5em; /* Change the value to set the maximum height */
+.card-content{
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+
+
 }
+.sebastian-card{
+
+}
+.media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+
+.aktivities{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bold;
+  border: black;
+  border-style: inset;
+
+}
+
+.profile-content-tamayo{
+  display: flex;
+
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sebastian-button{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.is-relative {
+  position: relative;
+}
+
+.is-128x128 {
+  width: 128px;
+  height: 128px;
+  border: 5px solid #3f8087;
+  border-radius: 50%;
+}
+
+.is-rounded.is-relative {
+  position: absolute;
+  bottom: -64px; /* half the height of the image container */
+  left: calc(50% - 64px); /* half the width of the image container */
+  z-index: 1; /* make sure the image container is on top of the next container */
+}
+
