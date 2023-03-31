@@ -108,3 +108,8 @@ body {
   background: #CECECE;
   border-radius: 0;
 }
+.card-equal-height {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
