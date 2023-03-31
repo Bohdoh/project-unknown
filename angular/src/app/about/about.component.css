@@ -112,4 +112,22 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  justify-content: space-between;
+}
+
+.card-footer-own {
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Make the card-content fill the remaining space */
+}
+.card-content-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Make the card-content fill the remaining space */
+  height: 100%;
 }
