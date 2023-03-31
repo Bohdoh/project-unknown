@@ -39,7 +39,7 @@
       </button>
     </div>
     <div *ngIf="timerStarted===true"><p>Time left to vote: </p>
-      <progress class="progress" [value]="timeLeft" max="150"></progress>
+      <progress class="progress" [value]="timeLeft" max="100"></progress>
     </div>
   </div>
 
@@ -61,8 +61,8 @@
     <div class="content">
       Rules:
       <ul>
-        <li>Voting opens after 5 sec on new Chapter</li>
-        <li>After the first vote is cast, 15 sec timer</li>
+        <li>Voting opens after 10 sec on new Chapter</li>
+        <li>After the first vote is cast, 10 sec timer</li>
         <li>Everyone has to click "next" (or main player can)</li>
       </ul>
     </div>

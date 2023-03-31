@@ -131,7 +131,7 @@ export class GameChaptersComponent implements OnInit {
       this.totalVotes = 0;
       setTimeout( () => {
         this.restartVoting();
-      }, 5000);
+      }, 10000);
 
     }
   }
@@ -201,7 +201,7 @@ export class GameChaptersComponent implements OnInit {
               if (!this.timerStarted) {
                 this.timerStarted = true;
                 console.log("Timer started!");
-                this.timeLeft = 150;
+                this.timeLeft = 100;
                 const timerInterval = setInterval(() => {
                   this.timeLeft -= 1;
                   if (this.timeLeft <= 0) {

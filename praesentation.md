@@ -26,9 +26,8 @@
 
 ##### - Interactive
 
-##### - Engaging
-
 ##### - Fun
+
 
 ---
 
@@ -37,7 +36,7 @@
 - Angular (Frontend)
 - Spring (Backend)<br><br>
   And many more
-
+<br>
 <ul>
 <li> Node.js</li>
 <li> Faker</li>
