@@ -319,7 +319,6 @@ public class Application {
             Set<Category> catsForGame4 = new HashSet<>();
             catsForGame4.add(categoryRepository.findByName("Deutsch"));
             catsForGame4.add(categoryRepository.findByName("Science"));
-            catsForGame4.add(categoryRepository.findByName("Puzzle"));
             catsForGame4.add(categoryRepository.findByName("Cyberpunk"));
             game4.setCategories(catsForGame4);
             gameRepository.save(game4);
@@ -329,7 +328,6 @@ public class Application {
             Set<Category> catsForGame5 = new HashSet<>();
             catsForGame5.add(categoryRepository.findByName("Deutsch"));
             catsForGame5.add(categoryRepository.findByName("Treasurehunt"));
-            catsForGame5.add(categoryRepository.findByName("Horror"));
             catsForGame5.add(categoryRepository.findByName("Mystery"));
             game5.setCategories(catsForGame5);
             gameRepository.save(game5);
