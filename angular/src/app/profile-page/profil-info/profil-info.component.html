@@ -3,7 +3,7 @@
     <div class="title has-text-centered ">
       <h1 class="title">
         <span>
-          <img *ngIf="isAdmin" class="image is-rounded is-64x64" src="assets/admin%20sticker.jpg">
+          <img *ngIf="isAdmin" class="image is-rounded is-128x128" src="assets/admin%20sticker.jpg">
           <strong>{{profile.username}}</strong>
         </span>
       </h1>
@@ -21,19 +21,21 @@
       <div class="is-flex align-items-center aktivities ">
         <span class="has-text-centered"></span>
         <span class="has-text-centered menu-list">
-          <h1>{{profile.comments.length}}</h1>
-          <button class="button is-text is-hoverable is-fullwidth is-borderless has-text-weight-bold"><strong>Comments</strong></button>
+         <h1>{{comments.length}}</h1>
+<button class="button is-text is-hoverable is-fullwidth is-borderless has-text-weight-bold"><strong>Comments</strong></button>
+
         </span>
         <span class="has-text-centered ">
           <h1>||</h1>
         </span>
         <span class="has-text-centered menu-list">
-          <h1>{{profile.reviews.length}}</h1>
-          <button class="button is-text is-hoverable is-borderless has-text-weight-bold is-fullwidth">
-            <div>
-              <strong>Reviews</strong>
-            </div>
-          </button>
+         <h1>{{reviews.length}}</h1>
+<button class="button is-text is-hoverable is-borderless has-text-weight-bold is-fullwidth">
+  <div>
+    <strong>Reviews</strong>
+  </div>
+</button>
+
         </span>
         <span class="has-text-centered"></span>
       </div>

@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ProfilDTO } from '../../interfaces/profil-dto';
 import { ProfileService } from '../../services/profile.service';
 import {LocalStorageService} from "ngx-webstorage";
+import {Review} from "../../interfaces/review";
+import {Comment} from "../../interfaces/comment";
 
 @Component({
   selector: 'app-profil-info',
@@ -12,6 +14,9 @@ import {LocalStorageService} from "ngx-webstorage";
 export class ProfilInfoComponent implements OnInit {
   @Input() profile: ProfilDTO | any;
   @Input() username: string |any;
+
+  comments:Comment[]=[];
+  reviews:Review[]=[];
 
   userRole:string="a";
   isAdmin?:boolean;
@@ -28,12 +33,31 @@ export class ProfilInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-if (this.profile.role==="ADMIN"){
-  this.isAdmin=true;
-}else {
-  this.isAdmin=false;
-}
+    if (this.profile.role==="ADMIN"){
+      this.isAdmin=true;
+    } else {
+      this.isAdmin=false;
+    };
 
-console.log(this.profile.role)
+    this.profile.comments.forEach((comment: Comment) => {
+      const filteredComment = this.comments.filter(c => c.content === comment.content)[0];
+      if (!filteredComment) {
+        this.comments.push(comment);
+      }
+    });
+
+    this.profile.reviews.forEach((review: Review) => {
+      const filteredReview = this.reviews.filter(r => r.content === review.content)[0];
+      if (!filteredReview) {
+        this.reviews.push(review);
+      }
+    });
+
+
+
+
+
+    console.log(this.profile);
   }
+
 }
