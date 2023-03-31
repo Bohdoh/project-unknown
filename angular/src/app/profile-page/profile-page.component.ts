@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from '../services/profile.service';
 import {Game} from "../interfaces/game";
 import {HttpClient} from "@angular/common/http";
+import {Review} from "../interfaces/review";
 
 @Component({
   selector: 'app-profile-page',
@@ -19,6 +20,8 @@ export class ProfilePageComponent implements OnInit {
   isInComments: boolean = false;
   isInReview: boolean = false;
   isInUserList: boolean = false;
+
+
 
   games: Game[]=[];
 
@@ -48,8 +51,9 @@ export class ProfilePageComponent implements OnInit {
         console.error(error);
       }
     );
-    console.log(this.username)
 
+    console.log(this.username);
+console.log(this.profile);
   }
 
   handleGoToProfilInfoClicked() {
@@ -57,6 +61,7 @@ export class ProfilePageComponent implements OnInit {
     this.isInComments = false;
     this.isInReview = false;
     this.isInUserList = false;
+    console.log(this.profile);
   }
 
   handleGoToCommentsClicked() {
@@ -64,6 +69,7 @@ export class ProfilePageComponent implements OnInit {
     this.isInComments = true;
     this.isInReview = false;
     this.isInUserList = false;
+    console.log(this.profile);
   }
 
   handleGoToReviewsClicked() {
@@ -71,6 +77,7 @@ export class ProfilePageComponent implements OnInit {
     this.isInComments = false;
     this.isInReview = true;
     this.isInUserList = false;
+    console.log(this.profile);
   }
 
   handleGetUserListClicked() {
