@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProfilDTO } from '../../interfaces/profil-dto';
 import { ProfileService } from '../../services/profile.service';
@@ -18,6 +18,8 @@ export class ProfilInfoComponent implements OnInit {
   comments:Comment[]=[];
   reviews:Review[]=[];
 
+  @Output() goToReviewsClicked = new EventEmitter();
+  @Output() goToCommentsClicked = new EventEmitter();
   userRole:string="a";
   isAdmin?:boolean;
   constructor(
@@ -58,6 +60,14 @@ export class ProfilInfoComponent implements OnInit {
 
 
     console.log(this.profile);
+  }
+
+  goToReviews() {
+    this.goToReviewsClicked.emit();
+  }
+
+  goToComments() {
+    this.goToCommentsClicked.emit();
   }
 
 }

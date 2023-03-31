@@ -22,7 +22,7 @@
         <span class="has-text-centered"></span>
         <span class="has-text-centered menu-list">
          <h1>{{comments.length}}</h1>
-<button class="button is-text is-hoverable is-fullwidth is-borderless has-text-weight-bold"><strong>Comments</strong></button>
+<button (click)="goToComments()" class="button is-text is-hoverable is-fullwidth is-borderless has-text-weight-bold"><strong>Comments</strong></button>
 
         </span>
         <span class="has-text-centered ">
@@ -30,7 +30,7 @@
         </span>
         <span class="has-text-centered menu-list">
          <h1>{{reviews.length}}</h1>
-<button class="button is-text is-hoverable is-borderless has-text-weight-bold is-fullwidth">
+<button (click)="goToReviews()" class="button is-text is-hoverable is-borderless has-text-weight-bold is-fullwidth">
   <div>
     <strong>Reviews</strong>
   </div>

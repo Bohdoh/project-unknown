@@ -11,11 +11,12 @@ export class MenuBarComponent implements OnInit{
 
   @Output() goToProfilInfoClicked = new EventEmitter();
   @Output() goToReviewsClicked = new EventEmitter();
+  @Output() goToCommentsClicked = new EventEmitter();
   @Output() getUserListClicked = new EventEmitter();
 
   userRole:string="user";
   @Input() isAdmin?:boolean;
-  @Output() goToCommentsClicked = new EventEmitter();
+
 
   constructor(private router: Router) {
   }

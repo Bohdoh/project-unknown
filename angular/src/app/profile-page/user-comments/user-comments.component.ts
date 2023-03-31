@@ -26,6 +26,8 @@ export class UserCommentsComponent implements OnInit{
   filteredComments: Comment[] = [];
   commentContent?: string;
 
+  filteredGames:Game[]=[];
+
   constructor(
     private commentService: CommentService,
     private gameService:GameService,
@@ -113,6 +115,9 @@ export class UserCommentsComponent implements OnInit{
   }
   ngOnInit(): void {
     console.log(this.games)
+
+
+
   }
 
 
